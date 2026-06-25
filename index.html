@@ -1,51 +1,553 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Be.Ark — A Personal AI That's Truly Your Own</title>
+<meta name="description" content="Be.Ark is a local-first personal AI for creators. Your conversations, memory, and working files — kept private on your own machine. Truly yours. Free download for macOS & Windows." />
+<meta name="keywords" content="Be.Ark, BeArk, personal AI, local-first AI, private AI assistant, AI for creators, offline AI, local LLM, AI memory, Living Files, Ollama desktop app" />
+<meta name="author" content="REBE WORLD FZCO" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="canonical" href="https://re-be.world/" />
 
-  <!-- Primary Meta Tags -->
-  <title>Re-Be World - Contract, Credit & Financing Infrastructure for Global Creative Work</title>
-  <meta name="title" content="Re-Be World - Financial Infrastructure for Creators">
-  <meta name="description"
-    content="Blockchain-based platform providing instant settlement, smart contracts, and trust-based credit for the global creative economy. Your work. Your reputation. Your financial identity.">
-  <meta name="keywords"
-    content="creative economy, blockchain, smart contracts, RBT token, creative financing, instant payment, creator economy, web3, decentralized finance">
-  <meta name="author" content="Re-Be World">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://re-be.world">
+<!-- Open Graph -->
+<meta property="og:site_name" content="Be.Ark" />
+<meta property="og:title" content="Be.Ark — A Personal AI That's Truly Your Own" />
+<meta property="og:description" content="Local-first personal AI for creators. Private by design. Truly your own. Free download for macOS & Windows." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://re-be.world/" />
+<meta property="og:image" content="https://re-be.world/landing/app-screenshot.jpg" />
+<meta property="og:image:alt" content="Be.Ark desktop app — chat, agents, and Living Files" />
+<meta property="og:locale" content="en_US" />
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://re-be.world">
-  <meta property="og:site_name" content="Re-Be World">
-  <meta property="og:title" content="Re-Be World - Financial Infrastructure for Creators">
-  <meta property="og:description"
-    content="A financial world built for creators—designed to protect contracts, unlock liquidity, and preserve creative value in the age of AI.">
-  <meta property="og:image" content="https://re-be.world/og-main.png">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Be.Ark — A Personal AI That's Truly Your Own" />
+<meta name="twitter:description" content="Local-first personal AI for creators. Private by design. Truly your own." />
+<meta name="twitter:image" content="https://re-be.world/landing/app-screenshot.jpg" />
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://re-be.world">
-  <meta name="twitter:title" content="Re-Be World - Financial Infrastructure for Creators">
-  <meta name="twitter:description" content="Blockchain-based platform for creative contracts and instant settlement">
-  <meta name="twitter:image" content="https://re-be.world/og-main.png">
+<meta name="theme-color" content="#070a0f" />
+<link rel="icon" type="image/png" href="./landing/appicon.png" />
+<link rel="apple-touch-icon" href="./landing/appicon.png" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/favicon.png">
+<!-- Structured Data: SoftwareApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Be.Ark",
+  "alternateName": "BeArk",
+  "applicationCategory": "ProductivityApplication",
+  "operatingSystem": "macOS, Windows",
+  "description": "Be.Ark is a local-first personal AI for creators. Your conversations, memory, and working files stay private on your own machine.",
+  "url": "https://re-be.world/",
+  "image": "https://re-be.world/landing/app-screenshot.jpg",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "REBE WORLD FZCO",
+    "url": "https://re-be.world/"
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    /* ark.works design policy */
+    --bg:#070a0f;            /* hsl(220 20% 4%) */
+    --bg-soft:#0c1018;
+    --ink:#f6f8fb;           /* hsl(210 40% 98%) */
+    --ink-dim:#9aa6b8;       /* hsl(215 20% 55%) */
+    --ink-faint:#5e6b7e;
+    --accent:#c49c4d;        /* old gold / mustard — key color */
+    --accent-soft:#c49c4d1f;
+    --accent-glow:#c49c4d44;
+    --purple:#863bff;        /* Be.Ark brand logo purple */
+    --line:#1b2330;          /* hsl(220 15% 18%) */
+    --radius:18px;
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 
-  <!-- Preconnect for Performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  /* starfield canvas */
+  #stars{position:fixed;inset:0;z-index:0;pointer-events:none;display:block}
+  /* ambient glow on top of stars */
+  .glow{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(620px 420px at 70% -5%, #c49c4d18, transparent 70%),
+      radial-gradient(520px 380px at 8% 12%, #863bff14, transparent 70%);
+  }
 
-  <!-- Theme Color -->
-  <meta name="theme-color" content="#8D5296">
+  /* nav */
+  header{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);
+    background:#070a0fcc;border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:-.02em;font-size:18px}
+  .brand .logo{width:38px;height:38px;display:block;border-radius:9px}
+  .nav-right{display:flex;align-items:center;gap:18px}
+  .nav-link{font-size:13.5px;font-weight:500;color:var(--ink-dim);transition:.2s}
+  .nav-link:hover{color:var(--ink)}
+  .nav-cta{font-size:14px;font-weight:600;padding:9px 16px;border-radius:999px;
+    background:var(--accent);color:#15100a;transition:.2s}
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 22px var(--accent-glow)}
+
+  /* hero */
+  section{position:relative;z-index:1}
+  .hero{padding:96px 0 64px;text-align:center}
+  .pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-dim);
+    border:1px solid var(--line);background:var(--bg-soft);padding:6px 14px;border-radius:999px;margin-bottom:28px}
+  .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+  h1{font-size:clamp(38px,6.4vw,68px);line-height:1.04;letter-spacing:-.03em;font-weight:800}
+  h1 .hl{background:linear-gradient(120deg,var(--accent),#e6cf95);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{max-width:620px;margin:22px auto 0;font-size:clamp(16px,2.1vw,20px);color:var(--ink-dim)}
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:38px}
+  .btn{font-weight:600;font-size:15px;padding:14px 26px;border-radius:12px;transition:.2s;border:1px solid transparent;display:inline-flex;align-items:center;gap:9px}
+  .btn-primary{background:var(--accent);color:#15100a}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px var(--accent-glow)}
+  .btn-ghost{border-color:var(--line);color:var(--ink);background:var(--bg-soft)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .note{margin-top:16px;font-size:13px;color:var(--ink-faint)}
+
+  /* app mock */
+  .mock{margin:56px auto 0;max-width:860px;border:1px solid var(--line);border-radius:var(--radius);
+    background:linear-gradient(180deg,#0c101800,#080b11);overflow:hidden;box-shadow:0 30px 80px #00000088}
+  .mock-bar{display:flex;align-items:center;gap:7px;padding:13px 16px;border-bottom:1px solid var(--line);background:#0a0e15}
+  .mock-bar i{width:11px;height:11px;border-radius:50%;background:#2a312a;display:inline-block}
+  .mock-bar i:nth-child(1){background:#ff5f57}.mock-bar i:nth-child(2){background:#febc2e}.mock-bar i:nth-child(3){background:#28c840}
+  .mock-bar span{margin-left:10px;font-size:12px;color:var(--ink-faint)}
+  .mock-body{display:grid;grid-template-columns:1fr;gap:14px;padding:26px}
+  .msg{max-width:80%;padding:13px 16px;border-radius:14px;font-size:14.5px}
+  .msg.user{align-self:flex-end;background:var(--accent-soft);border:1px solid #c49c4d33;justify-self:end}
+  .msg.ai{align-self:flex-start;background:#11151133;border:1px solid var(--line);color:var(--ink-dim)}
+  .msg.ai b{color:var(--accent)}
+  /* agent row: avatar + name + bubble */
+  .agent-row{display:flex;align-items:flex-start;gap:11px;align-self:flex-start;max-width:86%}
+  .agent-id{display:flex;flex-direction:column;align-items:center;gap:5px;flex-shrink:0;width:46px}
+  .agent-id .avatar{width:42px;height:42px;border-radius:50%;object-fit:cover;border:1px solid var(--line)}
+  .agent-id .agent-name{font-size:10.5px;color:var(--ink-faint);font-weight:600;text-align:center;line-height:1.1}
+  .agent-row .msg.ai{max-width:100%}
+
+  /* features */
+  .features{padding:80px 0 30px}
+  .sec-h{text-align:center;margin-bottom:46px}
+  .sec-h h2{font-size:clamp(26px,4vw,38px);letter-spacing:-.02em}
+  .sec-h p{color:var(--ink-dim);margin-top:10px}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .card{border:1px solid var(--line);background:var(--bg-soft);border-radius:var(--radius);padding:26px;transition:.2s}
+  .card:hover{border-color:#c49c4d55;transform:translateY(-3px)}
+  .card .ic{width:42px;height:42px;border-radius:11px;background:var(--accent-soft);display:grid;place-items:center;font-size:20px;margin-bottom:16px}
+  .card h3{font-size:18px;letter-spacing:-.01em}
+  .card p{color:var(--ink-dim);font-size:14.5px;margin-top:8px}
+
+  /* how */
+  .how{padding:72px 0}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px}
+  .step{border:1px solid var(--line);border-radius:var(--radius);padding:24px;background:var(--bg-soft);position:relative}
+  .step .n{font-size:13px;font-weight:700;color:var(--accent);border:1px solid #c49c4d55;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;margin-bottom:14px}
+  .step h3{font-size:16px}
+  .step p{color:var(--ink-dim);font-size:14px;margin-top:7px}
+
+  /* final cta */
+  .final{padding:80px 0 96px;text-align:center}
+  .final-box{border:1px solid #c49c4d33;border-radius:24px;padding:56px 28px;
+    background:radial-gradient(600px 220px at 50% 0%, #c49c4d18, transparent 70%),var(--bg-soft)}
+  .final h2{font-size:clamp(26px,4.4vw,42px);letter-spacing:-.02em}
+  .final p{color:var(--ink-dim);margin:14px auto 0;max-width:520px}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:34px 0;color:var(--ink-faint);font-size:13px}
+  .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  .foot a:hover{color:var(--accent)}
+  .foot .brand .logo{width:22px;height:22px}
+
+  /* floating agent avatars beside hero headline */
+  .hero{position:relative}
+  .float-agents{position:absolute;inset:0;z-index:0;pointer-events:none}
+  .float-agents .fa{position:absolute;width:84px;height:84px;border-radius:50%;
+    object-fit:cover;border:2px solid #c49c4d55;box-shadow:0 8px 30px #00000066,0 0 0 6px #c49c4d10;
+    opacity:.92;pointer-events:auto;cursor:default;
+    transition:transform .35s cubic-bezier(.2,.8,.3,1),box-shadow .35s,opacity .35s;
+    animation:floaty 6s ease-in-out infinite}
+  .float-agents .fa:hover{transform:scale(1.18) rotate(-3deg);opacity:1;
+    box-shadow:0 14px 44px #00000088,0 0 0 8px #c49c4d2a}
+  .float-agents .fa.a1{top:6%;left:13%;animation-delay:0s}
+  .float-agents .fa.a2{top:30%;left:8%;animation-delay:1.4s}
+  .float-agents .fa.a3{top:6%;right:13%;animation-delay:.7s}
+  .float-agents .fa.a4{top:30%;right:8%;animation-delay:2.1s}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+  /* app screenshot inside final cta box */
+  .shot{margin:36px auto 0;max-width:680px;border:1px solid var(--line);border-radius:14px;
+    overflow:hidden;box-shadow:0 24px 70px #000000aa;background:#0a0e15;line-height:0}
+  .shot img{width:100%;height:auto;display:block}
+
+  /* download modal */
+  .modal-bg{position:fixed;inset:0;z-index:50;background:#04060ad9;backdrop-filter:blur(6px);
+    display:none;align-items:center;justify-content:center;padding:24px}
+  .modal-bg.open{display:flex}
+  .modal{width:100%;max-width:440px;border:1px solid #c49c4d33;border-radius:20px;
+    background:radial-gradient(600px 220px at 50% 0%, #c49c4d18, transparent 70%),var(--bg-soft);
+    padding:32px 28px;position:relative;animation:pop .25s cubic-bezier(.2,.8,.3,1)}
+  @keyframes pop{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+  .modal h3{font-size:22px;letter-spacing:-.02em;text-align:center}
+  .modal p.msub{color:var(--ink-dim);font-size:14px;text-align:center;margin-top:8px}
+  .modal .dls{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+  .dl-opt{display:flex;align-items:center;gap:14px;border:1px solid var(--line);background:#0a0e15;
+    border-radius:13px;padding:15px 18px;transition:.2s;cursor:pointer}
+  .dl-opt:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 10px 26px var(--accent-glow)}
+  .dl-opt .os{font-size:24px;width:30px;text-align:center}
+  .dl-opt .lbl{flex:1}
+  .dl-opt .lbl b{font-size:15px;display:block}
+  .dl-opt .lbl span{font-size:12px;color:var(--ink-faint)}
+  .dl-opt .arr{color:var(--accent);font-weight:700}
+  .modal .mnote{margin-top:18px;font-size:12px;color:var(--ink-faint);text-align:center}
+  .modal .x{position:absolute;top:14px;right:16px;font-size:20px;color:var(--ink-faint);cursor:pointer;line-height:1}
+  .modal .x:hover{color:var(--ink)}
+  .ver-badge{display:block;margin:8px auto 0;width:fit-content;font-size:11px;font-weight:700;
+    letter-spacing:.04em;text-transform:uppercase;color:var(--accent);
+    border:1px solid #c49c4d55;border-radius:999px;padding:3px 11px}
+  .wl-form{display:flex;flex-direction:column;gap:11px;margin-top:22px}
+  .wl-form input{width:100%;font:inherit;font-size:14px;color:var(--ink);
+    background:#0b0f16;border:1px solid var(--line);border-radius:11px;padding:12px 14px;transition:.2s}
+  .wl-form input::placeholder{color:var(--ink-faint)}
+  .wl-form input:focus{outline:none;border-color:#c49c4d88;box-shadow:0 0 0 3px var(--accent-glow)}
+  .wl-form .wl-submit{margin-top:5px;width:100%;text-align:center;border:none;cursor:pointer}
+
+  @media(max-width:720px){
+    .grid,.steps{grid-template-columns:1fr}
+    .hero{padding:72px 0 40px}
+    .float-agents{display:none}
+    .nav-right{gap:12px}
+    .nav-link#bug-top{display:none}
+  }
+  @media(max-width:440px){
+    .nav-link{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){#stars{display:none}.float-agents .fa{animation:none}}
+</style>
 </head>
-
 <body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.tsx"></script>
-</body>
+<canvas id="stars"></canvas>
+<div class="glow"></div>
 
+<header>
+  <div class="wrap nav">
+    <div class="brand"><img class="logo" src="./landing/appicon.png" alt="Be.Ark" /> Be.Ark</div>
+    <div class="nav-right">
+      <a class="nav-link" id="bug-top" href="#">Report a bug</a>
+      <a class="nav-link" id="wl-top" href="#">Join waitlist</a>
+      <a class="nav-cta" href="#download">Download</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="float-agents">
+    <img class="fa a1" src="./landing/agent-1.png" alt="agent" />
+    <img class="fa a2" src="./landing/agent-2.png" alt="agent" />
+    <img class="fa a3" src="./landing/agent-3.png" alt="agent" />
+    <img class="fa a4" src="./landing/agent-4.png" alt="agent" />
+  </div>
+  <div class="wrap">
+    <div class="pill"><span class="dot"></span> Local-first · Private by design</div>
+    <h1>A personal AI that's<br><span class="hl">truly your own.</span></h1>
+    <p class="sub">Your conversations, your memory, your files<br>
+— all on <b>your own machine</b>.<br>
+Be.Ark is a thinking partner you actually own,<br>
+not another cloud account renting your mind back to you.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" id="dl-top" href="#download">↓ Download for macOS / Windows</a>
+      <a class="btn btn-ghost" href="#how">How it works</a>
+    </div>
+    <p class="note">Free · Runs offline with local models · Your data never leaves your device</p>
+
+    <!-- mock -->
+    <div class="mock">
+      <div class="mock-bar"><i></i><i></i><i></i><span>Be.Ark</span></div>
+      <div class="mock-body">
+        <div class="msg user">Pull up everything from the PAULUS pitch last month.</div>
+        <div class="agent-row">
+          <div class="agent-id">
+            <img class="avatar" src="./landing/agent-avatar.jpg" alt="Jaybabot" />
+            <span class="agent-name">@Jaybabot</span>
+          </div>
+          <div class="msg ai">Found it in your <b>Living Files</b>. Here's the deck, the budget notes, and the two follow-ups you flagged — all from your local memory. Nothing left your machine.</div>
+        </div>
+        <div class="msg user">Draft a recap in my voice.</div>
+        <div class="agent-row">
+          <div class="agent-id">
+            <img class="avatar" src="./landing/agent-avatar.jpg" alt="Jaybabot" />
+            <span class="agent-name">@Jaybabot</span>
+          </div>
+          <div class="msg ai">Done. I matched your tone from past notes. Want me to save it to the project file?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>Built different.</h2>
+      <p>Not a chatbot. A companion that grows with your work.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="ic">🧠</div>
+        <h3>Memory that persists</h3>
+        <p>Be.Ark remembers your projects, people, and decisions across sessions — a real long-term memory, not a fresh start every time.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🔒</div>
+        <h3>Local-first &amp; private</h3>
+        <p>Run powerful local models offline. Your conversations and files stay on your device. Bring your own API key only if you want to.</p>
+      </div>
+      <div class="card">
+        <div class="ic">📂</div>
+        <h3>Living Files</h3>
+        <p>Your AI edits real documents alongside you — notes, plans, drafts — so your work and your assistant share one source of truth.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🎨</div>
+        <h3>Made for creators</h3>
+        <p>Import your existing chats, keep your tone, and work in your language. A thinking partner that understands creative work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>Up and running in minutes.</h2>
+      <p>Three steps. No account required.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Download</h3><p>Grab the macOS app and open the disk image.</p></div>
+      <div class="step"><div class="n">2</div><h3>Run “Read Me First”</h3><p>Double-click the included setup file. It walks you through a quick tutorial and prepares the app.</p></div>
+      <div class="step"><div class="n">3</div><h3>Launch Be.Ark</h3><p>Open the app, pick a local model or your own key, and start talking.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final" id="download">
+  <div class="wrap">
+    <div class="final-box">
+      <h2>Your AI. Your memory. Your machine.</h2>
+      <p>Download Be.Ark and meet an assistant that's truly yours.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" id="dl-main" href="#">↓ Download for macOS / Windows</a>
+      </div>
+      <p class="note">Apple Silicon · Includes “Read Me First” setup guide</p>
+
+      <!-- app screenshot inside the CTA box -->
+      <div class="shot">
+        <img src="./landing/app-screenshot.jpg" alt="Be.Ark desktop app — chat, agents, and Living Files" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD MODAL -->
+<div class="modal-bg" id="dlModal">
+  <div class="modal">
+    <span class="x" id="dlClose">✕</span>
+    <h3>Download Be.Ark</h3>
+    <span class="ver-badge">Beta 1.0</span>
+    <p class="msub">Pick your platform. Free · No account required.</p>
+    <div class="dls">
+      <a class="dl-opt" id="dl-mac" href="#">
+        <span class="os">🍎</span>
+        <span class="lbl"><b>macOS</b><span>Apple Silicon · .dmg</span></span>
+        <span class="arr">↓</span>
+      </a>
+      <a class="dl-opt" id="dl-win" href="#">
+        <span class="os">⊞</span>
+        <span class="lbl"><b>Windows</b><span>x64 · .exe</span></span>
+        <span class="arr">↓</span>
+      </a>
+    </div>
+    <p class="mnote">Unsigned beta — see the included “Read Me First” setup guide.</p>
+  </div>
+</div>
+
+<!-- WAITLIST MODAL -->
+<div class="modal-bg" id="wlModal">
+  <div class="modal">
+    <span class="x" id="wlClose">✕</span>
+    <h3>Join the waitlist</h3>
+    <p class="msub">Be the first to know when Be.Ark launches. No spam — just the launch.</p>
+    <form id="wlForm" class="wl-form">
+      <input type="text" name="name" placeholder="Name" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="text" name="company" placeholder="Company (optional)" />
+      <input type="text" name="role" placeholder="Role (optional)" />
+      <button type="submit" class="btn btn-primary wl-submit">Notify me at launch →</button>
+    </form>
+    <p class="mnote" id="wlNote">We'll only email you about the official release.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap foot">
+    <div class="brand" style="font-size:15px"><img class="logo" src="./landing/appicon.png" alt="Be.Ark" /> Be.Ark</div>
+    <div>© 2026 REBE WORLD FZCO · <a href="mailto:hello@re-be.world">hello@re-be.world</a></div>
+  </div>
+</footer>
+
+<script>
+  // ── Download config — update these direct asset URLs when the release is live ──
+  var RELEASES_PAGE = "https://github.com/kyungsinkim-sketch/Be.Ark/releases/latest";
+  var DL_MAC = "https://github.com/kyungsinkim-sketch/Be.Ark/releases/download/v0.9.0-beta.39/Be.Ark_0.9.0-beta.39_aarch64.dmg";
+  var DL_WIN = "https://github.com/kyungsinkim-sketch/Be.Ark/releases/download/v0.9.0-beta.39/Be.Ark_0.9.0-beta.39_x64-setup.exe";
+  (function(){
+    var mac=document.getElementById("dl-mac"), win=document.getElementById("dl-win");
+    if(mac) mac.setAttribute("href", DL_MAC);
+    if(win) win.setAttribute("href", DL_WIN);
+  })();
+
+  // ── Download modal ──
+  (function(){
+    var modal=document.getElementById("dlModal"),
+        closeBtn=document.getElementById("dlClose");
+    function open(e){ if(e) e.preventDefault(); modal.classList.add("open"); }
+    function close(){ modal.classList.remove("open"); }
+    ["dl-top","dl-main"].forEach(function(id){
+      var el=document.getElementById(id);
+      if(el) el.addEventListener("click", open);
+    });
+    // nav Download link
+    document.querySelectorAll('a.nav-cta[href="#download"]').forEach(function(el){
+      el.addEventListener("click", open);
+    });
+    if(closeBtn) closeBtn.addEventListener("click", close);
+    modal.addEventListener("click", function(e){ if(e.target===modal) close(); });
+    document.addEventListener("keydown", function(e){ if(e.key==="Escape") close(); });
+    // close modal after choosing a platform
+    ["dl-mac","dl-win"].forEach(function(id){
+      var el=document.getElementById(id);
+      if(el) el.addEventListener("click", function(){ setTimeout(close,150); });
+    });
+  })();
+
+  // ── Waitlist modal ──
+  (function(){
+    var modal=document.getElementById("wlModal"),
+        closeBtn=document.getElementById("wlClose"),
+        form=document.getElementById("wlForm"),
+        note=document.getElementById("wlNote"),
+        WL_EMAIL="hello@re-be.world";
+    function open(e){ if(e) e.preventDefault(); modal.classList.add("open"); }
+    function close(){ modal.classList.remove("open"); }
+    var top=document.getElementById("wl-top");
+    if(top) top.addEventListener("click", open);
+    if(closeBtn) closeBtn.addEventListener("click", close);
+    modal.addEventListener("click", function(e){ if(e.target===modal) close(); });
+    document.addEventListener("keydown", function(e){ if(e.key==="Escape") close(); });
+    if(form) form.addEventListener("submit", function(e){
+      e.preventDefault();
+      var d=new FormData(form),
+          name=(d.get("name")||"").trim(),
+          email=(d.get("email")||"").trim(),
+          company=(d.get("company")||"").trim(),
+          role=(d.get("role")||"").trim();
+      var subject="Be.Ark waitlist — "+name,
+          body="Name: "+name+"\nEmail: "+email+"\nCompany: "+company+"\nRole: "+role+"\n\nPlease add me to the Be.Ark launch waitlist.";
+      window.location.href="mailto:"+WL_EMAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
+      if(note){ note.textContent="Opening your email app… send the message to confirm your spot."; note.style.color="#c49c4d"; }
+    });
+  })();
+
+  // ── Bug report ──
+  (function(){
+    var BUG_URL="https://www.lions.co/en/intelligence-on-the-terrace-cl26";
+    var top=document.getElementById("bug-top");
+    if(top) top.addEventListener("click", function(e){
+      e.preventDefault();
+      window.open(BUG_URL, "_blank", "noopener");
+    });
+  })();
+
+  // ── Starfield: drifting stars + occasional shooting star ──
+  (function(){
+    var c=document.getElementById('stars'), x=c.getContext('2d');
+    var w,h,stars=[],shoots=[],DPR=Math.min(window.devicePixelRatio||1,2);
+    function resize(){
+      w=c.width=innerWidth*DPR; h=c.height=innerHeight*DPR;
+      c.style.width=innerWidth+'px'; c.style.height=innerHeight+'px';
+      var n=Math.round((innerWidth*innerHeight)/9000);
+      stars=[];
+      for(var i=0;i<n;i++){
+        stars.push({
+          x:Math.random()*w, y:Math.random()*h,
+          r:(Math.random()*1.2+0.3)*DPR,
+          a:Math.random()*0.6+0.2,
+          tw:Math.random()*0.02+0.004,
+          dir:Math.random()<0.5?1:-1,
+          vy:(Math.random()*0.04+0.01)*DPR
+        });
+      }
+    }
+    function shoot(){
+      var fromLeft=Math.random()<0.5;
+      shoots.push({
+        x: fromLeft? -50 : w+50,
+        y: Math.random()*h*0.5,
+        vx:(fromLeft?1:-1)*(Math.random()*5+6)*DPR,
+        vy:(Math.random()*2+1.5)*DPR,
+        life:0, max:Math.random()*40+50
+      });
+    }
+    function tick(){
+      x.clearRect(0,0,w,h);
+      for(var i=0;i<stars.length;i++){
+        var s=stars[i];
+        s.a+=s.tw*s.dir;
+        if(s.a>0.85){s.a=0.85;s.dir=-1;} if(s.a<0.18){s.a=0.18;s.dir=1;}
+        s.y+=s.vy; if(s.y>h){s.y=0;s.x=Math.random()*w;}
+        x.globalAlpha=s.a;
+        x.fillStyle= i%17===0 ? '#c49c4d' : '#dfe7f2';
+        x.beginPath(); x.arc(s.x,s.y,s.r,0,6.28); x.fill();
+      }
+      x.globalAlpha=1;
+      for(var j=shoots.length-1;j>=0;j--){
+        var sh=shoots[j]; sh.life++;
+        var px=sh.x, py=sh.y;
+        sh.x+=sh.vx; sh.y+=sh.vy;
+        var g=x.createLinearGradient(px,py,px-sh.vx*4,py-sh.vy*4);
+        g.addColorStop(0,'#ffffff'); g.addColorStop(0.4,'#c49c4dcc'); g.addColorStop(1,'#c49c4d00');
+        x.strokeStyle=g; x.lineWidth=2*DPR; x.beginPath();
+        x.moveTo(px,py); x.lineTo(px-sh.vx*4,py-sh.vy*4); x.stroke();
+        if(sh.life>sh.max||sh.x<-80||sh.x>w+80) shoots.splice(j,1);
+      }
+      requestAnimationFrame(tick);
+    }
+    resize(); addEventListener('resize',resize);
+    setInterval(function(){ if(Math.random()<0.6 && shoots.length<2) shoot(); }, 2600);
+    tick();
+  })();
+</script>
+</body>
 </html>
