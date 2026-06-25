@@ -194,6 +194,7 @@
   .foot a:hover{color:var(--accent)}
   .foot-bug{padding:8px 16px;font-size:12.5px;border:1px solid var(--line);border-radius:10px;color:var(--ink-dim)}
   .foot-bug:hover{border-color:var(--accent);color:var(--accent)!important}
+  .foot-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
   .foot .brand .logo{width:22px;height:22px}
 
   /* floating agent avatars beside hero headline */
@@ -430,16 +431,19 @@ not another cloud account renting your mind back to you.</p>
 <footer>
   <div class="wrap foot">
     <div class="brand" style="font-size:15px"><img class="logo" src="./landing/appicon.png" alt="Be.Ark" /> Be.Ark</div>
-    <div>© 2026 REBE WORLD FZCO × <a href="https://paulus.pro/" target="_blank" rel="noopener">PAULUS</a> · <a href="mailto:pablo@re-be.world">pablo@re-be.world</a></div>
-    <a class="btn btn-ghost foot-bug" id="bug-foot" href="#">Bug Report</a>
+    <div>© 2026 REBE WORLD FZCO × <a href="https://paulus.pro/" target="_blank" rel="noopener">PAULUS</a></div>
+    <div class="foot-actions">
+      <a class="btn btn-ghost foot-bug" id="biz-foot" href="#">Business Contact</a>
+      <a class="btn btn-ghost foot-bug" id="bug-foot" href="#">Bug Report</a>
+    </div>
   </div>
 </footer>
 
 <script>
   // ── Download config — update these direct asset URLs when the release is live ──
   var RELEASES_PAGE = "https://github.com/kyungsinkim-sketch/Be.Ark/releases/latest";
-  var DL_MAC = "https://github.com/kyungsinkim-sketch/Be.Ark/releases/download/v0.9.0-beta.39/Be.Ark_0.9.0-beta.39_aarch64.dmg";
-  var DL_WIN = "https://github.com/kyungsinkim-sketch/Be.Ark/releases/download/v0.9.0-beta.39/Be.Ark_0.9.0-beta.39_x64-setup.exe";
+  var DL_MAC = "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v0.9.0-beta.39/Be.Ark_0.9.0-beta.39_aarch64.dmg";
+  var DL_WIN = "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v0.9.0-beta.39/Be.Ark_0.9.0-beta.39_x64-setup.exe";
   (function(){
     var mac=document.getElementById("dl-mac"), win=document.getElementById("dl-win");
     if(mac) mac.setAttribute("href", DL_MAC);
@@ -506,7 +510,12 @@ not another cloud account renting your mind back to you.</p>
       document.body.appendChild(gf); gf.submit();
       if(note){ note.textContent="You're on the list — we'll notify you at launch. 🎉"; note.style.color="#c49c4d"; }
       form.reset();
-      setTimeout(function(){ try{ gf.remove(); ifr.remove(); }catch(_){} }, 4000);
+      // briefly show the confirmation, then auto-close the modal
+      setTimeout(function(){ close(); }, 1400);
+      setTimeout(function(){
+        try{ gf.remove(); ifr.remove(); }catch(_){}
+        if(note){ note.textContent="We'll only email you about the official release."; note.style.color=""; }
+      }, 4000);
     });
   })();
 
@@ -523,6 +532,18 @@ not another cloud account renting your mind back to you.</p>
       var subject="Be.Ark Beta 1.0 — Bug report";
       var body="What happened:\n\n\nSteps to reproduce:\n\n\nDevice / OS:\n\n\nApp version: Beta 1.0";
       window.location.href="mailto:"+BUG_MAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
+    });
+  })();
+
+  // ── Business contact ──
+  (function(){
+    var BIZ_MAIL="pablo@re-be.world";
+    var btn=document.getElementById("biz-foot");
+    if(btn) btn.addEventListener("click", function(e){
+      e.preventDefault();
+      var subject="Be.Ark — Business inquiry";
+      var body="Name:\n\nCompany:\n\nHow can we help?\n\n";
+      window.location.href="mailto:"+BIZ_MAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
     });
   })();
 
