@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://re-be.world/sitemap.xml
+Sitemap: https://www.re-be.world/sitemap.xml
