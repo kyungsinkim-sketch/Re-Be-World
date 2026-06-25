@@ -175,6 +175,8 @@
   footer{border-top:1px solid var(--line);padding:34px 0;color:var(--ink-faint);font-size:13px}
   .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
   .foot a:hover{color:var(--accent)}
+  .foot-bug{padding:8px 16px;font-size:12.5px;border:1px solid var(--line);border-radius:10px;color:var(--ink-dim)}
+  .foot-bug:hover{border-color:var(--accent);color:var(--accent)!important}
   .foot .brand .logo{width:22px;height:22px}
 
   /* floating agent avatars beside hero headline */
@@ -235,7 +237,6 @@
     .hero{padding:72px 0 40px}
     .float-agents{display:none}
     .nav-right{gap:12px}
-    .nav-link#bug-top{display:none}
   }
   @media(max-width:440px){
     .nav-link{display:none}
@@ -251,9 +252,8 @@
   <div class="wrap nav">
     <div class="brand"><img class="logo" src="./landing/appicon.png" alt="Be.Ark" /> Be.Ark</div>
     <div class="nav-right">
-      <a class="nav-link" id="bug-top" href="#">Report a bug</a>
       <a class="nav-link" id="wl-top" href="#">Join waitlist</a>
-      <a class="nav-cta" href="#download">Download</a>
+      <a class="nav-cta" href="#download">Download Beta 1.0</a>
     </div>
   </div>
 </header>
@@ -274,7 +274,7 @@
 Be.Ark is a thinking partner you actually own,<br>
 not another cloud account renting your mind back to you.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" id="dl-top" href="#download">↓ Download for macOS / Windows</a>
+      <a class="btn btn-primary" id="dl-top" href="#download">↓ Download Beta 1.0</a>
       <a class="btn btn-ghost" href="#how">How it works</a>
     </div>
     <p class="note">Free · Runs offline with local models · Your data never leaves your device</p>
@@ -358,7 +358,7 @@ not another cloud account renting your mind back to you.</p>
       <h2>Your AI. Your memory. Your machine.</h2>
       <p>Download Be.Ark and meet an assistant that's truly yours.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" id="dl-main" href="#">↓ Download for macOS / Windows</a>
+        <a class="btn btn-primary" id="dl-main" href="#">↓ Download Beta 1.0</a>
       </div>
       <p class="note">Apple Silicon · Includes “Read Me First” setup guide</p>
 
@@ -413,7 +413,8 @@ not another cloud account renting your mind back to you.</p>
 <footer>
   <div class="wrap foot">
     <div class="brand" style="font-size:15px"><img class="logo" src="./landing/appicon.png" alt="Be.Ark" /> Be.Ark</div>
-    <div>© 2026 REBE WORLD FZCO · <a href="mailto:hello@re-be.world">hello@re-be.world</a></div>
+    <a class="btn btn-ghost foot-bug" id="bug-foot" href="#">Report a bug</a>
+    <div>© 2026 REBE WORLD FZCO × <a href="https://paulus.pro/" target="_blank" rel="noopener">PAULUS</a> · <a href="mailto:pablo@re-be.world">pablo@re-be.world</a></div>
   </div>
 </footer>
 
@@ -458,7 +459,7 @@ not another cloud account renting your mind back to you.</p>
         closeBtn=document.getElementById("wlClose"),
         form=document.getElementById("wlForm"),
         note=document.getElementById("wlNote"),
-        WL_EMAIL="hello@re-be.world";
+        WL_EMAIL="pablo@re-be.world";
     function open(e){ if(e) e.preventDefault(); modal.classList.add("open"); }
     function close(){ modal.classList.remove("open"); }
     var top=document.getElementById("wl-top");
@@ -481,12 +482,18 @@ not another cloud account renting your mind back to you.</p>
   })();
 
   // ── Bug report ──
+  // Replace BUG_URL with the Google Form share link when ready; until then
+  // it falls back to a pre-filled email to pablo@re-be.world.
   (function(){
-    var BUG_URL="https://www.lions.co/en/intelligence-on-the-terrace-cl26";
-    var top=document.getElementById("bug-top");
-    if(top) top.addEventListener("click", function(e){
+    var BUG_URL=""; // e.g. "https://forms.gle/xxxxxxxx"
+    var BUG_MAIL="pablo@re-be.world";
+    var btn=document.getElementById("bug-foot");
+    if(btn) btn.addEventListener("click", function(e){
       e.preventDefault();
-      window.open(BUG_URL, "_blank", "noopener");
+      if(BUG_URL){ window.open(BUG_URL, "_blank", "noopener"); return; }
+      var subject="Be.Ark Beta 1.0 — Bug report";
+      var body="What happened:\n\n\nSteps to reproduce:\n\n\nDevice / OS:\n\n\nApp version: Beta 1.0";
+      window.location.href="mailto:"+BUG_MAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
     });
   })();
 
