@@ -484,6 +484,11 @@ not another cloud account renting your mind back to you.</p>
     if(closeBtn) closeBtn.addEventListener("click", close);
     modal.addEventListener("click", function(e){ if(e.target===modal) close(); });
     document.addEventListener("keydown", function(e){ if(e.key==="Escape") close(); });
+    // Google Form submission (UI stays on-site; data flows to the Form sheet).
+    // CORS blocks reading the response, so we POST into a hidden iframe and
+    // optimistically confirm to the user on load.
+    var GFORM="https://docs.google.com/forms/d/e/1FAIpQLSePL6ffsHJzIksGrksEhmZQ9ZtV6hhiHClB93L7p0ZMLsZ9qA/formResponse";
+    var GFIELDS={ name:"entry.1347132853", email:"entry.2079054019", company:"entry.183734707", role:"entry.1636324011" };
     if(form) form.addEventListener("submit", function(e){
       e.preventDefault();
       var d=new FormData(form),
@@ -491,10 +496,17 @@ not another cloud account renting your mind back to you.</p>
           email=(d.get("email")||"").trim(),
           company=(d.get("company")||"").trim(),
           role=(d.get("role")||"").trim();
-      var subject="Be.Ark waitlist — "+name,
-          body="Name: "+name+"\nEmail: "+email+"\nCompany: "+company+"\nRole: "+role+"\n\nPlease add me to the Be.Ark launch waitlist.";
-      window.location.href="mailto:"+WL_EMAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
-      if(note){ note.textContent="Opening your email app… send the message to confirm your spot."; note.style.color="#c49c4d"; }
+      // hidden iframe target so the cross-origin POST doesn't navigate away
+      var fid="gft_"+Date.now(), ifr=document.createElement("iframe");
+      ifr.name=fid; ifr.style.display="none"; document.body.appendChild(ifr);
+      var gf=document.createElement("form");
+      gf.action=GFORM; gf.method="POST"; gf.target=fid; gf.style.display="none";
+      function add(n,v){ var i=document.createElement("input"); i.type="hidden"; i.name=n; i.value=v; gf.appendChild(i); }
+      add(GFIELDS.name,name); add(GFIELDS.email,email); add(GFIELDS.company,company); add(GFIELDS.role,role);
+      document.body.appendChild(gf); gf.submit();
+      if(note){ note.textContent="You're on the list — we'll notify you at launch. 🎉"; note.style.color="#c49c4d"; }
+      form.reset();
+      setTimeout(function(){ try{ gf.remove(); ifr.remove(); }catch(_){} }, 4000);
     });
   })();
 
