@@ -232,6 +232,17 @@
   .card h3{font-size:18px;letter-spacing:-.01em}
   .card p{color:var(--ink-dim);font-size:14.5px;margin-top:8px}
 
+  /* whats new (앱 공지 announcements.json 재활용) */
+  .whatsnew{padding:16px 0 26px}
+  .wn-list{display:grid;gap:16px;max-width:760px;margin:0 auto}
+  .wn-item{border:1px solid var(--line);background:var(--bg-soft);border-radius:var(--radius);padding:24px 26px;transition:.2s}
+  .wn-item:hover{border-color:#c49c4d55}
+  .wn-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+  .wn-tag{font-size:11.5px;font-weight:700;color:var(--accent);border:1px solid #c49c4d55;border-radius:7px;padding:2px 9px}
+  .wn-date{font-size:12.5px;color:var(--ink-faint)}
+  .wn-item h3{font-size:18px;letter-spacing:-.01em}
+  .wn-body{color:var(--ink-dim);font-size:14.5px;margin-top:10px;white-space:pre-line;line-height:1.7}
+
   /* how */
   .how{padding:72px 0}
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px}
@@ -426,6 +437,17 @@ Be.Ark는 내가 진짜로 소유하는 생각의 파트너입니다.<br>
         <p>내보낸 카톡 대화(zip)를 그대로 불러와 기억으로 만듭니다. 한국 비즈니스의 맥락을 이해하는 AI.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- WHAT'S NEW (announcements.json = 앱 공지와 동일 SSOT, JS가 채움) -->
+<section class="whatsnew" id="whatsnew">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>업데이트 소식</h2>
+      <p>Be.Ark는 계속 자라납니다. 최근 새 소식이에요.</p>
+    </div>
+    <div id="wn-list" class="wn-list"></div>
   </div>
 </section>
 
@@ -680,6 +702,27 @@ Be.Ark는 내가 진짜로 소유하는 생각의 파트너입니다.<br>
     resize(); addEventListener('resize',resize);
     setInterval(function(){ if(Math.random()<0.6 && shoots.length<2) shoot(); }, 2600);
     tick();
+  })();
+
+  // ── 업데이트 소식: 앱 공지(announcements.json)와 같은 SSOT를 fetch해 최신 3개 렌더 ──
+  (function(){
+    var URL='https://raw.githubusercontent.com/kyungsinkim-sketch/Re-Be-World/main/public/announcements.json';
+    var box=document.getElementById('wn-list'), sec=document.getElementById('whatsnew');
+    if(!box||!sec) return;
+    function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+    fetch(URL,{cache:'no-store'}).then(function(r){return r.ok?r.json():[];}).then(function(data){
+      if(!Array.isArray(data)) data=[];
+      data=data.filter(function(a){return a&&a.id&&a.title;})
+               .sort(function(a,b){return (b.date||'').localeCompare(a.date||'');})
+               .slice(0,3);
+      if(!data.length){ sec.style.display='none'; return; }
+      box.innerHTML=data.map(function(a){
+        var tag=a.tag?'<span class="wn-tag">'+esc(a.tag)+'</span>':'';
+        var date=a.date?'<span class="wn-date">'+esc(a.date)+'</span>':'';
+        return '<article class="wn-item"><div class="wn-head">'+tag+date+'</div>'+
+               '<h3>'+esc(a.title)+'</h3><div class="wn-body">'+esc(a.body||'')+'</div></article>';
+      }).join('');
+    }).catch(function(){ sec.style.display='none'; });
   })();
 </script>
 </body>
