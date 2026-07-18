@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Privacy Policy — Be.Ark</title>
+<meta name="description" content="Be.Ark privacy policy. Local-first by design: your conversations, memory, and files stay on your machine." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://www.re-be.world/privacy" />
+<link rel="alternate" hreflang="en" href="https://www.re-be.world/privacy" />
+<link rel="alternate" hreflang="ko" href="https://www.re-be.world/ko/privacy" />
+<link rel="alternate" hreflang="x-default" href="https://www.re-be.world/privacy" />
+<link rel="icon" type="image/png" href="./landing/appicon.png" />
+<meta name="theme-color" content="#070a0f" />
+<style>
+  :root{
+    --bg:#070a0f; --bg-soft:#0c1018;
+    --ink:#f6f8fb; --ink-dim:#9aa6b8; --ink-faint:#5e6b7e;
+    --accent:#c49c4d; --accent-soft:#c49c4d1f;
+    --line:#1b2230;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.7}
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px}
+  header{border-bottom:1px solid var(--line);padding:18px 0}
+  header .wrap{display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--ink);text-decoration:none}
+  .brand img{width:22px;height:22px;border-radius:5px}
+  .lang{color:var(--ink-dim);font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:6px 12px}
+  .lang:hover{color:var(--ink)}
+  main{padding:48px 0 80px}
+  h1{font-size:28px;margin:0 0 6px}
+  .meta{color:var(--ink-faint);font-size:13px;margin-bottom:36px}
+  h2{font-size:18px;margin:36px 0 10px;color:var(--accent)}
+  p,li{color:var(--ink-dim);font-size:15px}
+  strong{color:var(--ink)}
+  ul{padding-left:20px}
+  a{color:var(--accent)}
+  .card{background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:18px 0}
+  footer{border-top:1px solid var(--line);padding:28px 0;color:var(--ink-faint);font-size:13px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="/"><img src="./landing/appicon.png" alt="Be.Ark" /> Be.Ark</a>
+    <a class="lang" href="/ko/privacy">한국어</a>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Privacy Policy</h1>
+    <div class="meta">Effective date: July 19, 2026 · Be.Ark is operated by REBE WORLD FZCO</div>
+
+    <div class="card">
+      <p><strong>The short version:</strong> Be.Ark is local-first by design. Your conversations, agent memory, Living Files, and imported documents are stored on your own machine and are not uploaded to our servers. We only ever receive the minimum needed to run your account, subscription, and support.</p>
+    </div>
+
+    <h2>1. Data that stays on your device</h2>
+    <p>The core of Be.Ark runs entirely on your computer:</p>
+    <ul>
+      <li>Chat history, agent memory, and profiles</li>
+      <li>Living Files and any documents you import (PDF, DOCX, KakaoTalk exports, etc.)</li>
+      <li>Content processed by local AI models (via the bundled Ollama runtime) — fully offline</li>
+      <li>API keys and service tokens you connect (stored in the local vault on your device)</li>
+    </ul>
+    <p>None of this is transmitted to Be.Ark servers. Deleting the app's data folder or uninstalling the app removes it.</p>
+
+    <h2>2. Data we collect on our servers</h2>
+    <ul>
+      <li><strong>Account:</strong> your email address and authentication data, managed via Supabase, when you choose to create an account. An account is optional for core features.</li>
+      <li><strong>Subscription &amp; payments:</strong> processed by Stripe. We receive your subscription status; we never see or store your card number.</li>
+      <li><strong>Helpdesk:</strong> if you use the built-in helpdesk channel, the messages you type there and an anonymous identifier are sent to our support server. The helpdesk has no access to your local data.</li>
+      <li><strong>Optional statistics:</strong> company and job title, only if you explicitly opt in from the account screen. You can withdraw consent at any time.</li>
+    </ul>
+
+    <h2>3. Google user data</h2>
+    <p>If you choose to connect a Google account, Be.Ark may request access to Gmail (read and send), Google Drive (read-only), and Google Calendar (read-only). This data is:</p>
+    <ul>
+      <li>Processed <strong>locally on your device</strong> to show you digests, read documents you request, and draft emails</li>
+      <li>Never uploaded to, stored on, or read by Be.Ark servers</li>
+      <li>Never used for advertising, never sold, and never used to train AI models</li>
+      <li>Sent only with your explicit approval: every outgoing email requires a separate, per-message confirmation step</li>
+    </ul>
+    <p>OAuth tokens are stored only in the local vault on your device. Disconnecting the service in Be.Ark, or revoking access at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>, removes access.</p>
+    <p>Be.Ark's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+
+    <h2>4. Third-party AI providers (bring your own key)</h2>
+    <p>Be.Ark works fully offline with local models. If you connect your own API key for a cloud model (e.g. Anthropic, OpenAI, Google), the content of those conversations is sent directly from your device to that provider under their terms. Be.Ark servers are not in that path.</p>
+
+    <h2>5. Data retention and deletion</h2>
+    <ul>
+      <li><strong>Local data:</strong> under your control at all times; delete it from the app or by removing the app's data folder.</li>
+      <li><strong>Account data:</strong> kept while your account exists. To delete your account and associated server data, email <a href="mailto:be@ark.works">be@ark.works</a> — we complete deletion within 30 days.</li>
+      <li><strong>Helpdesk logs:</strong> retained only as long as needed to provide support.</li>
+    </ul>
+
+    <h2>6. What we don't do</h2>
+    <ul>
+      <li>We do not sell personal data.</li>
+      <li>We do not show ads or use your data for advertising.</li>
+      <li>We do not train AI models on your data.</li>
+      <li>We do not share personal data with third parties, except the processors named above (Supabase, Stripe) as required to operate the service, or where required by law.</li>
+    </ul>
+
+    <h2>7. Children</h2>
+    <p>Be.Ark is not directed to children under 14, and we do not knowingly collect their data.</p>
+
+    <h2>8. Changes</h2>
+    <p>We will post any changes to this policy on this page and update the effective date above. Material changes will be announced in the app.</p>
+
+    <h2>9. Contact</h2>
+    <p>REBE WORLD FZCO · Dubai, United Arab Emirates<br />
+    Email: <a href="mailto:be@ark.works">be@ark.works</a></p>
+  </div>
+</main>
+<footer>
+  <div class="wrap">© 2026 REBE WORLD FZCO × PAULUS · <a href="/">re-be.world</a></div>
+</footer>
+</body>
+</html>

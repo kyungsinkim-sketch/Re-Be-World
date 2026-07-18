@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>개인정보처리방침 — Be.Ark</title>
+<meta name="description" content="Be.Ark 개인정보처리방침. 로컬 우선 설계: 대화·기억·파일은 사용자의 기기에 남습니다." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://www.re-be.world/ko/privacy" />
+<link rel="alternate" hreflang="en" href="https://www.re-be.world/privacy" />
+<link rel="alternate" hreflang="ko" href="https://www.re-be.world/ko/privacy" />
+<link rel="alternate" hreflang="x-default" href="https://www.re-be.world/privacy" />
+<link rel="icon" type="image/png" href="/landing/appicon.png" />
+<meta name="theme-color" content="#070a0f" />
+<style>
+  :root{
+    --bg:#070a0f; --bg-soft:#0c1018;
+    --ink:#f6f8fb; --ink-dim:#9aa6b8; --ink-faint:#5e6b7e;
+    --accent:#c49c4d; --accent-soft:#c49c4d1f;
+    --line:#1b2230;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,"Apple SD Gothic Neo","Noto Sans KR",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.7}
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px}
+  header{border-bottom:1px solid var(--line);padding:18px 0}
+  header .wrap{display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--ink);text-decoration:none}
+  .brand img{width:22px;height:22px;border-radius:5px}
+  .lang{color:var(--ink-dim);font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:6px 12px}
+  .lang:hover{color:var(--ink)}
+  main{padding:48px 0 80px}
+  h1{font-size:28px;margin:0 0 6px}
+  .meta{color:var(--ink-faint);font-size:13px;margin-bottom:36px}
+  h2{font-size:18px;margin:36px 0 10px;color:var(--accent)}
+  p,li{color:var(--ink-dim);font-size:15px}
+  strong{color:var(--ink)}
+  ul{padding-left:20px}
+  a{color:var(--accent)}
+  .card{background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:18px 0}
+  footer{border-top:1px solid var(--line);padding:28px 0;color:var(--ink-faint);font-size:13px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="/ko/"><img src="/landing/appicon.png" alt="Be.Ark" /> Be.Ark</a>
+    <a class="lang" href="/privacy">English</a>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>개인정보처리방침</h1>
+    <div class="meta">시행일: 2026년 7월 19일 · Be.Ark 운영: REBE WORLD FZCO</div>
+
+    <div class="card">
+      <p><strong>요약:</strong> Be.Ark는 로컬 우선(local-first)으로 설계되었습니다. 대화, 에이전트 기억, Living Files, 가져온 문서는 모두 사용자의 컴퓨터에 저장되며 저희 서버로 업로드되지 않습니다. 저희는 계정·구독·고객지원 운영에 필요한 최소한의 정보만 받습니다.</p>
+    </div>
+
+    <h2>1. 사용자 기기에만 남는 데이터</h2>
+    <p>Be.Ark의 핵심 기능은 전부 사용자의 컴퓨터에서 동작합니다:</p>
+    <ul>
+      <li>채팅 기록, 에이전트 기억·프로필</li>
+      <li>Living Files 및 가져온 모든 문서 (PDF, DOCX, 카카오톡 대화 내보내기 등)</li>
+      <li>로컬 AI 모델(내장 Ollama 런타임)이 처리하는 내용 — 완전 오프라인</li>
+      <li>사용자가 연결한 API 키·서비스 토큰 (기기 내 로컬 볼트에 저장)</li>
+    </ul>
+    <p>위 데이터는 Be.Ark 서버로 전송되지 않습니다. 앱 데이터 폴더 삭제 또는 앱 제거 시 함께 삭제됩니다.</p>
+
+    <h2>2. 서버에서 수집하는 데이터</h2>
+    <ul>
+      <li><strong>계정:</strong> 계정을 만들기로 선택한 경우의 이메일 주소와 인증 정보 (Supabase로 관리). 핵심 기능 사용에 계정은 필수가 아닙니다.</li>
+      <li><strong>구독·결제:</strong> Stripe가 처리합니다. 저희는 구독 상태만 전달받으며, 카드 번호를 보거나 저장하지 않습니다.</li>
+      <li><strong>헬프데스크:</strong> 앱 내 헬프데스크 채널 사용 시, 입력한 메시지와 익명 식별자만 지원 서버로 전송됩니다. 헬프데스크는 로컬 데이터에 접근할 수 없습니다.</li>
+      <li><strong>선택적 통계:</strong> 계정 화면에서 명시적으로 동의한 경우에만 회사·직함 정보를 수집하며, 언제든 동의를 철회할 수 있습니다.</li>
+    </ul>
+
+    <h2>3. Google 사용자 데이터</h2>
+    <p>Google 계정을 연결하기로 선택하면 Be.Ark는 Gmail(읽기·발송), Google Drive(읽기 전용), Google Calendar(읽기 전용) 접근을 요청할 수 있습니다. 이 데이터는:</p>
+    <ul>
+      <li><strong>사용자 기기에서 로컬로만</strong> 처리됩니다 (다이제스트 표시, 요청한 문서 읽기, 메일 초안 작성)</li>
+      <li>Be.Ark 서버에 업로드·저장되지 않으며, 저희가 열람하지 않습니다</li>
+      <li>광고에 사용하지 않고, 판매하지 않으며, AI 모델 학습에 사용하지 않습니다</li>
+      <li>발송은 사용자의 명시적 승인이 있을 때만: 모든 발신 메일은 건별 확인 단계를 거칩니다</li>
+    </ul>
+    <p>OAuth 토큰은 기기 내 로컬 볼트에만 저장됩니다. Be.Ark에서 연결을 해제하거나 <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>에서 권한을 철회하면 접근이 제거됩니다.</p>
+    <p>Be.Ark의 Google API 정보 사용 및 전송은 제한적 사용(Limited Use) 요건을 포함한 <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API 서비스 사용자 데이터 정책</a>을 준수합니다.</p>
+
+    <h2>4. 외부 AI 제공자 (BYOK — 내 키 가져오기)</h2>
+    <p>Be.Ark는 로컬 모델만으로 완전 오프라인 동작합니다. 사용자가 본인의 API 키로 클라우드 모델(예: Anthropic, OpenAI, Google)을 연결한 경우, 해당 대화 내용은 사용자의 기기에서 그 제공자에게 직접 전송되며 그 제공자의 약관을 따릅니다. Be.Ark 서버는 이 경로에 없습니다.</p>
+
+    <h2>5. 보관 및 삭제</h2>
+    <ul>
+      <li><strong>로컬 데이터:</strong> 항상 사용자의 통제 하에 있으며, 앱에서 삭제하거나 데이터 폴더를 제거하면 됩니다.</li>
+      <li><strong>계정 데이터:</strong> 계정 유지 기간 동안 보관합니다. 계정 및 서버 데이터 삭제는 <a href="mailto:be@ark.works">be@ark.works</a>로 요청해 주세요 — 30일 이내에 완료합니다.</li>
+      <li><strong>헬프데스크 기록:</strong> 지원 제공에 필요한 기간 동안만 보관합니다.</li>
+    </ul>
+
+    <h2>6. 하지 않는 것</h2>
+    <ul>
+      <li>개인정보를 판매하지 않습니다.</li>
+      <li>광고를 게재하지 않으며, 데이터를 광고에 사용하지 않습니다.</li>
+      <li>사용자 데이터로 AI 모델을 학습하지 않습니다.</li>
+      <li>서비스 운영에 필요한 위 수탁사(Supabase, Stripe) 및 법적 요구 외에는 제3자에게 개인정보를 제공하지 않습니다.</li>
+    </ul>
+
+    <h2>7. 아동</h2>
+    <p>Be.Ark는 만 14세 미만 아동을 대상으로 하지 않으며, 해당 데이터를 고의로 수집하지 않습니다.</p>
+
+    <h2>8. 변경</h2>
+    <p>본 방침이 변경되면 이 페이지에 게시하고 상단의 시행일을 갱신합니다. 중요한 변경은 앱 내에서 공지합니다.</p>
+
+    <h2>9. 문의</h2>
+    <p>REBE WORLD FZCO · Dubai, United Arab Emirates<br />
+    이메일: <a href="mailto:be@ark.works">be@ark.works</a></p>
+  </div>
+</main>
+<footer>
+  <div class="wrap">© 2026 REBE WORLD FZCO × PAULUS · <a href="/ko/">re-be.world</a></div>
+</footer>
+</body>
+</html>
