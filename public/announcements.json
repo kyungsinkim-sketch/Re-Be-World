@@ -1,20 +1,39 @@
 [
   {
     "id": "2026-07-19-beta-1-2",
+    "lang": "ko",
     "date": "2026-07-19",
     "title": "Be.Ark Beta 1.2 — 이제, 에이전트가 팀으로 일합니다",
     "body": "Beta 1.2 업데이트가 공개됐습니다.\n\n🤝 멀티 에이전트 오케스트레이션 (Pro) — 하나의 에이전트 아래에 여러 전문 에이전트를 두고, 팀처럼 지휘하세요. 리서치·글쓰기·발행을 각자 맡아 동시에 처리합니다. 혼자 일하던 AI가, 이제 팀이 됩니다.\n\n👤 계정 & Pro 구독 — 이메일로 가입하고 Pro로 멀티 에이전트를 열어보세요. 로그인해도 대화와 기억은 여전히 내 기기에 남습니다. 문서 작성·발표자료 같은 기능은 계속 무료입니다.\n\n🔗 구글 연결 — Gmail 요약, 캘린더 확인, 구글 독스·시트 읽기를 에이전트가 대신 처리합니다. 모두 읽기 전용이며, 메일 발송은 보내기 전 반드시 내 승인을 거칩니다. 구글 데이터는 서버로 나가지 않습니다.\n\n⏰ 스케줄 자동화 — \"매일 아침 9시에 브리핑해줘\" 한마디면, 정해진 시간에 알아서 일하고 결과를 가져옵니다.\n\n💬 헬프데스크 — 앱 안에서 팀에게 바로 문의하세요.\n\n🛡️ 개인정보처리방침 공개 — 무엇을, 어디까지 처리하는지 투명하게 공개합니다.\n\n⚡ 안정성 — 채팅 전환 문제 해결 등 60개 이상의 개선.\n\n지금 새 버전을 만나보세요 → re-be.world",
     "tag": "Update"
   },
   {
+    "id": "2026-07-19-beta-1-2-en",
+    "lang": "en",
+    "date": "2026-07-19",
+    "title": "Be.Ark Beta 1.2 — Your agents now work as a team",
+    "body": "Beta 1.2 is here.\n\n🤝 Multi-agent orchestration (Pro) — Put several specialized agents under one lead agent and direct them like a team. Research, writing, and publishing run in parallel, each handled by its own agent. The AI that once worked alone is now a team.\n\n👤 Accounts & Pro — Sign up with your email and unlock multi-agent with Pro. Even when you're signed in, your conversations and memory stay on your device. Features like document and slide creation stay free.\n\n🔗 Google connect — Your agent handles Gmail summaries, calendar checks, and reading Google Docs & Sheets. Everything is read-only, and sending mail always requires your approval first. Your Google data never leaves for our servers.\n\n⏰ Scheduled automation — Just say \"brief me every morning at 9\" and your agent works on time and brings the results back to you.\n\n💬 Help desk — Reach our team right inside the app.\n\n🛡️ Privacy policy published — We're transparent about what we process, and how far.\n\n⚡ Stability — Chat-switching fixes and 60+ improvements.\n\nGet the new version now → re-be.world",
+    "tag": "Update"
+  },
+  {
     "id": "2026-07-12-beta-1-1",
+    "lang": "ko",
     "date": "2026-07-12",
     "title": "Be.Ark Beta 1.1 — 에이전트에게 삶이 생겼습니다",
     "body": "Beta 1.1 업데이트가 공개됐습니다!\n\n🏠 홈 대시보드 — 앱을 열면 구독 사용량(Claude / ChatGPT 잔여 게이지)과 에이전트 현황이 한눈에.\n\n🌱 에이전트 인지 그래프 — 에이전트를 클릭하면 그가 아는 것들이 살아있는 지식 그래프로 자라납니다. 지난 대화 소급 학습(백필)도 지원.\n\n🤝 에이전트 오케스트레이션 — 에이전트끼리 쪽지로 묻고 답하고, 그 기억을 서로 간직합니다. 다른 방에서 \"@아크 홍보실 세션에서 정리해줘\"라고 하면 진짜로 그 세션에 가서 작업해요.\n\n🎵 음악 재생 — \"쳇 베이커 틀어줘\" 한마디면 플레이어 탭이 열리고, 다른 방으로 가도 백그라운드 재생. 우하단 재생 위젯과 시어터 모드까지.\n\n📊 PPT 편집 v1.2 — 폰트색 변경, 도형 위치·크기 조정 추가.\n\n⚡ 성능 & 안정성 — 에이전트 전환 대폭 개선, 긴 파일 읽기/쓰기 신뢰성 등 30개 이상의 픽스.\n\n웹사이트에서 새 버전을 다운로드하세요 → re-be.world",
     "tag": "Update"
   },
   {
+    "id": "2026-07-12-beta-1-1-en",
+    "lang": "en",
+    "date": "2026-07-12",
+    "title": "Be.Ark Beta 1.1 — Your agents came to life",
+    "body": "Beta 1.1 is here!\n\n🏠 Home dashboard — Open the app to see your subscription usage (Claude / ChatGPT remaining gauges) and agent status at a glance.\n\n🌱 Agent cognitive graph — Click an agent and what it knows grows into a living knowledge graph. Backfill learning from past conversations is supported too.\n\n🤝 Agent orchestration — Agents ask and answer each other with notes, and keep those memories. From another room, say \"@Ark, wrap it up in the PR session\" and it really goes to that session to work.\n\n🎵 Music playback — Just say \"play Chet Baker\" and a player tab opens, with background playback even as you move between rooms. Bottom-right widget and theater mode included.\n\n📊 PPT editing v1.2 — Font color changes and shape position & size adjustments added.\n\n⚡ Performance & stability — Greatly improved agent switching, reliable long file reads/writes, and 30+ fixes.\n\nDownload the new version from our website → re-be.world",
+    "tag": "Update"
+  },
+  {
     "id": "2026-06-17-cannes-press-release",
+    "lang": "en",
     "date": "2026-06-17",
     "title": "Be.Ark Unveils the \"Third Path\" for Creators at Cannes Lions 2026",
     "image": "https://raw.githubusercontent.com/kyungsinkim-sketch/Re-Be-World/main/public/announcements/2026-06-17-cannes-press.jpg",
@@ -23,6 +42,7 @@
   },
   {
     "id": "2026-06-25-cannes",
+    "lang": "en",
     "date": "2026-06-25",
     "title": "Be.Ark debuts at Cannes",
     "body": "A personal AI for creators — Be.Ark makes its first public debut at Cannes Lions.\n\nLocal-first · An AI that remembers · An agent that evolves alongside your files.\n\nTry it now, free.",
@@ -30,6 +50,7 @@
   },
   {
     "id": "2026-06-25-welcome-guide",
+    "lang": "en",
     "date": "2026-06-25",
     "title": "Getting started — a 1-minute guide",
     "body": "1. Create an agent and give it a name and personality.\n2. Drag in your files — your agent reads and edits them with you.\n3. Every conversation is remembered, locally.\n\nWatch the video below for a full walkthrough.",

@@ -774,7 +774,7 @@ not another cloud account renting your mind back to you.</p>
     function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
     fetch(URL,{cache:'no-store'}).then(function(r){return r.ok?r.json():[];}).then(function(data){
       if(!Array.isArray(data)) data=[];
-      data=data.filter(function(a){return a&&a.id&&a.title;})
+      data=data.filter(function(a){return a&&a.id&&a.title&&a.lang==='en';})
                .sort(function(a,b){return (b.date||'').localeCompare(a.date||'');})
                .slice(0,3);
       if(!data.length){ sec.style.display='none'; return; }

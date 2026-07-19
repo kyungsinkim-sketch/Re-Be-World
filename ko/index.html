@@ -784,7 +784,7 @@ Be.Ark는 진짜 내 편이 되어주는 AI 에이전트입니다.<br>
     function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
     fetch(URL,{cache:'no-store'}).then(function(r){return r.ok?r.json():[];}).then(function(data){
       if(!Array.isArray(data)) data=[];
-      data=data.filter(function(a){return a&&a.id&&a.title;})
+      data=data.filter(function(a){return a&&a.id&&a.title&&a.lang==='ko';})
                .sort(function(a,b){return (b.date||'').localeCompare(a.date||'');})
                .slice(0,3);
       if(!data.length){ sec.style.display='none'; return; }
