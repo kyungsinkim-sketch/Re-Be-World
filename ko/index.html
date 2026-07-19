@@ -788,15 +788,13 @@ Be.Ark는 진짜 내 편이 되어주는 AI 에이전트입니다.<br>
                .sort(function(a,b){return (b.date||'').localeCompare(a.date||'');})
                .slice(0,3);
       if(!data.length){ sec.style.display='none'; return; }
-|'')+'</div></article>';
-      }).join('');|      box.innerHTML=data.map(function(a,i){
+      box.innerHTML=data.map(function(a,i){
         var tag=a.tag?'<span class="wn-tag">'+esc(a.tag)+'</span>':'';
         var date=a.date?'<span class="wn-date">'+esc(a.date)+'</span>':'';
         var open=i===0?' open':'';
         var chev='<svg class="wn-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
         return '<details class="wn-item"'+open+'><summary class="wn-summary"><div><div class="wn-head">'+tag+date+'</div>'+
                '<h3>'+esc(a.title)+'</h3></div>'+chev+'</summary><div class="wn-body">'+esc(a.body||'')+'</div></details>';
-      }).join('');||'')+'</div></article>';
       }).join('');
     }).catch(function(){ sec.style.display='none'; });
   })();
