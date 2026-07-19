@@ -256,6 +256,23 @@
   .step h3{font-size:16px}
   .step p{color:var(--ink-dim);font-size:14px;margin-top:7px}
 
+  /* pricing */
+  .pricing{padding:72px 0}
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px;align-items:stretch}
+  .plan{border:1px solid var(--line);background:var(--bg-soft);border-radius:var(--radius);padding:34px 26px;display:flex;flex-direction:column;position:relative;transition:.2s}
+  .plan:hover{transform:translateY(-3px);border-color:#c49c4d55}
+  .plan.featured{border-color:#c49c4d;box-shadow:0 0 0 1px #c49c4d55,0 20px 60px #00000055;background:radial-gradient(600px 220px at 50% 0%, #c49c4d14, transparent 70%),var(--bg-soft)}
+  .plan-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#15100a;background:var(--accent);border-radius:999px;padding:4px 14px;white-space:nowrap}
+  .plan-name{font-size:20px;font-weight:700;letter-spacing:-.01em}
+  .plan-price{margin-top:14px;font-size:32px;font-weight:800;letter-spacing:-.02em}
+  .plan-price span{font-size:15px;font-weight:500;color:var(--ink-faint)}
+  .plan-sub{color:var(--ink-dim);font-size:13.5px;margin-top:8px;min-height:20px}
+  .plan-feats{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:11px;flex:1}
+  .plan-feats li{font-size:14px;color:var(--ink-dim);padding-left:24px;position:relative;line-height:1.5}
+  .plan-feats li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:700}
+  .plan-feats li b{color:var(--ink)}
+  .plan-cta{margin-top:26px;justify-content:center;width:100%}
+
   /* final cta */
   .final{padding:80px 0 96px;text-align:center}
   .final-box{border:1px solid #c49c4d33;border-radius:24px;padding:56px 28px;
@@ -326,7 +343,7 @@
   .wl-form .wl-submit{margin-top:5px;width:100%;text-align:center;border:none;cursor:pointer}
 
   @media(max-width:720px){
-    .grid,.steps{grid-template-columns:1fr}
+    .grid,.steps,.plans{grid-template-columns:1fr}
     .hero{padding:72px 0 40px}
     .float-agents{display:none}
     .nav-right{gap:12px}
@@ -462,6 +479,60 @@ Be.Ark는 진짜 내 편이 되어주는 AI 에이전트입니다.<br>
       <div class="step"><div class="n">1</div><h3>앱 설치</h3><p><b>.dmg</b>를 열고 <b>Be.Ark</b>를 <b>응용 프로그램</b> 폴더로 끌어다 놓으세요.</p></div>
       <div class="step"><div class="n">2</div><h3>“READ ME FIRST” 열기</h3><p>디스크 이미지 안의 <b>“READ ME FIRST.txt”</b>를 열고 안내된 한 줄 단계를 따라 하세요 (베타 잠금 해제 — 정식 버전에선 필요 없습니다).</p></div>
       <div class="step"><div class="n">3</div><h3>Be.Ark 실행</h3><p>로컬 모델을 고르거나 내 API 키를 연결하고, 바로 대화를 시작해 보세요.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>나에게 맞는 플랜</h2>
+      <p>로컬 우선은 언제나 무료입니다. 팀으로 일할 준비가 되면 Pro로 확장하세요.</p>
+    </div>
+    <div class="plans">
+      <!-- FREE -->
+      <div class="plan">
+        <div class="plan-name">Free</div>
+        <div class="plan-price">₩0<span> / 영원히</span></div>
+        <div class="plan-sub">로컬 우선 AI의 모든 것</div>
+        <ul class="plan-feats">
+          <li><b>1:1 에이전트</b> — 나만의 AI 파트너</li>
+          <li>강력한 <b>로컬 모델</b> 오프라인 구동</li>
+          <li>지속되는 <b>기억</b>과 <b>리빙 파일</b></li>
+          <li><b>문서·PPT</b> 로컬 생성 + PDF 내보내기</li>
+          <li>구글 연결 (읽기 전용) · 스케줄 자동화</li>
+        </ul>
+        <a class="btn btn-ghost plan-cta" href="#download">무료로 시작</a>
+      </div>
+      <!-- PRO -->
+      <div class="plan featured">
+        <div class="plan-badge">가장 인기</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">$20<span> / 월</span></div>
+        <div class="plan-sub">연 $144 · 얼리버드 첫해 50% 할인</div>
+        <ul class="plan-feats">
+          <li><b>Free의 모든 기능</b> 포함</li>
+          <li><b>멀티 에이전트 오케스트레이션</b> — 팀처럼 지휘</li>
+          <li><b>서브에이전트</b> 생성 — 역할 분담·협업</li>
+          <li>리서치·글쓰기·발행 <b>동시 처리</b></li>
+          <li>우선 지원</li>
+        </ul>
+        <a class="btn btn-primary plan-cta" href="#download">Pro 시작하기</a>
+      </div>
+      <!-- ENTERPRISE -->
+      <div class="plan">
+        <div class="plan-name">Enterprise</div>
+        <div class="plan-price">문의</div>
+        <div class="plan-sub">팀·조직 맞춤 도입</div>
+        <ul class="plan-feats">
+          <li><b>Pro의 모든 기능</b> 포함</li>
+          <li>맞춤 배포 · 온보딩 지원</li>
+          <li>조직 단위 관리</li>
+          <li>전용 지원 채널</li>
+        </ul>
+        <a class="btn btn-ghost plan-cta" href="mailto:ark@re-be.world">문의하기</a>
+      </div>
     </div>
   </div>
 </section>

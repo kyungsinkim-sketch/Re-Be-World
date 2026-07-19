@@ -256,6 +256,23 @@
   .step h3{font-size:16px}
   .step p{color:var(--ink-dim);font-size:14px;margin-top:7px}
 
+  /* pricing */
+  .pricing{padding:72px 0}
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px;align-items:stretch}
+  .plan{border:1px solid var(--line);background:var(--bg-soft);border-radius:var(--radius);padding:34px 26px;display:flex;flex-direction:column;position:relative;transition:.2s}
+  .plan:hover{transform:translateY(-3px);border-color:#c49c4d55}
+  .plan.featured{border-color:#c49c4d;box-shadow:0 0 0 1px #c49c4d55,0 20px 60px #00000055;background:radial-gradient(600px 220px at 50% 0%, #c49c4d14, transparent 70%),var(--bg-soft)}
+  .plan-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#15100a;background:var(--accent);border-radius:999px;padding:4px 14px;white-space:nowrap}
+  .plan-name{font-size:20px;font-weight:700;letter-spacing:-.01em}
+  .plan-price{margin-top:14px;font-size:32px;font-weight:800;letter-spacing:-.02em}
+  .plan-price span{font-size:15px;font-weight:500;color:var(--ink-faint)}
+  .plan-sub{color:var(--ink-dim);font-size:13.5px;margin-top:8px;min-height:20px}
+  .plan-feats{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:11px;flex:1}
+  .plan-feats li{font-size:14px;color:var(--ink-dim);padding-left:24px;position:relative;line-height:1.5}
+  .plan-feats li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:700}
+  .plan-feats li b{color:var(--ink)}
+  .plan-cta{margin-top:26px;justify-content:center;width:100%}
+
   /* final cta */
   .final{padding:80px 0 96px;text-align:center}
   .final-box{border:1px solid #c49c4d33;border-radius:24px;padding:56px 28px;
@@ -326,7 +343,7 @@
   .wl-form .wl-submit{margin-top:5px;width:100%;text-align:center;border:none;cursor:pointer}
 
   @media(max-width:720px){
-    .grid,.steps{grid-template-columns:1fr}
+    .grid,.steps,.plans{grid-template-columns:1fr}
     .hero{padding:72px 0 40px}
     .float-agents{display:none}
     .nav-right{gap:12px}
@@ -452,6 +469,60 @@ not another cloud account renting your mind back to you.</p>
       <div class="step"><div class="n">1</div><h3>Install the app</h3><p>Open the <b>.dmg</b> and drag <b>Be.Ark</b> into the <b>Applications</b> folder.</p></div>
       <div class="step"><div class="n">2</div><h3>Open “READ ME FIRST”</h3><p>Open <b>“READ ME FIRST.txt”</b> in the disk image and follow the one-line step it shows (a quick beta unlock — the final release won’t need it).</p></div>
       <div class="step"><div class="n">3</div><h3>Launch Be.Ark</h3><p>Pick a local model or bring your own key, and start talking.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>Pick your plan</h2>
+      <p>Local-first is always free. When you're ready to work as a team, scale up with Pro.</p>
+    </div>
+    <div class="plans">
+      <!-- FREE -->
+      <div class="plan">
+        <div class="plan-name">Free</div>
+        <div class="plan-price">$0<span> / forever</span></div>
+        <div class="plan-sub">Everything local-first AI</div>
+        <ul class="plan-feats">
+          <li><b>1:1 agent</b> — your personal AI partner</li>
+          <li>Powerful <b>local models</b>, offline</li>
+          <li>Persistent <b>memory</b> and <b>Living Files</b></li>
+          <li><b>Docs & slides</b> generated locally + PDF export</li>
+          <li>Google connect (read-only) · Scheduled automation</li>
+        </ul>
+        <a class="btn btn-ghost plan-cta" href="#download">Start free</a>
+      </div>
+      <!-- PRO -->
+      <div class="plan featured">
+        <div class="plan-badge">Most popular</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">$20<span> / mo</span></div>
+        <div class="plan-sub">$144 / yr · 50% off first year (early bird)</div>
+        <ul class="plan-feats">
+          <li>Everything in <b>Free</b></li>
+          <li><b>Multi-agent orchestration</b> — lead them like a team</li>
+          <li>Spawn <b>sub-agents</b> — divide roles & collaborate</li>
+          <li>Research, writing & publishing <b>in parallel</b></li>
+          <li>Priority support</li>
+        </ul>
+        <a class="btn btn-primary plan-cta" href="#download">Get Pro</a>
+      </div>
+      <!-- ENTERPRISE -->
+      <div class="plan">
+        <div class="plan-name">Enterprise</div>
+        <div class="plan-price">Contact</div>
+        <div class="plan-sub">Custom rollout for teams</div>
+        <ul class="plan-feats">
+          <li>Everything in <b>Pro</b></li>
+          <li>Custom deployment · onboarding support</li>
+          <li>Organization-level management</li>
+          <li>Dedicated support channel</li>
+        </ul>
+        <a class="btn btn-ghost plan-cta" href="mailto:ark@re-be.world">Contact us</a>
+      </div>
     </div>
   </div>
 </section>
