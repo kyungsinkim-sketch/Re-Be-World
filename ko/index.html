@@ -235,13 +235,18 @@
   /* whats new (앱 공지 announcements.json 재활용) */
   .whatsnew{padding:16px 0 26px}
   .wn-list{display:grid;gap:16px;max-width:760px;margin:0 auto}
-  .wn-item{border:1px solid var(--line);background:var(--bg-soft);border-radius:var(--radius);padding:24px 26px;transition:.2s}
+  .wn-item{border:1px solid var(--line);background:var(--bg-soft);border-radius:var(--radius);padding:20px 26px;transition:.2s}
   .wn-item:hover{border-color:#c49c4d55}
   .wn-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
   .wn-tag{font-size:11.5px;font-weight:700;color:var(--accent);border:1px solid #c49c4d55;border-radius:7px;padding:2px 9px}
   .wn-date{font-size:12.5px;color:var(--ink-faint)}
-  .wn-item h3{font-size:18px;letter-spacing:-.01em}
-  .wn-body{color:var(--ink-dim);font-size:14.5px;margin-top:10px;white-space:pre-line;line-height:1.7}
+  .wn-summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;outline:none}
+  .wn-summary::-webkit-details-marker{display:none}
+  .wn-item h3{font-size:18px;letter-spacing:-.01em;margin:0}
+  .wn-chev{flex:0 0 auto;width:20px;height:20px;color:var(--ink-faint);transition:transform .25s,color .2s}
+  .wn-item[open] .wn-chev{transform:rotate(180deg);color:var(--accent)}
+  .wn-summary:hover .wn-chev{color:var(--accent)}
+  .wn-body{color:var(--ink-dim);font-size:14.5px;margin-top:14px;white-space:pre-line;line-height:1.7}
 
   /* how */
   .how{padding:72px 0}
@@ -712,11 +717,15 @@ Be.Ark는 진짜 내 편이 되어주는 AI 에이전트입니다.<br>
                .sort(function(a,b){return (b.date||'').localeCompare(a.date||'');})
                .slice(0,3);
       if(!data.length){ sec.style.display='none'; return; }
-      box.innerHTML=data.map(function(a){
+|'')+'</div></article>';
+      }).join('');|      box.innerHTML=data.map(function(a,i){
         var tag=a.tag?'<span class="wn-tag">'+esc(a.tag)+'</span>':'';
         var date=a.date?'<span class="wn-date">'+esc(a.date)+'</span>':'';
-        return '<article class="wn-item"><div class="wn-head">'+tag+date+'</div>'+
-               '<h3>'+esc(a.title)+'</h3><div class="wn-body">'+esc(a.body||'')+'</div></article>';
+        var open=i===0?' open':'';
+        var chev='<svg class="wn-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+        return '<details class="wn-item"'+open+'><summary class="wn-summary"><div><div class="wn-head">'+tag+date+'</div>'+
+               '<h3>'+esc(a.title)+'</h3></div>'+chev+'</summary><div class="wn-body">'+esc(a.body||'')+'</div></details>';
+      }).join('');||'')+'</div></article>';
       }).join('');
     }).catch(function(){ sec.style.display='none'; });
   })();
