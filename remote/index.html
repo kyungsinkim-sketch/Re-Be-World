@@ -1,0 +1,370 @@
+<!doctype html>
+<!-- remote.html — 모바일 컴패니언 Step C v0 (읽기 전용 뷰어)
+     SSOT: docs/MOBILE_COMPANION_CHAT_UI_2026-07-17.md §Step C
+     서빙: chat_gateway.rs가 비-WS 요청에 이 파일을 그대로 응답 (빌드 파이프라인 無).
+     디자인 정책(빠불로 2026-07-19): 데스크탑과 동일 — DOS 터미널(검정/#00FF41/모노스페이스),
+     아이콘 = lfIcons 스타일 라인 픽토그램(stroke 1.8, viewBox 24)만. 이모지 절대 금지. -->
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<!-- maximum-scale=1: 입력 포커스 자동 줌 억제 (iOS는 접근성 핀치 줌은 계속 허용) -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<!-- PWA: 홈 화면 추가 시 Safari 크롬 없는 standalone 실행 (D-2와 함께 배선) -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="BE.ARK">
+<!-- remote/ 프리픽스: 데스크탑 서빙(/, Rust가 suffix 매칭)과 re-be.world 호스팅(/remote, 실제 폴더) 양쪽에서 동일 해석 -->
+<link rel="manifest" href="remote/manifest.webmanifest">
+<link rel="apple-touch-icon" href="remote/apple-touch-icon.png">
+<link rel="icon" href="remote/icon.svg" type="image/svg+xml">
+<title>BE.ARK REMOTE</title>
+<style>
+  :root { --bg:#000; --green:#00FF41; --dim:#00AA2A; --line:#00FF4133; --text:#C9D1D9; }
+  * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+  html,body { height:100%; }
+  body { background:var(--bg); color:var(--text);
+    font-family:'Geist Mono','SF Mono',ui-monospace,Menlo,monospace; font-size:14px;
+    display:flex; flex-direction:column; overscroll-behavior:none; }
+  header { display:flex; align-items:center; gap:10px; padding:12px 14px;
+    border-bottom:1px solid var(--line); color:var(--green); flex:0 0 auto;
+    padding-top:calc(12px + env(safe-area-inset-top)); }
+  header .title { font-weight:700; letter-spacing:1px; flex:1; white-space:nowrap;
+    overflow:hidden; text-overflow:ellipsis; }
+  .icon-btn { background:none; border:none; color:var(--green); width:32px; height:32px;
+    display:flex; align-items:center; justify-content:center; cursor:pointer; }
+  .icon-btn:active { background:var(--line); }
+  .icon-btn[hidden] { display:none; }
+  #status { font-size:11px; color:var(--dim); }
+  main { flex:1 1 auto; overflow-y:auto; -webkit-overflow-scrolling:touch;
+    padding-bottom:env(safe-area-inset-bottom); }
+  .row { display:flex; align-items:center; gap:10px; width:100%; text-align:left;
+    background:none; border:none; border-bottom:1px solid #111; color:var(--text);
+    font:inherit; padding:14px; cursor:pointer; }
+  .row:active { background:#0A0A0A; }
+  .row .name { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .row .meta { font-size:11px; color:#555; }
+  .row .dot { width:8px; height:8px; border-radius:50%; flex:0 0 auto; }
+  .section-label { padding:10px 14px 4px; font-size:11px; color:var(--dim); letter-spacing:1px; }
+  .msg { padding:10px 14px; border-bottom:1px solid #0D0D0D; }
+  .msg .who { font-size:11px; margin-bottom:4px; color:var(--dim); }
+  .msg.user .who { color:var(--green); }
+  .msg .body { white-space:pre-wrap; word-break:break-word; line-height:1.5; }
+  .msg.user .body { color:#EAEAEA; }
+  .center { padding:32px 20px; text-align:center; color:var(--dim); line-height:1.7; }
+  .more { display:block; width:calc(100% - 28px); margin:12px 14px; padding:10px;
+    background:none; border:1px solid var(--line); color:var(--green); font:inherit; cursor:pointer; }
+  footer { flex:0 0 auto; display:flex; gap:8px; padding:10px 12px;
+    border-top:1px solid var(--line); background:var(--bg);
+    padding-bottom:calc(10px + env(safe-area-inset-bottom)); }
+  footer[hidden] { display:none; }
+  footer input { flex:1; background:#0A0A0A; border:1px solid var(--line); color:#EAEAEA;
+    font:inherit; padding:10px 12px; border-radius:2px; outline:none; min-width:0;
+    font-size:16px; /* iOS Safari: 16px 미만 입력창 포커스 = 강제 줌 → 레이아웃 잘림 */ }
+  footer input:focus { border-color:var(--green); }
+  footer button { background:var(--green); border:none; color:#000; width:42px;
+    display:flex; align-items:center; justify-content:center; border-radius:2px; cursor:pointer; }
+  footer button:disabled { background:#123; color:var(--dim); }
+  .pending { color:var(--dim); }
+  svg { display:block; }
+</style>
+</head>
+<body>
+<header>
+  <button class="icon-btn" id="backBtn" hidden aria-label="뒤로">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <div class="title" id="title">BE.ARK REMOTE</div>
+  <div id="status">접속 중…</div>
+  <button class="icon-btn" id="refreshBtn" aria-label="새로고침">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><polyline points="21 3 21 9 15 9"/></svg>
+  </button>
+</header>
+<main id="main"><div class="center">데스크탑에 연결하는 중입니다…</div></main>
+<footer id="composer" hidden>
+  <input id="input" type="text" placeholder="메시지 입력…" autocomplete="off" enterkeyhint="send">
+  <button id="sendBtn" aria-label="보내기">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+  </button>
+</footer>
+<script>
+'use strict';
+// ── 상태: view = 'agents' | 'sessions' | 'chat'
+const S = { ws:null, ok:false, agents:[], view:'agents',
+  agent:null, sessions:[], session:undefined, msgs:[], oldest:null, reqs:new Map(), seq:0,
+  draft:'', draftMsgId:null, lastProgress:0 };
+const $ = (id) => document.getElementById(id);
+// 토큰은 localStorage에 영속 — PWA standalone 실행(start_url)이 # 프래그먼트를 잃어도 접속 유지
+let token = new URLSearchParams(location.hash.slice(1)).get('t') || '';
+try {
+  if (token) localStorage.setItem('beark.remote.token', token);
+  else token = localStorage.getItem('beark.remote.token') || '';
+} catch {}
+// 전송로 (Phase 1-3): https(re-be.world 호스팅) = Supabase Realtime 릴레이+E2E /
+// http(데스크탑 LAN 서빙) = 기존 ws 직결. 페이지 하나, 전송로만 갈아탐.
+const RELAY = location.protocol === 'https:';
+
+function send(frame, cb) {
+  frame.id = 'q' + (++S.seq);
+  if (cb) S.reqs.set(frame.id, cb);
+  sendFrame(frame);
+}
+function sendFrame(frame) {
+  if (RELAY) { void relaySend(frame); }
+  else S.ws.send(JSON.stringify(frame));
+}
+
+function handleServerFrame(f) {
+  if (f.type === 'connect.ok') {
+    S.ok = true; S.agents = f.agents || [];
+    $('status').textContent = '온라인';
+    render();
+  } else if (f.type === 'res') {
+    if (!f.ok && !S.ok) { fatal('연결이 거부되었습니다: ' + (f.error || '') + '\n데스크탑의 QR 코드로 다시 열어 주세요.'); return; }
+    const cb = S.reqs.get(f.id);
+    if (cb) { S.reqs.delete(f.id); cb(f); }
+  } else if (f.type === 'chat.delta') {
+    // D-2: 보고 있는 채팅의 진행 중 답변만 draft에 반영 (res 도착 후 지각 델타는 무시)
+    if (!S.pendingReply || S.view !== 'chat' || !S.agent || f.agentId !== S.agent.id) return;
+    if ((f.sessionId || null) !== (S.session || null)) return;
+    if (S.draftMsgId && S.draftMsgId !== f.msgId) return;
+    S.draftMsgId = f.msgId;
+    S.lastProgress = Date.now();
+    S.draft = f.replace ? f.text : S.draft + f.text;
+    updateDraft();
+  } else if (f.type === 'chat.done') {
+    // 정상 흐름은 res가 곧바로 확정 → 2초 유예. res 유실(재연결 등)이면 저장된 히스토리로 복구.
+    if (!S.pendingReply || S.view !== 'chat' || !S.agent || f.agentId !== S.agent.id) return;
+    if ((f.sessionId || null) !== (S.session || null)) return;
+    setTimeout(() => {
+      if (!S.pendingReply || S.view !== 'chat') return;
+      S.reqs.clear(); // 지각 res가 히스토리 복구본 위에 중복 버블 얹는 것 방지
+      unfreeze(); openChat(S.session);
+    }, 2000);
+  }
+}
+
+function onTransportDown() {
+  S.ok = false; $('status').textContent = '오프라인';
+  S.reqs.clear(); // 이 전송로의 응답은 영영 안 옴
+  if (S.pendingReply || sending) { unfreeze(); if (S.view === 'chat') render(); }
+}
+
+function connect() {
+  $('status').textContent = '접속 중…';
+  const ws = new WebSocket('ws://' + location.host);
+  S.ws = ws;
+  ws.onopen = () => ws.send(JSON.stringify({ type:'connect', role:'ui', token, scope:['chat'] }));
+  ws.onmessage = (e) => {
+    let f; try { f = JSON.parse(e.data); } catch { return; }
+    handleServerFrame(f);
+  };
+  ws.onclose = onTransportDown;
+  ws.onerror = () => { if (!S.ok) fatal('데스크탑에 연결할 수 없습니다.\nBe.Ark 앱이 켜져 있고 같은 와이파이인지 확인해 주세요.'); };
+}
+
+// ── 릴레이 전송로 (Phase 1-3, MOBILE_NAT_SPIKE §4): Supabase Realtime + E2E(AES-GCM) ──
+// ⚠️ 아래 암호 상수(salt/info/채널 프리픽스)는 데스크탑 relayCrypto.ts와 동일해야 함.
+const SB_URL = 'https://hxrvapnasxmaubymcipd.supabase.co';
+const SB_KEY = 'sb_publishable_Skd6X54IOwVKyu3-QpxSog_TiRz2vK3';
+const CID = Array.from(crypto.getRandomValues(new Uint8Array(8)), b => b.toString(16).padStart(2,'0')).join('');
+const R = { ch:null, key:null };
+const u8 = (s) => new TextEncoder().encode(s);
+const b64e = (buf) => { let s=''; for (const b of new Uint8Array(buf)) s += String.fromCharCode(b); return btoa(s); };
+const b64d = (s) => { const bin = atob(s); const o = new Uint8Array(bin.length); for (let i=0;i<bin.length;i++) o[i]=bin.charCodeAt(i); return o; };
+async function deriveKey(tok) {
+  const raw = await crypto.subtle.importKey('raw', u8(tok), 'HKDF', false, ['deriveKey']);
+  return crypto.subtle.deriveKey(
+    { name:'HKDF', hash:'SHA-256', salt:u8('beark-relay-v1'), info:u8('frame-key') },
+    raw, { name:'AES-GCM', length:256 }, false, ['encrypt','decrypt']);
+}
+async function deriveChannel(tok) {
+  const d = await crypto.subtle.digest('SHA-256', u8('beark-relay-channel-v1:' + tok));
+  return 'relay:' + Array.from(new Uint8Array(d), b => b.toString(16).padStart(2,'0')).join('').slice(0,32);
+}
+async function relaySend(frame) {
+  if (!R.ch || !R.key) return;
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const ct = await crypto.subtle.encrypt({ name:'AES-GCM', iv }, R.key, u8(JSON.stringify(frame)));
+  R.ch.send({ type:'broadcast', event:'req', payload:{ cid:CID, iv:b64e(iv), ct:b64e(ct) } });
+}
+async function onEnvelope(env, addressed) {
+  if (!env || !R.key) return;
+  if (addressed && env.cid !== CID) return;
+  let raw;
+  try {
+    raw = new TextDecoder().decode(
+      await crypto.subtle.decrypt({ name:'AES-GCM', iv:b64d(env.iv) }, R.key, b64d(env.ct)));
+  } catch { return; } // 다른 토큰/위조 = 무시
+  let f; try { f = JSON.parse(raw); } catch { return; }
+  handleServerFrame(f);
+}
+async function connectRelay() {
+  $('status').textContent = '접속 중…';
+  if (!token) { fatal('페어링 정보가 없습니다.\n데스크탑 설정의 QR 코드로 다시 열어 주세요.'); return; }
+  try {
+    const mod = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+    R.key = await deriveKey(token);
+    const chName = await deriveChannel(token);
+    const client = mod.createClient(SB_URL, SB_KEY, { realtime: { params: { eventsPerSecond: 25 } } });
+    R.ch = client.channel(chName, { config: { broadcast: { self:false } } });
+    R.ch.on('broadcast', { event:'res' }, (m) => { void onEnvelope(m.payload, true); });
+    R.ch.on('broadcast', { event:'push' }, (m) => { void onEnvelope(m.payload, false); });
+    R.ch.subscribe((status) => {
+      if (status === 'SUBSCRIBED') {
+        // 재조인(네트워크 복귀)마다 재핸드셰이크 — 데스크탑은 릴레이 connect 재수신 허용
+        sendFrame({ type:'connect', role:'ui', scope:['chat'], token });
+      } else if (status === 'CHANNEL_ERROR' || status === 'TIMED_OUT' || status === 'CLOSED') {
+        onTransportDown();
+      }
+    });
+  } catch (e) {
+    fatal('릴레이 연결에 실패했습니다.\n인터넷 연결을 확인해 주세요. (' + e + ')');
+  }
+}
+function fatal(text) { $('main').innerHTML = ''; el('div','center',text,$('main')); $('status').textContent = '오프라인'; }
+
+function el(tag, cls, text, parent) {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text !== undefined) n.textContent = text;
+  parent.appendChild(n); return n;
+}
+
+function render() {
+  const m = $('main'); m.innerHTML = '';
+  $('backBtn').hidden = S.view === 'agents';
+  $('composer').hidden = S.view !== 'chat';
+  if (S.view === 'agents') {
+    $('title').textContent = 'BE.ARK REMOTE';
+    el('div','section-label','AGENTS',m);
+    if (!S.agents.length) el('div','center','에이전트가 없습니다.',m);
+    for (const a of S.agents) {
+      const b = el('button','row','',m);
+      const dot = el('span','dot','',b); dot.style.background = a.nameColor || 'var(--dim)';
+      el('span','name',a.name || a.id,b);
+      b.onclick = () => openAgent(a);
+    }
+  } else if (S.view === 'sessions') {
+    $('title').textContent = S.agent.name || S.agent.id;
+    el('div','section-label','SESSIONS',m);
+    const rows = [{ id:null, name:'학습장 (기본)' }, ...S.sessions];
+    for (const s of rows) {
+      const b = el('button','row','',m);
+      el('span','name',s.name,b);
+      if (s.updatedAt) el('span','meta',s.updatedAt,b);
+      b.onclick = () => openChat(s.id);
+    }
+  } else {
+    $('title').textContent = (S.agent.name || S.agent.id) +
+      (S.session ? ' / ' + (S.sessions.find(x=>x.id===S.session)||{}).name : ' / 학습장');
+    if (S.oldest !== null) {
+      const b = el('button','more','이전 대화 더 보기',m);
+      b.onclick = loadOlder;
+    }
+    for (const msg of S.msgs) {
+      const d = el('div','msg' + (msg.role==='user' ? ' user' : ''),'',m);
+      el('div','who', msg.role==='user' ? '@you' : '@'+(S.agent.name||S.agent.id), d);
+      el('div','body', String(msg.content ?? ''), d);
+    }
+    if (S.pendingReply) {
+      const d = el('div','msg pending','',m);
+      el('div','who','@'+(S.agent.name||S.agent.id),d);
+      el('div','body', S.draft || '답변 작성 중…', d).id = 'draftBody';
+    }
+    if (!S.msgs.length && !S.pendingReply) el('div','center','메시지가 없습니다.',m);
+    m.scrollTop = m.scrollHeight;
+  }
+}
+
+// ── Step D: chat.send — 데스크탑 에이전트 루프. D-2 = 진행 중 chat.delta가 draft에
+//    실시간 반영되고, 완성본은 res가 확정 (지각 델타는 pendingReply=false로 차단).
+function updateDraft() {
+  const n = document.getElementById('draftBody');
+  if (!n) { render(); return; }
+  n.textContent = S.draft || '답변 작성 중…';
+  const m = $('main'); m.scrollTop = m.scrollHeight;
+}
+let sending = false;
+// 대기 상태 강제 해제 — res 유실(WS 끊김/데스크탑 리로드)로 입력이 영원히 잠기는 고착 방지
+function unfreeze() {
+  sending = false;
+  S.pendingReply = false; S.draft = ''; S.draftMsgId = null;
+  $('input').disabled = false; $('sendBtn').disabled = false;
+}
+// 워치독: 델타도 res도 120초 무소식 = 턴 유실 → 해제 + 안내
+setInterval(() => {
+  if (!S.pendingReply || Date.now() - S.lastProgress < 120000) return;
+  unfreeze();
+  S.msgs.push({ role:'assistant', content:'[오류] 응답이 끊겼습니다 — 새로고침으로 최신 대화를 확인해 주세요.' });
+  if (S.view === 'chat') render();
+}, 15000);
+function sendMessage() {
+  const inp = $('input');
+  const text = inp.value.trim();
+  if (!text || sending || !S.ok || S.view !== 'chat') return;
+  sending = true;
+  inp.value = '';
+  inp.disabled = true; $('sendBtn').disabled = true;
+  S.msgs.push({ role:'user', content:text });
+  S.pendingReply = true;
+  S.draft = ''; S.draftMsgId = null; S.lastProgress = Date.now();
+  render();
+  send({ type:'chat.send', agentId:S.agent.id, sessionId:S.session, text }, (f) => {
+    S.pendingReply = false;
+    S.draft = ''; S.draftMsgId = null;
+    if (f.ok && f.data && f.data.message) S.msgs.push(f.data.message);
+    else S.msgs.push({ role:'assistant', content:'[오류] ' + (f.error || '답변을 받지 못했습니다.') });
+    sending = false;
+    inp.disabled = false; $('sendBtn').disabled = false;
+    render();
+    inp.focus();
+  });
+}
+$('sendBtn').onclick = sendMessage;
+$('input').addEventListener('keydown', (e) => { if (e.key === 'Enter') sendMessage(); });
+
+function openAgent(a) {
+  S.agent = a;
+  send({ type:'sessions.list', agentId:a.id }, (f) => {
+    S.sessions = (f.data && f.data.sessions) || [];
+    S.view = 'sessions'; render();
+  });
+}
+function openChat(sessionId) {
+  S.session = sessionId;
+  send({ type:'chat.history', agentId:S.agent.id, sessionId, limit:50 }, (f) => {
+    const rows = (f.data && f.data.messages) || []; // rowid DESC
+    S.msgs = rows.slice().reverse();
+    S.oldest = rows.length === 50 ? rows[rows.length-1].rowid : null;
+    S.view = 'chat'; render();
+  });
+}
+function loadOlder() {
+  send({ type:'chat.history', agentId:S.agent.id, sessionId:S.session, beforeRowid:S.oldest, limit:50 }, (f) => {
+    const rows = (f.data && f.data.messages) || [];
+    S.msgs = rows.slice().reverse().concat(S.msgs);
+    S.oldest = rows.length === 50 ? rows[rows.length-1].rowid : null;
+    render();
+  });
+}
+
+$('backBtn').onclick = () => {
+  if (S.view === 'chat') { S.view = 'sessions'; render(); }
+  else if (S.view === 'sessions') { S.view = 'agents'; render(); }
+};
+$('refreshBtn').onclick = () => {
+  if (S.pendingReply || sending) unfreeze(); // 새로고침 = 항상 고착 해제 (진행 중 턴은 데스크탑에서 계속·저장됨)
+  if (!S.ok) {
+    if (RELAY) { location.reload(); return; } // 릴레이 재수립은 페이지 리로드가 가장 견고
+    try { S.ws && S.ws.close(); } catch {} connect(); return;
+  }
+  if (S.view === 'chat') openChat(S.session);
+  else if (S.view === 'sessions') openAgent(S.agent);
+  else render();
+};
+if (RELAY) { void connectRelay(); } else { connect(); }
+</script>
+</body>
+</html>

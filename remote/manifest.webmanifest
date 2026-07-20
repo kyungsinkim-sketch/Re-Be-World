@@ -1,0 +1,14 @@
+{
+  "name": "BE.ARK REMOTE",
+  "short_name": "BE.ARK",
+  "description": "Be.Ark 모바일 컴패니언 — 데스크탑 에이전트 원격 뷰어",
+  "start_url": "./",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    { "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "./apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "any" }
+  ]
+}

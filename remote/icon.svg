@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+  <!-- BE.ARK REMOTE 아이콘 — DOS 터미널 프롬프트 (디자인 정책: 이모지 ❌, 라인 픽토그램) -->
+  <rect width="180" height="180" fill="#000000"/>
+  <rect x="19.5" y="19.5" width="141" height="141" fill="none" stroke="#00FF41" stroke-width="7"/>
+  <polyline points="58,62 84,88 58,114" fill="none" stroke="#00FF41" stroke-width="11" stroke-linecap="square"/>
+  <rect x="98" y="106" width="34" height="10" fill="#00FF41"/>
+</svg>
