@@ -99,11 +99,35 @@ const S = { ws:null, ok:false, agents:[], view:'agents',
   draft:'', draftMsgId:null, lastProgress:0, vapid:null };
 const $ = (id) => document.getElementById(id);
 // 토큰은 localStorage에 영속 — PWA standalone 실행(start_url)이 # 프래그먼트를 잃어도 접속 유지
-let token = new URLSearchParams(location.hash.slice(1)).get('t') || '';
+// Phase 1-2 (페어링 스토어): QR의 페어링 토큰으로 첫 접속 → connect.ok가 기기 전용 토큰 발급 →
+// 이후 접속/릴레이 채널은 기기 토큰. QR 재스캔(#t= 존재) = 재페어링(기존 기기 토큰 폐기).
+const hashTok = new URLSearchParams(location.hash.slice(1)).get('t') || '';
+let token = hashTok;
+let deviceToken = '';
 try {
-  if (token) localStorage.setItem('beark.remote.token', token);
-  else token = localStorage.getItem('beark.remote.token') || '';
+  if (hashTok) {
+    localStorage.setItem('beark.remote.token', hashTok);
+    localStorage.removeItem('beark.remote.deviceToken');
+  } else {
+    token = localStorage.getItem('beark.remote.token') || '';
+  }
+  deviceToken = localStorage.getItem('beark.remote.deviceToken') || '';
 } catch {}
+if (deviceToken) token = deviceToken; // 채널 유도/connect 모두 기기 토큰 우선
+// 기기 토큰이 해제된 경우 복구: 릴레이 = 채널 leave라 응답 자체가 없음 → 12초 무응답이면
+// 기기 토큰 버리고 페어링 토큰으로 1회 재시도 (그것도 죽어 있으면 기존 fatal 안내가 뜬다).
+function dropDeviceTokenAndRetry() {
+  try { localStorage.removeItem('beark.remote.deviceToken'); } catch {}
+  location.reload();
+}
+if (deviceToken) setTimeout(() => { if (!S.ok) dropDeviceTokenAndRetry(); }, 12000);
+const DEVNAME = (() => {
+  const u = navigator.userAgent;
+  if (/iPhone/.test(u)) return 'iPhone';
+  if (/iPad/.test(u) || (/Macintosh/.test(u) && 'ontouchend' in document)) return 'iPad';
+  if (/Android/.test(u)) return 'Android';
+  return 'Browser';
+})();
 // 전송로 (Phase 1-3): https(re-be.world 호스팅) = Supabase Realtime 릴레이+E2E /
 // http(데스크탑 LAN 서빙) = 기존 ws 직결. 페이지 하나, 전송로만 갈아탐.
 const RELAY = location.protocol === 'https:';
@@ -122,11 +146,16 @@ function handleServerFrame(f) {
   if (f.type === 'connect.ok') {
     S.ok = true; S.agents = f.agents || [];
     S.vapid = f.vapidPublicKey || null;
+    // 페어링 접속에 발급된 기기 토큰 저장 — 다음 실행부터 자기 채널/토큰으로
+    if (f.deviceToken) { try { localStorage.setItem('beark.remote.deviceToken', f.deviceToken); } catch {} }
     $('status').textContent = '온라인';
     void updateBell();
     render();
   } else if (f.type === 'res') {
-    if (!f.ok && !S.ok) { fatal('연결이 거부되었습니다: ' + (f.error || '') + '\n데스크탑의 QR 코드로 다시 열어 주세요.'); return; }
+    if (!f.ok && !S.ok) {
+      if (deviceToken) { dropDeviceTokenAndRetry(); return; } // 해제된 기기 토큰 → 페어링 토큰 재시도
+      fatal('연결이 거부되었습니다: ' + (f.error || '') + '\n데스크탑의 QR 코드로 다시 열어 주세요.'); return;
+    }
     const cb = S.reqs.get(f.id);
     if (cb) { S.reqs.delete(f.id); cb(f); }
   } else if (f.type === 'chat.delta') {
@@ -160,7 +189,7 @@ function connect() {
   $('status').textContent = '접속 중…';
   const ws = new WebSocket('ws://' + location.host);
   S.ws = ws;
-  ws.onopen = () => ws.send(JSON.stringify({ type:'connect', role:'ui', token, scope:['chat'] }));
+  ws.onopen = () => ws.send(JSON.stringify({ type:'connect', role:'ui', token, scope:['chat'], device: DEVNAME }));
   ws.onmessage = (e) => {
     let f; try { f = JSON.parse(e.data); } catch { return; }
     handleServerFrame(f);
@@ -219,7 +248,7 @@ async function connectRelay() {
     R.ch.subscribe((status) => {
       if (status === 'SUBSCRIBED') {
         // 재조인(네트워크 복귀)마다 재핸드셰이크 — 데스크탑은 릴레이 connect 재수신 허용
-        sendFrame({ type:'connect', role:'ui', scope:['chat'], token });
+        sendFrame({ type:'connect', role:'ui', scope:['chat'], token, device: DEVNAME });
       } else if (status === 'CHANNEL_ERROR' || status === 'TIMED_OUT' || status === 'CLOSED') {
         onTransportDown();
       }
