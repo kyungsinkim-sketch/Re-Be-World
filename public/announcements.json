@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-07-21-beta-1-2-1",
+    "lang": "ko",
+    "date": "2026-07-21",
+    "title": "Be.Ark Beta 1.2.1 — 더 가벼운 설치, 주머니 속 에이전트",
+    "body": "Beta 1.2.1 업데이트가 공개됐습니다.\n\n📦 가벼워진 설치 — 첫 실행 때 대용량 로컬 모델을 미리 받지 않습니다. 로컬 모델을 선택한 순간에만, 내 컴퓨터 메모리에 맞는 모델을 자동 추천해 설치합니다. 저사양 기기에서 컴퓨터가 느려지던 문제를 원천 차단했습니다.\n\n🔔 폰 알림 — 폰을 잠가둬도 에이전트가 답변을 마치면 잠금화면으로 알려줍니다. 모바일 화면 상단의 종 모양 버튼을 눌러 켜세요. 알림 내용은 종단간 암호화되어 외부는 읽을 수 없습니다.\n\n📱 기기별 페어링 — QR 한 번이면 그 폰 전용 연결이 만들어지고, 설정에서 연결된 기기를 확인하거나 개별 해제할 수 있습니다.\n\n🎨 웹페이지 미리보기 확장 — 에이전트가 만든 HTML을 실제 웹사이트처럼 보면서, 블록 순서 이동·여백·글자색·배경색 조절, 이미지 교체까지 클릭으로 끝냅니다.\n\n⚡ 로컬 모델 파일 편집 안정화 — 오프라인에서도 문서 정리가 한 번에 적용됩니다.\n\n지금 새 버전을 만나보세요 → re-be.world",
+    "tag": "Update"
+  },
+  {
+    "id": "2026-07-21-beta-1-2-1-en",
+    "lang": "en",
+    "date": "2026-07-21",
+    "title": "Be.Ark Beta 1.2.1 — Lighter install, agent in your pocket",
+    "body": "Beta 1.2.1 is out.\n\n📦 Lighter install — no more multi-GB model download on first launch. A local model is installed only when you choose one, auto-matched to your machine's memory. Low-spec devices are now protected by a safety gate.\n\n🔔 Phone notifications — lock your phone and the agent still reaches you: finished replies arrive on your lock screen. Tap the bell in the mobile view to enable. Payloads are end-to-end encrypted.\n\n📱 Per-device pairing — one QR scan creates a token just for that phone; review and revoke devices in Settings.\n\n🎨 Web page preview, expanded — reorder blocks, tune spacing and colors, and swap images with a click while previewing agent-built HTML.\n\n⚡ Sturdier local-model file editing — offline document edits now land on the first try.\n\nGet the new build → re-be.world",
+    "tag": "Update"
+  },
+  {
     "id": "2026-07-19-beta-1-2",
     "lang": "ko",
     "date": "2026-07-19",
