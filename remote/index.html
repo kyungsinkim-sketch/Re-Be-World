@@ -77,6 +77,9 @@
   </button>
   <div class="title" id="title">BE.ARK REMOTE</div>
   <div id="status">접속 중…</div>
+  <button class="icon-btn" id="bellBtn" hidden aria-label="알림">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+  </button>
   <button class="icon-btn" id="refreshBtn" aria-label="새로고침">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><polyline points="21 3 21 9 15 9"/></svg>
   </button>
@@ -93,7 +96,7 @@
 // ── 상태: view = 'agents' | 'sessions' | 'chat'
 const S = { ws:null, ok:false, agents:[], view:'agents',
   agent:null, sessions:[], session:undefined, msgs:[], oldest:null, reqs:new Map(), seq:0,
-  draft:'', draftMsgId:null, lastProgress:0 };
+  draft:'', draftMsgId:null, lastProgress:0, vapid:null };
 const $ = (id) => document.getElementById(id);
 // 토큰은 localStorage에 영속 — PWA standalone 실행(start_url)이 # 프래그먼트를 잃어도 접속 유지
 let token = new URLSearchParams(location.hash.slice(1)).get('t') || '';
@@ -118,7 +121,9 @@ function sendFrame(frame) {
 function handleServerFrame(f) {
   if (f.type === 'connect.ok') {
     S.ok = true; S.agents = f.agents || [];
+    S.vapid = f.vapidPublicKey || null;
     $('status').textContent = '온라인';
+    void updateBell();
     render();
   } else if (f.type === 'res') {
     if (!f.ok && !S.ok) { fatal('연결이 거부되었습니다: ' + (f.error || '') + '\n데스크탑의 QR 코드로 다시 열어 주세요.'); return; }
@@ -349,6 +354,56 @@ function loadOlder() {
     render();
   });
 }
+
+// ── 폰 알림 (Web Push — MOBILE_PUSH_NOTIFY_2026-07-21.md) ──
+// iOS는 홈 화면 추가 PWA에서만 PushManager가 존재 (16.4+). 미지원/LAN http = 벨 자동 숨김.
+const PUSH_OK = self.isSecureContext && 'serviceWorker' in navigator
+  && 'PushManager' in self && 'Notification' in self;
+if (PUSH_OK) navigator.serviceWorker.register('remote/sw.js').catch(() => {});
+const b64ud = (s) => b64d(s.replace(/-/g,'+').replace(/_/g,'/') + '='.repeat((4 - s.length % 4) % 4));
+function bellOn(on) {
+  const b = $('bellBtn');
+  b.style.color = on ? 'var(--green)' : '#555';
+  b.dataset.on = on ? '1' : '';
+}
+async function updateBell() {
+  const b = $('bellBtn');
+  if (!PUSH_OK || !S.vapid) { b.hidden = true; return; }
+  b.hidden = false;
+  let sub = null;
+  try {
+    const reg = await navigator.serviceWorker.getRegistration();
+    sub = reg && await reg.pushManager.getSubscription();
+  } catch {}
+  bellOn(!!sub && Notification.permission === 'granted');
+}
+$('bellBtn').onclick = async () => {
+  if (!PUSH_OK || !S.vapid || !S.ok) return;
+  try {
+    const reg = await navigator.serviceWorker.ready;
+    const cur = await reg.pushManager.getSubscription();
+    if (cur) { // 켜져 있음 → 해제
+      send({ type:'push.unsubscribe', endpoint: cur.endpoint });
+      await cur.unsubscribe();
+      bellOn(false);
+      $('status').textContent = '알림 꺼짐';
+      return;
+    }
+    // 권한 요청은 반드시 이 클릭 핸들러(user gesture) 안에서 (iOS 요건)
+    const perm = await Notification.requestPermission();
+    if (perm !== 'granted') { $('status').textContent = '알림 권한이 거부되었습니다'; return; }
+    const sub = await reg.pushManager.subscribe({
+      userVisibleOnly: true, applicationServerKey: b64ud(S.vapid) });
+    const j = sub.toJSON();
+    send({ type:'push.subscribe', endpoint: j.endpoint, p256dh: j.keys.p256dh, auth: j.keys.auth }, (f) => {
+      if (f.ok) { bellOn(true); $('status').textContent = '알림 켜짐'; }
+      else { void sub.unsubscribe(); $('status').textContent = '알림 등록 실패'; }
+    });
+  } catch (e) {
+    $('status').textContent = '알림 설정 실패';
+    console.warn('push toggle failed', e);
+  }
+};
 
 $('backBtn').onclick = () => {
   if (S.view === 'chat') { S.view = 'sessions'; render(); }
