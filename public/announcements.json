@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-07-22-beta-1-2-2",
+    "lang": "ko",
+    "date": "2026-07-22",
+    "title": "Be.Ark Beta 1.2.2 — 원격 연결 안정화",
+    "body": "Beta 1.2.2 업데이트가 공개됐습니다.\n\n🔗 원격 연결 픽스 — 설치본에서 폰 연결·릴레이가 \"operation is insecure\" 오류로 끊기던 문제를 해결했습니다. 이제 패키징된 앱에서도 폰 페어링과 HTML 미리보기 릴레이가 정상 동작합니다.\n\n지금 새 버전을 만나보세요 → re-be.world",
+    "tag": "Update"
+  },
+  {
+    "id": "2026-07-22-beta-1-2-2-en",
+    "lang": "en",
+    "date": "2026-07-22",
+    "title": "Be.Ark Beta 1.2.2 — Steadier remote connection",
+    "body": "Beta 1.2.2 is out.\n\n🔗 Remote connection fix — resolved the \"operation is insecure\" error that broke phone connect and relay in the installed build. Phone pairing and HTML preview relay now work correctly in the packaged app.\n\nGet the new build → re-be.world",
+    "tag": "Update"
+  },
+  {
     "id": "2026-07-21-beta-1-2-1",
     "lang": "ko",
     "date": "2026-07-21",

@@ -362,7 +362,7 @@
     <div class="brand"><img class="logo" src="/landing/appicon.png" alt="Be.Ark"> Be.Ark</div>
     <div class="nav-right">
       <a class="nav-lang" href="/" style="font-size:13px;font-weight:600;color:var(--ink-faint);text-decoration:none;padding:9px 12px;margin-right:2px">EN</a>
-      <a class="nav-cta" href="#download">Beta 1.2.1 다운로드</a>
+      <a class="nav-cta" href="#download">Beta 1.2.2 다운로드</a>
     </div>
   </div>
 </header><section class="hero">
@@ -379,7 +379,7 @@
 — 전부 <b>내 컴퓨터를 기반으로</b><br>
 Be.Ark는 진짜 내 편이 되어주는 AI 에이전트입니다.<br>나의 데이터를 학습하고 다시 되파는 서버형 AI와는 다릅니다.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" id="dl-top" href="#download">↓ Beta 1.2.1 다운로드</a>
+      <a class="btn btn-primary" id="dl-top" href="#download">↓ Beta 1.2.2 다운로드</a>
       <a class="btn btn-tg" href="https://t.me/beark2026" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true" style="vertical-align:-2px;margin-right:6px"><path d="M21.9 4.3l-3.3 15.6c-.24 1.1-.9 1.37-1.83.85l-5.05-3.72-2.44 2.35c-.27.27-.5.5-1 .5l.36-5.14L18 5.4c.4-.36-.09-.56-.62-.2L6.9 12.1l-4.9-1.53c-1.07-.33-1.09-1.07.22-1.58l19.15-7.38c.89-.33 1.67.2 1.38 1.72z"></path></svg>텔레그램 참여</a>
       <a class="btn btn-ghost" id="wl-top" href="#">대기자 등록</a>
     </div>
@@ -542,7 +542,7 @@ Be.Ark는 진짜 내 편이 되어주는 AI 에이전트입니다.<br>나의 데
       <h2>내 AI. 내 기억. 내 컴퓨터.</h2>
       <p>지금 Be.Ark를 다운로드하고, 오직 나만의 AI 에이전트를 만나보세요.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" id="dl-main" href="#">↓ Beta 1.2.1 다운로드</a>
+        <a class="btn btn-primary" id="dl-main" href="#">↓ Beta 1.2.2 다운로드</a>
         <a class="btn btn-tg" href="https://t.me/beark2026" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true" style="vertical-align:-2px;margin-right:6px"><path d="M21.9 4.3l-3.3 15.6c-.24 1.1-.9 1.37-1.83.85l-5.05-3.72-2.44 2.35c-.27.27-.5.5-1 .5l.36-5.14L18 5.4c.4-.36-.09-.56-.62-.2L6.9 12.1l-4.9-1.53c-1.07-.33-1.09-1.07.22-1.58l19.15-7.38c.89-.33 1.67.2 1.38 1.72z"></path></svg>텔레그램 참여</a>
       </div>
       <p class="note">Apple Silicon · <a href="https://t.me/beark2026" target="_blank" rel="noopener" style="color:#229ED9">텔레그램 커뮤니티 참여</a></p>
@@ -560,7 +560,7 @@ Be.Ark는 진짜 내 편이 되어주는 AI 에이전트입니다.<br>나의 데
   <div class="modal">
     <span class="x" id="dlClose">✕</span>
     <h3>Be.Ark 다운로드</h3>
-    <span class="ver-badge">Beta 1.2.1</span>
+    <span class="ver-badge">Beta 1.2.2</span>
     <p class="msub">플랫폼을 선택하세요. 무료 · 계정 불필요.</p>
     <div class="dls">
       <a class="dl-opt" id="dl-mac" href="#">
@@ -610,8 +610,8 @@ Be.Ark는 진짜 내 편이 되어주는 AI 에이전트입니다.<br>나의 데
 <script>
   // ── Download config — update these direct asset URLs when the release is live ──
   var RELEASES_PAGE = "https://github.com/kyungsinkim-sketch/Be.Ark/releases/latest";
-  var DL_MAC = "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.2.0-beta.2/Be.Ark_1.2.0-beta.2_aarch64.dmg";
-  var DL_WIN = "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.2.0-beta.2/Be.Ark_1.2.0-beta.2_x64-setup.exe";
+  var DL_MAC = "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.2.0-beta.3/Be.Ark_1.2.0-beta.3_aarch64.dmg";
+  var DL_WIN = "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.2.0-beta.3/Be.Ark_1.2.0-beta.3_x64-setup.exe";
   (function(){
     var mac=document.getElementById("dl-mac"), win=document.getElementById("dl-win");
     if(mac) mac.setAttribute("href", DL_MAC);
@@ -697,8 +697,8 @@ Be.Ark는 진짜 내 편이 되어주는 AI 에이전트입니다.<br>나의 데
     if(btn) btn.addEventListener("click", function(e){
       e.preventDefault();
       if(BUG_URL){ window.open(BUG_URL, "_blank", "noopener"); return; }
-      var subject="Be.Ark Beta 1.2.1 — 버그 신고";
-      var body="무슨 일이 있었나요:\n\n\n재현 방법:\n\n\n기기 / OS:\n\n\n앱 버전: Beta 1.2.1";
+      var subject="Be.Ark Beta 1.2.2 — 버그 신고";
+      var body="무슨 일이 있었나요:\n\n\n재현 방법:\n\n\n기기 / OS:\n\n\n앱 버전: Beta 1.2.2";
       window.location.href="mailto:"+BUG_MAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
     });
   })();
