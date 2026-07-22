@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-07-22-beta-1-2-4",
+    "lang": "ko",
+    "date": "2026-07-22",
+    "title": "Be.Ark Beta 1.2.4 — 완전 제거 정확도 개선",
+    "body": "Beta 1.2.4 업데이트가 공개됐습니다.\n\n🧹 완전 제거 정확도 픽스 — \"Be.Ark 완전 제거\"가 앱이 받은 로컬 AI 모델까지 정확히 삭제하도록 교정했습니다. 완전 제거 시 디스크 공간이 확실히 회수됩니다.\n\n지금 새 버전을 만나보세요 → re-be.world",
+    "tag": "Update"
+  },
+  {
+    "id": "2026-07-22-beta-1-2-4-en",
+    "lang": "en",
+    "date": "2026-07-22",
+    "title": "Be.Ark Beta 1.2.4 — More accurate uninstall",
+    "body": "Beta 1.2.4 is out.\n\n🧹 Uninstall accuracy fix — \"Uninstall Be.Ark\" now correctly removes the local AI models Be.Ark downloaded, so a full uninstall reliably reclaims disk space.\n\nGet the new build → re-be.world",
+    "tag": "Update"
+  },
+  {
     "id": "2026-07-22-beta-1-2-3",
     "lang": "ko",
     "date": "2026-07-22",
