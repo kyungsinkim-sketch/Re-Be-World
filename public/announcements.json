@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-07-24-beta-1-2-5",
+    "lang": "ko",
+    "date": "2026-07-24",
+    "title": "Be.Ark Beta 1.2.5 — 폴더 정리 + 멀티에이전트 안정화",
+    "body": "Beta 1.2.5 업데이트가 공개됐습니다.\n\n🗂 폴더 관리 — 에이전트가 프로젝트 폴더 안에 하위 폴더를 만들고 파일을 이동·복사해 정리합니다. 첨부로 준 PDF 원본도 \"프로젝트 폴더에 정리해줘\" 한마디면 분류됩니다.\n\n🗣 발화자 라벨 정확도 — 에이전트 간 대화(쪽지·게스트 턴·위임 보고)에서 누가 말했는지가 메시지에 기록되어 항상 정확한 이름·색으로 표시됩니다.\n\n🔎 검색 출처 섞임 픽스 — 다른 에이전트가 검색한 출처가 내 답변에 붙던 문제를 원천 차단했습니다.\n\n🟢 새 메시지 불빛 정확도 — 세션을 읽으면 에이전트 불빛도 정확히 함께 꺼집니다.\n\n⚡ 더 빨라진 전환 — 세션 전환 시 PPT 미리보기 즉시 복원, 인지 그래프 재진입 즉시 표시(배치도 항상 동일).\n\n지금 새 버전을 만나보세요 → re-be.world",
+    "tag": "Update"
+  },
+  {
+    "id": "2026-07-24-beta-1-2-5-en",
+    "lang": "en",
+    "date": "2026-07-24",
+    "title": "Be.Ark Beta 1.2.5 — Folder organizing + multi-agent stability",
+    "body": "Beta 1.2.5 is out.\n\n🗂 Folder management — agents can now create subfolders and move/copy files to organize your project folder. Attached PDFs can be filed away with a single request.\n\n🗣 Accurate speaker labels — agent-to-agent messages (notes, guest turns, delegation reports) now carry the speaker identity, always shown with the right name and color.\n\n🔎 Search source mix-up fixed — sources from another agent's web search no longer leak into your answers.\n\n🟢 Unread indicator accuracy — reading a session now clears the agent light correctly.\n\n⚡ Faster switching — PPT previews restore instantly across sessions, and the cognition graph reopens instantly with a stable layout.\n\nGet the new build → re-be.world",
+    "tag": "Update"
+  },
+  {
     "id": "2026-07-22-beta-1-2-4",
     "lang": "ko",
     "date": "2026-07-22",
