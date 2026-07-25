@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-07-25-beta-1-2-7",
+    "lang": "ko",
+    "date": "2026-07-25",
+    "title": "Be.Ark Beta 1.2.7 — Claude 로그인 안정화",
+    "body": "Beta 1.2.7 업데이트가 공개됐습니다.\n\n🔐 Claude 구독 로그인 안정화 — 로그인이 서버에서 만료·회수된 경우(401), 오류 대신 안내와 함께 재로그인 창이 자동으로 열립니다. 터미널 없이 브라우저 로그인만으로 바로 복구됩니다.\n\n🔁 다시 로그인 버튼 — 프로필 > 모델 설정에 \"다시 로그인\" 버튼이 상시 표시됩니다. 연결 상태와 무관하게 언제든 재인증할 수 있습니다.\n\n지금 새 버전을 만나보세요 → re-be.world",
+    "tag": "Update"
+  },
+  {
+    "id": "2026-07-25-beta-1-2-7-en",
+    "lang": "en",
+    "date": "2026-07-25",
+    "title": "Be.Ark Beta 1.2.7 — Claude sign-in stability",
+    "body": "Beta 1.2.7 is now available.\n\n🔐 Claude subscription sign-in stability — if your sign-in is expired or revoked on the server (401), the app now shows a friendly notice and automatically opens the re-login window. No terminal needed; a browser sign-in fully recovers it.\n\n🔁 Sign in again button — Profile > Model settings now always shows a \"Sign in again\" button, so you can re-authenticate anytime.\n\nGet the new version → re-be.world",
+    "tag": "Update"
+  },
+  {
     "id": "2026-07-25-beta-1-2-6",
     "lang": "ko",
     "date": "2026-07-25",
