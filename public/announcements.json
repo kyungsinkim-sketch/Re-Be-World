@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-07-25-beta-1-2-6",
+    "lang": "ko",
+    "date": "2026-07-25",
+    "title": "Be.Ark Beta 1.2.6 — 자동 최신 모델",
+    "body": "Beta 1.2.6 업데이트가 공개됐습니다.\n\n🔄 자동 최신 모델 — 모델 선택에 \"항상 최신\" 옵션이 생겼습니다 (Claude Opus/Sonnet, GPT 플래그십). 한 번 선택해두면 Opus 5 같은 새 모델이 나와도 앱 업데이트 없이 자동으로 연결됩니다. 특정 버전을 고정하고 싶으면 기존처럼 구체 모델을 선택하면 됩니다.\n\n지금 새 버전을 만나보세요 → re-be.world",
+    "tag": "Update"
+  },
+  {
+    "id": "2026-07-25-beta-1-2-6-en",
+    "lang": "en",
+    "date": "2026-07-25",
+    "title": "Be.Ark Beta 1.2.6 — Always-latest models",
+    "body": "Beta 1.2.6 is out.\n\n🔄 Always-latest models — the model picker now offers \"always latest\" options (Claude Opus/Sonnet, GPT flagship). Pick it once and new releases like Opus 5 connect automatically, no app update needed. Pinning a specific version still works as before.\n\nGet the new build → re-be.world",
+    "tag": "Update"
+  },
+  {
     "id": "2026-07-24-beta-1-2-5",
     "lang": "ko",
     "date": "2026-07-24",
