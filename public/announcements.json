@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-07-28-beta-1-2-8",
+    "lang": "ko",
+    "date": "2026-07-28",
+    "title": "Be.Ark Beta 1.2.8 — 구글 연결 오류 수정",
+    "body": "Beta 1.2.8 업데이트가 공개됐습니다.\n\n🔗 구글 연결 'Load failed' 수정 — 브라우저에서 로그인 승인까지 마쳤는데도 앱에서 연결이 실패하던 문제를 해결했습니다. 인증 코드는 정상 수신됐지만 토큰 교환 요청이 앱 보안 정책에 막혀 있던 것이 원인이었습니다.\n\n📮 메일 조회 경로 복구 — 연결 이후 Gmail 조회에 쓰이는 주소도 함께 허용되어, 연결부터 메일 확인까지 한 번에 이어집니다.\n\n지금 새 버전을 만나보세요 → re-be.world",
+    "tag": "Update"
+  },
+  {
+    "id": "2026-07-28-beta-1-2-8-en",
+    "lang": "en",
+    "date": "2026-07-28",
+    "title": "Be.Ark Beta 1.2.8 — Google connection fix",
+    "body": "Beta 1.2.8 is now available.\n\n🔗 Fixed 'Load failed' on Google connect — connecting failed in the app even after you approved sign-in in the browser. The authorization code was received fine; the token exchange request was being blocked by the app's security policy.\n\n📮 Mail access restored — the endpoint used for Gmail lookups is now allowed too, so connecting and reading mail work end to end.\n\nGet the new version → re-be.world",
+    "tag": "Update"
+  },
+  {
     "id": "2026-07-25-beta-1-2-7",
     "lang": "ko",
     "date": "2026-07-25",
