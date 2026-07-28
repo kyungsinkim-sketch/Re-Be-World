@@ -83,10 +83,13 @@
       <li>Sent only with your explicit approval: every outgoing email requires a separate, per-message confirmation step</li>
     </ul>
     <p>OAuth tokens are stored only in the local vault on your device. Disconnecting the service in Be.Ark, or revoking access at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>, removes access.</p>
+    <p>If you ask the agent to work on this content while a cloud model is selected, the relevant part of it is included in that request to the model provider — see section 4. With a local model, it is processed entirely on your device.</p>
     <p>Be.Ark's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
 
-    <h2>4. Third-party AI providers (bring your own key)</h2>
-    <p>Be.Ark works fully offline with local models. If you connect your own API key for a cloud model (e.g. Anthropic, OpenAI, Google), the content of those conversations is sent directly from your device to that provider under their terms. Be.Ark servers are not in that path.</p>
+    <h2>4. Third-party AI providers (your own key or account)</h2>
+    <p>Be.Ark works fully offline with local models. If you instead choose a cloud model — by entering your own API key, or by signing in to a provider's CLI (e.g. Claude Code, Codex, Gemini CLI) — that provider processes your requests under their own terms and privacy policy. Be.Ark servers are not in that path; the connection is made directly from your device.</p>
+    <p>In that case, what is sent is whatever the agent needs to answer you. Besides your message, this can include context drawn from your local data — for example relevant excerpts of documents, memory about your writing style and working habits, or details of people and schedules related to your request. Your local database as a whole is never uploaded; only the portions used for a given request are included.</p>
+    <p>Choosing a local model keeps this processing entirely on your device. Retention and model-training practices for cloud providers are governed by that provider's settings and policies, which you control in your own account with them.</p>
 
     <h2>5. Data retention and deletion</h2>
     <ul>
