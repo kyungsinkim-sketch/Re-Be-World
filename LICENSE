@@ -1,0 +1,34 @@
+Re-Be.World / Be.Ark — Proprietary License
+Copyright (c) 2026 Paulus Co., Ltd. All rights reserved.
+
+This repository is public so that the website can be served and application
+builds can be distributed. Public visibility is not a grant of any license.
+
+SITE CONTENT. The HTML, CSS, JavaScript, copy, images, and design contained in
+this repository are the proprietary property of Paulus Co., Ltd. ("Paulus").
+No person or entity may copy, reproduce, republish, or create derivative works
+from them, in whole or in part, without prior written permission from Paulus.
+This includes supplying them to an automated code-generation or machine-learning
+system in order to reproduce or approximate this site or product.
+
+APPLICATION BUILDS. Binaries distributed through this repository's Releases are
+licensed to end users under a personal, non-exclusive, non-transferable,
+revocable license to run the build for their own use. Redistribution,
+modification, reverse engineering, decompilation, and disassembly are
+prohibited except to the limited extent such restriction is void under
+applicable law. No rights to the source code are conveyed.
+
+TRADEMARKS. "Be.Ark", "Re-Be", "Re-Be.World", "Ark.works", and associated logos
+are trademarks of Paulus Co., Ltd. This license grants no trademark rights.
+
+USER DATA. Paulus claims no ownership of the content, memories, files, or other
+data a user creates or stores with Be.Ark. Such data belongs to the user.
+
+NO WARRANTY. THE SOFTWARE AND CONTENT ARE PROVIDED "AS IS", WITHOUT WARRANTY OF
+ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL PAULUS BE LIABLE FOR ANY CLAIM,
+DAMAGES, OR OTHER LIABILITY ARISING FROM THEIR USE.
+
+THIRD-PARTY COMPONENTS. Open-source components remain governed by their own
+licenses, which apply to those components only.
+
+Contact: kyungsin.kim@paulus.pro
