@@ -238,7 +238,10 @@ async function connectRelay() {
   $('status').textContent = '접속 중…';
   if (!token) { fatal('페어링 정보가 없습니다.\n데스크탑 설정의 QR 코드로 다시 열어 주세요.'); return; }
   try {
-    const mod = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+    // 외부 리뷰 대응 (2026-08-03): jsDelivr 런타임 로드 제거 — supabase-js 2.101.1을
+    // esbuild 단일 ESM으로 로컬 벤더링(./supabase.js). 남의 CDN이 이 webview에 코드를
+    // 넣을 수 있던 경로 차단 + 버전 핀. 갱신 절차 = docs/EXTERNAL_SECURITY_REVIEW §2-3.
+    const mod = await import('./supabase.js');
     R.key = await deriveKey(token);
     const chName = await deriveChannel(token);
     const client = mod.createClient(SB_URL, SB_KEY, { realtime: { params: { eventsPerSecond: 25 } } });
