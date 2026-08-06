@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-08-06-beta-1-3-1",
+    "lang": "ko",
+    "date": "2026-08-06",
+    "title": "Be.Ark Beta 1.3.1 — 로그인이 풀려도 멈추지 않습니다",
+    "body": "Beta 1.3.1 업데이트가 공개됐습니다. 눈에 잘 안 띄지만 조용히 일을 망치던 것들을 정리했습니다.\n\n🔌 로그인이 풀려도 배경 작업이 멈추지 않습니다 — Claude/ChatGPT 연결이 만료되면 하루 일지·기억 정리·예약 작업이 조용히 전부 실패하던 문제를 고쳤습니다. 이제 쓸 수 있는 다른 모델로 자동으로 넘어가고, 재로그인 안내도 앱 안에서 바로 보여줍니다.\n\n🧹 내부 작업 문구가 답변에 새지 않습니다 — 에이전트에게만 보내는 지시문이 가끔 답변에 섞여 나오던 것을 구조적으로 차단했습니다.\n\n🔁 \"이따 해둘게\"로 끝나고 다시 처음부터 하던 문제 — 복잡한 작업에서 매 턴 파일만 읽고 계획을 예고한 채 끝나던 루프를 끊었습니다. 이제 그 턴 안에서 끝까지 진행합니다.\n\n지금 새 버전을 만나보세요 → re-be.world",
+    "tag": "Update"
+  },
+  {
+    "id": "2026-08-06-beta-1-3-1-en",
+    "lang": "en",
+    "date": "2026-08-06",
+    "title": "Be.Ark Beta 1.3.1 — Keeps working when your login expires",
+    "body": "Beta 1.3.1 is out. This one cleans up the quiet failures — the kind you don't notice until something didn't happen.\n\n🔌 Background work no longer dies with an expired login — when your Claude/ChatGPT connection expired, daily journals, memory upkeep and scheduled tasks all failed silently. Be.Ark now falls back to another available model and shows you a re-login prompt inside the app.\n\n🧹 No more internal instructions leaking into replies — the notes meant only for the agent could occasionally surface in its answers. Now blocked at the source.\n\n🔁 No more \"I'll get to it next turn\" loops — on complex tasks the agent could spend every turn re-reading files and promising a plan. It now finishes the work within the turn.\n\nTry the new version → re-be.world",
+    "tag": "Update"
+  },
+  {
     "id": "2026-08-03-beta-1-3",
     "lang": "ko",
     "date": "2026-08-03",
