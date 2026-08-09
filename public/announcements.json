@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-08-09-beta-1-3-3",
+    "date": "2026-08-09",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.3.3 — 워드(.docx) 문서 편집 + 라이트 테마",
+    "body": "이제 한글(HWP)에 이어 워드 문서도 에이전트가 직접 편집합니다.\n\n📝 \"이 docx에서 금액을 250만원으로 바꿔줘\" — 문구 교체, 표 칸 채우기, 새 문서 작성까지. 서식·이미지·스타일은 그대로 유지되고, 편집 전 상태는 자동 백업됩니다.\n\n📄 Living Files에 .docx 미리보기 탭이 생겼습니다 — 서식·표·이미지를 대화 옆에서 바로 확인하고, 원클릭으로 워드에서 열 수 있습니다.\n\n🎨 라이트(아이보리) 테마가 추가됐습니다 — 설정에서 바로 전환할 수 있습니다.\n\n🔎 모델 선택의 \"항상 최신\" 별칭이 지금 실제로 가리키는 버전을 함께 표시합니다.\n\n지금 새 버전을 만나보세요 → re-be.world"
+  },
+  {
+    "id": "2026-08-09-beta-1-3-3-en",
+    "date": "2026-08-09",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.3.3 — Edit Word (.docx) documents + Light theme",
+    "body": "Following HWP support, your agent can now edit Word documents directly.\n\n📝 \"Change the amount to $2,500 in this docx\" — replace text, fill table cells, or create new documents. Formatting, images and styles stay intact, with an automatic backup before every edit.\n\n📄 A .docx preview tab in Living Files — see formatting, tables and images right next to the conversation, with one-click \"Open in Word\".\n\n🎨 New light (ivory) theme — switch anytime in Settings.\n\n🔎 The \"always latest\" model alias now shows which version it actually points to.\n\nGet the new version → re-be.world"
+  },
+  {
     "id": "2026-08-07-beta-1-3-2",
     "lang": "ko",
     "date": "2026-08-07",
