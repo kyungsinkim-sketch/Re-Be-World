@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-08-10-beta-1-3-4",
+    "date": "2026-08-10",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.3.4 — 이메일 파일 첨부 + 모델 항상 최신",
+    "body": "📎 파일을 드래그앤드롭하고 \"이거 첨부해서 보내줘\" — 이미지·PDF·워드·PPT 등 어떤 파일이든 이메일에 첨부해 보냅니다 (합계 15MB). 무엇이 첨부되는지 확인하고 승인한 뒤에만 발송되고, 한글 파일명도 깨지지 않습니다.\n\n🤖 Claude 모델 선택이 Sonnet·Opus·Fable·Haiku \"항상 최신\" 4종으로 깔끔해졌습니다 — 지금 실제 이름(예: Claude Sonnet 5)이 그대로 표시되고, 새 세대가 나오면 앱 업데이트 없이 자동 반영됩니다.\n\n✨ ChatGPT 로그인에서 최신 GPT-5.6 세대(Luna·Terra·Sol)를 지원합니다.\n\n지금 새 버전을 만나보세요 → re-be.world"
+  },
+  {
+    "id": "2026-08-10-beta-1-3-4-en",
+    "date": "2026-08-10",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.3.4 — Email attachments + always-latest models",
+    "body": "📎 Drag & drop a file and say \"attach this and send it\" — your agent attaches images, PDFs, Word docs, slides, anything (up to 15MB total). You review exactly what's attached and approve before anything is sent.\n\n🤖 Claude model picker is now four \"always latest\" entries (Sonnet · Opus · Fable · Haiku) showing the real current name (e.g. Claude Sonnet 5) — new generations appear automatically, no app update needed.\n\n✨ ChatGPT sign-in now supports the latest GPT-5.6 generation (Luna · Terra · Sol).\n\nGet the new version → re-be.world"
+  },
+  {
     "id": "2026-08-09-beta-1-3-3",
     "date": "2026-08-09",
     "lang": "ko",
