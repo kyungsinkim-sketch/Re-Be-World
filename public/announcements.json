@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-08-12-beta-1-4-1",
+    "date": "2026-08-12",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.4.1 — 멀티에이전트 정확도",
+    "body": "👥 @멘션으로 불려온 게스트 에이전트가 어느 에이전트의 방에 와 있는지 정확히 인지하고, 방 주인을 올바르게 호칭합니다.\n🌐 첫 실행 안내 화면이 10개 언어 모두에서 해당 언어로 표시됩니다.\n\n지금 업데이트하세요 → re-be.world"
+  },
+  {
+    "id": "2026-08-12-beta-1-4-1-en",
+    "date": "2026-08-12",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.4.1 — Multi-agent accuracy",
+    "body": "👥 Guest agents called in via @mention now know whose room they are in and address the host agent correctly.\n🌐 The first-run intro is now fully localized in all 10 languages.\n\nUpdate now → re-be.world"
+  },
+  {
     "id": "2026-08-12-beta-1-3-10",
     "date": "2026-08-12",
     "lang": "ko",
