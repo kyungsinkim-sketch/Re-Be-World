@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-08-14-beta-1-4-3",
+    "date": "2026-08-14",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.4.3 — 윈도우 저장 폴더 오류 수정 · 대형 PPT 작업",
+    "body": "🪟 윈도우에서 저장 폴더를 고르면 무조건 거부되던 문제를 고쳤습니다 — 온보딩 \"로컬 저장 폴더\" 단계에서 정상 폴더를 골라도 접근 거부가 뜨던 증상입니다. 윈도우 사용자는 꼭 업데이트해 주세요.\n\n📊 130장 넘는 대형 PPT 작업이 안정적으로 돌아갑니다 — 챕터 단위로 나눠 진행, 이미지 많은 덱에서 앱이 죽던 문제 해결, 프리뷰 버벅임 제거, 긴 작업 자동 시간 연장.\n\n🗂️ 탐색기 정렬을 파인더 방식으로 정리하고, 편집 실패 시 임시 문구가 실제 파일에 써지던 동작을 막았습니다.\n\n지금 업데이트하세요 → re-be.world"
+  },
+  {
+    "id": "2026-08-14-beta-1-4-3-en",
+    "date": "2026-08-14",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.4.3 — Windows folder error fixed · Large PPT work",
+    "body": "🪟 Fixed Windows rejecting every folder you picked — during onboarding, choosing a normal folder under your home directory still showed an access denied error. Windows users should update.\n\n📊 Large decks (130+ slides) now work reliably — chapter-by-chapter editing, no more crashes on image-heavy decks, smoother preview, and automatic time extension for long jobs.\n\n🗂️ Explorer sorting now follows Finder conventions, and placeholder text is no longer written into your real file when an edit fails.\n\nUpdate now → re-be.world"
+  },
+  {
     "id": "2026-08-12-beta-1-4-2",
     "date": "2026-08-12",
     "lang": "ko",
