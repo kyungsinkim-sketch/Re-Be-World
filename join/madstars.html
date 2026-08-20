@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Be.Ark 가입 · MADStars 파티</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#070a0f">
+<meta property="og:title" content="Be.Ark 가입 · MADStars 파티">
+<meta property="og:description" content="현장 가입하고 Pro 3개월 무료 쿠폰을 받으세요.">
+<link rel="icon" href="/logo.png">
+<!--
+  MADStars 파티(2026-08-26 해운대) 현장 가입 페이지.
+
+  설계 근거 (2026-08-20 실측):
+   - 외부 스크립트 0. supabase-js도 안 쓴다(193KB) — fetch 2번이면 끝나고, 행사장 네트워크는 느리다.
+   - 이메일+비밀번호 = 데스크탑 앱 로그인(arkAuth.signInWithPassword)과 동일한 계정 경로.
+     OTP/매직링크로 만들면 비밀번호가 없어서 앱에 로그인할 수 없다 = 이벤트가 실패한다.
+   - 확인 메일 없음: billing 함수가 email_confirm:true로 서버에서 즉시 확정한다.
+     100명이 동시에 메일함을 여는 순간 줄이 서고, SMTP(Gmail) 발송 한도에도 걸린다.
+   - 쿠폰은 가입 시점에 계정에 붙는다. 유저가 코드를 외우거나 나중에 입력하지 않는다.
+-->
+<style>
+  :root{
+    --bg:#070a0f; --bg-soft:#0c1018; --ink:#f6f8fb; --ink-dim:#9aa6b8; --ink-faint:#5e6b7e;
+    --accent:#c49c4d; --accent-soft:#c49c4d1f; --line:#1b2330; --radius:18px;
+    --danger:#ff6b6b; --ok:#4ade80;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--ink); line-height:1.55; -webkit-font-smoothing:antialiased;
+    font-family:Inter,system-ui,-apple-system,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    min-height:100dvh; display:flex; align-items:center; justify-content:center;
+    padding:24px 20px calc(24px + env(safe-area-inset-bottom));
+    background-image:radial-gradient(620px 420px at 70% -5%, #c49c4d18, transparent 70%),
+                     radial-gradient(520px 380px at 8% 12%, #863bff14, transparent 70%);
+  }
+  .card{width:100%; max-width:400px}
+  .brand{display:flex; align-items:center; gap:10px; margin-bottom:26px}
+  .brand img{width:30px; height:30px; border-radius:8px}
+  .brand span{font-weight:700; font-size:17px; letter-spacing:-.02em}
+  .tag{display:inline-block; font-size:12px; font-weight:600; letter-spacing:.04em;
+       color:var(--accent); background:var(--accent-soft); border:1px solid #c49c4d33;
+       padding:5px 11px; border-radius:999px; margin-bottom:14px}
+  h1{font-size:26px; line-height:1.3; letter-spacing:-.03em; font-weight:700}
+  .sub{color:var(--ink-dim); font-size:15px; margin-top:10px}
+  .perk{margin:22px 0 26px; padding:15px 17px; border:1px solid var(--line);
+        border-radius:14px; background:var(--bg-soft)}
+  .perk b{color:var(--accent); font-size:16px}
+  .perk p{color:var(--ink-faint); font-size:13px; margin-top:4px}
+  label{display:block; font-size:13px; color:var(--ink-dim); margin:0 0 7px}
+  input{width:100%; padding:14px 15px; font-size:16px; /* 16px 미만이면 iOS가 화면을 확대한다 */
+        color:var(--ink); background:#0f141d; border:1px solid var(--line);
+        border-radius:12px; outline:none; font-family:inherit}
+  input:focus{border-color:var(--accent)}
+  .field + .field{margin-top:14px}
+  .hint{font-size:12px; color:var(--ink-faint); margin-top:7px}
+  button{width:100%; margin-top:22px; padding:15px; font-size:16px; font-weight:700;
+         font-family:inherit; color:#1a1206; background:var(--accent); border:0;
+         border-radius:12px; cursor:pointer; letter-spacing:-.01em}
+  button:disabled{opacity:.55; cursor:default}
+  .msg{margin-top:16px; font-size:14px; padding:12px 14px; border-radius:11px; display:none}
+  .msg.show{display:block}
+  .msg.err{color:var(--danger); background:#ff6b6b14; border:1px solid #ff6b6b33}
+  .msg.info{color:var(--ink-dim); background:#ffffff08; border:1px solid var(--line)}
+  .done{display:none}
+  .done.show{display:block}
+  .check{width:46px; height:46px; border-radius:50%; border:2px solid var(--ok);
+         color:var(--ok); font-size:24px; line-height:42px; text-align:center; margin-bottom:18px}
+  .dl{display:block; margin-top:12px; padding:15px; text-align:center; font-size:15px;
+      font-weight:600; border-radius:12px; text-decoration:none;
+      color:var(--ink); border:1px solid var(--line); background:var(--bg-soft)}
+  .dl.primary{color:#1a1206; background:var(--accent); border-color:var(--accent)}
+  .foot{margin-top:26px; font-size:12px; color:var(--ink-faint); text-align:center}
+  .foot a{color:var(--ink-faint)}
+</style>
+</head>
+<body>
+<main class="card">
+
+  <div class="brand"><img src="/logo.png" alt=""><span>Be.Ark</span></div>
+
+  <section id="form-view">
+    <div class="tag">MADSTARS PARTY · 08.26</div>
+    <h1>현장 가입하고<br>Pro 3개월 무료로 쓰세요</h1>
+    <p class="sub">이메일과 비밀번호만 입력하면 끝. 확인 메일을 기다릴 필요 없어요.</p>
+
+    <div class="perk">
+      <b>Pro 3개월 무료</b>
+      <p>가입하면 쿠폰이 계정에 자동으로 붙어요. 코드를 따로 외우지 않아도 됩니다.</p>
+    </div>
+
+    <form id="f" novalidate>
+      <div class="field">
+        <label for="email">이메일</label>
+        <input id="email" type="email" inputmode="email" autocomplete="email"
+               autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="you@example.com" required>
+      </div>
+      <div class="field">
+        <label for="pw">비밀번호</label>
+        <input id="pw" type="password" autocomplete="new-password" placeholder="8자 이상" required>
+        <p class="hint">앱에 로그인할 때 쓰는 비밀번호예요.</p>
+      </div>
+      <button id="submit" type="submit">가입하고 쿠폰 받기</button>
+    </form>
+    <div id="msg" class="msg"></div>
+  </section>
+
+  <section id="done-view" class="done">
+    <div class="check">✓</div>
+    <h1>가입 완료</h1>
+    <p class="sub" id="done-sub">Pro 3개월 무료 쿠폰이 계정에 붙었어요. 앱을 설치하고 방금 만든 이메일·비밀번호로 로그인하면 됩니다.</p>
+    <div style="margin-top:24px">
+      <a class="dl primary" href="https://re-be.world/#download">Be.Ark 다운로드</a>
+      <a class="dl" href="https://re-be.world/">re-be.world 둘러보기</a>
+    </div>
+    <p class="foot">지금 설치하지 않아도 괜찮아요. 계정에 쿠폰이 남아 있습니다.</p>
+  </section>
+
+  <p class="foot">Paulus Co.,Ltd. · <a href="/privacy">개인정보처리방침</a></p>
+</main>
+
+<script>
+(function(){
+  "use strict";
+  var FN  = "https://hxrvapnasxmaubymcipd.supabase.co/functions/v1/billing";
+  var AUTH= "https://hxrvapnasxmaubymcipd.supabase.co/auth/v1/token?grant_type=password";
+  // publishable key = 공개용(브라우저 노출 전제). 데스크탑 arkAuth.ts와 같은 정본 프로젝트.
+  var KEY = "sb_publishable_Skd6X54IOwVKyu3-QpxSog_TiRz2vK3";
+  var CAMPAIGN = "madstars";
+
+  var form = document.getElementById("f");
+  var btn  = document.getElementById("submit");
+  var msgEl= document.getElementById("msg");
+
+  function msg(text, kind){
+    msgEl.textContent = text;
+    msgEl.className = "msg show " + (kind || "info");
+  }
+  function clearMsg(){ msgEl.className = "msg"; }
+
+  function post(url, body, jwt){
+    var headers = { "Content-Type":"application/json", "apikey":KEY };
+    if (jwt) headers["Authorization"] = "Bearer " + jwt;
+    return fetch(url, { method:"POST", headers:headers, body:JSON.stringify(body) })
+      .then(function(r){ return r.json().catch(function(){ return {}; })
+        .then(function(j){ return { status:r.status, body:j }; }); });
+  }
+
+  // 서버가 돌려준 사유를 사람 말로. 모르는 값은 삼키지 말고 그대로 붙인다(원인이 화면까지 오게).
+  var REASONS = {
+    invalid_email:   "이메일 주소를 다시 확인해 주세요.",
+    weak_password:   "비밀번호는 8자 이상이어야 해요.",
+    campaign_closed: "이벤트가 마감됐어요.",
+    not_open_yet:    "아직 이벤트 시작 전이에요.",
+    unknown_campaign:"이벤트 링크가 올바르지 않아요.",
+    signup_failed:   "가입에 실패했어요. 잠시 후 다시 시도해 주세요."
+  };
+  function reasonText(code){ return REASONS[code] || ("문제가 생겼어요 (" + code + ")"); }
+
+  function finish(promo){
+    if (promo && promo.attached === false) {
+      document.getElementById("done-sub").textContent =
+        "계정이 만들어졌어요. 다만 쿠폰이 붙지 않았습니다 — 현장 스태프에게 알려주세요. " +
+        "앱은 방금 만든 이메일·비밀번호로 바로 로그인할 수 있어요.";
+    }
+    document.getElementById("form-view").style.display = "none";
+    document.getElementById("done-view").className = "done show";
+    window.scrollTo(0, 0);
+  }
+
+  // 이미 계정이 있는 참석자 = 같은 비밀번호로 로그인해서 쿠폰만 받는다.
+  function claimAsExisting(email, pw){
+    msg("이미 가입된 계정이에요. 쿠폰을 붙이는 중…", "info");
+    return post(AUTH, { email:email, password:pw })
+      .then(function(r){
+        if (!r.body || !r.body.access_token) {
+          msg("이미 가입된 이메일이에요. 비밀번호가 기존 계정과 달라요 — 원래 쓰던 비밀번호를 넣어주세요.", "err");
+          return null;
+        }
+        return post(FN, { type:"claim_promo", campaign:CAMPAIGN }, r.body.access_token);
+      })
+      .then(function(r){
+        if (!r) return;
+        if (r.status === 200) return finish(r.body.promo);
+        var reason = (r.body && r.body.promo && r.body.promo.reason) || (r.body && r.body.error) || "unknown";
+        if (reason === "claim_write_failed" || String(reason).indexOf("claim_write_failed") === 0) {
+          msg("쿠폰을 붙이지 못했어요. 현장 스태프에게 알려주세요.", "err");
+        } else {
+          msg(reasonText(reason), "err");
+        }
+      });
+  }
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var email = document.getElementById("email").value.trim().toLowerCase();
+    var pw    = document.getElementById("pw").value;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg(REASONS.invalid_email, "err"); return; }
+    if (pw.length < 8) { msg(REASONS.weak_password, "err"); return; }
+
+    btn.disabled = true;
+    btn.textContent = "가입하는 중…";
+    clearMsg();
+
+    post(FN, { type:"event_signup", campaign:CAMPAIGN, email:email, password:pw })
+      .then(function(r){
+        if (r.status === 200 && r.body.ok && r.body.existing) return claimAsExisting(email, pw);
+        if (r.status === 200 && r.body.ok) return finish(r.body.promo);
+        msg(reasonText((r.body && r.body.error) || "unknown"), "err");
+      })
+      .catch(function(){
+        msg("네트워크가 불안정해요. 다시 눌러주세요.", "err");
+      })
+      .then(function(){
+        btn.disabled = false;
+        btn.textContent = "가입하고 쿠폰 받기";
+      });
+  });
+})();
+</script>
+</body>
+</html>
