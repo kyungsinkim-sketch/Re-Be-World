@@ -181,6 +181,11 @@
       <b>MADSTARS · Pro 3개월 무료</b>
       <p id="coupon-sub">쿠폰이 계정에 등록됐어요. 결제 시 자동 적용됩니다.</p>
     </div>
+    <div id="pay-area" style="display:none">
+      <p class="hint" style="margin-top:14px">여기서 결제수단까지 등록하면 Pro가 지금 바로 시작돼요.
+        3개월간 0원, Apple Pay·Google Pay 지원.</p>
+      <button id="pay" type="button">Pro 바로 시작하기</button>
+    </div>
     <div id="msg2" class="msg"></div>
   </section>
 
@@ -214,8 +219,11 @@
   var form = document.getElementById("f");
   var btn  = document.getElementById("submit");
   var claimBtn = document.getElementById("claim");
+  var payBtn = document.getElementById("pay");
   var msgEl = document.getElementById("msg");
   var msg2El = document.getElementById("msg2");
+  // 미션 ③ 로그인에서 받은 JWT — 보너스 결제 등록(checkout)에 재사용. 저장하지 않는다(메모리만).
+  var sessionJwt = null;
 
   // ── 스탬프 상태: localStorage 영속 (파티장에서 새로고침해도 유지) ──────────
   var state = { film:false, signup:false, promo:false, email:"" };
@@ -315,7 +323,8 @@
           msg(msgEl, "이미 가입된 이메일이에요. 비밀번호가 기존 계정과 달라요 — 원래 쓰던 비밀번호를 넣어주세요.", "err");
           return null;
         }
-        return post(FN, { type:"claim_promo", campaign:CAMPAIGN }, r.body.access_token);
+        sessionJwt = r.body.access_token;
+        return post(FN, { type:"claim_promo", campaign:CAMPAIGN }, sessionJwt);
       })
       .then(function(r){
         if (!r) return;
@@ -379,6 +388,8 @@
       document.getElementById("coupon-sub").textContent =
         "쿠폰이 계정에 등록됐어요. 결제 시 자동 적용 · " + String(spec.expires_kst).slice(0, 16) + " 마감";
     }
+    // 보너스: JWT가 있을 때만 결제 등록 버튼 노출 (칩 조건 아님 — 쿠폰 스탬프까지가 미션)
+    if (sessionJwt && !state.paid) document.getElementById("pay-area").style.display = "block";
   }
 
   claimBtn.addEventListener("click", function(){
@@ -405,7 +416,8 @@
           msg(msg2El, "로그인에 실패했어요 — 이메일·비밀번호를 확인해 주세요.", "err");
           return null;
         }
-        return post(FN, { type:"claim_promo", campaign:CAMPAIGN }, r.body.access_token);
+        sessionJwt = r.body.access_token;
+        return post(FN, { type:"claim_promo", campaign:CAMPAIGN }, sessionJwt);
       })
       .then(function(r){
         if (!r) return;
@@ -425,6 +437,44 @@
         claimBtn.textContent = "쿠폰 등록하기";
       });
   });
+
+  // ── 보너스: 결제수단 등록 → Pro 즉시 시작 (칩 조건 아님) ────────────────
+  // Stripe 호스티드 체크아웃으로 이동 — 모바일에선 Apple/Google Pay가 떠서 타이핑이 없다.
+  // 쿠폰이 계정에 붙어 있어 첫 3개월 0원이 자동 적용된다(checkout이 discounts로 주입).
+  payBtn.addEventListener("click", function(){
+    if (!sessionJwt) {
+      msg(msg2El, "먼저 미션 3에서 쿠폰을 등록해 주세요.", "info");
+      return;
+    }
+    payBtn.disabled = true;
+    payBtn.textContent = "결제창 여는 중…";
+    post(FN, { type:"checkout", return_to:"https://re-be.world/join/madstars" }, sessionJwt)
+      .then(function(r){
+        if (r.status === 200 && r.body.url) { location.href = r.body.url; return; }
+        msg(msg2El, reasonText((r.body && r.body.error) || "unknown"), "err");
+        payBtn.disabled = false;
+        payBtn.textContent = "Pro 바로 시작하기";
+      })
+      .catch(function(){
+        msg(msg2El, "네트워크가 불안정해요. 다시 눌러주세요.", "err");
+        payBtn.disabled = false;
+        payBtn.textContent = "Pro 바로 시작하기";
+      });
+  });
+
+  // Stripe에서 복귀: ?billing=success|cancel (백엔드 return_to가 이 페이지로 돌려보낸다)
+  var billing = new URLSearchParams(location.search).get("billing");
+  if (billing === "success") {
+    state.paid = true; save();
+    document.getElementById("coupon").className = "coupon show";
+    document.getElementById("coupon-sub").textContent =
+      "결제수단 등록 완료 — Pro가 지금 시작됐어요! 3개월간 0원, 이후엔 언제든 해지할 수 있어요.";
+    history.replaceState(null, "", location.pathname);
+  } else if (billing === "cancel") {
+    msg(msg2El, "결제 등록을 중간에 멈췄어요. 쿠폰은 계정에 그대로 있으니 나중에 앱에서 해도 돼요.", "info");
+    history.replaceState(null, "", location.pathname);
+  }
+  if (state.paid) document.getElementById("pay-area").style.display = "none";
 
   render();
 })();
