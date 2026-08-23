@@ -3,22 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Be.Ark 가입 · MADStars 파티</title>
+<title>Be.Ark 미션 · MADStars 파티</title>
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#070a0f">
-<meta property="og:title" content="Be.Ark 가입 · MADStars 파티">
-<meta property="og:description" content="현장 가입하고 Pro 3개월 무료 쿠폰을 받으세요.">
+<meta property="og:title" content="Be.Ark 미션 · MADStars 파티">
+<meta property="og:description" content="미션 3개 완료하고 칩 3개 받으세요. 칩 1개 = 드링크 1, 칩 2개 = 안주 1.">
 <link rel="icon" href="/logo.png">
 <!--
-  MADStars 파티(2026-08-26 해운대) 현장 가입 페이지.
+  MADStars 파티(2026-08-26 해운대) 현장 미션 페이지.
 
-  설계 근거 (2026-08-20 실측):
-   - 외부 스크립트 0. supabase-js도 안 쓴다(193KB) — fetch 2번이면 끝나고, 행사장 네트워크는 느리다.
+  2026-08-23 칩 미션 확장 (빠불로 발안):
+   - 실물 칩 300개. 칩 1 = 드링크 1 / 칩 2 = 안주 1.
+   - 미션 3개 = ① 케이스필름 시청 ② 현장가입 ③ Pro 3개월 쿠폰 등록 — 각 칩 1개.
+   - 검증 = 스태프가 폰 화면의 스탬프를 눈으로 확인. 스탬프판에 가입 이메일 + 실시간 시계를
+     같이 띄워 스크린샷 돌려쓰기를 막는다. (100명 규모 — 서버 검증 QR은 과설계.)
+   - 백엔드 수정 없음: 쿠폰은 가입 때 서버가 붙이고(안전망), 미션 ③ 버튼은 로그인 →
+     claim_promo(멱등) 실제 왕복으로 쿠폰 스펙을 받아와야만 스탬프가 찍힌다 = 검증이 진짜다.
+
+  설계 근거 (2026-08-20 실측, 유지):
+   - 외부 스크립트 = YouTube IFrame API 하나뿐(영상 종료 감지용, 영상 재생 자체가 유튜브 의존).
    - 이메일+비밀번호 = 데스크탑 앱 로그인(arkAuth.signInWithPassword)과 동일한 계정 경로.
-     OTP/매직링크로 만들면 비밀번호가 없어서 앱에 로그인할 수 없다 = 이벤트가 실패한다.
    - 확인 메일 없음: billing 함수가 email_confirm:true로 서버에서 즉시 확정한다.
-     100명이 동시에 메일함을 여는 순간 줄이 서고, SMTP(Gmail) 발송 한도에도 걸린다.
-   - 쿠폰은 가입 시점에 계정에 붙는다. 유저가 코드를 외우거나 나중에 입력하지 않는다.
 -->
 <style>
   :root{
@@ -30,24 +35,60 @@
   body{
     background:var(--bg); color:var(--ink); line-height:1.55; -webkit-font-smoothing:antialiased;
     font-family:Inter,system-ui,-apple-system,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-    min-height:100dvh; display:flex; align-items:center; justify-content:center;
-    padding:24px 20px calc(24px + env(safe-area-inset-bottom));
+    min-height:100dvh; display:flex; justify-content:center;
+    padding:28px 20px calc(40px + env(safe-area-inset-bottom));
     background-image:radial-gradient(620px 420px at 70% -5%, #c49c4d18, transparent 70%),
                      radial-gradient(520px 380px at 8% 12%, #863bff14, transparent 70%);
   }
-  .card{width:100%; max-width:400px}
-  .brand{display:flex; align-items:center; gap:10px; margin-bottom:26px}
+  .card{width:100%; max-width:420px}
+  .brand{display:flex; align-items:center; gap:10px; margin-bottom:20px}
   .brand img{width:30px; height:30px; border-radius:8px}
   .brand span{font-weight:700; font-size:17px; letter-spacing:-.02em}
   .tag{display:inline-block; font-size:12px; font-weight:600; letter-spacing:.04em;
        color:var(--accent); background:var(--accent-soft); border:1px solid #c49c4d33;
        padding:5px 11px; border-radius:999px; margin-bottom:14px}
-  h1{font-size:26px; line-height:1.3; letter-spacing:-.03em; font-weight:700}
+  h1{font-size:25px; line-height:1.3; letter-spacing:-.03em; font-weight:700}
   .sub{color:var(--ink-dim); font-size:15px; margin-top:10px}
-  .perk{margin:22px 0 26px; padding:15px 17px; border:1px solid var(--line);
-        border-radius:14px; background:var(--bg-soft)}
-  .perk b{color:var(--accent); font-size:16px}
-  .perk p{color:var(--ink-faint); font-size:13px; margin-top:4px}
+  .chip-rule{margin-top:12px; font-size:13px; color:var(--ink-faint)}
+  .chip-rule b{color:var(--accent); font-weight:600}
+
+  /* ── 스탬프판: 스태프가 이 화면을 보고 칩을 준다 ─────────────────────── */
+  .board{margin:22px 0; padding:16px; border:1px solid #c49c4d40; border-radius:var(--radius);
+         background:linear-gradient(180deg, #c49c4d14, transparent 60%), var(--bg-soft)}
+  .board-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px}
+  .board-title{font-size:13px; font-weight:700; letter-spacing:.06em; color:var(--accent)}
+  .board-clock{font-size:12px; color:var(--ink-faint); font-variant-numeric:tabular-nums}
+  .slots{display:flex; gap:10px}
+  .slot{flex:1; text-align:center; padding:14px 6px 12px; border:1px dashed var(--line);
+        border-radius:14px; background:#0f141d}
+  .slot .mark{width:40px; height:40px; margin:0 auto 8px; border-radius:50%;
+        border:2px dashed var(--ink-faint); color:var(--ink-faint);
+        font-size:20px; font-weight:700; line-height:37px}
+  .slot .name{font-size:12px; color:var(--ink-dim)}
+  .slot.on{border-style:solid; border-color:#c49c4d66}
+  .slot.on .mark{border:2px solid var(--accent); color:#1a1206; background:var(--accent);
+        animation:stamp .45s cubic-bezier(.2,1.6,.4,1)}
+  .slot.on .name{color:var(--ink)}
+  @keyframes stamp{0%{transform:scale(1.9) rotate(-14deg); opacity:0} 100%{transform:scale(1) rotate(0); opacity:1}}
+  .board-id{margin-top:12px; font-size:12px; color:var(--ink-faint); text-align:center;
+        overflow-wrap:anywhere}
+  .board-id b{color:var(--ink-dim); font-weight:600}
+
+  /* ── 미션 카드 ────────────────────────────────────────────────────── */
+  .mission{margin-top:16px; padding:17px; border:1px solid var(--line);
+           border-radius:var(--radius); background:var(--bg-soft)}
+  .m-head{display:flex; align-items:center; gap:9px; margin-bottom:6px}
+  .m-num{flex:none; width:22px; height:22px; border-radius:50%; font-size:12px; font-weight:700;
+         line-height:22px; text-align:center; color:var(--accent); border:1px solid #c49c4d55}
+  .m-head h2{font-size:16px; font-weight:700; letter-spacing:-.02em}
+  .m-done{margin-left:auto; font-size:12px; font-weight:700; color:var(--ok); display:none}
+  .mission.on .m-done{display:block}
+  .m-desc{font-size:13px; color:var(--ink-faint); margin-bottom:12px}
+  .video-wrap{position:relative; width:100%; aspect-ratio:16/9; border-radius:12px;
+              overflow:hidden; background:#0f141d; border:1px solid var(--line)}
+  .video-wrap iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+  .video-hold{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+              color:var(--ink-faint); font-size:14px; text-align:center; padding:0 20px}
   label{display:block; font-size:13px; color:var(--ink-dim); margin:0 0 7px}
   input{width:100%; padding:14px 15px; font-size:16px; /* 16px 미만이면 iOS가 화면을 확대한다 */
         color:var(--ink); background:#0f141d; border:1px solid var(--line);
@@ -55,18 +96,20 @@
   input:focus{border-color:var(--accent)}
   .field + .field{margin-top:14px}
   .hint{font-size:12px; color:var(--ink-faint); margin-top:7px}
-  button{width:100%; margin-top:22px; padding:15px; font-size:16px; font-weight:700;
+  button{width:100%; margin-top:16px; padding:15px; font-size:16px; font-weight:700;
          font-family:inherit; color:#1a1206; background:var(--accent); border:0;
          border-radius:12px; cursor:pointer; letter-spacing:-.01em}
   button:disabled{opacity:.55; cursor:default}
-  .msg{margin-top:16px; font-size:14px; padding:12px 14px; border-radius:11px; display:none}
+  button.ghost{background:transparent; color:var(--ink-dim); border:1px solid var(--line)}
+  .msg{margin-top:14px; font-size:14px; padding:12px 14px; border-radius:11px; display:none}
   .msg.show{display:block}
   .msg.err{color:var(--danger); background:#ff6b6b14; border:1px solid #ff6b6b33}
   .msg.info{color:var(--ink-dim); background:#ffffff08; border:1px solid var(--line)}
-  .done{display:none}
-  .done.show{display:block}
-  .check{width:46px; height:46px; border-radius:50%; border:2px solid var(--ok);
-         color:var(--ok); font-size:24px; line-height:42px; text-align:center; margin-bottom:18px}
+  .coupon{display:none; margin-top:14px; padding:14px 16px; border-radius:12px;
+          border:1px solid #c49c4d55; background:var(--accent-soft)}
+  .coupon.show{display:block}
+  .coupon b{color:var(--accent); font-size:15px}
+  .coupon p{font-size:13px; color:var(--ink-dim); margin-top:4px}
   .dl{display:block; margin-top:12px; padding:15px; text-align:center; font-size:15px;
       font-weight:600; border-radius:12px; text-decoration:none;
       color:var(--ink); border:1px solid var(--line); background:var(--bg-soft)}
@@ -80,16 +123,39 @@
 
   <div class="brand"><img src="/logo.png" alt=""><span>Be.Ark</span></div>
 
-  <section id="form-view">
-    <div class="tag">MADSTARS PARTY · 08.26</div>
-    <h1>현장 가입하고<br>Pro 3개월 무료로 쓰세요</h1>
-    <p class="sub">이메일과 비밀번호만 입력하면 끝. 확인 메일을 기다릴 필요 없어요.</p>
+  <div class="tag">MADSTARS PARTY · 08.26</div>
+  <h1>미션 3개 완료하고<br>칩 3개 받으세요</h1>
+  <p class="sub">스탬프가 찍힌 화면을 스태프에게 보여주면 미션당 칩 1개!</p>
+  <p class="chip-rule"><b>칩 1개</b> = 드링크 1잔 · <b>칩 2개</b> = 안주 1개</p>
 
-    <div class="perk">
-      <b>Pro 3개월 무료</b>
-      <p>가입하면 쿠폰이 계정에 자동으로 붙어요. 코드를 따로 외우지 않아도 됩니다.</p>
+  <!-- 스탬프판 -->
+  <section class="board">
+    <div class="board-head">
+      <span class="board-title">MISSION STAMPS</span>
+      <span class="board-clock" id="clock">--:--:--</span>
     </div>
+    <div class="slots">
+      <div class="slot" id="slot-film"><div class="mark">1</div><div class="name">필름 시청</div></div>
+      <div class="slot" id="slot-signup"><div class="mark">2</div><div class="name">현장 가입</div></div>
+      <div class="slot" id="slot-promo"><div class="mark">3</div><div class="name">쿠폰 등록</div></div>
+    </div>
+    <div class="board-id" id="board-id"></div>
+  </section>
 
+  <!-- 미션 1: 케이스필름 -->
+  <section class="mission" id="m-film">
+    <div class="m-head"><span class="m-num">1</span><h2>케이스필름 보기</h2><span class="m-done">완료 ✓</span></div>
+    <p class="m-desc">2분짜리 Be.Ark 케이스필름을 끝까지 보면 스탬프가 찍혀요.</p>
+    <div class="video-wrap" id="video-wrap">
+      <div class="video-hold" id="video-hold">케이스필름은 곧 공개돼요</div>
+    </div>
+    <div id="film-test-area"></div>
+  </section>
+
+  <!-- 미션 2: 현장가입 -->
+  <section class="mission" id="m-signup">
+    <div class="m-head"><span class="m-num">2</span><h2>현장 가입하기</h2><span class="m-done">완료 ✓</span></div>
+    <p class="m-desc">이메일과 비밀번호만 입력하면 끝. 확인 메일을 기다릴 필요 없어요.</p>
     <form id="f" novalidate>
       <div class="field">
         <label for="email">이메일</label>
@@ -101,20 +167,29 @@
         <input id="pw" type="password" autocomplete="new-password" placeholder="8자 이상" required>
         <p class="hint">앱에 로그인할 때 쓰는 비밀번호예요.</p>
       </div>
-      <button id="submit" type="submit">가입하고 쿠폰 받기</button>
+      <button id="submit" type="submit">가입하기</button>
     </form>
     <div id="msg" class="msg"></div>
   </section>
 
-  <section id="done-view" class="done">
-    <div class="check">✓</div>
-    <h1>가입 완료</h1>
-    <p class="sub" id="done-sub">Pro 3개월 무료 쿠폰이 계정에 붙었어요. 앱을 설치하고 방금 만든 이메일·비밀번호로 로그인하면 됩니다.</p>
-    <div style="margin-top:24px">
-      <a class="dl primary" href="https://re-be.world/#download">Be.Ark 다운로드</a>
-      <a class="dl" href="https://re-be.world/">re-be.world 둘러보기</a>
+  <!-- 미션 3: 쿠폰 등록 -->
+  <section class="mission" id="m-promo">
+    <div class="m-head"><span class="m-num">3</span><h2>Pro 3개월 쿠폰 등록</h2><span class="m-done">완료 ✓</span></div>
+    <p class="m-desc">가입한 계정에 Pro 3개월 무료 쿠폰을 등록해요. 코드를 외울 필요 없이 결제 때 자동 적용됩니다.</p>
+    <button id="claim" type="button">쿠폰 등록하기</button>
+    <div id="coupon" class="coupon">
+      <b>MADSTARS · Pro 3개월 무료</b>
+      <p id="coupon-sub">쿠폰이 계정에 등록됐어요. 결제 시 자동 적용됩니다.</p>
     </div>
-    <p class="foot">지금 설치하지 않아도 괜찮아요. 계정에 쿠폰이 남아 있습니다.</p>
+    <div id="msg2" class="msg"></div>
+  </section>
+
+  <!-- 다운로드 -->
+  <section class="mission" id="m-dl">
+    <div class="m-head"><h2>Be.Ark 시작하기</h2></div>
+    <p class="m-desc">지금 설치하지 않아도 괜찮아요. 쿠폰은 계정에 남아 있어요.</p>
+    <a class="dl primary" href="https://re-be.world/#download">Be.Ark 다운로드</a>
+    <a class="dl" href="https://re-be.world/">re-be.world 둘러보기</a>
   </section>
 
   <p class="foot">Paulus Co.,Ltd. · <a href="/privacy">개인정보처리방침</a></p>
@@ -123,22 +198,57 @@
 <script>
 (function(){
   "use strict";
+  // ⚠️ TEST_MODE: 실측용 — 입력 없이 버튼만 눌러도 스탬프가 찍힌다.
+  //    실측 통과 후 반드시 false로 바꿔 배포할 것 (행사 전 마지막 커밋).
+  var TEST_MODE = true;
+  // TODO(빠불로 링크 대기): 유튜브 영상 ID로 교체 (예: "dQw4w9WgXcQ"). 빈 값 = 준비중 표시.
+  var FILM_ID = "";
+
   var FN  = "https://hxrvapnasxmaubymcipd.supabase.co/functions/v1/billing";
   var AUTH= "https://hxrvapnasxmaubymcipd.supabase.co/auth/v1/token?grant_type=password";
   // publishable key = 공개용(브라우저 노출 전제). 데스크탑 arkAuth.ts와 같은 정본 프로젝트.
   var KEY = "sb_publishable_Skd6X54IOwVKyu3-QpxSog_TiRz2vK3";
   var CAMPAIGN = "madstars";
+  var LS = "madstars_stamps_v1";
 
   var form = document.getElementById("f");
   var btn  = document.getElementById("submit");
-  var msgEl= document.getElementById("msg");
+  var claimBtn = document.getElementById("claim");
+  var msgEl = document.getElementById("msg");
+  var msg2El = document.getElementById("msg2");
 
-  function msg(text, kind){
-    msgEl.textContent = text;
-    msgEl.className = "msg show " + (kind || "info");
+  // ── 스탬프 상태: localStorage 영속 (파티장에서 새로고침해도 유지) ──────────
+  var state = { film:false, signup:false, promo:false, email:"" };
+  try { state = Object.assign(state, JSON.parse(localStorage.getItem(LS) || "{}")); } catch(e){}
+  function save(){ try { localStorage.setItem(LS, JSON.stringify(state)); } catch(e){} }
+
+  function stamp(kind){
+    if (state[kind]) return;
+    state[kind] = true; save(); render();
   }
-  function clearMsg(){ msgEl.className = "msg"; }
+  function render(){
+    ["film","signup","promo"].forEach(function(k){
+      var on = !!state[k];
+      document.getElementById("slot-" + k).className = "slot" + (on ? " on" : "");
+      var mid = { film:"m-film", signup:"m-signup", promo:"m-promo" }[k];
+      document.getElementById(mid).className = "mission" + (on ? " on" : "");
+      if (on) document.querySelector("#slot-" + k + " .mark").textContent = "✓";
+    });
+    document.getElementById("board-id").innerHTML =
+      state.email ? "가입 계정 · <b></b>" : "";
+    if (state.email) document.querySelector("#board-id b").textContent = state.email;
+  }
 
+  // 실시간 시계(KST) — 스크린샷 돌려쓰기 방지: 멈춘 시계 = 스샷.
+  function tick(){
+    var d = new Date(Date.now() + (9 * 60 + new Date().getTimezoneOffset()) * 60000);
+    var p = function(n){ return (n < 10 ? "0" : "") + n; };
+    document.getElementById("clock").textContent =
+      "LIVE " + p(d.getHours()) + ":" + p(d.getMinutes()) + ":" + p(d.getSeconds());
+  }
+  setInterval(tick, 1000); tick();
+
+  // ── 공통 fetch ─────────────────────────────────────────────────────────
   function post(url, body, jwt){
     var headers = { "Content-Type":"application/json", "apikey":KEY };
     if (jwt) headers["Authorization"] = "Bearer " + jwt;
@@ -157,37 +267,68 @@
     signup_failed:   "가입에 실패했어요. 잠시 후 다시 시도해 주세요."
   };
   function reasonText(code){ return REASONS[code] || ("문제가 생겼어요 (" + code + ")"); }
+  function msg(el, text, kind){ el.textContent = text; el.className = "msg show " + (kind || "info"); }
+  function clearMsg(el){ el.className = "msg"; }
 
-  function finish(promo){
-    if (promo && promo.attached === false) {
-      document.getElementById("done-sub").textContent =
-        "계정이 만들어졌어요. 다만 쿠폰이 붙지 않았습니다 — 현장 스태프에게 알려주세요. " +
-        "앱은 방금 만든 이메일·비밀번호로 바로 로그인할 수 있어요.";
+  // ── 미션 1: 케이스필름 ─────────────────────────────────────────────────
+  // YT IFrame API로 '끝까지 재생(ENDED)'을 감지한다. 클라이언트 판정 —
+  // 100명 파티 + 스태프 눈 검증 조합에 서버 판정까지 얹는 건 과설계.
+  if (FILM_ID) {
+    document.getElementById("video-hold").remove();
+    var holder = document.createElement("div");
+    holder.id = "yt-player";
+    document.getElementById("video-wrap").appendChild(holder);
+    window.onYouTubeIframeAPIReady = function(){
+      new YT.Player("yt-player", {
+        videoId: FILM_ID,
+        playerVars: { rel:0, playsinline:1, modestbranding:1 },
+        events: { onStateChange: function(e){ if (e.data === YT.PlayerState.ENDED) stamp("film"); } }
+      });
+    };
+    var s = document.createElement("script");
+    s.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(s);
+  } else if (TEST_MODE) {
+    var tb = document.createElement("button");
+    tb.type = "button"; tb.className = "ghost"; tb.textContent = "(테스트) 시청 완료 처리";
+    tb.addEventListener("click", function(){ stamp("film"); });
+    document.getElementById("film-test-area").appendChild(tb);
+  }
+
+  // ── 미션 2: 현장가입 ───────────────────────────────────────────────────
+  function finishSignup(email, promoInfo){
+    state.email = email || state.email; stamp("signup"); save(); render();
+    if (promoInfo && promoInfo.attached === false) {
+      msg(msgEl, "계정은 만들어졌는데 쿠폰이 붙지 않았어요 — 미션 3 버튼으로 다시 시도해 주세요.", "info");
+    } else {
+      clearMsg(msgEl);
     }
-    document.getElementById("form-view").style.display = "none";
-    document.getElementById("done-view").className = "done show";
-    window.scrollTo(0, 0);
+    document.getElementById("m-promo").scrollIntoView({ behavior:"smooth", block:"center" });
   }
 
   // 이미 계정이 있는 참석자 = 같은 비밀번호로 로그인해서 쿠폰만 받는다.
   function claimAsExisting(email, pw){
-    msg("이미 가입된 계정이에요. 쿠폰을 붙이는 중…", "info");
+    msg(msgEl, "이미 가입된 계정이에요. 쿠폰을 붙이는 중…", "info");
     return post(AUTH, { email:email, password:pw })
       .then(function(r){
         if (!r.body || !r.body.access_token) {
-          msg("이미 가입된 이메일이에요. 비밀번호가 기존 계정과 달라요 — 원래 쓰던 비밀번호를 넣어주세요.", "err");
+          msg(msgEl, "이미 가입된 이메일이에요. 비밀번호가 기존 계정과 달라요 — 원래 쓰던 비밀번호를 넣어주세요.", "err");
           return null;
         }
         return post(FN, { type:"claim_promo", campaign:CAMPAIGN }, r.body.access_token);
       })
       .then(function(r){
         if (!r) return;
-        if (r.status === 200) return finish(r.body.promo);
+        if (r.status === 200) {
+          finishSignup(email, r.body.promo);
+          showCoupon(r.body.promo); stamp("promo");
+          return;
+        }
         var reason = (r.body && r.body.promo && r.body.promo.reason) || (r.body && r.body.error) || "unknown";
-        if (reason === "claim_write_failed" || String(reason).indexOf("claim_write_failed") === 0) {
-          msg("쿠폰을 붙이지 못했어요. 현장 스태프에게 알려주세요.", "err");
+        if (String(reason).indexOf("claim_write_failed") === 0) {
+          msg(msgEl, "쿠폰을 붙이지 못했어요. 현장 스태프에게 알려주세요.", "err");
         } else {
-          msg(reasonText(reason), "err");
+          msg(msgEl, reasonText(reason), "err");
         }
       });
   }
@@ -196,27 +337,96 @@
     e.preventDefault();
     var email = document.getElementById("email").value.trim().toLowerCase();
     var pw    = document.getElementById("pw").value;
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg(REASONS.invalid_email, "err"); return; }
-    if (pw.length < 8) { msg(REASONS.weak_password, "err"); return; }
+
+    // TEST_MODE: 빈 채로 눌러도 다음 단계로 (실측 후 실동작 전환 — TEST_MODE=false)
+    if (TEST_MODE && !email && !pw) {
+      msg(msgEl, "(테스트) 가입을 건너뛰고 스탬프만 찍었어요.", "info");
+      state.email = "test@beark.dev"; stamp("signup");
+      document.getElementById("m-promo").scrollIntoView({ behavior:"smooth", block:"center" });
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg(msgEl, REASONS.invalid_email, "err"); return; }
+    if (pw.length < 8) { msg(msgEl, REASONS.weak_password, "err"); return; }
 
     btn.disabled = true;
     btn.textContent = "가입하는 중…";
-    clearMsg();
+    clearMsg(msgEl);
 
     post(FN, { type:"event_signup", campaign:CAMPAIGN, email:email, password:pw })
       .then(function(r){
         if (r.status === 200 && r.body.ok && r.body.existing) return claimAsExisting(email, pw);
-        if (r.status === 200 && r.body.ok) return finish(r.body.promo);
-        msg(reasonText((r.body && r.body.error) || "unknown"), "err");
+        // 신규 가입 성공: 서버가 쿠폰까지 붙여뒀지만(안전망) 스탬프 3은 미션 ③ 버튼의
+        // claim_promo 왕복(멱등)으로만 찍는다 — "등록" 행동과 검증이 진짜가 되도록.
+        if (r.status === 200 && r.body.ok) return finishSignup(email, null);
+        msg(msgEl, reasonText((r.body && r.body.error) || "unknown"), "err");
       })
       .catch(function(){
-        msg("네트워크가 불안정해요. 다시 눌러주세요.", "err");
+        msg(msgEl, "네트워크가 불안정해요. 다시 눌러주세요.", "err");
       })
       .then(function(){
         btn.disabled = false;
-        btn.textContent = "가입하고 쿠폰 받기";
+        btn.textContent = "가입하기";
       });
   });
+
+  // ── 미션 3: 쿠폰 등록 (로그인 → claim_promo 멱등 왕복) ─────────────────
+  function showCoupon(promo){
+    var el = document.getElementById("coupon");
+    el.className = "coupon show";
+    var spec = promo && promo.spec;
+    if (spec && spec.expires_kst) {
+      document.getElementById("coupon-sub").textContent =
+        "쿠폰이 계정에 등록됐어요. 결제 시 자동 적용 · " + String(spec.expires_kst).slice(0, 16) + " 마감";
+    }
+  }
+
+  claimBtn.addEventListener("click", function(){
+    var email = document.getElementById("email").value.trim().toLowerCase() || state.email;
+    var pw    = document.getElementById("pw").value;
+
+    if (TEST_MODE && (!email || email === "test@beark.dev") && !pw) {
+      msg(msg2El, "(테스트) 쿠폰 등록을 건너뛰고 스탬프만 찍었어요.", "info");
+      showCoupon(null); stamp("promo");
+      return;
+    }
+    if (!email || !pw) {
+      msg(msg2El, "먼저 미션 2에서 가입해 주세요. (새로고침했다면 가입 때 쓴 이메일·비밀번호를 미션 2 칸에 다시 입력)", "info");
+      return;
+    }
+
+    claimBtn.disabled = true;
+    claimBtn.textContent = "등록하는 중…";
+    clearMsg(msg2El);
+
+    post(AUTH, { email:email, password:pw })
+      .then(function(r){
+        if (!r.body || !r.body.access_token) {
+          msg(msg2El, "로그인에 실패했어요 — 이메일·비밀번호를 확인해 주세요.", "err");
+          return null;
+        }
+        return post(FN, { type:"claim_promo", campaign:CAMPAIGN }, r.body.access_token);
+      })
+      .then(function(r){
+        if (!r) return;
+        if (r.status === 200 && r.body.ok) {
+          showCoupon(r.body.promo);
+          state.email = email; stamp("promo");
+          return;
+        }
+        var reason = (r.body && r.body.promo && r.body.promo.reason) || (r.body && r.body.error) || "unknown";
+        msg(msg2El, reasonText(reason), "err");
+      })
+      .catch(function(){
+        msg(msg2El, "네트워크가 불안정해요. 다시 눌러주세요.", "err");
+      })
+      .then(function(){
+        claimBtn.disabled = false;
+        claimBtn.textContent = "쿠폰 등록하기";
+      });
+  });
+
+  render();
 })();
 </script>
 </body>
