@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Eastern Vibes · Be.Ark x BCWC x Brand Brief</title>
+<title>Eastern Vibes Party · Be.Ark x BCWC x Brand Brief</title>
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#070a0f">
-<meta property="og:title" content="Eastern Vibes — MADStars Party Invitation">
+<meta property="og:title" content="Eastern Vibes Party — MADStars Invitation">
 <meta property="og:description" content="8.26 (Wed) 8:30 PM – 12:00 AM · Hosted by Be.Ark x BCWC x Brand Brief">
 <link rel="icon" href="/logo.png">
 <!--
@@ -39,7 +39,9 @@
        color:var(--accent); background:var(--accent-soft); border:1px solid #c49c4d33;
        padding:5px 11px; border-radius:999px; margin-bottom:14px}
   h1{font-size:34px; line-height:1.15; letter-spacing:-.03em; font-weight:700}
-  .host{color:var(--ink-dim); font-size:14px; margin-top:10px}
+  .host{color:var(--ink-dim); font-size:17px; font-weight:600; margin-top:12px}
+  .host a{color:var(--ink); text-decoration:none; border-bottom:1px solid #c49c4d55}
+  .host a:active{color:var(--accent)}
   .meta{margin:24px 0; padding:16px 18px; border:1px solid #c49c4d40; border-radius:18px;
         background:linear-gradient(180deg, #c49c4d14, transparent 60%), var(--bg-soft)}
   .meta-row{display:flex; gap:12px; padding:7px 0; font-size:14px}
@@ -121,22 +123,27 @@
   <a class="brand" href="https://re-be.world/"><img src="/logo.png" alt=""><span>Be.Ark</span></a>
 
   <div class="tag">MADSTARS · BUSAN · 08.26</div>
-  <h1>Eastern Vibes</h1>
-  <p class="host">Be.Ark × BCWC × Brand Brief</p>
+  <h1>Eastern Vibes Party</h1>
+  <p class="host">
+    <a href="https://re-be.world/">Be.Ark</a> ×
+    <a href="https://www.bwcatmusic.com/">BCWC</a> ×
+    <a href="https://www.brandbrief.co.kr/">Brand Brief</a>
+  </p>
 
   <div class="meta">
     <div class="meta-row"><span class="k" id="k-when">일시</span>
       <span class="v" id="v-when">8.26 (수) 저녁 8:30 – 12:00</span></div>
     <div class="meta-row"><span class="k" id="k-where">장소</span>
-      <span class="v"><a href="https://maps.app.goo.gl/X5stx86opKQ2FdT26" id="v-where">Google Maps에서 열기 ↗</a></span></div>
+      <span class="v">
+        <a href="https://maps.app.goo.gl/X5stx86opKQ2FdT26" id="v-gmap">Google Maps ↗</a> ·
+        <a href="https://naver.me/xJidIEE1" id="v-nmap">네이버 지도 ↗</a>
+      </span></div>
   </div>
 
   <a class="btn" id="btn-gcal"
-     href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Eastern%20Vibes%20%E2%80%94%20Be.Ark%20x%20BCWC%20x%20Brand%20Brief&dates=20260826T203000%2F20260827T000000&ctz=Asia%2FSeoul&location=https%3A%2F%2Fmaps.app.goo.gl%2FX5stx86opKQ2FdT26&details=Hosted%20by%20Be.Ark%20x%20BCWC%20x%20Brand%20Brief%0AVenue%3A%20https%3A%2F%2Fmaps.app.goo.gl%2FX5stx86opKQ2FdT26%0AJoin%20Be.Ark%3A%20https%3A%2F%2Fre-be.world%2Fjoin%2Fmadstars"
+     href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Eastern%20Vibes%20Party%20%E2%80%94%20Be.Ark%20x%20BCWC%20x%20Brand%20Brief&dates=20260826T203000%2F20260827T000000&ctz=Asia%2FSeoul&location=https%3A%2F%2Fmaps.app.goo.gl%2FX5stx86opKQ2FdT26&details=Hosted%20by%20Be.Ark%20x%20BCWC%20x%20Brand%20Brief%0AVenue%3A%20https%3A%2F%2Fmaps.app.goo.gl%2FX5stx86opKQ2FdT26%0AJoin%20Be.Ark%3A%20https%3A%2F%2Fre-be.world%2Fjoin%2Fmadstars"
      >Google 캘린더에 추가</a>
   <a class="btn ghost" id="btn-ics" href="/party/eastern-vibes.ics">Apple 캘린더에 추가 (.ics)</a>
-
-  <p class="foot">Paulus Co.,Ltd. · re-be.world</p>
 
 <script>
 (function(){
@@ -147,7 +154,7 @@
     document.getElementById('k-when').textContent = 'When';
     document.getElementById('v-when').textContent = 'Wed, Aug 26 · 8:30 PM – 12:00 AM';
     document.getElementById('k-where').textContent = 'Where';
-    document.getElementById('v-where').textContent = 'Open in Google Maps ↗';
+    document.getElementById('v-nmap').textContent = 'Naver Map ↗';
     document.getElementById('btn-gcal').textContent = 'Add to Google Calendar';
     document.getElementById('btn-ics').textContent = 'Add to Apple Calendar (.ics)';
   }
