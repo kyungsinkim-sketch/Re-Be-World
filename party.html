@@ -31,6 +31,11 @@
                      radial-gradient(520px 380px at 8% 12%, #863bff14, transparent 70%);
   }
   .card{width:100%; max-width:420px}
+  .top{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px}
+  .lang{display:flex; gap:2px; border:1px solid var(--line); border-radius:999px; padding:2px}
+  .lang button{padding:5px 12px; font-size:12px; font-weight:600; font-family:inherit;
+    background:transparent; color:var(--ink-faint); border:0; border-radius:999px; cursor:pointer}
+  .lang button.on{background:var(--accent); color:#1a1206}
   .tag{display:inline-block; font-size:12px; font-weight:600; letter-spacing:.04em;
        color:var(--accent); background:var(--accent-soft); border:1px solid #c49c4d33;
        padding:5px 11px; border-radius:999px; margin-bottom:14px}
@@ -116,7 +121,13 @@
   </svg>
 </div>
 <main class="card">
-  <div class="tag">MADSTARS · BUSAN · 08.26</div>
+  <div class="top">
+    <span class="tag" style="margin-bottom:0">MADSTARS · BUSAN · 08.26</span>
+    <div class="lang">
+      <button id="lang-ko" type="button">한국어</button>
+      <button id="lang-en" type="button">EN</button>
+    </div>
+  </div>
   <h1>Eastern Vibes Party</h1>
   <p class="host">
     <a href="https://re-be.world/">Be.Ark</a> ×
@@ -142,16 +153,35 @@
 <script>
 (function(){
   "use strict";
-  // 한/영 자동 (madstars와 동일 규칙: ko* → 한국어, 그 외 영어)
-  if ((navigator.language || '').toLowerCase().indexOf('ko') !== 0) {
-    document.documentElement.lang = 'en';
-    document.getElementById('k-when').textContent = 'When';
-    document.getElementById('v-when').textContent = 'Wed, Aug 26 · 8:30 PM – 12:00 AM';
-    document.getElementById('k-where').textContent = 'Where';
-    document.getElementById('v-nmap').textContent = 'Naver Map ↗';
-    document.getElementById('btn-gcal').textContent = 'Add to Google Calendar';
-    document.getElementById('btn-ics').textContent = 'Add to Apple Calendar (.ics)';
+  // 한/영 토글 (2026-08-25 빠불로) — 자동감지 + 수동 토글. 언어 선택은 madstars 가입
+  // 페이지와 같은 localStorage 키를 공유해 두 QR을 오가도 언어가 유지된다.
+  var LS_LANG = "madstars_lang";
+  var STR = {
+    ko: { kWhen:"일시", vWhen:"8.26 (수) 저녁 8:30 – 12:00", kWhere:"장소",
+          nmap:"네이버 지도 ↗", gcal:"Google 캘린더에 추가", ics:"Apple 캘린더에 추가 (.ics)" },
+    en: { kWhen:"When", vWhen:"Wed, Aug 26 · 8:30 PM – 12:00 AM", kWhere:"Where",
+          nmap:"Naver Map ↗", gcal:"Add to Google Calendar", ics:"Add to Apple Calendar (.ics)" }
+  };
+  var lang = (function(){
+    try { var s = localStorage.getItem(LS_LANG); if (s === 'ko' || s === 'en') return s; } catch(e){}
+    return (navigator.language || '').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en';
+  })();
+  function applyLang(){
+    var t = STR[lang];
+    document.documentElement.lang = lang;
+    document.getElementById('lang-ko').className = lang === 'ko' ? 'on' : '';
+    document.getElementById('lang-en').className = lang === 'en' ? 'on' : '';
+    document.getElementById('k-when').textContent = t.kWhen;
+    document.getElementById('v-when').textContent = t.vWhen;
+    document.getElementById('k-where').textContent = t.kWhere;
+    document.getElementById('v-nmap').textContent = t.nmap;
+    document.getElementById('btn-gcal').textContent = t.gcal;
+    document.getElementById('btn-ics').textContent = t.ics;
   }
+  function setLang(l){ lang = l; try { localStorage.setItem(LS_LANG, l); } catch(e){} applyLang(); }
+  document.getElementById('lang-ko').addEventListener('click', function(){ setLang('ko'); });
+  document.getElementById('lang-en').addEventListener('click', function(){ setLang('en'); });
+  applyLang();
 })();
 </script>
 </main>
