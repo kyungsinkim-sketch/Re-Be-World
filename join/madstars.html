@@ -6,22 +6,26 @@
 <title>Be.Ark 미션 · MADStars 파티</title>
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#070a0f">
-<meta property="og:title" content="Be.Ark 미션 · MADStars 파티">
-<meta property="og:description" content="미션 3개 완료하고 칩 3개 받으세요. 칩 1개 = 드링크 1, 칩 2개 = 안주 1.">
+<meta property="og:title" content="Be.Ark Missions · MADStars Party">
+<meta property="og:description" content="Complete 3 missions, earn 3 chips. 1 chip = 1 drink, 2 chips = 1 snack.">
 <link rel="icon" href="/logo.png">
 <!--
   MADStars 파티(2026-08-26 해운대) 현장 미션 페이지.
+
+  2026-08-24 한/영 이중화 (빠불로 지시): QR은 하나(같은 URL), 페이지에서 언어 토글.
+   - 기본 언어 = 브라우저 언어 자동감지 (ko* → 한국어, 그 외 영어). 토글 선택은 localStorage 유지.
+   - 문자열은 전부 STR 사전 + data-i18n 채움 — 동적 메시지는 S(key)로.
 
   2026-08-23 칩 미션 확장 (빠불로 발안):
    - 실물 칩 300개. 칩 1 = 드링크 1 / 칩 2 = 안주 1.
    - 미션 3개 = ① 케이스필름 시청 ② 현장가입 ③ Pro 3개월 쿠폰 등록 — 각 칩 1개.
    - 검증 = 스태프가 폰 화면의 스탬프를 눈으로 확인. 스탬프판에 가입 이메일 + 실시간 시계를
      같이 띄워 스크린샷 돌려쓰기를 막는다. (100명 규모 — 서버 검증 QR은 과설계.)
-   - 백엔드 수정 없음: 쿠폰은 가입 때 서버가 붙이고(안전망), 미션 ③ 버튼은 로그인 →
-     claim_promo(멱등) 실제 왕복으로 쿠폰 스펙을 받아와야만 스탬프가 찍힌다 = 검증이 진짜다.
+   - 백엔드: 쿠폰은 가입 때 서버가 붙이고(안전망), 미션 ③ 버튼은 로그인 → claim_promo(멱등)
+     실제 왕복으로 쿠폰 스펙을 받아와야만 스탬프가 찍힌다. 보너스 결제 = checkout return_to(v21).
 
   설계 근거 (2026-08-20 실측, 유지):
-   - 외부 스크립트 = YouTube IFrame API 하나뿐(영상 종료 감지용, 영상 재생 자체가 유튜브 의존).
+   - 외부 스크립트 = YouTube IFrame API 하나뿐(영상 종료 감지용).
    - 이메일+비밀번호 = 데스크탑 앱 로그인(arkAuth.signInWithPassword)과 동일한 계정 경로.
    - 확인 메일 없음: billing 함수가 email_confirm:true로 서버에서 즉시 확정한다.
 -->
@@ -44,6 +48,10 @@
   .brand{display:flex; align-items:center; gap:10px; margin-bottom:20px}
   .brand img{width:30px; height:30px; border-radius:8px}
   .brand span{font-weight:700; font-size:17px; letter-spacing:-.02em}
+  .lang{margin-left:auto; display:flex; gap:2px; border:1px solid var(--line); border-radius:999px; padding:2px}
+  .lang button{width:auto; margin:0; padding:5px 12px; font-size:12px; font-weight:600;
+    background:transparent; color:var(--ink-faint); border:0; border-radius:999px; cursor:pointer}
+  .lang button.on{background:var(--accent); color:#1a1206}
   .tag{display:inline-block; font-size:12px; font-weight:600; letter-spacing:.04em;
        color:var(--accent); background:var(--accent-soft); border:1px solid #c49c4d33;
        padding:5px 11px; border-radius:999px; margin-bottom:14px}
@@ -121,12 +129,18 @@
 <body>
 <main class="card">
 
-  <div class="brand"><img src="/logo.png" alt=""><span>Be.Ark</span></div>
+  <div class="brand">
+    <img src="/logo.png" alt=""><span>Be.Ark</span>
+    <div class="lang">
+      <button id="lang-ko" type="button">한국어</button>
+      <button id="lang-en" type="button">EN</button>
+    </div>
+  </div>
 
   <div class="tag">MADSTARS PARTY · 08.26</div>
-  <h1>미션 3개 완료하고<br>칩 3개 받으세요</h1>
-  <p class="sub">스탬프가 찍힌 화면을 스태프에게 보여주면 미션당 칩 1개!</p>
-  <p class="chip-rule"><b>칩 1개</b> = 드링크 1잔 · <b>칩 2개</b> = 안주 1개</p>
+  <h1 id="h1"></h1>
+  <p class="sub" data-i18n="sub"></p>
+  <p class="chip-rule" id="chip-rule"></p>
 
   <!-- 스탬프판 -->
   <section class="board">
@@ -135,69 +149,68 @@
       <span class="board-clock" id="clock">--:--:--</span>
     </div>
     <div class="slots">
-      <div class="slot" id="slot-film"><div class="mark">1</div><div class="name">필름 시청</div></div>
-      <div class="slot" id="slot-signup"><div class="mark">2</div><div class="name">현장 가입</div></div>
-      <div class="slot" id="slot-promo"><div class="mark">3</div><div class="name">쿠폰 등록</div></div>
+      <div class="slot" id="slot-film"><div class="mark">1</div><div class="name" data-i18n="slotFilm"></div></div>
+      <div class="slot" id="slot-signup"><div class="mark">2</div><div class="name" data-i18n="slotSignup"></div></div>
+      <div class="slot" id="slot-promo"><div class="mark">3</div><div class="name" data-i18n="slotPromo"></div></div>
     </div>
     <div class="board-id" id="board-id"></div>
   </section>
 
   <!-- 미션 1: 케이스필름 -->
   <section class="mission" id="m-film">
-    <div class="m-head"><span class="m-num">1</span><h2>케이스필름 보기</h2><span class="m-done">완료 ✓</span></div>
-    <p class="m-desc">2분짜리 Be.Ark 케이스필름을 끝까지 보면 스탬프가 찍혀요.</p>
+    <div class="m-head"><span class="m-num">1</span><h2 data-i18n="m1Title"></h2><span class="m-done" data-i18n="done"></span></div>
+    <p class="m-desc" data-i18n="m1Desc"></p>
     <div class="video-wrap" id="video-wrap">
-      <div class="video-hold" id="video-hold">케이스필름은 곧 공개돼요</div>
+      <div class="video-hold" id="video-hold" data-i18n="videoHold"></div>
     </div>
     <div id="film-test-area"></div>
   </section>
 
   <!-- 미션 2: 현장가입 -->
   <section class="mission" id="m-signup">
-    <div class="m-head"><span class="m-num">2</span><h2>현장 가입하기</h2><span class="m-done">완료 ✓</span></div>
-    <p class="m-desc">이메일과 비밀번호만 입력하면 끝. 확인 메일을 기다릴 필요 없어요.</p>
+    <div class="m-head"><span class="m-num">2</span><h2 data-i18n="m2Title"></h2><span class="m-done" data-i18n="done"></span></div>
+    <p class="m-desc" data-i18n="m2Desc"></p>
     <form id="f" novalidate>
       <div class="field">
-        <label for="email">이메일</label>
+        <label for="email" data-i18n="email"></label>
         <input id="email" type="email" inputmode="email" autocomplete="email"
                autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="you@example.com" required>
       </div>
       <div class="field">
-        <label for="pw">비밀번호</label>
-        <input id="pw" type="password" autocomplete="new-password" placeholder="8자 이상" required>
-        <p class="hint">앱에 로그인할 때 쓰는 비밀번호예요.</p>
+        <label for="pw" data-i18n="pw"></label>
+        <input id="pw" type="password" autocomplete="new-password" required>
+        <p class="hint" data-i18n="pwHint"></p>
       </div>
-      <button id="submit" type="submit">가입하기</button>
+      <button id="submit" type="submit" data-i18n="signupBtn"></button>
     </form>
     <div id="msg" class="msg"></div>
   </section>
 
   <!-- 미션 3: 쿠폰 등록 -->
   <section class="mission" id="m-promo">
-    <div class="m-head"><span class="m-num">3</span><h2>Pro 3개월 쿠폰 등록</h2><span class="m-done">완료 ✓</span></div>
-    <p class="m-desc">가입한 계정에 Pro 3개월 무료 쿠폰을 등록해요. 코드를 외울 필요 없이 결제 때 자동 적용됩니다.</p>
-    <button id="claim" type="button">쿠폰 등록하기</button>
+    <div class="m-head"><span class="m-num">3</span><h2 data-i18n="m3Title"></h2><span class="m-done" data-i18n="done"></span></div>
+    <p class="m-desc" data-i18n="m3Desc"></p>
+    <button id="claim" type="button" data-i18n="claimBtn"></button>
     <div id="coupon" class="coupon">
-      <b>MADSTARS · Pro 3개월 무료</b>
-      <p id="coupon-sub">쿠폰이 계정에 등록됐어요. 결제 시 자동 적용됩니다.</p>
+      <b data-i18n="couponTitle"></b>
+      <p id="coupon-sub"></p>
     </div>
     <div id="pay-area" style="display:none">
-      <p class="hint" style="margin-top:14px">여기서 결제수단까지 등록하면 Pro가 지금 바로 시작돼요.
-        3개월간 0원, Apple Pay·Google Pay 지원.</p>
-      <button id="pay" type="button">Pro 바로 시작하기</button>
+      <p class="hint" style="margin-top:14px" data-i18n="payHint"></p>
+      <button id="pay" type="button" data-i18n="payBtn"></button>
     </div>
     <div id="msg2" class="msg"></div>
   </section>
 
   <!-- 다운로드 -->
   <section class="mission" id="m-dl">
-    <div class="m-head"><h2>Be.Ark 시작하기</h2></div>
-    <p class="m-desc">지금 설치하지 않아도 괜찮아요. 쿠폰은 계정에 남아 있어요.</p>
-    <a class="dl primary" href="https://re-be.world/#download">Be.Ark 다운로드</a>
-    <a class="dl" href="https://re-be.world/">re-be.world 둘러보기</a>
+    <div class="m-head"><h2 data-i18n="dlTitle"></h2></div>
+    <p class="m-desc" data-i18n="dlDesc"></p>
+    <a class="dl primary" href="https://re-be.world/#download" data-i18n="dlBtn"></a>
+    <a class="dl" href="https://re-be.world/" data-i18n="dlExplore"></a>
   </section>
 
-  <p class="foot">Paulus Co.,Ltd. · <a href="/privacy">개인정보처리방침</a></p>
+  <p class="foot">Paulus Co.,Ltd. · <a href="/privacy" data-i18n="privacy"></a></p>
 </main>
 
 <script>
@@ -215,6 +228,126 @@
   var KEY = "sb_publishable_Skd6X54IOwVKyu3-QpxSog_TiRz2vK3";
   var CAMPAIGN = "madstars";
   var LS = "madstars_stamps_v1";
+  var LS_LANG = "madstars_lang";
+
+  // ── 한/영 사전 (2026-08-24 빠불로: QR 하나 + 페이지 토글) ─────────────
+  var STR = {
+    ko: {
+      h1: "미션 3개 완료하고<br>칩 3개 받으세요",
+      sub: "스탬프가 찍힌 화면을 스태프에게 보여주면 미션당 칩 1개!",
+      chipRule: "<b>칩 1개</b> = 드링크 1잔 · <b>칩 2개</b> = 안주 1개",
+      slotFilm: "필름 시청", slotSignup: "현장 가입", slotPromo: "쿠폰 등록",
+      account: "가입 계정 · ", done: "완료 ✓",
+      m1Title: "케이스필름 보기",
+      m1Desc: "2분짜리 Be.Ark 케이스필름을 끝까지 보면 스탬프가 찍혀요.",
+      videoHold: "케이스필름은 곧 공개돼요",
+      filmTestBtn: "(테스트) 시청 완료 처리",
+      m2Title: "현장 가입하기",
+      m2Desc: "이메일과 비밀번호만 입력하면 끝. 확인 메일을 기다릴 필요 없어요.",
+      email: "이메일", pw: "비밀번호", pwPh: "8자 이상",
+      pwHint: "앱에 로그인할 때 쓰는 비밀번호예요.",
+      signupBtn: "가입하기", signupBusy: "가입하는 중…",
+      m3Title: "Pro 3개월 쿠폰 등록",
+      m3Desc: "가입한 계정에 Pro 3개월 무료 쿠폰을 등록해요. 코드를 외울 필요 없이 결제 때 자동 적용됩니다.",
+      claimBtn: "쿠폰 등록하기", claimBusy: "등록하는 중…",
+      couponTitle: "MADSTARS · Pro 3개월 무료",
+      couponSub: "쿠폰이 계정에 등록됐어요. 결제 시 자동 적용됩니다.",
+      couponSubExp: "쿠폰이 계정에 등록됐어요. 결제 시 자동 적용 · {date} 마감",
+      payHint: "여기서 결제수단까지 등록하면 Pro가 지금 바로 시작돼요. 3개월간 0원, Apple Pay·Google Pay 지원.",
+      payBtn: "Pro 바로 시작하기", payBusy: "결제창 여는 중…",
+      paidBanner: "결제수단 등록 완료 — Pro가 지금 시작됐어요! 3개월간 0원, 이후엔 언제든 해지할 수 있어요.",
+      payCancel: "결제 등록을 중간에 멈췄어요. 쿠폰은 계정에 그대로 있으니 나중에 앱에서 해도 돼요.",
+      dlTitle: "Be.Ark 시작하기",
+      dlDesc: "지금 설치하지 않아도 괜찮아요. 쿠폰은 계정에 남아 있어요.",
+      dlBtn: "Be.Ark 다운로드", dlExplore: "re-be.world 둘러보기",
+      privacy: "개인정보처리방침",
+      invalid_email: "이메일 주소를 다시 확인해 주세요.",
+      weak_password: "비밀번호는 8자 이상이어야 해요.",
+      campaign_closed: "이벤트가 마감됐어요.",
+      not_open_yet: "아직 이벤트 시작 전이에요.",
+      unknown_campaign: "이벤트 링크가 올바르지 않아요.",
+      signup_failed: "가입에 실패했어요. 잠시 후 다시 시도해 주세요.",
+      unknownErr: "문제가 생겼어요 ({code})",
+      existingClaiming: "이미 가입된 계정이에요. 쿠폰을 붙이는 중…",
+      existingPwWrong: "이미 가입된 이메일이에요. 비밀번호가 기존 계정과 달라요 — 원래 쓰던 비밀번호를 넣어주세요.",
+      claimWriteFailed: "쿠폰을 붙이지 못했어요. 현장 스태프에게 알려주세요.",
+      promoNotAttached: "계정은 만들어졌는데 쿠폰이 붙지 않았어요 — 미션 3 버튼으로 다시 시도해 주세요.",
+      needSignupFirst: "먼저 미션 2에서 가입해 주세요. (새로고침했다면 가입 때 쓴 이메일·비밀번호를 미션 2 칸에 다시 입력)",
+      loginFailed: "로그인에 실패했어요 — 이메일·비밀번호를 확인해 주세요.",
+      network: "네트워크가 불안정해요. 다시 눌러주세요.",
+      needClaimFirst: "먼저 미션 3에서 쿠폰을 등록해 주세요.",
+      testSignup: "(테스트) 가입을 건너뛰고 스탬프만 찍었어요.",
+      testClaim: "(테스트) 쿠폰 등록을 건너뛰고 스탬프만 찍었어요."
+    },
+    en: {
+      h1: "Complete 3 missions,<br>earn 3 chips",
+      sub: "Show your stamped screen to the staff — 1 chip per mission!",
+      chipRule: "<b>1 chip</b> = 1 drink · <b>2 chips</b> = 1 snack",
+      slotFilm: "Film", slotSignup: "Sign up", slotPromo: "Coupon",
+      account: "Account · ", done: "Done ✓",
+      m1Title: "Watch the case film",
+      m1Desc: "Watch the 2-minute Be.Ark case film to the end to earn this stamp.",
+      videoHold: "The case film is coming soon",
+      filmTestBtn: "(Test) Mark as watched",
+      m2Title: "Sign up on site",
+      m2Desc: "Just an email and a password — no confirmation email to wait for.",
+      email: "Email", pw: "Password", pwPh: "8+ characters",
+      pwHint: "You'll use this password to log in to the app.",
+      signupBtn: "Sign up", signupBusy: "Signing up…",
+      m3Title: "Register your 3-month Pro coupon",
+      m3Desc: "Registers a free 3-month Pro coupon to your account. No code to remember — it applies automatically at checkout.",
+      claimBtn: "Register coupon", claimBusy: "Registering…",
+      couponTitle: "MADSTARS · Pro free for 3 months",
+      couponSub: "Coupon registered to your account. It applies automatically at checkout.",
+      couponSubExp: "Coupon registered. Applies automatically at checkout · expires {date}",
+      payHint: "Add a payment method now and Pro starts right away. $0 for 3 months, Apple Pay & Google Pay supported.",
+      payBtn: "Start Pro now", payBusy: "Opening checkout…",
+      paidBanner: "Payment method added — Pro has started! $0 for 3 months, cancel anytime.",
+      payCancel: "Checkout was cancelled. Your coupon is still on your account — you can finish later in the app.",
+      dlTitle: "Get Be.Ark",
+      dlDesc: "No need to install right now — the coupon stays on your account.",
+      dlBtn: "Download Be.Ark", dlExplore: "Explore re-be.world",
+      privacy: "Privacy Policy",
+      invalid_email: "Please double-check your email address.",
+      weak_password: "Password must be at least 8 characters.",
+      campaign_closed: "This event has ended.",
+      not_open_yet: "The event hasn't started yet.",
+      unknown_campaign: "This event link is not valid.",
+      signup_failed: "Sign-up failed. Please try again in a moment.",
+      unknownErr: "Something went wrong ({code})",
+      existingClaiming: "This account already exists. Attaching your coupon…",
+      existingPwWrong: "This email is already registered, but the password doesn't match — please use your original password.",
+      claimWriteFailed: "Couldn't attach the coupon. Please tell the staff.",
+      promoNotAttached: "Your account was created but the coupon wasn't attached — try again with the Mission 3 button.",
+      needSignupFirst: "Please sign up in Mission 2 first. (If you refreshed, re-enter the email & password you used.)",
+      loginFailed: "Login failed — please check your email and password.",
+      network: "The network is unstable. Please tap again.",
+      needClaimFirst: "Please register your coupon in Mission 3 first.",
+      testSignup: "(Test) Skipped sign-up and stamped only.",
+      testClaim: "(Test) Skipped coupon registration and stamped only."
+    }
+  };
+  var lang = (function(){
+    try { var s = localStorage.getItem(LS_LANG); if (s === 'ko' || s === 'en') return s; } catch(e){}
+    return (navigator.language || '').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en';
+  })();
+  function S(key){ return STR[lang][key] || STR.ko[key] || key; }
+  function applyLang(){
+    document.documentElement.lang = lang;
+    document.getElementById('lang-ko').className = lang === 'ko' ? 'on' : '';
+    document.getElementById('lang-en').className = lang === 'en' ? 'on' : '';
+    document.getElementById('h1').innerHTML = S('h1');
+    document.getElementById('chip-rule').innerHTML = S('chipRule');
+    var nodes = document.querySelectorAll('[data-i18n]');
+    for (var i = 0; i < nodes.length; i++) nodes[i].textContent = S(nodes[i].getAttribute('data-i18n'));
+    document.getElementById('pw').placeholder = S('pwPh');
+    var ft = document.getElementById('film-test-btn');
+    if (ft) ft.textContent = S('filmTestBtn');
+    render();
+  }
+  function setLang(l){ lang = l; try { localStorage.setItem(LS_LANG, l); } catch(e){} applyLang(); }
+  document.getElementById('lang-ko').addEventListener('click', function(){ setLang('ko'); });
+  document.getElementById('lang-en').addEventListener('click', function(){ setLang('en'); });
 
   var form = document.getElementById("f");
   var btn  = document.getElementById("submit");
@@ -224,14 +357,15 @@
   var msg2El = document.getElementById("msg2");
   // 미션 ③ 로그인에서 받은 JWT — 보너스 결제 등록(checkout)에 재사용. 저장하지 않는다(메모리만).
   var sessionJwt = null;
+  var lastCouponPromo = null; // 언어 토글 시 쿠폰 문구 다시 그리기용
 
   // ── 스탬프 상태: localStorage 영속 (파티장에서 새로고침해도 유지) ──────────
-  var state = { film:false, signup:false, promo:false, email:"" };
+  var state = { film:false, signup:false, promo:false, email:"", paid:false };
   try { state = Object.assign(state, JSON.parse(localStorage.getItem(LS) || "{}")); } catch(e){}
   function save(){ try { localStorage.setItem(LS, JSON.stringify(state)); } catch(e){} }
 
   function stamp(kind){
-    if (state[kind]) return;
+    if (state[kind]) { render(); return; }
     state[kind] = true; save(); render();
   }
   function render(){
@@ -242,9 +376,12 @@
       document.getElementById(mid).className = "mission" + (on ? " on" : "");
       if (on) document.querySelector("#slot-" + k + " .mark").textContent = "✓";
     });
-    document.getElementById("board-id").innerHTML =
-      state.email ? "가입 계정 · <b></b>" : "";
-    if (state.email) document.querySelector("#board-id b").textContent = state.email;
+    var bid = document.getElementById("board-id");
+    if (state.email) {
+      bid.innerHTML = "";
+      bid.appendChild(document.createTextNode(S('account')));
+      var b = document.createElement("b"); b.textContent = state.email; bid.appendChild(b);
+    } else { bid.innerHTML = ""; }
   }
 
   // 실시간 시계(KST) — 스크린샷 돌려쓰기 방지: 멈춘 시계 = 스샷.
@@ -266,15 +403,11 @@
   }
 
   // 서버가 돌려준 사유를 사람 말로. 모르는 값은 삼키지 말고 그대로 붙인다(원인이 화면까지 오게).
-  var REASONS = {
-    invalid_email:   "이메일 주소를 다시 확인해 주세요.",
-    weak_password:   "비밀번호는 8자 이상이어야 해요.",
-    campaign_closed: "이벤트가 마감됐어요.",
-    not_open_yet:    "아직 이벤트 시작 전이에요.",
-    unknown_campaign:"이벤트 링크가 올바르지 않아요.",
-    signup_failed:   "가입에 실패했어요. 잠시 후 다시 시도해 주세요."
-  };
-  function reasonText(code){ return REASONS[code] || ("문제가 생겼어요 (" + code + ")"); }
+  var REASON_KEYS = ["invalid_email","weak_password","campaign_closed","not_open_yet","unknown_campaign","signup_failed"];
+  function reasonText(code){
+    if (REASON_KEYS.indexOf(code) >= 0) return S(code);
+    return S('unknownErr').replace("{code}", String(code));
+  }
   function msg(el, text, kind){ el.textContent = text; el.className = "msg show " + (kind || "info"); }
   function clearMsg(el){ el.className = "msg"; }
 
@@ -298,7 +431,7 @@
     document.head.appendChild(s);
   } else if (TEST_MODE) {
     var tb = document.createElement("button");
-    tb.type = "button"; tb.className = "ghost"; tb.textContent = "(테스트) 시청 완료 처리";
+    tb.type = "button"; tb.className = "ghost"; tb.id = "film-test-btn";
     tb.addEventListener("click", function(){ stamp("film"); });
     document.getElementById("film-test-area").appendChild(tb);
   }
@@ -307,7 +440,7 @@
   function finishSignup(email, promoInfo){
     state.email = email || state.email; stamp("signup"); save(); render();
     if (promoInfo && promoInfo.attached === false) {
-      msg(msgEl, "계정은 만들어졌는데 쿠폰이 붙지 않았어요 — 미션 3 버튼으로 다시 시도해 주세요.", "info");
+      msg(msgEl, S('promoNotAttached'), "info");
     } else {
       clearMsg(msgEl);
     }
@@ -316,11 +449,11 @@
 
   // 이미 계정이 있는 참석자 = 같은 비밀번호로 로그인해서 쿠폰만 받는다.
   function claimAsExisting(email, pw){
-    msg(msgEl, "이미 가입된 계정이에요. 쿠폰을 붙이는 중…", "info");
+    msg(msgEl, S('existingClaiming'), "info");
     return post(AUTH, { email:email, password:pw })
       .then(function(r){
         if (!r.body || !r.body.access_token) {
-          msg(msgEl, "이미 가입된 이메일이에요. 비밀번호가 기존 계정과 달라요 — 원래 쓰던 비밀번호를 넣어주세요.", "err");
+          msg(msgEl, S('existingPwWrong'), "err");
           return null;
         }
         sessionJwt = r.body.access_token;
@@ -335,7 +468,7 @@
         }
         var reason = (r.body && r.body.promo && r.body.promo.reason) || (r.body && r.body.error) || "unknown";
         if (String(reason).indexOf("claim_write_failed") === 0) {
-          msg(msgEl, "쿠폰을 붙이지 못했어요. 현장 스태프에게 알려주세요.", "err");
+          msg(msgEl, S('claimWriteFailed'), "err");
         } else {
           msg(msgEl, reasonText(reason), "err");
         }
@@ -349,17 +482,17 @@
 
     // TEST_MODE: 빈 채로 눌러도 다음 단계로 (실측 후 실동작 전환 — TEST_MODE=false)
     if (TEST_MODE && !email && !pw) {
-      msg(msgEl, "(테스트) 가입을 건너뛰고 스탬프만 찍었어요.", "info");
+      msg(msgEl, S('testSignup'), "info");
       state.email = "test@beark.dev"; stamp("signup");
       document.getElementById("m-promo").scrollIntoView({ behavior:"smooth", block:"center" });
       return;
     }
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg(msgEl, REASONS.invalid_email, "err"); return; }
-    if (pw.length < 8) { msg(msgEl, REASONS.weak_password, "err"); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg(msgEl, S('invalid_email'), "err"); return; }
+    if (pw.length < 8) { msg(msgEl, S('weak_password'), "err"); return; }
 
     btn.disabled = true;
-    btn.textContent = "가입하는 중…";
+    btn.textContent = S('signupBusy');
     clearMsg(msgEl);
 
     post(FN, { type:"event_signup", campaign:CAMPAIGN, email:email, password:pw })
@@ -371,22 +504,27 @@
         msg(msgEl, reasonText((r.body && r.body.error) || "unknown"), "err");
       })
       .catch(function(){
-        msg(msgEl, "네트워크가 불안정해요. 다시 눌러주세요.", "err");
+        msg(msgEl, S('network'), "err");
       })
       .then(function(){
         btn.disabled = false;
-        btn.textContent = "가입하기";
+        btn.textContent = S('signupBtn');
       });
   });
 
   // ── 미션 3: 쿠폰 등록 (로그인 → claim_promo 멱등 왕복) ─────────────────
   function showCoupon(promo){
+    lastCouponPromo = promo || lastCouponPromo;
     var el = document.getElementById("coupon");
     el.className = "coupon show";
-    var spec = promo && promo.spec;
-    if (spec && spec.expires_kst) {
-      document.getElementById("coupon-sub").textContent =
-        "쿠폰이 계정에 등록됐어요. 결제 시 자동 적용 · " + String(spec.expires_kst).slice(0, 16) + " 마감";
+    var sub = document.getElementById("coupon-sub");
+    var spec = lastCouponPromo && lastCouponPromo.spec;
+    if (state.paid) {
+      sub.textContent = S('paidBanner');
+    } else if (spec && spec.expires_kst) {
+      sub.textContent = S('couponSubExp').replace("{date}", String(spec.expires_kst).slice(0, 16));
+    } else {
+      sub.textContent = S('couponSub');
     }
     // 보너스: JWT가 있을 때만 결제 등록 버튼 노출 (칩 조건 아님 — 쿠폰 스탬프까지가 미션)
     if (sessionJwt && !state.paid) document.getElementById("pay-area").style.display = "block";
@@ -397,23 +535,23 @@
     var pw    = document.getElementById("pw").value;
 
     if (TEST_MODE && (!email || email === "test@beark.dev") && !pw) {
-      msg(msg2El, "(테스트) 쿠폰 등록을 건너뛰고 스탬프만 찍었어요.", "info");
+      msg(msg2El, S('testClaim'), "info");
       showCoupon(null); stamp("promo");
       return;
     }
     if (!email || !pw) {
-      msg(msg2El, "먼저 미션 2에서 가입해 주세요. (새로고침했다면 가입 때 쓴 이메일·비밀번호를 미션 2 칸에 다시 입력)", "info");
+      msg(msg2El, S('needSignupFirst'), "info");
       return;
     }
 
     claimBtn.disabled = true;
-    claimBtn.textContent = "등록하는 중…";
+    claimBtn.textContent = S('claimBusy');
     clearMsg(msg2El);
 
     post(AUTH, { email:email, password:pw })
       .then(function(r){
         if (!r.body || !r.body.access_token) {
-          msg(msg2El, "로그인에 실패했어요 — 이메일·비밀번호를 확인해 주세요.", "err");
+          msg(msg2El, S('loginFailed'), "err");
           return null;
         }
         sessionJwt = r.body.access_token;
@@ -430,11 +568,11 @@
         msg(msg2El, reasonText(reason), "err");
       })
       .catch(function(){
-        msg(msg2El, "네트워크가 불안정해요. 다시 눌러주세요.", "err");
+        msg(msg2El, S('network'), "err");
       })
       .then(function(){
         claimBtn.disabled = false;
-        claimBtn.textContent = "쿠폰 등록하기";
+        claimBtn.textContent = S('claimBtn');
       });
   });
 
@@ -443,22 +581,22 @@
   // 쿠폰이 계정에 붙어 있어 첫 3개월 0원이 자동 적용된다(checkout이 discounts로 주입).
   payBtn.addEventListener("click", function(){
     if (!sessionJwt) {
-      msg(msg2El, "먼저 미션 3에서 쿠폰을 등록해 주세요.", "info");
+      msg(msg2El, S('needClaimFirst'), "info");
       return;
     }
     payBtn.disabled = true;
-    payBtn.textContent = "결제창 여는 중…";
+    payBtn.textContent = S('payBusy');
     post(FN, { type:"checkout", return_to:"https://re-be.world/join/madstars" }, sessionJwt)
       .then(function(r){
         if (r.status === 200 && r.body.url) { location.href = r.body.url; return; }
         msg(msg2El, reasonText((r.body && r.body.error) || "unknown"), "err");
         payBtn.disabled = false;
-        payBtn.textContent = "Pro 바로 시작하기";
+        payBtn.textContent = S('payBtn');
       })
       .catch(function(){
-        msg(msg2El, "네트워크가 불안정해요. 다시 눌러주세요.", "err");
+        msg(msg2El, S('network'), "err");
         payBtn.disabled = false;
-        payBtn.textContent = "Pro 바로 시작하기";
+        payBtn.textContent = S('payBtn');
       });
   });
 
@@ -466,17 +604,15 @@
   var billing = new URLSearchParams(location.search).get("billing");
   if (billing === "success") {
     state.paid = true; save();
-    document.getElementById("coupon").className = "coupon show";
-    document.getElementById("coupon-sub").textContent =
-      "결제수단 등록 완료 — Pro가 지금 시작됐어요! 3개월간 0원, 이후엔 언제든 해지할 수 있어요.";
+    showCoupon(null);
     history.replaceState(null, "", location.pathname);
   } else if (billing === "cancel") {
-    msg(msg2El, "결제 등록을 중간에 멈췄어요. 쿠폰은 계정에 그대로 있으니 나중에 앱에서 해도 돼요.", "info");
+    msg(msg2El, S('payCancel'), "info");
     history.replaceState(null, "", location.pathname);
   }
-  if (state.paid) document.getElementById("pay-area").style.display = "none";
+  if (state.paid) { document.getElementById("pay-area").style.display = "none"; showCoupon(null); }
 
-  render();
+  applyLang();
 })();
 </script>
 </body>
