@@ -206,8 +206,9 @@
   <section class="mission" id="m-dl">
     <div class="m-head"><h2 data-i18n="dlTitle"></h2></div>
     <p class="m-desc" data-i18n="dlDesc"></p>
-    <a class="dl primary" href="https://re-be.world/#download" data-i18n="dlBtn"></a>
+    <button type="button" id="fav" class="dl primary" style="width:100%;margin-top:12px;font-family:inherit;border:0;cursor:pointer" data-i18n="favBtn"></button>
     <a class="dl" href="https://re-be.world/" data-i18n="dlExplore"></a>
+    <div id="msg3" class="msg"></div>
   </section>
 
   <p class="foot">Paulus Co.,Ltd. · <a href="/privacy" data-i18n="privacy"></a></p>
@@ -259,7 +260,9 @@
       payCancel: "결제 등록을 중간에 멈췄어요. 쿠폰은 계정에 그대로 있으니 나중에 앱에서 해도 돼요.",
       dlTitle: "Be.Ark 시작하기",
       dlDesc: "지금 설치하지 않아도 괜찮아요. 쿠폰은 계정에 남아 있어요.",
-      dlBtn: "Be.Ark 다운로드", dlExplore: "re-be.world 둘러보기",
+      favBtn: "즐겨찾기 추가", dlExplore: "Be.Ark 둘러보기",
+      favShared: "공유 창에서 '북마크 추가' 또는 '홈 화면에 추가'를 눌러주세요.",
+      favManual: "브라우저 메뉴(공유 버튼 또는 ⋮)에서 '북마크 추가' / '홈 화면에 추가'를 눌러주세요.",
       privacy: "개인정보처리방침",
       invalid_email: "이메일 주소를 다시 확인해 주세요.",
       weak_password: "비밀번호는 8자 이상이어야 해요.",
@@ -306,7 +309,9 @@
       payCancel: "Checkout was cancelled. Your coupon is still on your account — you can finish later in the app.",
       dlTitle: "Get Be.Ark",
       dlDesc: "No need to install right now — the coupon stays on your account.",
-      dlBtn: "Download Be.Ark", dlExplore: "Explore re-be.world",
+      favBtn: "Add to Favorites", dlExplore: "Explore Be.Ark",
+      favShared: "In the share sheet, tap 'Add Bookmark' or 'Add to Home Screen'.",
+      favManual: "In your browser menu (share button or ⋮), tap 'Add bookmark' / 'Add to Home Screen'.",
       privacy: "Privacy Policy",
       invalid_email: "Please double-check your email address.",
       weak_password: "Password must be at least 8 characters.",
@@ -601,6 +606,19 @@
         payBtn.disabled = false;
         payBtn.textContent = S('payBtn');
       });
+  });
+
+  // ── 즐겨찾기 추가 (2026-08-25 빠불로) — 모바일은 북마크를 코드로 못 넣는다.
+  //    navigator.share로 공유시트를 띄우면 iOS/안드 모두 '북마크·홈 화면 추가'가 그 안에 있다.
+  document.getElementById("fav").addEventListener("click", function(){
+    var url = "https://re-be.world/join/madstars";
+    if (navigator.share) {
+      navigator.share({ title: "Be.Ark", url: url })
+        .then(function(){ msg(document.getElementById("msg3"), S('favShared'), "info"); })
+        .catch(function(){ /* 유저 취소 = 조용히 */ });
+    } else {
+      msg(document.getElementById("msg3"), S('favManual'), "info");
+    }
   });
 
   // Stripe에서 복귀: ?billing=success|cancel (백엔드 return_to가 이 페이지로 돌려보낸다)
