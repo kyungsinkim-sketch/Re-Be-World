@@ -108,6 +108,7 @@
          font-family:inherit; color:#1a1206; background:var(--accent); border:0;
          border-radius:12px; cursor:pointer; letter-spacing:-.01em}
   button:disabled{opacity:.55; cursor:default}
+  button.done{background:#3d4654; color:#9aa6b8; opacity:1; cursor:default}
   button.ghost{background:transparent; color:var(--ink-dim); border:1px solid var(--line)}
   .msg{margin-top:14px; font-size:14px; padding:12px 14px; border-radius:11px; display:none}
   .msg.show{display:block}
@@ -142,18 +143,18 @@
   <p class="sub" data-i18n="sub"></p>
   <p class="chip-rule" id="chip-rule"></p>
 
-  <!-- 스탬프판 -->
+  <!-- 스탬프판 (상단 + 미션3 아래 미러 — 같은 마크업, id 없이 class/data-k로 동기화) -->
   <section class="board">
     <div class="board-head">
       <span class="board-title">MISSION STAMPS</span>
-      <span class="board-clock" id="clock">--:--:--</span>
+      <span class="board-clock">--:--:--</span>
     </div>
     <div class="slots">
-      <div class="slot" id="slot-film"><div class="mark">1</div><div class="name" data-i18n="slotFilm"></div></div>
-      <div class="slot" id="slot-signup"><div class="mark">2</div><div class="name" data-i18n="slotSignup"></div></div>
-      <div class="slot" id="slot-promo"><div class="mark">3</div><div class="name" data-i18n="slotPromo"></div></div>
+      <div class="slot" data-k="film"><div class="mark">1</div><div class="name" data-i18n="slotFilm"></div></div>
+      <div class="slot" data-k="signup"><div class="mark">2</div><div class="name" data-i18n="slotSignup"></div></div>
+      <div class="slot" data-k="promo"><div class="mark">3</div><div class="name" data-i18n="slotPromo"></div></div>
     </div>
-    <div class="board-id" id="board-id"></div>
+    <div class="board-id"></div>
   </section>
 
   <!-- 미션 1: 케이스필름 -->
@@ -202,13 +203,27 @@
     <div id="msg2" class="msg"></div>
   </section>
 
+  <!-- 스탬프판 미러 (빠불로 8/26: 스크롤 없이 하단에서도 확인) -->
+  <section class="board">
+    <div class="board-head">
+      <span class="board-title">MISSION STAMPS</span>
+      <span class="board-clock">--:--:--</span>
+    </div>
+    <div class="slots">
+      <div class="slot" data-k="film"><div class="mark">1</div><div class="name" data-i18n="slotFilm"></div></div>
+      <div class="slot" data-k="signup"><div class="mark">2</div><div class="name" data-i18n="slotSignup"></div></div>
+      <div class="slot" data-k="promo"><div class="mark">3</div><div class="name" data-i18n="slotPromo"></div></div>
+    </div>
+    <div class="board-id"></div>
+  </section>
+
   <!-- Be.Ark 시작하기 — 미션 1·2·3과 구분되는 골드 톤 배경 (빠불로 8/25) -->
   <section class="mission" id="m-dl" style="border-color:#c49c4d40;
     background:linear-gradient(180deg, #c49c4d14, transparent 60%), var(--bg-soft)">
     <div class="m-head"><h2 data-i18n="dlTitle"></h2></div>
     <p class="m-desc" data-i18n="dlDesc"></p>
-    <button type="button" id="fav" class="dl primary" style="width:100%;margin-top:12px;font-family:inherit;border:0;cursor:pointer" data-i18n="favBtn"></button>
-    <a class="dl" href="https://re-be.world/" data-i18n="dlExplore"></a>
+    <a class="dl primary" href="https://re-be.world/" data-i18n="dlExplore"></a>
+    <button type="button" id="fav" class="dl" style="width:100%;margin-top:12px;font-family:inherit;cursor:pointer" data-i18n="favBtn"></button>
     <div id="msg3" class="msg"></div>
   </section>
 
@@ -384,25 +399,34 @@
   function render(){
     ["film","signup","promo"].forEach(function(k){
       var on = !!state[k];
-      document.getElementById("slot-" + k).className = "slot" + (on ? " on" : "");
+      // 스탬프판 2개(상단+미션3 아래 미러) 동기화
+      document.querySelectorAll('.slot[data-k="' + k + '"]').forEach(function(el){
+        el.className = "slot" + (on ? " on" : "");
+        if (on) el.querySelector(".mark").textContent = "✓";
+      });
       var mid = { film:"m-film", signup:"m-signup", promo:"m-promo" }[k];
       document.getElementById(mid).className = "mission" + (on ? " on" : "");
-      if (on) document.querySelector("#slot-" + k + " .mark").textContent = "✓";
     });
-    var bid = document.getElementById("board-id");
-    if (state.email) {
+    document.querySelectorAll(".board-id").forEach(function(bid){
       bid.innerHTML = "";
-      bid.appendChild(document.createTextNode(S('account')));
-      var b = document.createElement("b"); b.textContent = state.email; bid.appendChild(b);
-    } else { bid.innerHTML = ""; }
+      if (state.email) {
+        bid.appendChild(document.createTextNode(S('account')));
+        var b = document.createElement("b"); b.textContent = state.email; bid.appendChild(b);
+      }
+    });
+    // 완료된 미션의 버튼은 연회색+비활성 — "더 안 눌러도 됨" (빠불로 8/26)
+    var setDone = function(el, done){ el.disabled = !!done; el.classList.toggle("done", !!done); };
+    setDone(btn, state.signup);
+    setDone(claimBtn, state.promo);
+    setDone(payBtn, state.paid);
   }
 
   // 실시간 시계(KST) — 스크린샷 돌려쓰기 방지: 멈춘 시계 = 스샷.
   function tick(){
     var d = new Date(Date.now() + (9 * 60 + new Date().getTimezoneOffset()) * 60000);
     var p = function(n){ return (n < 10 ? "0" : "") + n; };
-    document.getElementById("clock").textContent =
-      "LIVE " + p(d.getHours()) + ":" + p(d.getMinutes()) + ":" + p(d.getSeconds());
+    var s = "LIVE " + p(d.getHours()) + ":" + p(d.getMinutes()) + ":" + p(d.getSeconds());
+    document.querySelectorAll(".board-clock").forEach(function(el){ el.textContent = s; });
   }
   setInterval(tick, 1000); tick();
 
@@ -522,8 +546,8 @@
         msg(msgEl, S('network'), "err");
       })
       .then(function(){
-        btn.disabled = false;
         btn.textContent = S('signupBtn');
+        render(); // 완료 상태면 done 유지
       });
   });
 
@@ -542,7 +566,7 @@
       sub.textContent = S('couponSub');
     }
     // 보너스: JWT가 있을 때만 결제 등록 버튼 노출 (칩 조건 아님 — 쿠폰 스탬프까지가 미션)
-    if (sessionJwt && !state.paid) document.getElementById("pay-area").style.display = "block";
+    if (sessionJwt || state.paid) document.getElementById("pay-area").style.display = "block";
   }
 
   claimBtn.addEventListener("click", function(){
@@ -586,8 +610,8 @@
         msg(msg2El, S('network'), "err");
       })
       .then(function(){
-        claimBtn.disabled = false;
         claimBtn.textContent = S('claimBtn');
+        render(); // 완료 상태면 done 유지
       });
   });
 
@@ -639,7 +663,7 @@
     msg(msg2El, S('payCancel'), "info");
     history.replaceState(null, "", location.pathname);
   }
-  if (state.paid) { document.getElementById("pay-area").style.display = "none"; showCoupon(null); }
+  if (state.paid) { document.getElementById("pay-area").style.display = "block"; showCoupon(null); }
 
   applyLang();
 })();
