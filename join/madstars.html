@@ -202,8 +202,9 @@
     <div id="msg2" class="msg"></div>
   </section>
 
-  <!-- 다운로드 -->
-  <section class="mission" id="m-dl">
+  <!-- Be.Ark 시작하기 — 미션 1·2·3과 구분되는 골드 톤 배경 (빠불로 8/25) -->
+  <section class="mission" id="m-dl" style="border-color:#c49c4d40;
+    background:linear-gradient(180deg, #c49c4d14, transparent 60%), var(--bg-soft)">
     <div class="m-head"><h2 data-i18n="dlTitle"></h2></div>
     <p class="m-desc" data-i18n="dlDesc"></p>
     <button type="button" id="fav" class="dl primary" style="width:100%;margin-top:12px;font-family:inherit;border:0;cursor:pointer" data-i18n="favBtn"></button>
@@ -617,7 +618,8 @@
   // ── 즐겨찾기 추가 (2026-08-25 빠불로) — 모바일은 북마크를 코드로 못 넣는다.
   //    navigator.share로 공유시트를 띄우면 iOS/안드 모두 '북마크·홈 화면 추가'가 그 안에 있다.
   document.getElementById("fav").addEventListener("click", function(){
-    var url = "https://re-be.world/join/madstars";
+    // 즐겨찾기 대상 = 랜딩(re-be.world) — 이벤트 페이지는 행사 후 수명이 끝난다 (빠불로 8/25)
+    var url = "https://www.re-be.world/";
     if (navigator.share) {
       navigator.share({ title: "Be.Ark", url: url })
         .then(function(){ msg(document.getElementById("msg3"), S('favShared'), "info"); })
