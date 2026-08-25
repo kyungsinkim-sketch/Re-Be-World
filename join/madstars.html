@@ -653,6 +653,20 @@
     }
   });
 
+  // 뒤로가기(bfcache) 복원 대응 (빠불로 8/26 실측: 결제창 갔다 back으로 오면 버튼이
+  // 떠나기 직전 스냅샷 그대로 살아남 — JS가 재실행되지 않는다) → pageshow에서 상태 재로드+재렌더.
+  window.addEventListener("pageshow", function(e){
+    if (!e.persisted) return;
+    try { state = Object.assign(state, JSON.parse(localStorage.getItem(LS) || "{}")); } catch(err){}
+    // "…하는 중" 라벨로 얼어붙은 버튼 복구 후 done 상태 재적용
+    btn.textContent = S('signupBtn');
+    claimBtn.textContent = S('claimBtn');
+    payBtn.textContent = S('payBtn');
+    btn.disabled = false; claimBtn.disabled = false; payBtn.disabled = false;
+    if (state.paid) { document.getElementById("pay-area").style.display = "block"; showCoupon(null); }
+    render();
+  });
+
   // Stripe에서 복귀: ?billing=success|cancel (백엔드 return_to가 이 페이지로 돌려보낸다)
   var billing = new URLSearchParams(location.search).get("billing");
   if (billing === "success") {
