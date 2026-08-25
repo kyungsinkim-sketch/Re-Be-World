@@ -231,6 +231,13 @@
   .card h3{font-size:18px;letter-spacing:-.01em}
   .card p{color:var(--ink-dim);font-size:14.5px;margin-top:8px}
 
+  /* promo video */
+  .video{padding:70px 0 10px}
+  .video-frame{position:relative;width:100%;max-width:860px;margin:0 auto;aspect-ratio:16/9;
+    border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+    box-shadow:0 30px 80px #00000088;background:#0a0e15}
+  .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
   /* whats new (announcements.json reuse) */
   .whatsnew{padding:16px 0 26px}
   .wn-list{display:grid;gap:16px;max-width:760px;margin:0 auto}
@@ -410,6 +417,19 @@ not another cloud account renting your mind back to you.</p>
           <div class="msg ai">Done. I matched your tone from past notes. Want me to save it to the project file?</div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMO VIDEO -->
+<section class="video" id="video">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>See Be.Ark in action</h2>
+      <p>A personal Agent that's truly your own — watch how it works.</p>
+    </div>
+    <div class="video-frame">
+      <iframe src="https://www.youtube.com/embed/14lhSoVAa7A" title="Be.Ark — A Personal Agent That's Truly Your Own" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
   </div>
 </section>
