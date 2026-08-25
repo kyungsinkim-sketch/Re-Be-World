@@ -219,8 +219,8 @@
   // ⚠️ TEST_MODE: 실측용 — 입력 없이 버튼만 눌러도 스탬프가 찍힌다.
   //    실측 통과 후 반드시 false로 바꿔 배포할 것 (행사 전 마지막 커밋).
   var TEST_MODE = true;
-  // TODO(빠불로 링크 대기): 유튜브 영상 ID로 교체 (예: "dQw4w9WgXcQ"). 빈 값 = 준비중 표시.
-  var FILM_ID = "";
+  // 케이스필름 (2026-08-25 빠불로 업로드) — 페이지 언어를 따라간다. 언어 토글 시 cueVideoById.
+  var FILM_IDS = { ko: "jvsTvkZSvjk", en: "14lhSoVAa7A" };
 
   var FN  = "https://hxrvapnasxmaubymcipd.supabase.co/functions/v1/billing";
   var AUTH= "https://hxrvapnasxmaubymcipd.supabase.co/auth/v1/token?grant_type=password";
@@ -343,6 +343,7 @@
     document.getElementById('pw').placeholder = S('pwPh');
     var ft = document.getElementById('film-test-btn');
     if (ft) ft.textContent = S('filmTestBtn');
+    syncFilmLang();
     render();
   }
   function setLang(l){ lang = l; try { localStorage.setItem(LS_LANG, l); } catch(e){} applyLang(); }
@@ -414,26 +415,28 @@
   // ── 미션 1: 케이스필름 ─────────────────────────────────────────────────
   // YT IFrame API로 '끝까지 재생(ENDED)'을 감지한다. 클라이언트 판정 —
   // 100명 파티 + 스태프 눈 검증 조합에 서버 판정까지 얹는 건 과설계.
-  if (FILM_ID) {
-    document.getElementById("video-hold").remove();
-    var holder = document.createElement("div");
-    holder.id = "yt-player";
-    document.getElementById("video-wrap").appendChild(holder);
-    window.onYouTubeIframeAPIReady = function(){
-      new YT.Player("yt-player", {
-        videoId: FILM_ID,
-        playerVars: { rel:0, playsinline:1, modestbranding:1 },
-        events: { onStateChange: function(e){ if (e.data === YT.PlayerState.ENDED) stamp("film"); } }
-      });
-    };
-    var s = document.createElement("script");
-    s.src = "https://www.youtube.com/iframe_api";
-    document.head.appendChild(s);
-  } else if (TEST_MODE) {
-    var tb = document.createElement("button");
-    tb.type = "button"; tb.className = "ghost"; tb.id = "film-test-btn";
-    tb.addEventListener("click", function(){ stamp("film"); });
-    document.getElementById("film-test-area").appendChild(tb);
+  var ytPlayer = null;
+  document.getElementById("video-hold").remove();
+  var holder = document.createElement("div");
+  holder.id = "yt-player";
+  document.getElementById("video-wrap").appendChild(holder);
+  window.onYouTubeIframeAPIReady = function(){
+    ytPlayer = new YT.Player("yt-player", {
+      videoId: FILM_IDS[lang],
+      playerVars: { rel:0, playsinline:1, modestbranding:1 },
+      events: { onStateChange: function(e){ if (e.data === YT.PlayerState.ENDED) stamp("film"); } }
+    });
+  };
+  var ytScript = document.createElement("script");
+  ytScript.src = "https://www.youtube.com/iframe_api";
+  document.head.appendChild(ytScript);
+  // 언어 토글 → 해당 언어 영상으로 교체 (재생 중이 아니면 cue만)
+  function syncFilmLang(){
+    if (!ytPlayer || !ytPlayer.cueVideoById) return;
+    try {
+      var cur = String((ytPlayer.getVideoUrl && ytPlayer.getVideoUrl()) || "");
+      if (cur.indexOf(FILM_IDS[lang]) < 0) ytPlayer.cueVideoById(FILM_IDS[lang]);
+    } catch(e){}
   }
 
   // ── 미션 2: 현장가입 ───────────────────────────────────────────────────
