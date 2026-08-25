@@ -365,6 +365,12 @@
   var sessionJwt = null;
   var lastCouponPromo = null; // 언어 토글 시 쿠폰 문구 다시 그리기용
 
+  // 실측/현장용 리셋: ?reset=1 로 열면 이 폰의 스탬프 상태를 지우고 처음부터 (2026-08-25)
+  if (new URLSearchParams(location.search).get("reset") === "1") {
+    try { localStorage.removeItem(LS); } catch(e){}
+    history.replaceState(null, "", location.pathname);
+  }
+
   // ── 스탬프 상태: localStorage 영속 (파티장에서 새로고침해도 유지) ──────────
   var state = { film:false, signup:false, promo:false, email:"", paid:false };
   try { state = Object.assign(state, JSON.parse(localStorage.getItem(LS) || "{}")); } catch(e){}
