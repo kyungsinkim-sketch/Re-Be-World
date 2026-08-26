@@ -176,7 +176,6 @@
   <!-- 미션 2: 현장가입 -->
   <section class="mission" id="m-signup">
     <div class="m-head"><span class="m-num">2</span><h2 data-i18n="m2Title"></h2><span class="m-done" data-i18n="done"></span></div>
-    <p class="m-desc" data-i18n="m2Desc"></p>
     <form id="f" novalidate>
       <div class="field">
         <label for="email" data-i18n="email"></label>
@@ -187,6 +186,14 @@
         <label for="pw" data-i18n="pw"></label>
         <input id="pw" type="password" autocomplete="new-password" required>
         <p class="hint" data-i18n="pwHint"></p>
+      </div>
+      <div class="field">
+        <label for="uname" data-i18n="nameLabel"></label>
+        <input id="uname" type="text" autocomplete="name" maxlength="80">
+      </div>
+      <div class="field">
+        <label for="ucompany" data-i18n="companyLabel"></label>
+        <input id="ucompany" type="text" autocomplete="organization" maxlength="120">
       </div>
       <button id="submit" type="submit" data-i18n="signupBtn"></button>
     </form>
@@ -227,7 +234,6 @@
   <section class="mission" id="m-dl" style="border-color:#c49c4d40;
     background:linear-gradient(180deg, #c49c4d14, transparent 60%), var(--bg-soft)">
     <div class="m-head"><h2 data-i18n="dlTitle"></h2></div>
-    <p class="m-desc" data-i18n="dlDesc"></p>
     <a class="dl primary" href="https://re-be.world/" data-i18n="dlExplore"></a>
     <button type="button" id="fav" class="dl" style="width:100%;margin-top:12px;font-family:inherit;cursor:pointer" data-i18n="favBtn"></button>
     <div id="msg3" class="msg"></div>
@@ -267,13 +273,13 @@
       m1Desc: "2분짜리 Be.Ark 케이스필름을 끝까지 보면 스탬프가 찍혀요.",
       videoHold: "케이스필름은 곧 공개돼요",
       filmTestBtn: "(테스트) 시청 완료 처리",
-      m2Title: "현장 가입하기",
-      m2Desc: "이메일과 비밀번호만 입력하면 끝. 확인 메일을 기다릴 필요 없어요.",
+      m2Title: "현장 등록/가입하기",
+      nameLabel: "이름 (선택)", companyLabel: "회사 (선택)",
       email: "이메일", pw: "비밀번호", pwPh: "8자 이상",
       pwHint: "앱에 로그인할 때 쓰는 비밀번호예요.",
       signupBtn: "가입하기", signupBusy: "가입하는 중…",
       m3Title: "Pro 3개월 쿠폰 등록",
-      m3Desc: "가입한 계정에 Pro 3개월 무료 쿠폰을 등록해요. 코드를 외울 필요 없이 결제 때 자동 적용됩니다.",
+      m3Desc: "가입한 계정에 Pro 3개월 무료 쿠폰을 등록해둡니다. 8.31(월)까지 사용 가능해요.",
       claimBtn: "쿠폰 등록하기", claimBusy: "등록하는 중…",
       couponTitle: "MADSTARS · Pro 3개월 무료",
       couponSub: "쿠폰이 계정에 등록됐어요. 결제 시 자동 적용됩니다.",
@@ -283,7 +289,6 @@
       paidBanner: "결제수단 등록 완료 — Pro가 지금 시작됐어요! 3개월간 0원, 이후엔 언제든 해지할 수 있어요.",
       payCancel: "결제 등록을 중간에 멈췄어요. 쿠폰은 계정에 그대로 있으니 나중에 앱에서 해도 돼요.",
       dlTitle: "Be.Ark 시작하기",
-      dlDesc: "지금 설치하지 않아도 괜찮아요. 쿠폰은 계정에 남아 있어요.",
       favBtn: "즐겨찾기 추가", dlExplore: "Be.Ark 둘러보기",
       favShared: "공유 창에서 '북마크 추가' 또는 '홈 화면에 추가'를 눌러주세요.",
       favManual: "브라우저 메뉴(공유 버튼 또는 ⋮)에서 '북마크 추가' / '홈 화면에 추가'를 눌러주세요.",
@@ -318,13 +323,13 @@
       m1Desc: "Watch the 2-minute Be.Ark case film to the end to earn this stamp.",
       videoHold: "The case film is coming soon",
       filmTestBtn: "(Test) Mark as watched",
-      m2Title: "Sign up on site",
-      m2Desc: "Just an email and a password — no confirmation email to wait for.",
+      m2Title: "Register / Sign up on site",
+      nameLabel: "Name (optional)", companyLabel: "Company (optional)",
       email: "Email", pw: "Password", pwPh: "8+ characters",
       pwHint: "You'll use this password to log in to the app.",
       signupBtn: "Sign up", signupBusy: "Signing up…",
       m3Title: "Register your 3-month Pro coupon",
-      m3Desc: "Registers a free 3-month Pro coupon to your account. No code to remember — it applies automatically at checkout.",
+      m3Desc: "The free 3-month Pro coupon is registered to your account. Valid through Aug 31 (Mon).",
       claimBtn: "Register coupon", claimBusy: "Registering…",
       couponTitle: "MADSTARS · Pro free for 3 months",
       couponSub: "Coupon registered to your account. It applies automatically at checkout.",
@@ -334,7 +339,6 @@
       paidBanner: "Payment method added — Pro has started! $0 for 3 months, cancel anytime.",
       payCancel: "Checkout was cancelled. Your coupon is still on your account — you can finish later in the app.",
       dlTitle: "Get Be.Ark",
-      dlDesc: "No need to install right now — the coupon stays on your account.",
       favBtn: "Add to Favorites", dlExplore: "Explore Be.Ark",
       favShared: "In the share sheet, tap 'Add Bookmark' or 'Add to Home Screen'.",
       favManual: "In your browser menu (share button or ⋮), tap 'Add bookmark' / 'Add to Home Screen'.",
@@ -547,7 +551,9 @@
     btn.textContent = S('signupBusy');
     clearMsg(msgEl);
 
-    post(FN, { type:"event_signup", campaign:CAMPAIGN, email:email, password:pw })
+    post(FN, { type:"event_signup", campaign:CAMPAIGN, email:email, password:pw,
+      name: document.getElementById("uname").value.trim(),
+      company: document.getElementById("ucompany").value.trim() })
       .then(function(r){
         if (r.status === 200 && r.body.ok && r.body.existing) return claimAsExisting(email, pw);
         // 신규 가입 성공: 서버가 쿠폰까지 붙여뒀지만(안전망) 스탬프 3은 미션 ③ 버튼의
