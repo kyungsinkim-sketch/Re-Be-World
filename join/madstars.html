@@ -78,6 +78,11 @@
         animation:stamp .45s cubic-bezier(.2,1.6,.4,1)}
   .slot.on .name{color:var(--ink)}
   @keyframes stamp{0%{transform:scale(1.9) rotate(-14deg); opacity:0} 100%{transform:scale(1) rotate(0); opacity:1}}
+  .slot.on{cursor:pointer}
+  /* 칩 발급 완료 (빠불로 8/26): 스태프가 칩 주며 탭 → 회색 잠금, 이중수령 방지 */
+  .slot.redeemed{cursor:default; border-style:solid; border-color:#3d4654; background:#12161d}
+  .slot.redeemed .mark{border:2px solid #3d4654; background:#3d4654; color:#0c1018; animation:none}
+  .slot.redeemed .name{color:#5e6b7e}
   .board-id{margin-top:12px; font-size:12px; color:var(--ink-faint); text-align:center;
         overflow-wrap:anywhere}
   .board-id b{color:var(--ink-dim); font-weight:600}
@@ -254,6 +259,8 @@
       sub: "스탬프가 찍힌 화면을 스태프에게 보여주면 미션당 칩 1개!",
       chipRule: "<b>칩 1개</b> = 드링크 1잔 · <b>칩 2개</b> = 안주 1개",
       slotFilm: "필름 시청", slotSignup: "현장 가입", slotPromo: "쿠폰 등록",
+      redeemedName: "발급 완료",
+      redeemConfirm: "실물 칩을 지급하셨나요? 확인을 누르면 이 스탬프는 '발급 완료'로 잠깁니다.",
       account: "가입 계정 · ", done: "완료 ✓",
       m1Title: "케이스필름 보기",
       m1Desc: "2분짜리 Be.Ark 케이스필름을 끝까지 보면 스탬프가 찍혀요.",
@@ -303,6 +310,8 @@
       sub: "Show your stamped screen to the staff — 1 chip per mission!",
       chipRule: "<b>1 chip</b> = 1 drink · <b>2 chips</b> = 1 snack",
       slotFilm: "Film", slotSignup: "Sign up", slotPromo: "Coupon",
+      redeemedName: "Chip given",
+      redeemConfirm: "Handing over the chip? This stamp will be locked as 'Chip given'.",
       account: "Account · ", done: "Done ✓",
       m1Title: "Watch the case film",
       m1Desc: "Watch the 2-minute Be.Ark case film to the end to earn this stamp.",
@@ -388,8 +397,9 @@
   }
 
   // ── 스탬프 상태: localStorage 영속 (파티장에서 새로고침해도 유지) ──────────
-  var state = { film:false, signup:false, promo:false, email:"", paid:false };
+  var state = { film:false, signup:false, promo:false, email:"", paid:false, redeemed:{} };
   try { state = Object.assign(state, JSON.parse(localStorage.getItem(LS) || "{}")); } catch(e){}
+  if (!state.redeemed) state.redeemed = {};
   function save(){ try { localStorage.setItem(LS, JSON.stringify(state)); } catch(e){} }
 
   function stamp(kind){
@@ -400,9 +410,11 @@
     ["film","signup","promo"].forEach(function(k){
       var on = !!state[k];
       // 스탬프판 2개(상단+미션3 아래 미러) 동기화
+      var redeemed = on && !!state.redeemed[k];
       document.querySelectorAll('.slot[data-k="' + k + '"]').forEach(function(el){
-        el.className = "slot" + (on ? " on" : "");
+        el.className = "slot" + (on ? " on" : "") + (redeemed ? " redeemed" : "");
         if (on) el.querySelector(".mark").textContent = "✓";
+        if (redeemed) el.querySelector(".name").textContent = S('redeemedName');
       });
       var mid = { film:"m-film", signup:"m-signup", promo:"m-promo" }[k];
       document.getElementById(mid).className = "mission" + (on ? " on" : "");
@@ -651,6 +663,17 @@
     } else {
       msg(document.getElementById("msg3"), S('favManual'), "info");
     }
+  });
+
+  // 칩 발급 완료 (빠불로 8/26): 스탬프 찍힌 칸을 스태프가 탭 → 확인 → 회색 잠금.
+  // 실수 탭은 confirm이 막고, 잘못 잠갔을 땐 ?reset=1(전체 초기화)뿐 — 현장 단순함 우선.
+  document.querySelectorAll(".slot").forEach(function(el){
+    el.addEventListener("click", function(){
+      var k = el.getAttribute("data-k");
+      if (!state[k] || state.redeemed[k]) return;
+      if (!window.confirm(S('redeemConfirm'))) return;
+      state.redeemed[k] = true; save(); render();
+    });
   });
 
   // 뒤로가기(bfcache) 복원 대응 (빠불로 8/26 실측: 결제창 갔다 back으로 오면 버튼이
