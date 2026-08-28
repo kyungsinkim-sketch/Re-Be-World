@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Be.Ark 초대 · 친구가 Pro 1개월을 선물했어요</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#070a0f">
+<meta property="og:title" content="You're invited to Be.Ark">
+<meta property="og:description" content="A personal agent that's truly your own — your invite includes 1 month of Pro, free.">
+<meta property="og:image" content="https://www.re-be.world/landing/og-hero-2026.jpg">
+<link rel="icon" href="/logo.png">
+<!--
+  레퍼럴 초대 랜딩 (2026-08-28, 빠불로 확정 흐름: 영상 → 가입 → 다운로드).
+  madstars.html 변형 — 앞으로 레퍼럴 전달용 페이지로 계속 쓴다 (일회성 이벤트 아님).
+
+  - 초대 코드 = URL ?c= 에 실려 자동 적용 (madstars "코드 외울 필요 없이" 원칙 — 수동 입력칸 없음).
+  - 백엔드 = billing 함수 event_signup(campaign:"referral", referral_code) — 초대 연결 +
+    초대받은 쪽 Pro 1개월 쿠폰 부착. 보상(초대한 쪽)은 카드 등록 웹훅에서 (REFERRAL_PLAN 문서).
+  - 영상 = 케이스필름 재사용. 시청 게이트 없음 — 초대 전환율이 목적이라 강제 장치는 넣지 않는다.
+  - 다운로드 = 랜딩 #download 앵커로 보낸다 — 릴리스마다 링크가 갱신되는 곳은 index.html 하나뿐,
+    여기 직링크를 박으면 릴리스 때마다 이 파일도 고쳐야 해서 반드시 낡는다.
+  - 이미 계정 있는 이메일 = 혜택 없이 안내만 (초대 = 새 계정 전용, first_time_transaction과 정합).
+-->
+<style>
+  :root{
+    --bg:#070a0f; --bg-soft:#0c1018; --ink:#f6f8fb; --ink-dim:#9aa6b8; --ink-faint:#5e6b7e;
+    --accent:#c49c4d; --accent-soft:#c49c4d1f; --line:#1b2330; --radius:18px;
+    --danger:#ff6b6b; --ok:#4ade80;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--ink); line-height:1.55; -webkit-font-smoothing:antialiased;
+    font-family:Inter,system-ui,-apple-system,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    min-height:100dvh; display:flex; justify-content:center;
+    padding:28px 20px calc(40px + env(safe-area-inset-bottom));
+    background-image:radial-gradient(620px 420px at 70% -5%, #c49c4d18, transparent 70%),
+                     radial-gradient(520px 380px at 8% 12%, #863bff14, transparent 70%);
+  }
+  .card{width:100%; max-width:420px}
+  .brand{display:flex; align-items:center; gap:10px; margin-bottom:20px}
+  .brand img{width:30px; height:30px; border-radius:8px}
+  .brand span{font-weight:700; font-size:17px; letter-spacing:-.02em}
+  .lang{margin-left:auto; display:flex; gap:2px; border:1px solid var(--line); border-radius:999px; padding:2px}
+  .lang button{width:auto; margin:0; padding:5px 12px; font-size:12px; font-weight:600;
+    background:transparent; color:var(--ink-faint); border:0; border-radius:999px; cursor:pointer}
+  .lang button.on{background:var(--accent); color:#1a1206}
+  .tag{display:inline-block; font-size:12px; font-weight:600; letter-spacing:.04em;
+       color:var(--accent); background:var(--accent-soft); border:1px solid #c49c4d33;
+       padding:5px 11px; border-radius:999px; margin-bottom:14px}
+  h1{font-size:25px; line-height:1.3; letter-spacing:-.03em; font-weight:700}
+  .sub{color:var(--ink-dim); font-size:15px; margin-top:10px}
+  .section{margin-top:18px; padding:17px; border:1px solid var(--line);
+           border-radius:var(--radius); background:var(--bg-soft)}
+  .s-head{display:flex; align-items:center; gap:9px; margin-bottom:6px}
+  .s-num{flex:none; width:22px; height:22px; border-radius:50%; font-size:12px; font-weight:700;
+         line-height:22px; text-align:center; color:var(--accent); border:1px solid #c49c4d55}
+  .s-head h2{font-size:16px; font-weight:700; letter-spacing:-.02em}
+  .s-desc{font-size:13px; color:var(--ink-faint); margin-bottom:12px}
+  .video-wrap{position:relative; width:100%; aspect-ratio:16/9; border-radius:12px;
+              overflow:hidden; background:#0f141d; border:1px solid var(--line)}
+  .video-wrap iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+  label{display:block; font-size:13px; color:var(--ink-dim); margin:0 0 7px}
+  input{width:100%; padding:14px 15px; font-size:16px; /* 16px 미만이면 iOS가 화면을 확대한다 */
+        color:var(--ink); background:#0f141d; border:1px solid var(--line);
+        border-radius:12px; outline:none; font-family:inherit}
+  input:focus{border-color:var(--accent)}
+  .field + .field{margin-top:14px}
+  .hint{font-size:12px; color:var(--ink-faint); margin-top:7px}
+  button{width:100%; margin-top:16px; padding:15px; font-size:16px; font-weight:700;
+         font-family:inherit; color:#1a1206; background:var(--accent); border:0;
+         border-radius:12px; cursor:pointer; letter-spacing:-.01em}
+  button:disabled{opacity:.55; cursor:default}
+  button.done{background:#3d4654; color:#9aa6b8; opacity:1; cursor:default}
+  .msg{margin-top:14px; font-size:14px; padding:12px 14px; border-radius:11px; display:none}
+  .msg.show{display:block}
+  .msg.err{color:var(--danger); background:#ff6b6b14; border:1px solid #ff6b6b33}
+  .msg.info{color:var(--ink-dim); background:#ffffff08; border:1px solid var(--line)}
+  .coupon{display:none; margin-top:14px; padding:14px 16px; border-radius:12px;
+          border:1px solid #c49c4d55; background:var(--accent-soft)}
+  .coupon.show{display:block}
+  .coupon b{color:var(--accent); font-size:15px}
+  .coupon p{font-size:13px; color:var(--ink-dim); margin-top:4px}
+  .dl{display:block; margin-top:12px; padding:15px; text-align:center; font-size:15px;
+      font-weight:600; border-radius:12px; text-decoration:none;
+      color:var(--ink); border:1px solid var(--line); background:var(--bg-soft)}
+  .dl.primary{color:#1a1206; background:var(--accent); border-color:var(--accent)}
+  .gold{border-color:#c49c4d40;
+    background:linear-gradient(180deg, #c49c4d14, transparent 60%), var(--bg-soft)}
+  .foot{margin-top:26px; font-size:12px; color:var(--ink-faint); text-align:center}
+  .foot a{color:var(--ink-faint)}
+</style>
+</head>
+<body>
+<main class="card">
+
+  <div class="brand">
+    <a href="https://www.re-be.world/" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)">
+      <img src="/logo.png" alt=""><span>Be.Ark</span>
+    </a>
+    <div class="lang">
+      <button id="lang-ko" type="button">한국어</button>
+      <button id="lang-en" type="button">EN</button>
+    </div>
+  </div>
+
+  <div class="tag" data-i18n="tag"></div>
+  <h1 id="h1"></h1>
+  <p class="sub" data-i18n="sub"></p>
+
+  <!-- 1. 케이스필름 — 게이트 없음, 그냥 보여준다 -->
+  <section class="section">
+    <div class="s-head"><span class="s-num">1</span><h2 data-i18n="vTitle"></h2></div>
+    <p class="s-desc" data-i18n="vDesc"></p>
+    <div class="video-wrap"><iframe id="film" src="" title="Be.Ark film"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe></div>
+  </section>
+
+  <!-- 2. 가입 — 초대 코드는 URL에서 자동 -->
+  <section class="section" id="s-signup">
+    <div class="s-head"><span class="s-num">2</span><h2 data-i18n="fTitle"></h2></div>
+    <p class="s-desc" data-i18n="fDesc"></p>
+    <form id="f" novalidate>
+      <div class="field">
+        <label for="email" data-i18n="email"></label>
+        <input id="email" type="email" inputmode="email" autocomplete="email"
+               autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="you@example.com" required>
+      </div>
+      <div class="field">
+        <label for="pw" data-i18n="pw"></label>
+        <input id="pw" type="password" autocomplete="new-password" required>
+        <p class="hint" data-i18n="pwHint"></p>
+      </div>
+      <div class="field">
+        <label for="uname" data-i18n="nameLabel"></label>
+        <input id="uname" type="text" autocomplete="name" maxlength="80">
+      </div>
+      <button id="submit" type="submit" data-i18n="signupBtn"></button>
+    </form>
+    <div id="coupon" class="coupon">
+      <b data-i18n="couponTitle"></b>
+      <p data-i18n="couponSub"></p>
+    </div>
+    <div id="msg" class="msg"></div>
+  </section>
+
+  <!-- 3. 다운로드 — 링크는 랜딩 #download (릴리스마다 갱신되는 단일 지점) -->
+  <section class="section gold" id="s-dl">
+    <div class="s-head"><span class="s-num">3</span><h2 data-i18n="dlTitle"></h2></div>
+    <p class="s-desc" data-i18n="dlDesc"></p>
+    <a class="dl primary" href="https://www.re-be.world/#download" data-i18n="dlBtn"></a>
+    <a class="dl" href="https://www.re-be.world/" data-i18n="dlExplore"></a>
+  </section>
+
+  <p class="foot">Paulus x Re-Be World · <a href="/privacy" data-i18n="privacy"></a></p>
+</main>
+
+<script>
+(function(){
+  "use strict";
+  // 케이스필름 재사용 (madstars와 동일 영상, 언어를 따라간다)
+  var FILM_IDS = { ko: "jvsTvkZSvjk", en: "14lhSoVAa7A" };
+
+  var FN  = "https://hxrvapnasxmaubymcipd.supabase.co/functions/v1/billing";
+  // publishable key = 공개용(브라우저 노출 전제). 데스크탑 arkAuth.ts와 같은 정본 프로젝트.
+  var KEY = "sb_publishable_Skd6X54IOwVKyu3-QpxSog_TiRz2vK3";
+  var LS_LANG = "madstars_lang"; // 언어 선택은 join 페이지들끼리 공유
+
+  var REF_CODE = (new URLSearchParams(location.search).get("c") || "").trim().toUpperCase();
+
+  var STR = {
+    ko: {
+      tag: "FRIEND INVITE",
+      h1: "친구가 Be.Ark를<br>추천했어요",
+      sub: "이 초대로 가입하면 Pro 1개월이 무료예요. 결제할 때 자동으로 적용됩니다.",
+      vTitle: "Be.Ark, 2분이면 알 수 있어요",
+      vDesc: "나만의 개인 에이전트가 어떻게 일하는지 케이스필름으로 보세요.",
+      fTitle: "가입하기",
+      fDesc: "이메일과 비밀번호만 있으면 끝. 초대 혜택은 자동으로 붙어요.",
+      email: "이메일", pw: "비밀번호", pwPh: "8자 이상",
+      pwHint: "앱에 로그인할 때 쓰는 비밀번호예요.",
+      nameLabel: "이름 (선택)",
+      signupBtn: "가입하고 1개월 무료 받기", signupBusy: "가입하는 중…", signupDone: "가입 완료 ✓",
+      couponTitle: "초대 혜택 · Pro 1개월 무료",
+      couponSub: "쿠폰이 계정에 등록됐어요. 결제 시 자동 적용됩니다. 이제 앱을 내려받아 이 계정으로 로그인하세요!",
+      dlTitle: "Be.Ark 내려받기",
+      dlDesc: "macOS · Windows에서 쓸 수 있어요. 방금 만든 계정으로 로그인하면 됩니다.",
+      dlBtn: "다운로드", dlExplore: "Be.Ark 둘러보기",
+      privacy: "개인정보처리방침",
+      noCode: "초대 코드가 없는 링크예요. 가입은 되지만 초대 혜택은 붙지 않아요 — 친구에게 받은 링크로 다시 열어보세요.",
+      invalid_email: "이메일 주소를 다시 확인해 주세요.",
+      weak_password: "비밀번호는 8자 이상이어야 해요.",
+      signup_failed: "가입에 실패했어요. 잠시 후 다시 시도해 주세요.",
+      unknownErr: "문제가 생겼어요 ({code})",
+      existing: "이미 Be.Ark 계정이 있는 이메일이에요. 초대 혜택은 새 계정에만 적용돼요 — 기존 계정으로 앱에 로그인하면 됩니다.",
+      invalidRef: "초대 코드가 올바르지 않아 혜택 없이 가입됐어요. 친구에게 링크를 다시 받아보세요.",
+      promoMiss: "가입은 됐는데 쿠폰이 붙지 않았어요 — 친구에게 링크를 확인해 달라고 해주세요.",
+      network: "네트워크가 불안정해요. 다시 눌러주세요."
+    },
+    en: {
+      tag: "FRIEND INVITE",
+      h1: "A friend invited you<br>to Be.Ark",
+      sub: "Sign up with this invite and get 1 month of Pro free — applied automatically at checkout.",
+      vTitle: "Be.Ark in 2 minutes",
+      vDesc: "Watch the case film to see how your own personal agent works.",
+      fTitle: "Sign up",
+      fDesc: "Just an email and a password. Your invite bonus attaches automatically.",
+      email: "Email", pw: "Password", pwPh: "8+ characters",
+      pwHint: "You'll use this password to log in to the app.",
+      nameLabel: "Name (optional)",
+      signupBtn: "Sign up & get 1 month free", signupBusy: "Signing up…", signupDone: "Signed up ✓",
+      couponTitle: "Invite bonus · 1 month of Pro, free",
+      couponSub: "The coupon is on your account and applies automatically at checkout. Now download the app and log in!",
+      dlTitle: "Get Be.Ark",
+      dlDesc: "Available for macOS · Windows. Log in with the account you just created.",
+      dlBtn: "Download", dlExplore: "Explore Be.Ark",
+      privacy: "Privacy Policy",
+      noCode: "This link has no invite code. You can still sign up, but the bonus won't attach — try the link your friend sent.",
+      invalid_email: "Please double-check your email address.",
+      weak_password: "Password must be at least 8 characters.",
+      signup_failed: "Sign-up failed. Please try again in a moment.",
+      unknownErr: "Something went wrong ({code})",
+      existing: "This email already has a Be.Ark account. The invite bonus is for new accounts — just log in to the app with your existing account.",
+      invalidRef: "The invite code isn't valid, so you signed up without the bonus. Ask your friend to re-share the link.",
+      promoMiss: "You're signed up, but the coupon didn't attach — ask your friend to check the link.",
+      network: "The network is unstable. Please tap again."
+    }
+  };
+  var lang = (function(){
+    try { var s = localStorage.getItem(LS_LANG); if (s === 'ko' || s === 'en') return s; } catch(e){}
+    return (navigator.language || '').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en';
+  })();
+  function S(key){ return STR[lang][key] || STR.ko[key] || key; }
+  function applyLang(){
+    document.documentElement.lang = lang;
+    document.getElementById('lang-ko').className = lang === 'ko' ? 'on' : '';
+    document.getElementById('lang-en').className = lang === 'en' ? 'on' : '';
+    document.getElementById('h1').innerHTML = S('h1');
+    var nodes = document.querySelectorAll('[data-i18n]');
+    for (var i = 0; i < nodes.length; i++) nodes[i].textContent = S(nodes[i].getAttribute('data-i18n'));
+    document.getElementById('pw').placeholder = S('pwPh');
+    var film = document.getElementById('film');
+    var want = "https://www.youtube.com/embed/" + FILM_IDS[lang] + "?rel=0&playsinline=1&modestbranding=1";
+    if (film.getAttribute('src') !== want) film.setAttribute('src', want);
+    if (signedUp) markDone();
+  }
+  function setLang(l){ lang = l; try { localStorage.setItem(LS_LANG, l); } catch(e){} applyLang(); }
+  document.getElementById('lang-ko').addEventListener('click', function(){ setLang('ko'); });
+  document.getElementById('lang-en').addEventListener('click', function(){ setLang('en'); });
+
+  var form = document.getElementById("f");
+  var btn  = document.getElementById("submit");
+  var msgEl = document.getElementById("msg");
+  var signedUp = false;
+
+  function post(url, body){
+    return fetch(url, { method:"POST",
+      headers:{ "Content-Type":"application/json", "apikey":KEY }, body:JSON.stringify(body) })
+      .then(function(r){ return r.json().catch(function(){ return {}; })
+        .then(function(j){ return { status:r.status, body:j }; }); });
+  }
+  function msg(text, kind){ msgEl.textContent = text; msgEl.className = "msg show " + (kind || "info"); }
+  function clearMsg(){ msgEl.className = "msg"; }
+  var REASON_KEYS = ["invalid_email","weak_password","signup_failed"];
+  function reasonText(code){
+    if (REASON_KEYS.indexOf(code) >= 0) return S(code);
+    return S('unknownErr').replace("{code}", String(code));
+  }
+  function markDone(){
+    btn.disabled = true; btn.classList.add("done"); btn.textContent = S('signupDone');
+  }
+
+  if (!REF_CODE) msg(S('noCode'), "info");
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    if (signedUp) return;
+    var email = document.getElementById("email").value.trim().toLowerCase();
+    var pw    = document.getElementById("pw").value;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg(S('invalid_email'), "err"); return; }
+    if (pw.length < 8) { msg(S('weak_password'), "err"); return; }
+
+    btn.disabled = true;
+    btn.textContent = S('signupBusy');
+    clearMsg();
+
+    post(FN, { type:"event_signup", campaign:"referral", referral_code:REF_CODE,
+      email:email, password:pw, name: document.getElementById("uname").value.trim() })
+      .then(function(r){
+        if (r.status === 200 && r.body.ok && r.body.existing) {
+          msg(S('existing'), "info");
+          btn.disabled = false; btn.textContent = S('signupBtn');
+          return;
+        }
+        if (r.status === 200 && r.body.ok) {
+          signedUp = true; markDone();
+          var promo = r.body.promo || {};
+          if (promo.attached) {
+            document.getElementById("coupon").className = "coupon show";
+          } else if (String(promo.reason || "").indexOf("invalid_referral") === 0) {
+            msg(S('invalidRef'), "info");
+          } else {
+            msg(S('promoMiss'), "info");
+          }
+          document.getElementById("s-dl").scrollIntoView({ behavior:"smooth", block:"center" });
+          return;
+        }
+        msg(reasonText((r.body && r.body.error) || "unknown"), "err");
+        btn.disabled = false; btn.textContent = S('signupBtn');
+      })
+      .catch(function(){
+        msg(S('network'), "err");
+        btn.disabled = false; btn.textContent = S('signupBtn');
+      });
+  });
+
+  applyLang();
+})();
+</script>
+</body>
+</html>
