@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-09-01-genesis-108-en",
+    "date": "2026-09-01",
+    "lang": "en",
+    "tag": "Event",
+    "title": "🎁 Genesis 108 — limited avatar drop for early users (until Sep 8)",
+    "body": "To thank our earliest 108 users, we assigned Genesis avatars #001–#108 one-to-one, in signup order.\n\n🎨 Open Agent Settings → \"Draw an avatar\" — your reserved number appears in the first slot with a gold \"Genesis 108\" badge. Pick it and it's yours; no one else can take it.\n\n⏰ Numbers left unclaimed after Sep 8 (midnight KST) return to the general draw pool.\n\n✨ Random draws (3 candidates) are Pro-only. You can hold up to 5 avatars per account. Genesis is capped at 1,000 — one owner per number, forever."
+  },
+  {
+    "id": "2026-09-01-beta-1-5-3-en",
+    "date": "2026-09-01",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.5.3 — signup code · Genesis avatars · faster fallback",
+    "body": "✉️ Email confirmation now uses an 8-digit code — enter it in the app and you're signed in right away. Re-signing up with an existing email now shows a clear notice.\n\n🎨 1,000 Genesis avatars added — draw one in Agent Settings. One owner per number.\n\n🖼️ Existing agents: click the profile image to change image, name, and name color in one dialog.\n\n⚡ Closing the desktop app no longer delays mobile replies — the server takes over instantly."
+  },
+  {
     "id": "2026-09-01-genesis-108",
     "date": "2026-09-01",
     "lang": "ko",
