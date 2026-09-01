@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-09-01-beta-1-5-6",
+    "date": "2026-09-01",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.5.6 — 앱 내 자동 업데이트 · 세션 삭제 동기화",
+    "body": "⬆️ 이제 앱 안에서 바로 업데이트할 수 있어요 — 설정 → 앱 업데이트에서 [업데이트 확인]을 누르면 새 버전을 내려받아 설치하고 자동으로 다시 시작합니다. 대화와 기억은 그대로예요. (이번 버전부터 적용되니, 이번 한 번만 받아두시면 다음부터는 웹사이트에 오실 필요가 없어요.)\n\n🔧 모바일과 연결된 상태에서 세션을 지워도 다시 살아나던 문제를 고쳤어요 — 데스크탑에서 지우면 모바일에서도 함께 사라집니다.\n\n🎨 내가 소유한 Genesis 번호(#001 형식)가 에이전트 프로필과 설정 창의 적용된 이미지에도 표시돼요.\n\n🖼 모바일 앱에서도 데스크탑에서 설정한 에이전트 프로필 이미지와 이름 색상이 그대로 보입니다."
+  },
+  {
+    "id": "2026-09-01-beta-1-5-6-en",
+    "date": "2026-09-01",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.5.6 — in-app auto update · session delete sync",
+    "body": "⬆️ Update from inside the app — go to Settings → App update and hit \"Check for updates\"; it downloads, installs, and restarts for you. Chats and memories stay intact. (Starts working from this version, so this is the last time you need to visit the website.)\n\n🔧 Fixed deleted sessions reappearing while connected to mobile — deleting on desktop now removes them on mobile too.\n\n🎨 Your Genesis ownership number (#001 style) now shows on the agent profile and the applied image in Agent Settings.\n\n🖼 The mobile app now shows the agent profile image and name color you set on desktop."
+  },
+  {
     "id": "2026-09-01-beta-1-5-5",
     "date": "2026-09-01",
     "lang": "ko",
