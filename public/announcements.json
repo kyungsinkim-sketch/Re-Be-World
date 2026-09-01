@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-09-01-beta-1-5-5",
+    "date": "2026-09-01",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.5.5 — 텔레그램 세션 동기화 · 세션 보관함 · Genesis 번호",
+    "body": "✈️ 텔레그램 연동이 한층 깊어졌어요 — 텔레그램 대화가 'Telegram' 이름의 전용 세션으로 실시간 동기화되고, 데스크탑에서 그 세션에 입력하면 폰 텔레그램 채팅에도 게시됩니다. 연결된 에이전트는 사이드바 이름 옆에 종이비행기 표시가 붙어요.\n\n🎨 Genesis 아바타의 소유 번호(#001 형식)가 에이전트 설정의 프로필 이미지와 뽑기 후보에 표시됩니다.\n\n🔧 계정을 바꿔 로그인했을 때 '모바일 연결' 해제가 막히던 문제를 수정했습니다.\n\n🗂 세션 ⋯ 메뉴에 '보관함 이동'이 생겼어요 — 안 쓰는 세션을 리스트에서 치우고, 에이전트 대시보드의 '세션 보관함'에서 클릭 한 번으로 복원할 수 있습니다."
+  },
+  {
+    "id": "2026-09-01-beta-1-5-5-en",
+    "date": "2026-09-01",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.5.5 — Telegram sync · Session Archive · Genesis numbers",
+    "body": "✈️ Deeper Telegram integration — your Telegram conversation now syncs in real time into a dedicated 'Telegram' session, and messages you type there on desktop are posted back to the Telegram chat. Connected agents show a paper-plane badge in the sidebar.\n\n🎨 Genesis avatar ownership numbers (#001 style) now appear on the profile image and draw candidates in Agent Settings.\n\n🔧 Fixed 'mobile connect' getting stuck after switching accounts.\n\n🗂 New 'Move to archive' in the session ⋯ menu — tuck away unused sessions and restore them with one click from the Session Archive card on the agent dashboard."
+  },
+  {
     "id": "2026-09-01-genesis-108-en",
     "date": "2026-09-01",
     "lang": "en",
