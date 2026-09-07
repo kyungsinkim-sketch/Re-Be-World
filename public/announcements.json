@@ -1,5 +1,21 @@
 [
  {
+  "id": "2026-09-07-beta-1-5-8",
+  "date": "2026-09-07",
+  "lang": "ko",
+  "tag": "Update",
+  "title": "Be.Ark Beta 1.5.8 — 나만의 AI 팀원 채용",
+  "body": "🪪 첫 실행이 \"AI 팀원 채용\" 3단계 안내로 바뀌었어요 — 작가·대표·마케터·프로듀서·리서처·모두의 팀원 6가지 채용 공고 중 고르면 성격과 얼굴이 바로 준비됩니다. 이후 좌측 메뉴·채팅창·업무창을 짧게 둘러보는 가이드가 이어져요 (설정 → GUIDE에서 다시 보기).\n\n🎨 프로파일 꾸미기 — 얼굴형·머리·눈·입·안경·모자·악세사리·옷·배경 파츠로 나만의 팀원 얼굴을 만들 수 있어요 (판타지 의상 팩 포함). 에이전트 프로필 상단은 사원증 카드로 바뀌었습니다.\n\n🔧 파일을 첨부하면 \"하겠다\"만 하고 실행하지 않던 문제, xlsx 첨부 내용을 지어내던 문제, 외부 Ollama로 요청이 새던 문제를 고쳤어요. HWP/Word/PPT 표 편집 정확도도 좋아졌습니다.\n\n🖥️ Intel Mac 빌드가 다시 제공됩니다."
+ },
+ {
+  "id": "2026-09-07-beta-1-5-8-en",
+  "date": "2026-09-07",
+  "lang": "en",
+  "tag": "Update",
+  "title": "Be.Ark Beta 1.5.8 — Hire your own AI teammate",
+  "body": "🪪 First run is now a 3-step \"hire an AI teammate\" guide — pick one of six job postings (Writer, Founder, Marketer, Producer, Researcher, Everyday) and the character and face are ready instantly. A short tour of the left menu, chat, and workspace follows (replay from Settings → GUIDE).\n\n🎨 Customize avatar — build your teammate's face from face, hair, eyes, mouth, glasses, hat, accessory, outfit, and background parts (fantasy outfit pack included). The agent profile header is now an ID card.\n\n🔧 Fixed: attaching a file and the agent saying it would act without doing it; invented xlsx contents; requests leaking to an external Ollama. HWP/Word/PPT table editing is more accurate.\n\n🖥️ Intel Mac builds are back."
+ },
+ {
   "id": "2026-09-02-beta-1-5-7",
   "date": "2026-09-02",
   "lang": "ko",
