@@ -1,19 +1,19 @@
 {
-  "version": "1.5.0-beta.9",
-  "notes": "Be.Ark 1.5.0-beta.9",
-  "pub_date": "2026-09-08T00:21:51.848374Z",
+  "version": "1.5.0-beta.10",
+  "notes": "Be.Ark 1.5.0-beta.10",
+  "pub_date": "2026-09-08T03:37:02.376705Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUOEtUYjczazNXYWtBN2xneUNNb0E0SVV1OFRZcUpkZy9ndDJud0dmYVZabjhSYXlNck81c2lGTU5lYUV1YU53azlxeUQwVUR1a08zM2x0SllTQ0p4bkVkK0F6S1BXdmdFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg4ODI1NTIzCWZpbGU6QmUuQXJrLmFwcC50YXIuZ3oKbnk5bEtCT1VnTlRiRng0MlQybXVvKzBUbkh3MkpKTThBS0N6V3ZqQnFkdzEwZXpZNkdKbjdjVDN1YTROZnozaGdrZXZjbThoa2xUOFc4VnB1emRxQUE9PQo=",
-      "url": "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.5.0-beta.9/Be.Ark_aarch64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUOEtUYjczazNXYXA4Y1hkakd1K284UmI4ZUNSNUwyQzg0ZzdFVXprSWFYbkQwemxGTVVuaitPVjNjWmFaYVI3ZWpFKzgxUFN3cjFDU1ZYVDkxbXdRbkFGVHkxZFVSSndnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg4ODM3NTE1CWZpbGU6QmUuQXJrLmFwcC50YXIuZ3oKMU1teEhlTlBEUy8zdStDSU1nSklsbXpDcGhHZ01XQ09MdmlCeGVrNUdTbDVETmxrbytOREdtbWVLUm1VamE2UWNNZ1JteUxjbDZrb0dBektHTGRzRGc9PQo=",
+      "url": "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.5.0-beta.10/Be.Ark_aarch64.app.tar.gz"
     },
     "darwin-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUOEtUYjczazNXYXFRd1BJMm1XQU1mMzMweU1NVzIvY0k1UTU2VlFlY1U5Z0l0a1JBZnFsaDFPS1JNcmV4OG1DbVkyUUFsSTI0RVB0SmUvNTVEQ0s1dFVnbnV0MUo3VGdzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg4ODI1NzMzCWZpbGU6QmUuQXJrLmFwcC50YXIuZ3oKTE9sZmhacFNMNVVKc05YSEladnN4aUFnVEorNHFlVVkzODNWc01Rd0V2dFRqSGlDK1BYWDc3WkVpYUwrUmxJOGdQVk9rRzhiWklOSEl0R2V0a25GQlE9PQo=",
-      "url": "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.5.0-beta.9/Be.Ark_x64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUOEtUYjczazNXYXREMEFNNm14d3BYdWppVXFaWDVZajB4ZkorcjJQcnlDS3VQVUdKY3NZQTNEQ0VWTjBPSDJic29XZlhuN1BYK1lJaDEvU00rM2xHNTJFd3BwVjQ4aVFBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg4ODM3NTU4CWZpbGU6QmUuQXJrLmFwcC50YXIuZ3oKYkRGUUFtK1FtcjdPaCtHejFGR245STRzNUl0aTZNREsyQmlwd1lyUS9YbmIyTWMyNHVaTWRnTFN2Szh2ZjJkVm9TSG9rbGZjSGgzUmNxN0R1ZG1XRFE9PQo=",
+      "url": "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.5.0-beta.10/Be.Ark_x64.app.tar.gz"
     },
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUOEtUYjczazNXYXVzYXM1SXphdGUwVXNLZmpvSUtONFhqUWswVDU4UG1KVGdESVppMm5nb0Z1ZHorK1dVK012dWtWc3hyZ3QyT0tWdnF2UmE3WkVmdy9FOWIzMGtQN3dzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg4ODI2Nzg3CWZpbGU6QmUuQXJrXzEuNS4wLWJldGEuOV94NjQtc2V0dXAuZXhlCkNzRVdDbWVBR0ZBMnI0QjBRdCtvc09JRjM1NXl1MW9RdXVyR2hKRDNzOTBqMzBnY1Q0K2pjeFpXbGFrd1o0bDJBbW5xUC8yWjgyWmp1N012Y2JDYUNnPT0K",
-      "url": "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.5.0-beta.9/Be.Ark_1.5.0-beta.9_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUOEtUYjczazNXYWsxZkVkRnFVaU5FeFRsMEkwakpzbGZqYVJKR1hrODhMUWhMbVFnYnVKUSt5cCtTenVVQkhpd1JYMVI0cVU4bDEzSFBHRVFTQ045bFBNVXdSU09sRFFzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg4ODM4MzM3CWZpbGU6QmUuQXJrXzEuNS4wLWJldGEuMTBfeDY0LXNldHVwLmV4ZQpWQk1LRE0xUDFIcjNwYWwxODRWUEk3MU9LT0hyQ2YvcjljZVRiQUJ2K0ZpK1dXSmRJRFJ0djRTSDkvMnp4aUFPTzVvbFFSeUlqNE5ST3Rtajl2V2lCUT09Cg==",
+      "url": "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.5.0-beta.10/Be.Ark_1.5.0-beta.10_x64-setup.exe"
     }
   }
 }
