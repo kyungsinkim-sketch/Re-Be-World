@@ -1,0 +1,44 @@
+<!doctype html>
+<!-- Be.Ark Figma OAuth 중계 페이지 (2026-09-10, Connections Framework 2호)
+     Figma OAuth 앱은 Redirect URL을 고정값으로 등록해야 해서, 데스크탑 앱의 임시 루프백 포트(127.0.0.1:<port>)를
+     직접 넣을 수 없다. 이 페이지가 state("<port>.<nonce>")에서 포트를 읽어 인가 코드를 로컬 앱으로 되돌려준다.
+     서버 없음 · 저장 없음 · 코드는 브라우저 안에서 바로 로컬로 이동 (30초 만료). SSOT: Be.Ark docs/CONNECTIONS_FRAMEWORK_2026-07-18.md -->
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Be.Ark — Figma 연결</title>
+<style>
+  body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+         background: #000; color: #00FF41; font-family: ui-monospace, Menlo, monospace; font-size: 14px; }
+  .box { max-width: 420px; padding: 24px; border: 1px solid #1f3d24; line-height: 1.7; }
+  .dim { color: #6b9a72; }
+</style>
+</head>
+<body>
+<div class="box" id="msg">Be.Ark 앱으로 돌아가는 중…</div>
+<script>
+(function () {
+  var p = new URLSearchParams(location.search);
+  var state = p.get('state') || '';
+  var port = parseInt(state.split('.')[0], 10);
+  var code = p.get('code');
+  var err = p.get('error');
+  var el = document.getElementById('msg');
+  if (port > 0 && port < 65536 && (code || err)) {
+    var q = new URLSearchParams();
+    if (code) q.set('code', code);
+    if (err) q.set('error', err);
+    q.set('state', state);
+    location.replace('http://127.0.0.1:' + port + '/?' + q.toString());
+    setTimeout(function () {
+      el.innerHTML = '앱이 응답하지 않아요. <span class="dim">Be.Ark이 켜져 있는지 확인하고 설정 › 외부 채널 › Figma에서 다시 연결해 주세요.</span>';
+    }, 4000);
+  } else {
+    el.innerHTML = '잘못된 접근이에요. <span class="dim">Be.Ark 앱의 설정 › 외부 채널 › Figma 연결 버튼으로 시작해 주세요.</span>';
+  }
+})();
+</script>
+</body>
+</html>
