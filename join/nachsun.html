@@ -14,7 +14,7 @@
   낯선대학 10주년 (2026-09-12~13) 현장 "에이전트 채용" 페이지 — 빠불로 2026-09-11 발안.
 
   흐름: ① 채용(프리셋 6 + 이름 + 도트 얼굴) → ② 가입(이메일+비번, 확인메일 0회, billing event_signup(agent))
-        → ③ 사원증(앱 AgentCard와 같은 규격) 출력(window.print, 85.6×54mm) + QR
+        → ③ 사원증(앱 AgentCard와 같은 규격) — 캔버스 PNG 1장(인화지 54×86mm 세로, 300dpi) 저장/인쇄 + QR
         → 집: QR(?home=1) → 앱 설치 → 같은 계정 로그인 → 앱이 계정 메타데이터의 에이전트를 생성(1.5.11+) + 쿠폰 자동 적용.
   얼굴 렌더 = 앱과 같은 코드(/join/beark-card.js = src/web/eventCard.ts 번들). 원장은 파츠 JSON, 그림은 알고리즘.
   기존 계정 = 로그인 후 claim_promo + event_agent(JWT).
@@ -134,15 +134,14 @@
   .card-actions{display:flex; gap:8px; margin-top:12px}
   .card-actions button{margin-top:0}
 
+  /* 인쇄 = 캔버스 PNG 1장만 (2026-09-11 스태프: 인화지 54×86mm, PDF 여러 장 ❌) */
+  #print-only{display:none}
   @media print{
-    @page{size:85.6mm 53.98mm; margin:0}
+    @page{size:54mm 86mm; margin:0}
     html,body{background:#fff !important; padding:0 !important; margin:0 !important; display:block !important; min-height:0 !important}
-    body *{visibility:hidden}
-    #print-root, #print-root *{visibility:visible}
-    #print-root{position:fixed; left:0; top:0; width:85.6mm; height:53.98mm; margin:0; padding:0}
-    #print-root .idcard{width:85.6mm; height:53.98mm; aspect-ratio:auto; border-radius:0; border:0; box-shadow:none;
-      -webkit-print-color-adjust:exact; print-color-adjust:exact}
-    .card-actions{display:none !important}
+    body > *:not(#print-only){display:none !important}
+    #print-only{display:block !important; position:fixed; left:0; top:0; width:54mm; height:86mm; margin:0; padding:0}
+    #print-only img{display:block; width:54mm; height:86mm; -webkit-print-color-adjust:exact; print-color-adjust:exact}
   }
 </style>
 </head>
@@ -205,7 +204,8 @@
       <p class="s-desc" data-i18n="s3Desc"></p>
       <div id="print-root"><div class="idcard" id="idcard"></div></div>
       <div class="card-actions">
-        <button type="button" id="print-btn" data-i18n="printBtn"></button>
+        <button type="button" id="png-btn" data-i18n="pngBtn"></button>
+        <button type="button" class="ghost" id="print-btn" data-i18n="printBtn" style="width:auto;padding:11px 14px;white-space:nowrap"></button>
         <button type="button" class="ghost" id="next-btn" data-i18n="nextBtn" style="width:auto;padding:11px 14px;white-space:nowrap"></button>
       </div>
       <div class="hint" data-i18n="cardHint" style="margin-top:10px"></div>
@@ -231,6 +231,7 @@
   <div class="foot"><a href="/privacy.html" data-i18n="privacy"></a> · Be.Ark by Paulus</div>
 </main>
 
+<div id="print-only"><img id="print-img" alt=""></div>
 <script src="/join/beark-card.js"></script>
 <script>
 (function(){
@@ -261,8 +262,8 @@
       couponTitle: "NACHSUN · Pro 3개월 무료",
       couponSub: "쿠폰이 계정에 등록됐어요. 결제 시 자동 적용 · {date} 마감",
       s3Title: "사원증", s3Desc: "스태프가 이 사원증을 출력해 드려요. QR을 찍으면 집에서 이어갈 수 있어요.",
-      printBtn: "사원증 출력", nextBtn: "다음 사람",
-      cardHint: "출력은 부스 노트북에서 해요. 내 폰에서 만들었다면 스태프에게 화면을 보여주세요.",
+      pngBtn: "사원증 PNG 저장 (54×86)", printBtn: "인쇄", nextBtn: "다음 사람",
+      cardHint: "PNG 저장 = 인화지 54×86mm(세로) 규격 1장. 출력은 부스 노트북에서 해요. 내 폰에서 만들었다면 스태프에게 화면을 보여주세요.",
       hTitle: "사원증 받으셨죠? 집에서 이어가기",
       hDesc: "현장에서 채용한 팀원이 계정에 담겨 있어요. 앱을 설치하고 같은 이메일로 로그인하면 합류합니다.",
       h1s: "아래에서 Be.Ark를 다운로드해 설치하세요.",
@@ -297,8 +298,8 @@
       couponTitle: "NACHSUN · Pro free for 3 months",
       couponSub: "Coupon registered to your account. Applies at checkout · expires {date}",
       s3Title: "Employee card", s3Desc: "Staff will print this card for you. Scan the QR to continue at home.",
-      printBtn: "Print card", nextBtn: "Next person",
-      cardHint: "Printing happens on the booth laptop. Made it on your phone? Show the screen to the staff.",
+      pngBtn: "Save card PNG (54×86)", printBtn: "Print", nextBtn: "Next person",
+      cardHint: "Save PNG = one 54×86mm (portrait) photo-paper image. Printing happens on the booth laptop. Made it on your phone? Show the screen to the staff.",
       hTitle: "Got your card? Continue at home",
       hDesc: "The teammate you hired is stored in your account. Install the app and log in with the same email.",
       h1s: "Download and install Be.Ark below.",
@@ -367,6 +368,29 @@
         '<div><div class="qr">' + B.qrSvg(HOME_URL, 4, 0) + '</div><div class="qrlab">' + S("qrLabel") + '</div></div></div>';
   }
 
+  // ── 사원증 PNG (캔버스 래스터, 인화지 54×86mm 세로 = 가로 카드 90° 회전, 300dpi) ─────
+  function cardPngData(d){
+    var ps = PRESET_STR[lang][d.preset] || PRESET_STR.ko[d.preset] || ["", ""];
+    return { name: d.name, roleValue: ps[0] + " · " + ps[1], joinedValue: d.joined || todayStr(), noValue: d.no || "",
+      labels: { role: S("roleLabel"), joined: S("joinedLabel"), no: S("noLabel"), qr: S("qrLabel") },
+      tags: [ps[0], "낯선대학10", "BeArk"], color: d.color, parts: d.parts, qrText: HOME_URL };
+  }
+  function safeFile(s){ return String(s).replace(/[^\w가-힣.-]+/g, "_").replace(/^_+|_+$/g, "").slice(0, 40) || "card"; }
+  function bindCardButtons(getData){
+    $("png-btn").addEventListener("click", function(){
+      var d = getData(); if (!d || !d.parts) return;
+      var canvas = B.renderCardPortraitCanvas(cardPngData(d));
+      B.downloadCanvasPng(canvas, "beark-card-" + safeFile(d.name) + "-" + safeFile(d.no || "") + ".png");
+    });
+    $("print-btn").addEventListener("click", function(){
+      var d = getData(); if (!d || !d.parts) return;
+      var canvas = B.renderCardPortraitCanvas(cardPngData(d));
+      var img = $("print-img");
+      img.onload = function(){ img.onload = null; window.print(); };
+      img.src = canvas.toDataURL("image/png");
+    });
+  }
+
   // ── 카드 딥링크 (?card=base64url JSON) = 스태프 노트북 출력용 ─────────────
   function b64u(s){ return btoa(unescape(encodeURIComponent(s))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, ""); }
   function unb64u(s){ s = s.replace(/-/g, "+").replace(/_/g, "/"); while (s.length % 4) s += "="; return decodeURIComponent(escape(atob(s))); }
@@ -398,7 +422,7 @@
       $("st-card").classList.remove("locked"); $("st-card").classList.add("on");
       $("next-btn").style.display = "none";
       applyLang(); renderCard($("idcard"), cd);
-      $("print-btn").addEventListener("click", function(){ window.print(); });
+      bindCardButtons(function(){ return cd; });
       return;
     } catch(e){ /* 잘못된 딥링크 = 일반 흐름 */ }
   }
@@ -492,7 +516,7 @@
   });
 
   // ── ③ 사원증 ────────────────────────────────────────────────────────────
-  $("print-btn").addEventListener("click", function(){ window.print(); });
+  bindCardButtons(cardData);
   $("next-btn").addEventListener("click", function(){ location.href = location.pathname + "?reset=1"; });
 
   function cardData(){ return { name: state.name, preset: state.preset, color: state.color, parts: state.parts, no: state.no, joined: todayStr() }; }
