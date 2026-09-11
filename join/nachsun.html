@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Be.Ark · 당신의 에이전트를 채용하세요 — 낯선대학 10주년</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#070a0f">
+<meta property="og:title" content="Hire your own AI agent — Be.Ark × 낯선대학 10주년">
+<meta property="og:description" content="현장에서 에이전트를 채용하고 사원증을 받으세요. 집에서 QR로 접속하면 그 에이전트가 합류합니다.">
+<meta property="og:image" content="https://www.re-be.world/landing/og-hero-2026.jpg">
+<link rel="icon" href="/logo.png">
+<!--
+  낯선대학 10주년 (2026-09-12~13) 현장 "에이전트 채용" 페이지 — 빠불로 2026-09-11 발안.
+
+  흐름: ① 채용(프리셋 6 + 이름 + 도트 얼굴) → ② 가입(이메일+비번, 확인메일 0회, billing event_signup(agent))
+        → ③ 사원증(앱 AgentCard와 같은 규격) 출력(window.print, 85.6×54mm) + QR
+        → 집: QR(?home=1) → 앱 설치 → 같은 계정 로그인 → 앱이 계정 메타데이터의 에이전트를 생성(1.5.11+) + 쿠폰 자동 적용.
+  얼굴 렌더 = 앱과 같은 코드(/join/beark-card.js = src/web/eventCard.ts 번들). 원장은 파츠 JSON, 그림은 알고리즘.
+  기존 계정 = 로그인 후 claim_promo + event_agent(JWT).
+  ?reset=1 = 이 기기의 진행 상태 초기화(현장 부스 기기에서 다음 사람으로 넘길 때).
+  ?card=<base64url JSON> = 카드만 렌더(스태프 노트북에서 출력용 딥링크).
+-->
+<style>
+  :root{
+    --bg:#070a0f; --bg-soft:#0c1018; --ink:#f6f8fb; --ink-dim:#9aa6b8; --ink-faint:#5e6b7e;
+    --accent:#c49c4d; --accent-soft:#c49c4d1f; --line:#1b2330; --radius:18px;
+    --danger:#ff6b6b; --ok:#4ade80;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--ink); line-height:1.55; -webkit-font-smoothing:antialiased;
+    font-family:Inter,system-ui,-apple-system,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    min-height:100dvh; display:flex; justify-content:center;
+    padding:28px 20px calc(40px + env(safe-area-inset-bottom));
+    background-image:radial-gradient(620px 420px at 70% -5%, #c49c4d18, transparent 70%),
+                     radial-gradient(520px 380px at 8% 12%, #863bff14, transparent 70%);
+  }
+  .wrap{width:100%; max-width:440px}
+  .brand{display:flex; align-items:center; gap:10px; margin-bottom:20px}
+  .brand img{width:30px; height:30px; border-radius:8px}
+  .brand span{font-weight:700; font-size:17px; letter-spacing:-.02em}
+  .lang{margin-left:auto; display:flex; gap:2px; border:1px solid var(--line); border-radius:999px; padding:2px}
+  .lang button{width:auto; margin:0; padding:5px 12px; font-size:12px; font-weight:600;
+    background:transparent; color:var(--ink-faint); border:0; border-radius:999px; cursor:pointer}
+  .lang button.on{background:var(--accent); color:#1a1206}
+  .tag{display:inline-block; font-size:12px; font-weight:600; letter-spacing:.04em;
+       color:var(--accent); background:var(--accent-soft); border:1px solid #c49c4d33;
+       padding:5px 11px; border-radius:999px; margin-bottom:14px}
+  h1{font-size:25px; line-height:1.3; letter-spacing:-.03em; font-weight:700}
+  .sub{color:var(--ink-dim); font-size:15px; margin-top:10px}
+
+  .step{margin-top:16px; padding:17px; border:1px solid var(--line); border-radius:var(--radius); background:var(--bg-soft)}
+  .s-head{display:flex; align-items:center; gap:9px; margin-bottom:6px}
+  .s-num{flex:none; width:22px; height:22px; border-radius:50%; font-size:12px; font-weight:700;
+         line-height:22px; text-align:center; color:var(--accent); border:1px solid #c49c4d55}
+  .s-head h2{font-size:16px; font-weight:700; letter-spacing:-.02em}
+  .s-done{margin-left:auto; font-size:12px; font-weight:700; color:var(--ok); display:none}
+  .step.on .s-done{display:block}
+  .s-desc{font-size:13px; color:var(--ink-faint); margin-bottom:12px}
+  .step.locked{opacity:.45; pointer-events:none}
+
+  /* 프리셋 6 */
+  .presets{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:14px}
+  .preset{padding:10px 6px 9px; border:1px solid var(--line); border-radius:12px; background:#0f141d; text-align:center; cursor:pointer}
+  .preset img{width:56px; height:56px; image-rendering:pixelated; border-radius:8px; display:block; margin:0 auto 6px}
+  .preset .pn{font-size:13px; font-weight:700}
+  .preset .pd{font-size:10px; color:var(--ink-faint); line-height:1.3; margin-top:2px; min-height:26px}
+  .preset.on{border-color:var(--accent); background:var(--accent-soft)}
+
+  label{display:block; font-size:13px; color:var(--ink-dim); margin:0 0 7px}
+  input{width:100%; padding:14px 15px; font-size:16px; color:var(--ink); background:#0f141d; border:1px solid var(--line);
+        border-radius:12px; outline:none; font-family:inherit}
+  input:focus{border-color:var(--accent)}
+  .field + .field{margin-top:14px}
+  .hint{font-size:12px; color:var(--ink-faint); margin-top:7px}
+  .face-row{display:flex; align-items:center; gap:14px; margin-top:14px}
+  .face-row img{width:96px; height:96px; image-rendering:pixelated; border-radius:12px; border:1px solid var(--line); background:#0f141d; flex:none}
+  .face-row .fr{flex:1}
+  button{width:100%; margin-top:16px; padding:15px; font-size:16px; font-weight:700; font-family:inherit; color:#1a1206;
+         background:var(--accent); border:0; border-radius:12px; cursor:pointer; letter-spacing:-.01em}
+  button:disabled{opacity:.55; cursor:default}
+  button.done{background:#3d4654; color:#9aa6b8; opacity:1; cursor:default}
+  button.ghost{background:transparent; color:var(--ink-dim); border:1px solid var(--line); margin-top:0; padding:11px}
+  .msg{margin-top:14px; font-size:14px; padding:12px 14px; border-radius:11px; display:none}
+  .msg.show{display:block}
+  .msg.err{color:var(--danger); background:#ff6b6b14; border:1px solid #ff6b6b33}
+  .msg.info{color:var(--ink-dim); background:#ffffff08; border:1px solid var(--line)}
+  .coupon{display:none; margin-top:14px; padding:14px 16px; border-radius:12px; border:1px solid #c49c4d55; background:var(--accent-soft)}
+  .coupon.show{display:block}
+  .coupon b{color:var(--accent); font-size:15px}
+  .coupon p{font-size:13px; color:var(--ink-dim); margin-top:4px}
+  .dl{display:block; margin-top:12px; padding:15px; text-align:center; font-size:15px; font-weight:600; border-radius:12px;
+      text-decoration:none; color:var(--ink); border:1px solid var(--line); background:var(--bg-soft)}
+  .dl.primary{color:#1a1206; background:var(--accent); border-color:var(--accent)}
+  .foot{margin-top:26px; font-size:12px; color:var(--ink-faint); text-align:center}
+  .foot a{color:var(--ink-faint)}
+  ol.home{margin:12px 0 0 18px; font-size:14px; color:var(--ink-dim)}
+  ol.home li{margin:6px 0}
+
+  /* ── 사원증 (앱 AgentCard 규격: ID-1 85.6×53.98mm, 어두운 바탕, 듀오톤 아바타 배경, 흰 글자) ── */
+  .idcard{position:relative; width:100%; aspect-ratio:1.586; border-radius:4px; overflow:hidden; box-sizing:border-box;
+          background:#0f1116; padding:7% 6%; display:flex; flex-direction:column; justify-content:space-between;
+          border:1px solid var(--tint-30); box-shadow:0 8px 32px var(--tint-10), 0 0 0 1px var(--tint-05);
+          font-family:Inter,system-ui,-apple-system,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif; color:#fff}
+  .idcard .bgimg{position:absolute; top:-4%; left:-4%; right:-4%; bottom:-4%; background-size:cover; background-position:center;
+          filter:brightness(.25) saturate(.3) blur(1px); image-rendering:pixelated}
+  .idcard .duo{position:absolute; inset:0; background:linear-gradient(135deg, var(--tint-12) 0%, transparent 50%, var(--tint-08) 100%); mix-blend-mode:screen}
+  .idcard .fade{position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.1) 0%, rgba(0,0,0,.3) 40%, rgba(0,0,0,.75) 100%)}
+  .idcard .scan{position:absolute; inset:0; pointer-events:none;
+          background-image:repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,.03) 3px, rgba(0,0,0,.03) 4px)}
+  .idcard .glow{position:absolute; top:-30px; right:-30px; width:150px; height:150px; border-radius:50%;
+          background:radial-gradient(circle, var(--tint-15) 0%, transparent 70%)}
+  .idcard .shine{position:absolute; inset:0; pointer-events:none; background:linear-gradient(135deg, var(--tint-16) 0%, transparent 55%)}
+  .idcard .row{position:relative; z-index:2; display:flex; justify-content:space-between; align-items:flex-start}
+  .idcard .brandl{display:flex; flex-direction:column; line-height:1.2}
+  .idcard .brandl .b1{font-size:12px; font-weight:700; letter-spacing:.1em; color:var(--tint)}
+  .idcard .brandl .b2, .idcard .brandr{font-size:8.5px; color:rgba(255,255,255,.5); letter-spacing:.12em; text-transform:uppercase}
+  .idcard .mid{position:relative; z-index:2; display:flex; align-items:center; gap:14px; min-width:0}
+  .idcard .mid img{width:23%; aspect-ratio:1; border-radius:6px; image-rendering:pixelated; flex:none; border:1px solid var(--tint-30); background:#0f1116}
+  .idcard .info{flex:1; min-width:0; display:flex; flex-direction:column; gap:2px}
+  .idcard .nm{font-size:19px; font-weight:700; color:#fff; line-height:1.15; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .idcard .fl{display:flex; align-items:baseline; gap:6px; min-width:0; font-size:10.5px; color:#fff}
+  .idcard .fl span:first-child{white-space:nowrap; flex:none; letter-spacing:.02em}
+  .idcard .fl span:last-child{min-width:0; font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+  .idcard .fl.role span:last-child{white-space:normal; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical}
+  .idcard .tags{display:flex; flex-wrap:wrap; gap:2px 8px; margin-top:2px; font-size:9px; color:var(--tint); opacity:.9}
+  .idcard .bot{position:relative; z-index:2; display:flex; justify-content:space-between; align-items:flex-end; gap:12px}
+  .idcard .no .v{font-size:15px; font-weight:700; color:#fff; line-height:1.1}
+  .idcard .no .k{font-size:8px; color:rgba(255,255,255,.5); text-transform:uppercase; letter-spacing:.08em}
+  .idcard .qr{width:19%; aspect-ratio:1; background:#fff; padding:3px; border-radius:3px; flex:none}
+  .idcard .qr svg{width:100%; height:100%; display:block}
+  .idcard .qrlab{font-size:7.5px; color:rgba(255,255,255,.55); text-align:right; margin-top:2px; letter-spacing:.04em}
+  .card-actions{display:flex; gap:8px; margin-top:12px}
+  .card-actions button{margin-top:0}
+
+  @media print{
+    @page{size:85.6mm 53.98mm; margin:0}
+    html,body{background:#fff !important; padding:0 !important; margin:0 !important; display:block !important; min-height:0 !important}
+    body *{visibility:hidden}
+    #print-root, #print-root *{visibility:visible}
+    #print-root{position:fixed; left:0; top:0; width:85.6mm; height:53.98mm; margin:0; padding:0}
+    #print-root .idcard{width:85.6mm; height:53.98mm; aspect-ratio:auto; border-radius:0; border:0; box-shadow:none;
+      -webkit-print-color-adjust:exact; print-color-adjust:exact}
+    .card-actions{display:none !important}
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <div class="brand">
+    <a href="https://www.re-be.world/" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)">
+      <img src="/logo.png" alt=""><span>Be.Ark</span>
+    </a>
+    <div class="lang">
+      <button id="lang-ko" type="button">한국어</button>
+      <button id="lang-en" type="button">EN</button>
+    </div>
+  </div>
+
+  <div class="tag" data-i18n="tag"></div>
+  <h1 id="h1"></h1>
+  <p class="sub" id="sub"></p>
+
+  <!-- ── 현장 모드 ─────────────────────────────────────────────── -->
+  <div id="site">
+
+    <!-- ① 채용 -->
+    <section class="step" id="st-hire">
+      <div class="s-head"><span class="s-num">1</span><h2 data-i18n="s1Title"></h2><span class="s-done" data-i18n="done"></span></div>
+      <p class="s-desc" data-i18n="s1Desc"></p>
+      <div class="presets" id="presets"></div>
+      <div class="field">
+        <label for="aname" data-i18n="nameLabel"></label>
+        <input id="aname" type="text" maxlength="40" autocomplete="off" autocapitalize="words">
+        <div class="hint" data-i18n="nameHint"></div>
+      </div>
+      <div class="face-row">
+        <img id="face" alt="">
+        <div class="fr">
+          <button type="button" class="ghost" id="shuffle" data-i18n="shuffleBtn"></button>
+          <div class="hint" data-i18n="faceHint"></div>
+        </div>
+      </div>
+      <button type="button" id="hire-btn" data-i18n="hireBtn"></button>
+    </section>
+
+    <!-- ② 가입 -->
+    <section class="step locked" id="st-signup">
+      <div class="s-head"><span class="s-num">2</span><h2 data-i18n="s2Title"></h2><span class="s-done" data-i18n="done"></span></div>
+      <p class="s-desc" data-i18n="s2Desc"></p>
+      <form id="f" novalidate>
+        <div class="field"><label for="email" data-i18n="email"></label><input id="email" type="email" inputmode="email" autocomplete="email" autocapitalize="none"></div>
+        <div class="field"><label for="pw" data-i18n="pw"></label><input id="pw" type="password" autocomplete="new-password"><div class="hint" data-i18n="pwHint"></div></div>
+        <button type="submit" id="submit" data-i18n="signupBtn"></button>
+      </form>
+      <div class="msg" id="msg"></div>
+      <div class="coupon" id="coupon"><b data-i18n="couponTitle"></b><p id="coupon-sub"></p></div>
+    </section>
+
+    <!-- ③ 사원증 -->
+    <section class="step locked" id="st-card">
+      <div class="s-head"><span class="s-num">3</span><h2 data-i18n="s3Title"></h2><span class="s-done" data-i18n="done"></span></div>
+      <p class="s-desc" data-i18n="s3Desc"></p>
+      <div id="print-root"><div class="idcard" id="idcard"></div></div>
+      <div class="card-actions">
+        <button type="button" id="print-btn" data-i18n="printBtn"></button>
+        <button type="button" class="ghost" id="next-btn" data-i18n="nextBtn" style="width:auto;padding:11px 14px;white-space:nowrap"></button>
+      </div>
+      <div class="hint" data-i18n="cardHint" style="margin-top:10px"></div>
+    </section>
+  </div>
+
+  <!-- ── 집 모드 (QR) ──────────────────────────────────────────── -->
+  <div id="home" style="display:none">
+    <section class="step on">
+      <div class="s-head"><span class="s-num">✓</span><h2 data-i18n="hTitle"></h2></div>
+      <p class="s-desc" data-i18n="hDesc"></p>
+      <ol class="home">
+        <li data-i18n="h1s"></li><li data-i18n="h2s"></li><li data-i18n="h3s"></li>
+      </ol>
+      <a class="dl primary" id="dl-mac" href="#" data-i18n="dlMac"></a>
+      <a class="dl" id="dl-mac-intel" href="#" data-i18n="dlMacIntel"></a>
+      <a class="dl" id="dl-win" href="#" data-i18n="dlWin"></a>
+      <a class="dl" id="dl-site" href="https://re-be.world/ko" data-i18n="dlSite"></a>
+      <div class="coupon show" style="margin-top:16px"><b data-i18n="couponTitle"></b><p data-i18n="hCoupon"></p></div>
+    </section>
+  </div>
+
+  <div class="foot"><a href="/privacy.html" data-i18n="privacy"></a> · Be.Ark by Paulus</div>
+</main>
+
+<script src="/join/beark-card.js"></script>
+<script>
+(function(){
+  var FN   = "https://hxrvapnasxmaubymcipd.supabase.co/functions/v1/billing";
+  var AUTH = "https://hxrvapnasxmaubymcipd.supabase.co/auth/v1/token?grant_type=password";
+  var KEY  = "sb_publishable_Skd6X54IOwVKyu3-QpxSog_TiRz2vK3"; // 공개용 키 — 데스크탑 arkAuth.ts와 같은 정본 프로젝트
+  var CAMPAIGN = "nachsun";
+  var LS = "nachsun_state_v1", LS_LANG = "nachsun_lang";
+  var HOME_URL = "https://re-be.world/join/nachsun?home=1";
+  // 다운로드 = 사이트 정본과 동일 값 (릴리스 때 index.html과 함께 교체 — beark-release 스킬)
+  var DL_MAC = "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.5.0-beta.10/Be.Ark_1.5.0-beta.10_aarch64.dmg";
+  var DL_MAC_INTEL = "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.5.0-beta.10/Be.Ark_1.5.0-beta.10_x64.dmg";
+  var DL_WIN = "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.5.0-beta.10/Be.Ark_1.5.0-beta.10_x64-setup.exe";
+
+  var STR = {
+    ko: {
+      tag: "낯선대학 10주년 · 09.12–13",
+      h1: "당신의 에이전트를<br>채용하세요",
+      sub: "현장에서 AI 팀원을 채용하고 사원증을 받으세요. 집에서 QR로 접속하면 그 팀원이 Be.Ark에 합류해요.",
+      done: "완료 ✓",
+      s1Title: "채용 공고 고르기", s1Desc: "어떤 팀원이 필요한가요? 역할을 고르고 이름을 지어주세요.",
+      nameLabel: "팀원 이름", nameHint: "예: 민지, 준호, Aria — 부르기 편한 이름이면 돼요.",
+      shuffleBtn: "다른 얼굴", faceHint: "마음에 드는 얼굴이 나올 때까지 눌러보세요.",
+      hireBtn: "이 팀원 채용하기",
+      s2Title: "계정 만들기", s2Desc: "이메일과 비밀번호만 있으면 끝. 확인 메일 없이 바로 가입돼요.",
+      email: "이메일", pw: "비밀번호", pwHint: "8자 이상. 집에서 앱에 로그인할 때 쓰는 비밀번호예요.",
+      signupBtn: "가입하고 사원증 받기", signupBusy: "가입하는 중…",
+      couponTitle: "NACHSUN · Pro 3개월 무료",
+      couponSub: "쿠폰이 계정에 등록됐어요. 결제 시 자동 적용 · {date} 마감",
+      s3Title: "사원증", s3Desc: "스태프가 이 사원증을 출력해 드려요. QR을 찍으면 집에서 이어갈 수 있어요.",
+      printBtn: "사원증 출력", nextBtn: "다음 사람",
+      cardHint: "출력은 부스 노트북에서 해요. 내 폰에서 만들었다면 스태프에게 화면을 보여주세요.",
+      hTitle: "사원증 받으셨죠? 집에서 이어가기",
+      hDesc: "현장에서 채용한 팀원이 계정에 담겨 있어요. 앱을 설치하고 같은 이메일로 로그인하면 합류합니다.",
+      h1s: "아래에서 Be.Ark를 다운로드해 설치하세요.",
+      h2s: "현장에서 만든 이메일·비밀번호로 로그인하세요.",
+      h3s: "팀원이 합류하고, Pro 3개월 무료 쿠폰은 결제 화면에서 자동으로 적용돼요.",
+      dlMac: "Mac (Apple Silicon) 다운로드", dlMacIntel: "Mac (Intel) 다운로드", dlWin: "Windows 다운로드", dlSite: "Be.Ark 둘러보기",
+      hCoupon: "가입한 계정에 이미 등록돼 있어요. 앱에서 Pro 시작할 때 자동 적용 · 10.12까지",
+      privacy: "개인정보처리방침",
+      needName: "팀원 이름을 지어주세요.", needPreset: "역할을 하나 골라주세요.",
+      invalid_email: "이메일 주소를 다시 확인해 주세요.", weak_password: "비밀번호는 8자 이상이어야 해요.",
+      campaign_closed: "이벤트가 마감됐어요.", not_open_yet: "아직 이벤트 시작 전이에요.", unknown_campaign: "이벤트 링크가 올바르지 않아요.",
+      signup_failed: "가입에 실패했어요. 잠시 후 다시 시도해 주세요.", unknownErr: "문제가 생겼어요 ({code})",
+      existingClaiming: "이미 가입된 계정이에요. 팀원과 쿠폰을 계정에 담는 중…",
+      existingPwWrong: "이미 가입된 이메일이에요. 비밀번호가 기존 계정과 달라요 — 원래 쓰던 비밀번호를 넣어주세요.",
+      agentNotSaved: "계정은 준비됐는데 팀원 정보를 담지 못했어요. 스태프에게 알려주세요.",
+      promoNotAttached: "계정은 만들어졌는데 쿠폰이 붙지 않았어요. 스태프에게 알려주세요.",
+      network: "네트워크가 불안정해요. 다시 눌러주세요.",
+      roleLabel: "역할", joinedLabel: "입사", noLabel: "사번", qrLabel: "QR로 집에서 합류"
+    },
+    en: {
+      tag: "Natsun University 10th · Sep 12–13",
+      h1: "Hire your own<br>AI agent",
+      sub: "Hire an AI teammate here and get an employee card. Scan the QR at home and the teammate joins you in Be.Ark.",
+      done: "Done ✓",
+      s1Title: "Pick a job posting", s1Desc: "What kind of teammate do you need? Pick a role and give them a name.",
+      nameLabel: "Teammate name", nameHint: "e.g. Aria, Max, Minji — anything easy to call.",
+      shuffleBtn: "Another face", faceHint: "Tap until you like the face.",
+      hireBtn: "Hire this teammate",
+      s2Title: "Create your account", s2Desc: "Just an email and a password. No confirmation email.",
+      email: "Email", pw: "Password", pwHint: "8+ characters. You'll use it to log in to the app at home.",
+      signupBtn: "Sign up & get the card", signupBusy: "Signing up…",
+      couponTitle: "NACHSUN · Pro free for 3 months",
+      couponSub: "Coupon registered to your account. Applies at checkout · expires {date}",
+      s3Title: "Employee card", s3Desc: "Staff will print this card for you. Scan the QR to continue at home.",
+      printBtn: "Print card", nextBtn: "Next person",
+      cardHint: "Printing happens on the booth laptop. Made it on your phone? Show the screen to the staff.",
+      hTitle: "Got your card? Continue at home",
+      hDesc: "The teammate you hired is stored in your account. Install the app and log in with the same email.",
+      h1s: "Download and install Be.Ark below.",
+      h2s: "Log in with the email & password you created at the booth.",
+      h3s: "Your teammate joins, and the 3-month Pro coupon applies automatically at checkout.",
+      dlMac: "Download for Mac (Apple Silicon)", dlMacIntel: "Download for Mac (Intel)", dlWin: "Download for Windows", dlSite: "Explore Be.Ark",
+      hCoupon: "Already registered to your account. Applies when you start Pro in the app · through Oct 12",
+      privacy: "Privacy Policy",
+      needName: "Please name your teammate.", needPreset: "Please pick a role.",
+      invalid_email: "Please double-check your email address.", weak_password: "Password must be at least 8 characters.",
+      campaign_closed: "This event has ended.", not_open_yet: "The event hasn't started yet.", unknown_campaign: "This event link is not valid.",
+      signup_failed: "Sign-up failed. Please try again in a moment.", unknownErr: "Something went wrong ({code})",
+      existingClaiming: "This account already exists. Saving your teammate and coupon…",
+      existingPwWrong: "This email is already registered, but the password doesn't match — please use your original password.",
+      agentNotSaved: "Account is ready but the teammate couldn't be saved. Please tell the staff.",
+      promoNotAttached: "Your account was created but the coupon wasn't attached. Please tell the staff.",
+      network: "The network is unstable. Please tap again.",
+      roleLabel: "Role", joinedLabel: "Joined", noLabel: "No.", qrLabel: "Scan to join at home"
+    }
+  };
+  var PRESET_STR = {
+    ko: { writer:["작가","막힌 생각을 문장으로 바꾸는 팀원"], founder:["전략가","사업 아이디어를 실행 계획으로 바꾸는 팀원"], marketer:["마케터","브랜드 이야기를 사람들에게 전하는 팀원"],
+          producer:["프로듀서","복잡한 일을 순서와 일정으로 정리하는 팀원"], researcher:["리서처","많은 자료에서 필요한 근거를 찾아내는 팀원"], everyday:["팀원","막연한 고민을 다음 행동으로 바꾸는 팀원"] },
+    en: { writer:["Writer","Turns stuck thoughts into sentences"], founder:["Strategist","Turns business ideas into execution plans"], marketer:["Marketer","Carries your brand story to people"],
+          producer:["Producer","Turns messy work into order and schedules"], researcher:["Researcher","Finds the evidence you need in piles of material"], everyday:["Teammate","Turns vague worries into the next action"] }
+  };
+
+  var B = window.BeArkCard;
+  var qs = new URLSearchParams(location.search);
+  var lang = (function(){
+    try { var s = localStorage.getItem(LS_LANG); if (s === 'ko' || s === 'en') return s; } catch(e){}
+    return (navigator.language || '').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en';
+  })();
+  function S(k){ return STR[lang][k] || STR.ko[k] || k; }
+  function $(id){ return document.getElementById(id); }
+
+  // ── 상태 (부스 기기에서 새로고침돼도 유지, ?reset=1로 다음 사람) ─────────
+  var state = { preset:"", name:"", parts:null, color:"", email:"", signedUp:false, promo:null, no:"" };
+  if (qs.get("reset") === "1") { try { localStorage.removeItem(LS); } catch(e){} history.replaceState(null, "", location.pathname); }
+  try { state = Object.assign(state, JSON.parse(localStorage.getItem(LS) || "{}")); } catch(e){}
+  function save(){ try { localStorage.setItem(LS, JSON.stringify(state)); } catch(e){} }
+
+  function presetOf(id){ for (var i = 0; i < B.AGENT_PRESETS.length; i++) if (B.AGENT_PRESETS[i].id === id) return B.AGENT_PRESETS[i]; return null; }
+  function tint(hex){ var r = B.hexToRgb(hex); return function(a){ return "rgba(" + r[0] + "," + r[1] + "," + r[2] + "," + a + ")"; }; }
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return { "&":"&amp;", "<":"&lt;", ">":"&gt;", "\"":"&quot;" }[c]; }); }
+  function todayStr(){ var d = new Date(); var p = function(n){ return (n < 10 ? "0" : "") + n; }; return d.getFullYear() + "." + p(d.getMonth() + 1) + "." + p(d.getDate()); }
+  function makeNo(seed){ var h = 5381; for (var i = 0; i < seed.length; i++) h = ((h << 5) + h + seed.charCodeAt(i)) >>> 0; return "26-" + String(h % 10000).padStart(4, "0"); }
+
+  // ── 사원증 렌더 (앱 AgentCard.tsx와 같은 규격) ────────────────────────────
+  function renderCard(el, d){
+    var rgba = tint(d.color);
+    el.style.setProperty("--tint", d.color);
+    ["05","08","10","12","15","16","30"].forEach(function(k){ el.style.setProperty("--tint-" + k, rgba(Number(k) / 100)); });
+    var img = B.avatarPartsDataUrl(d.parts, 8);
+    var ps = PRESET_STR[lang][d.preset] || PRESET_STR.ko[d.preset] || ["", ""];
+    el.innerHTML =
+      '<div class="bgimg" style="background-image:url(' + img + ')"></div><div class="duo"></div><div class="fade"></div><div class="scan"></div><div class="glow"></div><div class="shine"></div>' +
+      '<div class="row"><div class="brandl"><span class="b1">Be.Ark</span><span class="b2">Agent Card</span></div><span class="brandr">Re-Be World</span></div>' +
+      '<div class="mid"><img src="' + img + '" alt=""><div class="info">' +
+        '<div class="nm">' + esc(d.name) + '</div>' +
+        '<div class="fl role"><span>' + S("roleLabel") + ' :</span><span>' + esc(ps[0]) + ' · ' + esc(ps[1]) + '</span></div>' +
+        '<div class="fl"><span>' + S("joinedLabel") + ' :</span><span>' + esc(d.joined || todayStr()) + '</span></div>' +
+        '<div class="tags"><span>#' + esc(ps[0]) + '</span><span>#낯선대학10</span><span>#BeArk</span></div>' +
+      '</div></div>' +
+      '<div class="bot"><div class="no"><div class="v">' + esc(d.no || "") + '</div><div class="k">' + S("noLabel") + '</div></div>' +
+        '<div><div class="qr">' + B.qrSvg(HOME_URL, 4, 0) + '</div><div class="qrlab">' + S("qrLabel") + '</div></div></div>';
+  }
+
+  // ── 카드 딥링크 (?card=base64url JSON) = 스태프 노트북 출력용 ─────────────
+  function b64u(s){ return btoa(unescape(encodeURIComponent(s))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, ""); }
+  function unb64u(s){ s = s.replace(/-/g, "+").replace(/_/g, "/"); while (s.length % 4) s += "="; return decodeURIComponent(escape(atob(s))); }
+
+  // ── 언어 적용 ────────────────────────────────────────────────────────────
+  function applyLang(){
+    document.documentElement.lang = lang;
+    $("lang-ko").className = lang === "ko" ? "on" : ""; $("lang-en").className = lang === "en" ? "on" : "";
+    $("h1").innerHTML = S("h1"); $("sub").textContent = S("sub");
+    var nodes = document.querySelectorAll("[data-i18n]");
+    for (var i = 0; i < nodes.length; i++) nodes[i].textContent = S(nodes[i].getAttribute("data-i18n"));
+    $("dl-site").href = lang === "ko" ? "https://re-be.world/ko" : "https://re-be.world/";
+    renderPresets(); render();
+  }
+  function setLang(l){ lang = l; try { localStorage.setItem(LS_LANG, l); } catch(e){} applyLang(); }
+  $("lang-ko").addEventListener("click", function(){ setLang("ko"); });
+  $("lang-en").addEventListener("click", function(){ setLang("en"); });
+
+  // ── 집 모드 / 카드 딥링크 ────────────────────────────────────────────────
+  if (qs.get("home") === "1") {
+    $("site").style.display = "none"; $("home").style.display = "block";
+    $("dl-mac").href = DL_MAC; $("dl-mac-intel").href = DL_MAC_INTEL; $("dl-win").href = DL_WIN;
+    applyLang(); return;
+  }
+  if (qs.get("card")) {
+    try {
+      var cd = JSON.parse(unb64u(qs.get("card")));
+      $("st-hire").style.display = "none"; $("st-signup").style.display = "none";
+      $("st-card").classList.remove("locked"); $("st-card").classList.add("on");
+      $("next-btn").style.display = "none";
+      applyLang(); renderCard($("idcard"), cd);
+      $("print-btn").addEventListener("click", function(){ window.print(); });
+      return;
+    } catch(e){ /* 잘못된 딥링크 = 일반 흐름 */ }
+  }
+
+  // ── ① 채용 ──────────────────────────────────────────────────────────────
+  var presetFaces = {};
+  function renderPresets(){
+    var host = $("presets"); host.innerHTML = "";
+    B.AGENT_PRESETS.forEach(function(p){
+      if (!presetFaces[p.id]) presetFaces[p.id] = B.avatarPartsDataUrl(p.avatar, 4);
+      var ps = PRESET_STR[lang][p.id];
+      var d = document.createElement("div"); d.className = "preset" + (state.preset === p.id ? " on" : "");
+      d.innerHTML = '<img src="' + presetFaces[p.id] + '" alt=""><div class="pn">' + esc(ps[0]) + '</div><div class="pd">' + esc(ps[1]) + '</div>';
+      d.addEventListener("click", function(){
+        state.preset = p.id; state.color = p.color; state.parts = JSON.parse(JSON.stringify(p.avatar)); save(); renderPresets(); render();
+      });
+      host.appendChild(d);
+    });
+  }
+  $("shuffle").addEventListener("click", function(){
+    var p = presetOf(state.preset) || B.AGENT_PRESETS[5];
+    if (!state.preset) { state.preset = p.id; state.color = p.color; }
+    state.parts = B.shuffleParts(p.avatar); save(); renderPresets(); render();
+  });
+  $("aname").addEventListener("input", function(){ state.name = this.value; save(); });
+  $("hire-btn").addEventListener("click", function(){
+    var name = $("aname").value.trim();
+    if (!state.preset) { alert(S("needPreset")); return; }
+    if (!name) { alert(S("needName")); $("aname").focus(); return; }
+    state.name = name; save(); render();
+    $("st-signup").scrollIntoView({ behavior:"smooth", block:"start" }); $("email").focus();
+  });
+
+  // ── ② 가입 ──────────────────────────────────────────────────────────────
+  function post(url, body, jwt){
+    var headers = { "Content-Type":"application/json", "apikey":KEY };
+    if (jwt) headers["Authorization"] = "Bearer " + jwt;
+    return fetch(url, { method:"POST", headers:headers, body:JSON.stringify(body) })
+      .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ return { status:r.status, body:j }; }); });
+  }
+  var REASON_KEYS = ["invalid_email","weak_password","campaign_closed","not_open_yet","unknown_campaign","signup_failed"];
+  function reasonText(code){ return REASON_KEYS.indexOf(code) >= 0 ? S(code) : S("unknownErr").replace("{code}", String(code)); }
+  function msg(text, kind){ var el = $("msg"); el.textContent = text; el.className = "msg show " + (kind || "info"); }
+  function clearMsg(){ $("msg").className = "msg"; }
+  function agentPayload(){ return { name: state.name, preset: state.preset, color: state.color, lang: lang, parts: state.parts }; }
+  function showCoupon(promo){
+    var el = $("coupon"); if (!promo || promo.attached === false) { el.className = "coupon"; return; }
+    var exp = promo.spec && promo.spec.expires_at ? new Date(Number(promo.spec.expires_at) * 1000).toLocaleDateString(lang === "ko" ? "ko-KR" : "en-US") : "";
+    $("coupon-sub").textContent = S("couponSub").replace("{date}", exp || "10.12");
+    el.className = "coupon show";
+  }
+  function finishSignup(email, promo, agentSaved){
+    state.email = email; state.signedUp = true; state.promo = promo || null; state.no = makeNo(email + "|" + state.name); save();
+    if (agentSaved === false) msg(S("agentNotSaved"), "err");
+    else if (promo && promo.attached === false) msg(S("promoNotAttached"), "info");
+    else clearMsg();
+    showCoupon(promo); render();
+    $("st-card").scrollIntoView({ behavior:"smooth", block:"start" });
+  }
+  // 이미 계정이 있는 참석자 = 같은 비밀번호로 로그인해서 쿠폰 + 에이전트만 담는다.
+  function claimAsExisting(email, pw){
+    msg(S("existingClaiming"), "info");
+    var jwt = null;
+    return post(AUTH, { email:email, password:pw }).then(function(r){
+      if (!r.body || !r.body.access_token) { msg(S("existingPwWrong"), "err"); return null; }
+      jwt = r.body.access_token;
+      return post(FN, { type:"event_agent", campaign:CAMPAIGN, agent:agentPayload() }, jwt);
+    }).then(function(r){
+      if (!r) return null;
+      var saved = r.status === 200 && r.body && r.body.ok;
+      return post(FN, { type:"claim_promo", campaign:CAMPAIGN }, jwt).then(function(r2){
+        var promo = (r2.body && r2.body.promo) || { attached:false, reason:(r2.body && r2.body.error) || "unknown" };
+        finishSignup(email, promo, saved);
+      });
+    });
+  }
+  $("f").addEventListener("submit", function(e){
+    e.preventDefault();
+    var email = $("email").value.trim().toLowerCase(), pw = $("pw").value;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg(S("invalid_email"), "err"); return; }
+    if (pw.length < 8) { msg(S("weak_password"), "err"); return; }
+    var btn = $("submit"); btn.disabled = true; btn.textContent = S("signupBusy"); clearMsg();
+    post(FN, { type:"event_signup", campaign:CAMPAIGN, email:email, password:pw, name:"", agent:agentPayload() })
+      .then(function(r){
+        if (r.status === 200 && r.body.ok && r.body.existing) return claimAsExisting(email, pw);
+        if (r.status === 200 && r.body.ok) { finishSignup(email, r.body.promo, r.body.agent_saved !== false); return; }
+        msg(reasonText((r.body && r.body.error) || r.status), "err");
+      })
+      .catch(function(){ msg(S("network"), "err"); })
+      .then(function(){ btn.disabled = !!state.signedUp; btn.textContent = S("signupBtn"); if (state.signedUp) btn.classList.add("done"); });
+  });
+
+  // ── ③ 사원증 ────────────────────────────────────────────────────────────
+  $("print-btn").addEventListener("click", function(){ window.print(); });
+  $("next-btn").addEventListener("click", function(){ location.href = location.pathname + "?reset=1"; });
+
+  function cardData(){ return { name: state.name, preset: state.preset, color: state.color, parts: state.parts, no: state.no, joined: todayStr() }; }
+  function render(){
+    var hired = !!(state.preset && state.name && state.parts);
+    $("aname").value = state.name || "";
+    if (state.parts) $("face").src = B.avatarPartsDataUrl(state.parts, 4); else $("face").removeAttribute("src");
+    $("st-hire").classList.toggle("on", hired);
+    $("st-signup").classList.toggle("locked", !hired);
+    $("st-signup").classList.toggle("on", !!state.signedUp);
+    $("st-card").classList.toggle("locked", !state.signedUp);
+    $("st-card").classList.toggle("on", !!state.signedUp);
+    var sb = $("submit"); sb.disabled = !!state.signedUp; sb.classList.toggle("done", !!state.signedUp);
+    if (state.signedUp) { renderCard($("idcard"), cardData()); showCoupon(state.promo); $("email").value = state.email; }
+  }
+  applyLang();
+  if (!state.parts) { var p0 = B.AGENT_PRESETS[5]; state.parts = B.shuffleParts(p0.avatar); state.color = state.color || p0.color; render(); }
+})();
+</script>
+</body>
+</html>
