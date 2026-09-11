@@ -10,6 +10,9 @@
 <meta property="og:description" content="현장에서 에이전트를 채용하고 사원증을 받으세요. 집에서 QR로 접속하면 그 에이전트가 합류합니다.">
 <meta property="og:image" content="https://www.re-be.world/landing/og-hero-2026.jpg">
 <link rel="icon" href="/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <!--
   낯선대학 10주년 (2026-09-12~13) 현장 "에이전트 채용" 페이지 — 빠불로 2026-09-11 발안.
 
@@ -22,6 +25,8 @@
   ?card=<base64url JSON> = 카드만 렌더(스태프 노트북에서 출력용 딥링크).
 -->
 <style>
+  /* 앱과 같은 폰트: 본문·카드 = Geist Mono(앱 index.css html,body), "Be.Ark" 워드마크 = Pretendard Bold(앱 로컬 번들과 같은 파일) */
+  @font-face{ font-family:'Pretendard'; font-weight:700; font-style:normal; font-display:swap; src:url('/join/fonts/Pretendard-Bold.woff2') format('woff2'); }
   :root{
     --bg:#070a0f; --bg-soft:#0c1018; --ink:#f6f8fb; --ink-dim:#9aa6b8; --ink-faint:#5e6b7e;
     --accent:#c49c4d; --accent-soft:#c49c4d1f; --line:#1b2330; --radius:18px;
@@ -102,7 +107,7 @@
   .idcard{position:relative; width:100%; aspect-ratio:1.586; border-radius:4px; overflow:hidden; box-sizing:border-box;
           background:#0f1116; padding:7% 6%; display:flex; flex-direction:column; justify-content:space-between;
           border:1px solid var(--tint-30); box-shadow:0 8px 32px var(--tint-10), 0 0 0 1px var(--tint-05);
-          font-family:Inter,system-ui,-apple-system,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif; color:#fff}
+          font-family:"Geist Mono","JetBrains Mono","SF Mono","Apple SD Gothic Neo","Malgun Gothic",monospace,sans-serif; color:#fff}
   .idcard .bgimg{position:absolute; top:-4%; left:-4%; right:-4%; bottom:-4%; background-size:cover; background-position:center;
           filter:brightness(.25) saturate(.3) blur(1px); image-rendering:pixelated}
   .idcard .duo{position:absolute; inset:0; background:linear-gradient(135deg, var(--tint-12) 0%, transparent 50%, var(--tint-08) 100%); mix-blend-mode:screen}
@@ -114,7 +119,7 @@
   .idcard .shine{position:absolute; inset:0; pointer-events:none; background:linear-gradient(135deg, var(--tint-16) 0%, transparent 55%)}
   .idcard .row{position:relative; z-index:2; display:flex; justify-content:space-between; align-items:flex-start}
   .idcard .brandl{display:flex; flex-direction:column; line-height:1.2}
-  .idcard .brandl .b1{font-size:12px; font-weight:700; letter-spacing:.1em; color:var(--tint)}
+  .idcard .brandl .b1{font-size:12.5px; font-weight:700; letter-spacing:.04em; color:var(--tint); font-family:Pretendard,"Geist Mono",sans-serif}
   .idcard .brandl .b2, .idcard .brandr{font-size:8.5px; color:rgba(255,255,255,.5); letter-spacing:.12em; text-transform:uppercase}
   .idcard .mid{position:relative; z-index:2; display:flex; align-items:center; gap:14px; min-width:0}
   .idcard .mid img{width:23%; aspect-ratio:1; border-radius:6px; image-rendering:pixelated; flex:none; border:1px solid var(--tint-30); background:#0f1116}
@@ -379,15 +384,19 @@
   function bindCardButtons(getData){
     $("png-btn").addEventListener("click", function(){
       var d = getData(); if (!d || !d.parts) return;
-      var canvas = B.renderCardPortraitCanvas(cardPngData(d));
-      B.downloadCanvasPng(canvas, "beark-card-" + safeFile(d.name) + "-" + safeFile(d.no || "") + ".png");
+      B.ensureCardFonts().then(function(){
+        var canvas = B.renderCardPortraitCanvas(cardPngData(d));
+        return B.downloadCanvasPng(canvas, "beark-card-" + safeFile(d.name) + "-" + safeFile(d.no || "") + ".png");
+      });
     });
     $("print-btn").addEventListener("click", function(){
       var d = getData(); if (!d || !d.parts) return;
-      var canvas = B.renderCardPortraitCanvas(cardPngData(d));
-      var img = $("print-img");
-      img.onload = function(){ img.onload = null; window.print(); };
-      img.src = canvas.toDataURL("image/png");
+      B.ensureCardFonts().then(function(){
+        var canvas = B.renderCardPortraitCanvas(cardPngData(d));
+        var img = $("print-img");
+        img.onload = function(){ img.onload = null; window.print(); };
+        img.src = canvas.toDataURL("image/png");
+      });
     });
   }
 
