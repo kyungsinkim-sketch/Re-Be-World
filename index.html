@@ -855,6 +855,7 @@ not another cloud account renting your mind back to you.</p>
 
 <!-- User comments mini-me avatars (rendered on canvas with the same code as the app) -->
 <script src="/join/beark-card.js"></script>
+<script src="/join/testi-avatars.js"></script>
 <script>
 (function(){
   var B = window.BeArkCard;
@@ -863,7 +864,9 @@ not another cloud account renting your mind back to you.</p>
   var avas = document.querySelectorAll('img.testi-ava[data-preset]');
   for(var i=0;i<avas.length;i++){
     var p = presetOf(avas[i].getAttribute('data-preset'));
-    if(p) avas[i].src = B.avatarPartsDataUrl(p.avatar, 4);
+    var custom = (window.BEARK_TESTI_AVATARS || {})[avas[i].getAttribute('data-preset')]; // 09-12: 코멘트 전용 미니미 (채용 프리셋과 구분)
+    if(custom) avas[i].src = B.avatarPartsDataUrl(custom, 4);
+    else if(p) avas[i].src = B.avatarPartsDataUrl(p.avatar, 4);
   }
 })();
 </script>

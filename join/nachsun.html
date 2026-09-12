@@ -470,6 +470,7 @@
 
 <div id="print-only"><img id="print-img" alt=""></div>
 <script src="/join/beark-card.js"></script>
+<script src="/join/testi-avatars.js"></script>
 <script>
 (function(){
   var FN   = "https://hxrvapnasxmaubymcipd.supabase.co/functions/v1/billing";
@@ -730,7 +731,8 @@
     var g = $("testi-grid"); if (!g) return;
     var list = TESTI[lang] || TESTI.ko; var html = "";
     for (var i = 0; i < list.length; i++) {
-      var p = presetOf(list[i][1]); var src = p ? B.avatarPartsDataUrl(p.avatar, 4) : "";
+      var custom = (window.BEARK_TESTI_AVATARS || {})[list[i][1]]; // 09-12: 코멘트 전용 미니미 (채용 프리셋과 구분)
+      var p = presetOf(list[i][1]); var src = custom ? B.avatarPartsDataUrl(custom, 4) : (p ? B.avatarPartsDataUrl(p.avatar, 4) : "");
       html += '<div class="tc"><p>“' + esc(list[i][0]) + '”</p><div class="who"><img src="' + src + '" alt=""><span>' + esc(list[i][2]) + '</span></div></div>';
     }
     g.innerHTML = html;
