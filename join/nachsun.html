@@ -213,6 +213,10 @@
   .agent-id{display:flex; flex-direction:column; align-items:center; gap:5px; flex-shrink:0; width:46px}
   .agent-id .avatar{width:42px; height:42px; border-radius:50%; object-fit:cover; border:1px solid var(--line)}
   .agent-id .agent-name{font-size:10.5px; color:var(--ink-faint); font-weight:600; text-align:center; line-height:1.1}
+  /* 실제 구동 영상 (목업 자리) */
+  .demo{margin:40px auto 0; max-width:960px; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
+    box-shadow:0 30px 80px #00000088; background:#0a0e15}
+  .demo video{display:block; width:100%; height:auto; background:#0a0e15}
   /* 유저 코멘트 (ko/index.html testi 그대로) + 영상 */
   .sec-h{text-align:center; margin-bottom:26px}
   .sec-h h2{font-size:clamp(24px,4vw,36px); letter-spacing:-.02em}
@@ -287,21 +291,12 @@
       <div class="cta-row"><a class="cta" id="hero-cta" href="#st-hire"></a></div>
       <p class="note" data-i18n="heroNote"></p>
 
-      <div class="mock">
+      <!-- 2026-09-12 빠불로: 목업 대신 실제 구동 영상 (2클립 이어붙임, 무음·자동반복 — /landing/beark-demo.mp4) -->
+      <div class="demo">
         <div class="mock-bar"><i></i><i></i><i></i><span>Be.Ark</span></div>
-        <div class="mock-body">
-          <div class="m user" data-i18n="mockU1"></div>
-          <div class="agent-row">
-            <div class="agent-id"><img class="avatar" src="/landing/agent-avatar.jpg" alt="Jaybabot"><span class="agent-name">@Jaybabot</span></div>
-            <div class="m ai" id="mock-a1"></div>
-          </div>
-          <div class="m user" data-i18n="mockU2"></div>
-          <div class="agent-row">
-            <div class="agent-id"><img class="avatar" src="/landing/agent-avatar.jpg" alt="Jaybabot"><span class="agent-name">@Jaybabot</span></div>
-            <div class="m ai" data-i18n="mockA2"></div>
-          </div>
-        </div>
+        <video id="demo-video" src="/landing/beark-demo.mp4" poster="/landing/beark-demo-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Be.Ark demo"></video>
       </div>
+      <span id="mock-a1" hidden></span>
     </div>
   </section>
 
@@ -570,6 +565,9 @@
 
   var B = window.BeArkCard;
   var qs = new URLSearchParams(location.search);
+  // 데모 영상: 자동재생이 막히면(일부 폰) 컨트롤을 보여줘 손으로 재생
+  (function(){ var v = document.getElementById("demo-video"); if (!v) return;
+    var p = v.play && v.play(); if (p && p.catch) p.catch(function(){ v.controls = true; }); })();
   var lang = (function(){
     try { var s = localStorage.getItem(LS_LANG); if (s === 'ko' || s === 'en') return s; } catch(e){}
     return (navigator.language || '').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en';
