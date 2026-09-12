@@ -226,6 +226,14 @@
   .event-head{padding-top:44px}
   .divider{max-width:860px; margin:36px auto 0; border:0; border-top:1px solid var(--line)}
   @media(max-width:720px){ .float-agents{display:none} .hero{padding:64px 0 28px} .mock-body{padding:16px} .mock .m{font-size:13.5px} }
+  /* 링크 넘기기 상자 (집 모드, 모바일) */
+  .handoff{margin:14px 0 6px; padding:16px; border:1px solid #c49c4d55; border-radius:12px; background:var(--accent-soft)}
+  .handoff b{display:block; font-size:16px; color:var(--accent)}
+  .handoff p{font-size:13.5px; color:var(--ink-dim); margin-top:6px}
+  .handoff .hurl{margin-top:10px; padding:10px 12px; border-radius:8px; background:#0f141d; border:1px solid var(--line);
+    font-family:"Geist Mono",monospace; font-size:15px; font-weight:700; color:var(--ink); text-align:center; letter-spacing:.01em}
+  .handoff .hbtns{display:flex; flex-direction:column; gap:8px; margin-top:10px}
+  .handoff .hbtns button{margin:0; padding:13px; font-size:15px}
   /* 인쇄 = 캔버스 PNG 1장만 (2026-09-11 스태프: 인화지 54×86mm, PDF 여러 장 ❌) */
   #print-only{display:none}
   @media print{
@@ -383,6 +391,17 @@
       <ol class="home">
         <li data-i18n="h1s"></li><li data-i18n="h2s"></li><li data-i18n="h3s"></li>
       </ol>
+      <!-- 2026-09-12 빠불로: QR은 폰으로 찍는데 설치는 데스크탑 → 링크를 컴퓨터로 넘기는 상자 (모바일에서 먼저 보임) -->
+      <div class="handoff" id="handoff">
+        <b data-i18n="handoffTitle"></b>
+        <p data-i18n="handoffDesc"></p>
+        <div class="hurl" id="handoff-url">re-be.world/join/nachsun</div>
+        <div class="hbtns">
+          <button type="button" id="ho-share" data-i18n="shareBtn"></button>
+          <button type="button" class="ghost" id="ho-mail" data-i18n="mailBtn"></button>
+          <button type="button" class="ghost" id="ho-copy" data-i18n="copyBtn"></button>
+        </div>
+      </div>
       <a class="dl primary" id="dl-mac" href="#" data-i18n="dlMac"></a>
       <a class="dl" id="dl-mac-intel" href="#" data-i18n="dlMacIntel"></a>
       <a class="dl" id="dl-win" href="#" data-i18n="dlWin"></a>
@@ -422,6 +441,11 @@
       heroNote: "무료 · 사원증 즉시 발급 · Pro 3개월 쿠폰 포함",
       userNameLabel: "이름 (선택)", userNameHint: "적으면 사원증 위에 '000님의 에이전트 직원이 입사했습니다'가 인쇄돼요.",
       orgLabel: "소속 (선택)", bannerText: "{name}님의 에이전트 직원이 입사했습니다",
+      handoffTitle: "📱 지금 폰이죠? 설치는 컴퓨터에서",
+      handoffDesc: "컴퓨터 브라우저에서 아래 주소를 열면 이 페이지가 그대로 나와요. 링크를 나에게 보내두면 편해요.",
+      shareBtn: "나에게 링크 보내기 (카톡·메시지)", mailBtn: "이메일로 보내기", copyBtn: "링크 복사", copied: "복사됐어요 ✓",
+      mailSubject: "Be.Ark 설치 링크 — 채용한 에이전트 만나기",
+      mailBody: "컴퓨터에서 이 링크를 열어 Be.Ark를 설치하고, 현장에서 가입한 이메일로 로그인하세요.\n{url}\n\n채용한 에이전트가 자동으로 합류합니다. (Pro 3개월 쿠폰은 결제 시 자동 적용)",
       mockU1: "방금 업로드한 PPT 양식과 나의 논리 구성, 어투를 학습해줘라",
       mockA1: "‘<b>파울러스</b>’ PT양식 학습했습니다. 배경 - 문제정의 - 컨슈머 인사이트 - 솔루션으로 이어지는 논리구조 학습했습니다. 빠불로님만의 PT문서 어투도 인지했습니다.",
       mockU2: "그것을 바탕으로 아까 자료조사했던 000 프로젝트.md를 PT 문서로 작성부탁해",
@@ -446,7 +470,7 @@
       cardHint: "PNG 저장 = 인화지 54×86mm(세로) 규격 1장. 출력은 부스 노트북에서 해요. 내 폰에서 만들었다면 스태프에게 화면을 보여주세요.",
       hTitle: "사원증 받으셨죠? 집에서 이어가기",
       hDesc: "현장에서 채용한 팀원이 계정에 담겨 있어요. 앱을 설치하고 같은 이메일로 로그인하면 합류합니다.",
-      h1s: "아래에서 Be.Ark를 다운로드해 설치하세요.",
+      h1s: "컴퓨터(Mac/Windows)에서 Be.Ark를 다운로드해 설치하세요 — 폰이면 아래 상자로 링크를 컴퓨터에 보내세요.",
       h2s: "현장에서 만든 이메일·비밀번호로 로그인하세요.",
       h3s: "팀원이 합류하고, Pro 3개월 무료 쿠폰은 결제 화면에서 자동으로 적용돼요.",
       dlMac: "Mac (Apple Silicon) 다운로드", dlMacIntel: "Mac (Intel) 다운로드", dlWin: "Windows 다운로드", dlSite: "Be.Ark 둘러보기",
@@ -474,6 +498,11 @@
       heroNote: "Free · Employee card on the spot · 3 months of Pro included",
       userNameLabel: "Your name (optional)", userNameHint: "If given, the card is printed with “<name>'s AI employee has joined”.",
       orgLabel: "Affiliation (optional)", bannerText: "{name}'s AI employee has joined",
+      handoffTitle: "📱 On your phone? Install on a computer",
+      handoffDesc: "Open the address below in your computer's browser to get this same page. Send the link to yourself to make it easy.",
+      shareBtn: "Send the link to myself", mailBtn: "Email it to me", copyBtn: "Copy link", copied: "Copied ✓",
+      mailSubject: "Be.Ark install link — meet the agent you hired",
+      mailBody: "Open this link on your computer, install Be.Ark and log in with the email you signed up with at the booth.\n{url}\n\nYour hired agent joins automatically. (The 3-month Pro coupon applies at checkout.)",
       mockU1: "Learn the PPT template I just uploaded — my logic flow and tone.",
       mockA1: "Learned the ‘<b>Paulus</b>’ deck template: Background → Problem → Consumer insight → Solution. I also picked up your writing voice for decks.",
       mockU2: "Now turn the research file 000-project.md into a deck in that style.",
@@ -498,7 +527,7 @@
       cardHint: "Save PNG = one 54×86mm (portrait) photo-paper image. Printing happens on the booth laptop. Made it on your phone? Show the screen to the staff.",
       hTitle: "Got your card? Continue at home",
       hDesc: "The teammate you hired is stored in your account. Install the app and log in with the same email.",
-      h1s: "Download and install Be.Ark below.",
+      h1s: "Download and install Be.Ark on a computer (Mac/Windows) — on a phone, send yourself the link with the box below.",
       h2s: "Log in with the email & password you created at the booth.",
       h3s: "Your teammate joins, and the 3-month Pro coupon applies automatically at checkout.",
       dlMac: "Download for Mac (Apple Silicon)", dlMacIntel: "Download for Mac (Intel)", dlWin: "Download for Windows", dlSite: "Explore Be.Ark",
@@ -649,6 +678,23 @@
   if (qs.get("home") === "1") {
     $("site").style.display = "none"; $("home").style.display = "block";
     $("dl-mac").href = DL_MAC; $("dl-mac-intel").href = DL_MAC_INTEL; $("dl-win").href = DL_WIN;
+    // 2026-09-12 링크 넘기기: 폰(터치·모바일 UA)이면 상자를 다운로드 위에, 데스크탑이면 숨김(바로 다운로드)
+    var isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || (window.matchMedia && matchMedia("(pointer:coarse)").matches);
+    $("handoff").style.display = isMobile ? "block" : "none";
+    function copyUrl(){
+      var done = function(){ var b = $("ho-copy"); var t = b.textContent; b.textContent = S("copied"); setTimeout(function(){ b.textContent = t; }, 1800); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(HOME_URL).then(done, function(){ prompt("URL", HOME_URL); });
+      else prompt("URL", HOME_URL);
+    }
+    $("ho-share").addEventListener("click", function(){
+      if (navigator.share) navigator.share({ title: "Be.Ark", text: S("mailSubject"), url: HOME_URL }).catch(function(){});
+      else copyUrl();
+    });
+    $("ho-mail").addEventListener("click", function(){
+      var to = (state.email || "");
+      location.href = "mailto:" + encodeURIComponent(to) + "?subject=" + encodeURIComponent(S("mailSubject")) + "&body=" + encodeURIComponent(S("mailBody").replace("{url}", HOME_URL));
+    });
+    $("ho-copy").addEventListener("click", copyUrl);
     applyLang(); return;
   }
   if (qs.get("card")) {
