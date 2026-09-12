@@ -200,8 +200,8 @@ function connect() {
 
 // ── 릴레이 전송로 (Phase 1-3, MOBILE_NAT_SPIKE §4): Supabase Realtime + E2E(AES-GCM) ──
 // ⚠️ 아래 암호 상수(salt/info/채널 프리픽스)는 데스크탑 relayCrypto.ts와 동일해야 함.
-const SB_URL = 'https://hxrvapnasxmaubymcipd.supabase.co';
-const SB_KEY = 'sb_publishable_Skd6X54IOwVKyu3-QpxSog_TiRz2vK3';
+const SB_URL = 'https://fkggbfqfgsgsacokjuqa.supabase.co';
+const SB_KEY = 'sb_publishable_t3TDevoknYi9XDmspshfBQ_xKZCQI9v';
 const CID = Array.from(crypto.getRandomValues(new Uint8Array(8)), b => b.toString(16).padStart(2,'0')).join('');
 const R = { ch:null, key:null };
 const u8 = (s) => new TextEncoder().encode(s);
