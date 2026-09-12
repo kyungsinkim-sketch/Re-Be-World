@@ -223,8 +223,9 @@
   .sec-h p{color:var(--ink-dim); margin-top:8px; font-size:15px}
   .testi{padding:40px 0 10px}
   .testi .tg{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px}
-  .testi .tc{background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:22px}
-  .testi .tc p{font-size:15px; line-height:1.7; color:#d8dde5; margin:0 0 14px}
+  /* 09-12 빠불로: 미니미+이름은 카드 하단 정렬 (인용문 길이가 달라도 줄 맞춤) */
+  .testi .tc{background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:22px; display:flex; flex-direction:column}
+  .testi .tc p{font-size:15px; line-height:1.7; color:#d8dde5; margin:0 0 14px; flex:1}
   .testi .who{display:flex; align-items:center; gap:10px}
   .testi .who img{width:42px; height:42px; border-radius:10px; image-rendering:pixelated; flex:none; background:#0f141d}
   .testi .who span{font-size:13px; color:var(--accent); font-weight:600}
