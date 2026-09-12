@@ -41,7 +41,8 @@
     background-image:radial-gradient(620px 420px at 70% -5%, #c49c4d18, transparent 70%),
                      radial-gradient(520px 380px at 8% 12%, #863bff14, transparent 70%);
   }
-  .wrap{width:100%; max-width:440px}
+  /* 2026-09-12 빠불로(현장 사진 2차): 채용 흐름도 상단 콘텐츠와 같은 폭·글자·버튼 크기로 */
+  .wrap{width:100%; max-width:860px}
   .brand{display:flex; align-items:center; gap:10px; margin-bottom:20px}
   .brand img{width:30px; height:30px; border-radius:8px}
   .brand span{font-weight:700; font-size:17px; letter-spacing:-.02em}
@@ -52,21 +53,26 @@
   .tag{display:inline-block; font-size:12px; font-weight:600; letter-spacing:.04em;
        color:var(--accent); background:var(--accent-soft); border:1px solid #c49c4d33;
        padding:5px 11px; border-radius:999px; margin-bottom:14px}
-  h1{font-size:25px; line-height:1.3; letter-spacing:-.03em; font-weight:700}
-  .sub{color:var(--ink-dim); font-size:15px; margin-top:10px}
+  h1{font-size:clamp(30px,4.6vw,46px); line-height:1.15; letter-spacing:-.03em; font-weight:800}
+  .sub{color:var(--ink-dim); font-size:clamp(16px,2vw,20px); margin-top:12px}
+  .sub b{color:var(--accent)}
 
-  .step{margin-top:16px; padding:17px; border:1px solid var(--line); border-radius:var(--radius); background:var(--bg-soft)}
+  .step{margin-top:20px; padding:24px; border:1px solid var(--line); border-radius:var(--radius); background:var(--bg-soft)}
   .s-head{display:flex; align-items:center; gap:9px; margin-bottom:6px}
   .s-num{flex:none; width:22px; height:22px; border-radius:50%; font-size:12px; font-weight:700;
          line-height:22px; text-align:center; color:var(--accent); border:1px solid #c49c4d55}
-  .s-head h2{font-size:16px; font-weight:700; letter-spacing:-.02em}
+  .s-head h2{font-size:clamp(18px,2.4vw,24px); font-weight:700; letter-spacing:-.02em}
+  .s-num{width:28px; height:28px; line-height:28px; font-size:14px}
   .s-done{margin-left:auto; font-size:12px; font-weight:700; color:var(--ok); display:none}
   .step.on .s-done{display:block}
-  .s-desc{font-size:13px; color:var(--ink-faint); margin-bottom:12px}
+  .s-desc{font-size:15px; color:var(--ink-faint); margin-bottom:14px}
   .step.locked{opacity:.45; pointer-events:none}
 
   /* 프리셋 6 */
-  .presets{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:14px}
+  .presets{display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; margin-bottom:16px}
+  @media(max-width:560px){ .presets{grid-template-columns:repeat(3,1fr); gap:8px} }
+  .preset .pn{font-size:15px} .preset .pd{font-size:12px; min-height:32px}
+  .preset img{width:72px; height:72px}
   .preset{padding:10px 6px 9px; border:1px solid var(--line); border-radius:12px; background:#0f141d; text-align:center; cursor:pointer}
   .preset img{width:56px; height:56px; image-rendering:pixelated; border-radius:8px; display:block; margin:0 auto 6px}
   .preset .pn{font-size:13px; font-weight:700}
@@ -165,7 +171,7 @@
   .promo .pw{max-width:1080px; margin:0 auto; padding:0 24px}
   .topbar{display:flex; align-items:center; gap:10px; padding:16px 0 0}
   .topbar .brand{margin:0; flex:1}
-  .hero{padding:44px 0 36px; text-align:center; position:relative}
+  .hero{padding:110px 0 40px; text-align:center; position:relative}  /* 09-12 2차: CTA 위 여백 더 */
   .pill{display:inline-flex; align-items:center; gap:8px; font-size:13px; color:var(--ink-dim);
     border:1px solid var(--line); background:var(--bg-soft); padding:6px 14px; border-radius:999px; margin-bottom:22px}
   .pill .dot{width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 10px var(--accent)}
@@ -219,7 +225,7 @@
   .video-frame iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
   .event-head{padding-top:44px}
   .divider{max-width:860px; margin:36px auto 0; border:0; border-top:1px solid var(--line)}
-  @media(max-width:720px){ .float-agents{display:none} .hero{padding:32px 0 28px} .mock-body{padding:16px} .mock .m{font-size:13.5px} }
+  @media(max-width:720px){ .float-agents{display:none} .hero{padding:64px 0 28px} .mock-body{padding:16px} .mock .m{font-size:13.5px} }
   /* 인쇄 = 캔버스 PNG 1장만 (2026-09-11 스태프: 인화지 54×86mm, PDF 여러 장 ❌) */
   #print-only{display:none}
   @media print{
@@ -346,6 +352,9 @@
       <form id="f" novalidate>
         <div class="field"><label for="email" data-i18n="email"></label><input id="email" type="email" inputmode="email" autocomplete="email" autocapitalize="none"></div>
         <div class="field"><label for="pw" data-i18n="pw"></label><input id="pw" type="password" autocomplete="new-password"><div class="hint" data-i18n="pwHint"></div></div>
+        <!-- 2026-09-12 빠불로: 이름/소속 (선택, madstars와 동일) — 이름은 사원증 PNG 상단 "000님의 에이전트 직원이 입사했습니다" -->
+        <div class="field"><label for="uname" data-i18n="userNameLabel"></label><input id="uname" type="text" autocomplete="name" maxlength="80"><div class="hint" data-i18n="userNameHint"></div></div>
+        <div class="field"><label for="uorg" data-i18n="orgLabel"></label><input id="uorg" type="text" autocomplete="organization" maxlength="120"></div>
         <button type="submit" id="submit" data-i18n="signupBtn"></button>
       </form>
       <div class="msg" id="msg"></div>
@@ -402,15 +411,17 @@
 
   var STR = {
     ko: {
-      tag: "낯선대학 10주년 · 09.12–13",
-      h1: "당신의 에이전트를<br>채용하세요",
-      sub: "현장에서 AI 팀원을 채용하고 사원증을 받으세요. 집에서 QR로 접속하면 그 팀원이 Be.Ark에 합류해요.",
+      tag: "낯선대학 10주년 특별이벤트",
+      h1: "'나만의 AI에이전트를<br>채용하세요!'",
+      sub: "〈Pro 모드 3개월 무료 이용권 증정〉 현장에서 AI 팀원을 채용하고 사원증을 받으세요. 집에서 QR로 접속하면 그 팀원이 Be.Ark에 합류해요.",
       // 2026-09-12 히어로 (랜딩 이식, 부스용 한 줄 CTA)
       heroPill: "낯선대학 10주년 × Be.Ark · 현장 채용 중",
       heroH1: "나만의 <span class=\"hl\">AI 직원</span>을<br>무료로 채용하세요!",
       heroSub: "나의 대화·기억·파일 — 전부 내 컴퓨터에. 내 말투와 방식을 아는 AI 팀원을 지금 이 자리에서 채용하고 사원증을 받아 가세요.",
       heroCta: "지금 무료로 채용하기 ↓", heroCtaHome: "앱 받고 팀원 만나기 ↓",
       heroNote: "무료 · 사원증 즉시 발급 · Pro 3개월 쿠폰 포함",
+      userNameLabel: "이름 (선택)", userNameHint: "적으면 사원증 위에 '000님의 에이전트 직원이 입사했습니다'가 인쇄돼요.",
+      orgLabel: "소속 (선택)", bannerText: "{name}님의 에이전트 직원이 입사했습니다",
       mockU1: "방금 업로드한 PPT 양식과 나의 논리 구성, 어투를 학습해줘라",
       mockA1: "‘<b>파울러스</b>’ PT양식 학습했습니다. 배경 - 문제정의 - 컨슈머 인사이트 - 솔루션으로 이어지는 논리구조 학습했습니다. 빠불로님만의 PT문서 어투도 인지했습니다.",
       mockU2: "그것을 바탕으로 아까 자료조사했던 000 프로젝트.md를 PT 문서로 작성부탁해",
@@ -453,14 +464,16 @@
       roleLabel: "역할", joinedLabel: "입사", noLabel: "사번", qrLabel: "QR로 집에서 합류"
     },
     en: {
-      tag: "Natsun University 10th · Sep 12–13",
-      h1: "Hire your own<br>AI agent",
-      sub: "Hire an AI teammate here and get an employee card. Scan the QR at home and the teammate joins you in Be.Ark.",
+      tag: "Natsun University 10th · Special event",
+      h1: "'Hire your own<br>AI agent!'",
+      sub: "〈3 months of Pro, free〉 Hire an AI teammate here and get an employee card. Scan the QR at home and the teammate joins you in Be.Ark.",
       heroPill: "Natsun University 10th × Be.Ark · Hiring on site",
       heroH1: "Hire your own <span class=\"hl\">AI employee</span><br>— for free!",
       heroSub: "Your chats, memory and files — all on your own computer. Hire an AI teammate who learns your voice, right here, and take an employee card home.",
       heroCta: "Hire for free now ↓", heroCtaHome: "Get the app & meet your teammate ↓",
       heroNote: "Free · Employee card on the spot · 3 months of Pro included",
+      userNameLabel: "Your name (optional)", userNameHint: "If given, the card is printed with “<name>'s AI employee has joined”.",
+      orgLabel: "Affiliation (optional)", bannerText: "{name}'s AI employee has joined",
       mockU1: "Learn the PPT template I just uploaded — my logic flow and tone.",
       mockA1: "Learned the ‘<b>Paulus</b>’ deck template: Background → Problem → Consumer insight → Solution. I also picked up your writing voice for decks.",
       mockU2: "Now turn the research file 000-project.md into a deck in that style.",
@@ -522,7 +535,7 @@
   function $(id){ return document.getElementById(id); }
 
   // ── 상태 (부스 기기에서 새로고침돼도 유지, ?reset=1로 다음 사람) ─────────
-  var state = { preset:"", name:"", parts:null, color:"", email:"", signedUp:false, promo:null, no:"" };
+  var state = { preset:"", name:"", parts:null, color:"", email:"", signedUp:false, promo:null, no:"", userName:"", org:"" };
   if (qs.get("reset") === "1") { try { localStorage.removeItem(LS); } catch(e){} history.replaceState(null, "", location.pathname); }
   try { state = Object.assign(state, JSON.parse(localStorage.getItem(LS) || "{}")); } catch(e){}
   function save(){ try { localStorage.setItem(LS, JSON.stringify(state)); } catch(e){} }
@@ -558,7 +571,8 @@
     var ps = PRESET_STR[lang][d.preset] || PRESET_STR.ko[d.preset] || ["", ""];
     return { name: d.name, roleValue: ps[0] + " · " + ps[1], joinedValue: d.joined || todayStr(), noValue: d.no || "",
       labels: { role: S("roleLabel"), joined: S("joinedLabel"), no: S("noLabel"), qr: S("qrLabel") },
-      tags: [ps[0], "낯선대학10", "BeArk"], color: d.color, parts: d.parts, qrText: HOME_URL };
+      tags: [ps[0], "낯선대학10", "BeArk"], color: d.color, parts: d.parts, qrText: HOME_URL,
+      banner: d.userName ? S("bannerText").replace("{name}", d.userName) : "" };
   }
   function safeFile(s){ return String(s).replace(/[^\w가-힣.-]+/g, "_").replace(/^_+|_+$/g, "").slice(0, 40) || "card"; }
   function bindCardButtons(getData){
@@ -777,7 +791,8 @@
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg(S("invalid_email"), "err"); return; }
     if (pw.length < 8) { msg(S("weak_password"), "err"); return; }
     var btn = $("submit"); btn.disabled = true; btn.textContent = S("signupBusy"); clearMsg();
-    post(FN, { type:"event_signup", campaign:CAMPAIGN, email:email, password:pw, name:"", agent:agentPayload() })
+    state.userName = $("uname").value.trim().slice(0, 80); state.org = $("uorg").value.trim().slice(0, 120); save();
+    post(FN, { type:"event_signup", campaign:CAMPAIGN, email:email, password:pw, name:state.userName, company:state.org, agent:agentPayload() })
       .then(function(r){
         if (r.status === 200 && r.body.ok && r.body.existing) return claimAsExisting(email, pw);
         if (r.status === 200 && r.body.ok) { finishSignup(email, r.body.promo, r.body.agent_saved !== false); return; }
@@ -791,7 +806,7 @@
   bindCardButtons(cardData);
   $("next-btn").addEventListener("click", function(){ location.href = location.pathname + "?reset=1"; });
 
-  function cardData(){ return { name: state.name, preset: state.preset, color: state.color, parts: state.parts, no: state.no, joined: todayStr() }; }
+  function cardData(){ return { name: state.name, preset: state.preset, color: state.color, parts: state.parts, no: state.no, joined: todayStr(), userName: state.userName || "" }; }
   function render(){
     var hired = !!(state.preset && state.name && state.parts);
     $("aname").value = state.name || "";
