@@ -156,6 +156,70 @@
   .card-actions{display:flex; gap:8px; margin-top:12px}
   .card-actions button{margin-top:0}
 
+  /* ── 2026-09-12 빠불로(현장 사진 보고): 부스에서 멀리서도 "어? AI 직원?" 하고 오게 —
+     랜딩(ko/index.html) 히어로를 최상단에 그대로 + CTA 하나만(다운로드/텔레그램 ❌) → 유저 코멘트 → 영상 → 채용 흐름.
+     히어로·코멘트·영상은 랜딩 폭(1080/860)으로 넓게, 채용 흐름은 기존 440 컬럼 유지. ── */
+  body{display:block; padding:0 0 calc(40px + env(safe-area-inset-bottom))}
+  .wrap{margin:0 auto; padding:0 20px}
+  .promo{position:relative; z-index:1}
+  .promo .pw{max-width:1080px; margin:0 auto; padding:0 24px}
+  .topbar{display:flex; align-items:center; gap:10px; padding:16px 0 0}
+  .topbar .brand{margin:0; flex:1}
+  .hero{padding:44px 0 36px; text-align:center; position:relative}
+  .pill{display:inline-flex; align-items:center; gap:8px; font-size:13px; color:var(--ink-dim);
+    border:1px solid var(--line); background:var(--bg-soft); padding:6px 14px; border-radius:999px; margin-bottom:22px}
+  .pill .dot{width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 10px var(--accent)}
+  .hero h1{font-size:clamp(40px,7.2vw,76px); line-height:1.04; letter-spacing:-.03em; font-weight:800}
+  .hero h1 .hl{background:linear-gradient(120deg,var(--accent),#e6cf95); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .hero .hsub{max-width:640px; margin:20px auto 0; font-size:clamp(16px,2.2vw,21px); color:var(--ink-dim)}
+  .hero .cta-row{display:flex; justify-content:center; margin-top:32px}
+  .hero .cta{display:inline-flex; align-items:center; gap:10px; width:auto; margin:0; padding:20px 38px; font-size:clamp(19px,3vw,26px);
+    font-weight:800; border-radius:16px; color:#15100a; background:var(--accent); text-decoration:none; letter-spacing:-.01em;
+    box-shadow:0 14px 40px var(--accent-glow); transition:.2s; animation:pulse 2.6s ease-in-out infinite}
+  .hero .cta:hover{transform:translateY(-2px); box-shadow:0 18px 50px var(--accent-glow)}
+  @keyframes pulse{0%,100%{box-shadow:0 14px 40px var(--accent-glow)}50%{box-shadow:0 14px 56px #c49c4d77}}
+  .hero .note{margin-top:14px; font-size:13px; color:var(--ink-faint)}
+  .float-agents{position:absolute; inset:0; z-index:0; pointer-events:none}
+  .float-agents .fa{position:absolute; width:84px; height:84px; border-radius:50%; object-fit:cover; border:2px solid #c49c4d55;
+    box-shadow:0 8px 30px #00000066,0 0 0 6px #c49c4d10; opacity:.92; animation:floaty 6s ease-in-out infinite}
+  .float-agents .fa.a1{top:6%; left:13%; animation-delay:0s} .float-agents .fa.a2{top:34%; left:8%; animation-delay:1.4s}
+  .float-agents .fa.a3{top:6%; right:13%; animation-delay:.7s} .float-agents .fa.a4{top:34%; right:8%; animation-delay:2.1s}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  .hero .pw > *{position:relative; z-index:1}
+  /* 랜딩 앱 목업 (대화 예시) */
+  .mock{margin:40px auto 0; max-width:860px; border:1px solid var(--line); border-radius:var(--radius); text-align:left;
+    background:linear-gradient(180deg,#0c101800,#080b11); overflow:hidden; box-shadow:0 30px 80px #00000088}
+  .mock-bar{display:flex; align-items:center; gap:7px; padding:13px 16px; border-bottom:1px solid var(--line); background:#0a0e15}
+  .mock-bar i{width:11px; height:11px; border-radius:50%; background:#2a312a; display:inline-block}
+  .mock-bar i:nth-child(1){background:#ff5f57} .mock-bar i:nth-child(2){background:#febc2e} .mock-bar i:nth-child(3){background:#28c840}
+  .mock-bar span{margin-left:10px; font-size:12px; color:var(--ink-faint)}
+  .mock-body{display:grid; grid-template-columns:1fr; gap:14px; padding:22px}
+  .mock .m{max-width:82%; padding:13px 16px; border-radius:14px; font-size:14.5px; display:block}
+  .mock .m.user{justify-self:end; background:var(--accent-soft); border:1px solid #c49c4d33}
+  .mock .m.ai{justify-self:start; background:#11151133; border:1px solid var(--line); color:var(--ink-dim); max-width:100%}
+  .mock .m.ai b{color:var(--accent)}
+  .agent-row{display:flex; align-items:flex-start; gap:11px; justify-self:start; max-width:88%}
+  .agent-id{display:flex; flex-direction:column; align-items:center; gap:5px; flex-shrink:0; width:46px}
+  .agent-id .avatar{width:42px; height:42px; border-radius:50%; object-fit:cover; border:1px solid var(--line)}
+  .agent-id .agent-name{font-size:10.5px; color:var(--ink-faint); font-weight:600; text-align:center; line-height:1.1}
+  /* 유저 코멘트 (ko/index.html testi 그대로) + 영상 */
+  .sec-h{text-align:center; margin-bottom:26px}
+  .sec-h h2{font-size:clamp(24px,4vw,36px); letter-spacing:-.02em}
+  .sec-h p{color:var(--ink-dim); margin-top:8px; font-size:15px}
+  .testi{padding:40px 0 10px}
+  .testi .tg{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px}
+  .testi .tc{background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:22px}
+  .testi .tc p{font-size:15px; line-height:1.7; color:#d8dde5; margin:0 0 14px}
+  .testi .who{display:flex; align-items:center; gap:10px}
+  .testi .who img{width:42px; height:42px; border-radius:10px; image-rendering:pixelated; flex:none; background:#0f141d}
+  .testi .who span{font-size:13px; color:var(--accent); font-weight:600}
+  .video{padding:40px 0 8px}
+  .video-frame{position:relative; width:100%; max-width:860px; margin:0 auto; aspect-ratio:16/9; border:1px solid var(--line);
+    border-radius:var(--radius); overflow:hidden; box-shadow:0 30px 80px #00000088; background:#0a0e15}
+  .video-frame iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+  .event-head{padding-top:44px}
+  .divider{max-width:860px; margin:36px auto 0; border:0; border-top:1px solid var(--line)}
+  @media(max-width:720px){ .float-agents{display:none} .hero{padding:32px 0 28px} .mock-body{padding:16px} .mock .m{font-size:13.5px} }
   /* 인쇄 = 캔버스 PNG 1장만 (2026-09-11 스태프: 인화지 54×86mm, PDF 여러 장 ❌) */
   #print-only{display:none}
   @media print{
@@ -168,17 +232,73 @@
 </style>
 </head>
 <body>
-<main class="wrap">
-
-  <div class="brand">
-    <a href="https://www.re-be.world/" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)">
-      <img src="/logo.png" alt=""><span>Be.Ark</span>
-    </a>
-    <div class="lang">
-      <button id="lang-ko" type="button">한국어</button>
-      <button id="lang-en" type="button">EN</button>
+<!-- ── 2026-09-12 빠불로: 랜딩 히어로 → 유저 코멘트 → 영상 (부스 시선 끌기) ── -->
+<div class="promo" id="promo">
+  <div class="pw">
+    <div class="topbar">
+      <div class="brand">
+        <a href="https://www.re-be.world/" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)">
+          <img src="/logo.png" alt=""><span>Be.Ark</span>
+        </a>
+      </div>
+      <div class="lang">
+        <button id="lang-ko" type="button">한국어</button>
+        <button id="lang-en" type="button">EN</button>
+      </div>
     </div>
   </div>
+
+  <section class="hero">
+    <div class="float-agents">
+      <img class="fa a1" src="/landing/agent-1.png" alt="">
+      <img class="fa a2" src="/landing/agent-2.png" alt="">
+      <img class="fa a3" src="/landing/agent-3.png" alt="">
+      <img class="fa a4" src="/landing/agent-4.png" alt="">
+    </div>
+    <div class="pw">
+      <div class="pill"><span class="dot"></span> <span data-i18n="heroPill"></span></div>
+      <h1 id="hero-h1"></h1>
+      <p class="hsub" id="hero-sub"></p>
+      <div class="cta-row"><a class="cta" id="hero-cta" href="#st-hire"></a></div>
+      <p class="note" data-i18n="heroNote"></p>
+
+      <div class="mock">
+        <div class="mock-bar"><i></i><i></i><i></i><span>Be.Ark</span></div>
+        <div class="mock-body">
+          <div class="m user" data-i18n="mockU1"></div>
+          <div class="agent-row">
+            <div class="agent-id"><img class="avatar" src="/landing/agent-avatar.jpg" alt="Jaybabot"><span class="agent-name">@Jaybabot</span></div>
+            <div class="m ai" id="mock-a1"></div>
+          </div>
+          <div class="m user" data-i18n="mockU2"></div>
+          <div class="agent-row">
+            <div class="agent-id"><img class="avatar" src="/landing/agent-avatar.jpg" alt="Jaybabot"><span class="agent-name">@Jaybabot</span></div>
+            <div class="m ai" data-i18n="mockA2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testi">
+    <div class="pw">
+      <div class="sec-h"><h2 data-i18n="testiTitle"></h2><p data-i18n="testiSub"></p></div>
+      <div class="tg" id="testi-grid"></div>
+    </div>
+  </section>
+
+  <section class="video">
+    <div class="pw">
+      <div class="sec-h"><h2 data-i18n="videoTitle"></h2><p data-i18n="videoSub"></p></div>
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/jvsTvkZSvjk" title="Be.Ark" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+      </div>
+    </div>
+  </section>
+  <hr class="divider">
+</div>
+
+<main class="wrap event-head">
 
   <div class="tag" data-i18n="tag"></div>
   <h1 id="h1"></h1>
@@ -285,6 +405,18 @@
       tag: "낯선대학 10주년 · 09.12–13",
       h1: "당신의 에이전트를<br>채용하세요",
       sub: "현장에서 AI 팀원을 채용하고 사원증을 받으세요. 집에서 QR로 접속하면 그 팀원이 Be.Ark에 합류해요.",
+      // 2026-09-12 히어로 (랜딩 이식, 부스용 한 줄 CTA)
+      heroPill: "낯선대학 10주년 × Be.Ark · 현장 채용 중",
+      heroH1: "나만의 <span class=\"hl\">AI 직원</span>을<br>무료로 채용하세요!",
+      heroSub: "나의 대화·기억·파일 — 전부 내 컴퓨터에. 내 말투와 방식을 아는 AI 팀원을 지금 이 자리에서 채용하고 사원증을 받아 가세요.",
+      heroCta: "지금 무료로 채용하기 ↓", heroCtaHome: "앱 받고 팀원 만나기 ↓",
+      heroNote: "무료 · 사원증 즉시 발급 · Pro 3개월 쿠폰 포함",
+      mockU1: "방금 업로드한 PPT 양식과 나의 논리 구성, 어투를 학습해줘라",
+      mockA1: "‘<b>파울러스</b>’ PT양식 학습했습니다. 배경 - 문제정의 - 컨슈머 인사이트 - 솔루션으로 이어지는 논리구조 학습했습니다. 빠불로님만의 PT문서 어투도 인지했습니다.",
+      mockU2: "그것을 바탕으로 아까 자료조사했던 000 프로젝트.md를 PT 문서로 작성부탁해",
+      mockA2: "완성했습니다. 논리구성 및 톤을 맞췄어요. 프로젝트 파일에 저장하겠습니다.",
+      testiTitle: "유저 코멘트", testiSub: "Be.Ark를 먼저 써본 분들이 느낀 편리함입니다.",
+      videoTitle: "영상으로 만나는 Be.Ark", videoSub: "당신이 소유하는 진정한 AI 에이전트 — 어떻게 작동하는지 확인해 보세요.",
       done: "완료 ✓",
       s1Title: "채용 공고 고르기", s1Desc: "어떤 팀원이 필요한가요? 역할 9가지 중 고르고 이름을 지어주세요.",
       nameLabel: "팀원 이름", nameHint: "예: 민지, 준호, Aria — 부르기 편한 이름이면 돼요.",
@@ -324,6 +456,17 @@
       tag: "Natsun University 10th · Sep 12–13",
       h1: "Hire your own<br>AI agent",
       sub: "Hire an AI teammate here and get an employee card. Scan the QR at home and the teammate joins you in Be.Ark.",
+      heroPill: "Natsun University 10th × Be.Ark · Hiring on site",
+      heroH1: "Hire your own <span class=\"hl\">AI employee</span><br>— for free!",
+      heroSub: "Your chats, memory and files — all on your own computer. Hire an AI teammate who learns your voice, right here, and take an employee card home.",
+      heroCta: "Hire for free now ↓", heroCtaHome: "Get the app & meet your teammate ↓",
+      heroNote: "Free · Employee card on the spot · 3 months of Pro included",
+      mockU1: "Learn the PPT template I just uploaded — my logic flow and tone.",
+      mockA1: "Learned the ‘<b>Paulus</b>’ deck template: Background → Problem → Consumer insight → Solution. I also picked up your writing voice for decks.",
+      mockU2: "Now turn the research file 000-project.md into a deck in that style.",
+      mockA2: "Done. Structure and tone matched — saving it into the project folder.",
+      testiTitle: "User comments", testiSub: "What early users of Be.Ark found convenient.",
+      videoTitle: "Meet Be.Ark on video", videoSub: "The AI agent you truly own — see how it works.",
       done: "Done ✓",
       s1Title: "Pick a job posting", s1Desc: "What kind of teammate do you need? Pick a role and give them a name.",
       nameLabel: "Teammate name", nameHint: "e.g. Aria, Max, Minji — anything easy to call.",
@@ -442,10 +585,43 @@
   function unb64u(s){ s = s.replace(/-/g, "+").replace(/_/g, "/"); while (s.length % 4) s += "="; return decodeURIComponent(escape(atob(s))); }
 
   // ── 언어 적용 ────────────────────────────────────────────────────────────
+  // ── 2026-09-12 유저 코멘트 (ko/index.html testi 6개 그대로 — 미니미는 앱과 같은 프리셋 렌더) ──
+  var TESTI = {
+    ko: [
+      ["평소 저의 제안서 어투, 구성 등을 똑같이 모방해서 만들어줍니다. 상용 AI가 뽑아내는 자료들은 바로 쓰기가 어려웠는데, 이제야 현업에서 바로 쓸 수 있는 문서들이 나오더군요.", "founder", "기획자 Kyu***"],
+      ["HWP·엑셀을 에이전트가 직접 편집해줘서, 저는 계약서/견적서 등 반복적인 작업을 자동화했어요. 업무 시간이 획기적으로 절약되었습니다.", "accountant", "프로듀서 Hyung****"],
+      ["에이전트와 함께 CRM 전략을 수립하면, 매일 SNS 콘텐츠, 홍보메일 등을 자동 발송하고, 결과까지 추적해줘서 너무 편리해요. 우리 브랜드의 맥락을 기억하는 또 다른 마케터와 함께 일하는 기분이에요.", "marketer", "마케터 Ar****"],
+      ["일반적인 서비스는 AI같은 말투로 번역본을 만들다보니 실제 쓰기가 어려웠거든요. Be.Ark 에이전트는 제가 영어를 한글로 어떻게 의역하는지 패턴을 학습하고, 초안을 만들어줘서 너무 좋아요.", "researcher", "프리랜서 Dong***"],
+      ["Figma나 PPT로 작업해둔 UI 디자인 파일도 뚝딱하고 구동가능한 웹앱으로 만들어줘요. 프론트엔드 개발자 도움 없이도 직관적으로 목업을 확인하고 수정할 수 있어서 효율적이에요.", "everyday", "디자이너 Mei****"],
+      ["제 소중한 아이디어나 사고가 AI에 학습되고나면, AI만 똑똑해지고 사람은 도태되는게 아닌가 두려웠는데... 모든 파일이 로컬에 저장되고, 개개인의 에이전트 성장을 만들어준다니 안심하고 사용할 수 있었어요!", "writer", "크리에이터 Saf*****"]
+    ],
+    en: [
+      ["It mirrors the tone and structure of my proposals exactly. Generic AI output was never usable as-is — now I get documents I can ship the same day.", "founder", "Planner Kyu***"],
+      ["The agent edits HWP and Excel files directly, so I automated contracts and quotes. Hours saved every week.", "accountant", "Producer Hyung****"],
+      ["We build a CRM plan together, then it posts daily social content and emails and tracks results. Like a second marketer who remembers our brand.", "marketer", "Marketer Ar****"],
+      ["Other tools translate in an AI voice I couldn't use. Be.Ark learned how I paraphrase English into Korean and drafts in my style.", "researcher", "Freelancer Dong***"],
+      ["It turns my Figma and PPT UI files into working web apps. I can check and tweak mockups without a front-end developer.", "everyday", "Designer Mei****"],
+      ["I feared feeding my ideas to an AI would only make the AI smarter. Everything stays on my machine and my own agent grows — I can finally relax.", "writer", "Creator Saf*****"]
+    ]
+  };
+  function renderTesti(){
+    var g = $("testi-grid"); if (!g) return;
+    var list = TESTI[lang] || TESTI.ko; var html = "";
+    for (var i = 0; i < list.length; i++) {
+      var p = presetOf(list[i][1]); var src = p ? B.avatarPartsDataUrl(p.avatar, 4) : "";
+      html += '<div class="tc"><p>“' + esc(list[i][0]) + '”</p><div class="who"><img src="' + src + '" alt=""><span>' + esc(list[i][2]) + '</span></div></div>';
+    }
+    g.innerHTML = html;
+  }
   function applyLang(){
     document.documentElement.lang = lang;
     $("lang-ko").className = lang === "ko" ? "on" : ""; $("lang-en").className = lang === "en" ? "on" : "";
     $("h1").innerHTML = S("h1"); $("sub").textContent = S("sub");
+    // 2026-09-12 히어로 (innerHTML 허용 = 우리 문자열 상수뿐)
+    $("hero-h1").innerHTML = S("heroH1"); $("hero-sub").textContent = S("heroSub"); $("mock-a1").innerHTML = S("mockA1");
+    var isHome = qs.get("home") === "1";
+    $("hero-cta").textContent = S(isHome ? "heroCtaHome" : "heroCta"); $("hero-cta").href = isHome ? "#home" : "#st-hire";
+    renderTesti();
     var nodes = document.querySelectorAll("[data-i18n]");
     for (var i = 0; i < nodes.length; i++) nodes[i].textContent = S(nodes[i].getAttribute("data-i18n"));
     $("dl-site").href = lang === "ko" ? "https://re-be.world/ko" : "https://re-be.world/";
@@ -464,6 +640,7 @@
   if (qs.get("card")) {
     try {
       var cd = JSON.parse(unb64u(qs.get("card")));
+      $("promo").style.display = "none"; // 출력용 딥링크 = 카드만
       $("st-hire").style.display = "none"; $("st-signup").style.display = "none";
       $("st-card").classList.remove("locked"); $("st-card").classList.add("on");
       $("next-btn").style.display = "none";
