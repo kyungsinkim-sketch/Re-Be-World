@@ -437,19 +437,19 @@ Be.Ark는 진짜 내 편이 되어주는 AI 에이전트입니다.<br>내 말투
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:30px">
       <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:26px">
         <p style="font-size:15px;line-height:1.7;color:#d8dde5;margin:0 0 16px">“내 말투를 학습해서 PT를 만들어주니, 매번 처음부터 설명할 일이 없어졌어요.”</p>
-        <div style="font-size:13px;color:#c49c4d;font-weight:600">기획자 K</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:2px"><img class="testi-ava" data-preset="founder" alt="" style="width:42px;height:42px;border-radius:10px;image-rendering:pixelated;flex:none;background:#0f141d"><span style="font-size:13px;color:#c49c4d;font-weight:600">기획자 K</span></div>
       </div>
       <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:26px">
         <p style="font-size:15px;line-height:1.7;color:#d8dde5;margin:0 0 16px">“모든 파일이 내 컴퓨터에만 있다는 게 이렇게 든든할 줄 몰랐네요.”</p>
-        <div style="font-size:13px;color:#c49c4d;font-weight:600">크리에이터 J</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:2px"><img class="testi-ava" data-preset="writer" alt="" style="width:42px;height:42px;border-radius:10px;image-rendering:pixelated;flex:none;background:#0f141d"><span style="font-size:13px;color:#c49c4d;font-weight:600">크리에이터 J</span></div>
       </div>
       <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:26px">
         <p style="font-size:15px;line-height:1.7;color:#d8dde5;margin:0 0 16px">“HWP·엑셀을 직접 열어 편집해줘서 쓰던 업무 앱을 안 바꿔도 됐어요.”</p>
-        <div style="font-size:13px;color:#c49c4d;font-weight:600">1인 사업가 P</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:2px"><img class="testi-ava" data-preset="accountant" alt="" style="width:42px;height:42px;border-radius:10px;image-rendering:pixelated;flex:none;background:#0f141d"><span style="font-size:13px;color:#c49c4d;font-weight:600">1인 사업가 P</span></div>
       </div>
       <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:26px">
         <p style="font-size:15px;line-height:1.7;color:#d8dde5;margin:0 0 16px">“인터넷이 없어도 작동하니 카페든 비행기든 어디서나 이어서 작업해요.”</p>
-        <div style="font-size:13px;color:#c49c4d;font-weight:600">프리랜서 L</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:2px"><img class="testi-ava" data-preset="researcher" alt="" style="width:42px;height:42px;border-radius:10px;image-rendering:pixelated;flex:none;background:#0f141d"><span style="font-size:13px;color:#c49c4d;font-weight:600">프리랜서 L</span></div>
       </div>
     </div>
   </div>
@@ -812,6 +812,21 @@ Be.Ark는 진짜 내 편이 되어주는 AI 에이전트입니다.<br>내 말투
       }).join('');
     }).catch(function(){ sec.style.display='none'; });
   })();
+</script>
+
+<!-- 유저 코멘트 미니미 아바타 (앱과 같은 코드로 canvas 렌더) -->
+<script src="/join/beark-card.js"></script>
+<script>
+(function(){
+  var B = window.BeArkCard;
+  if(!B || !B.AGENT_PRESETS) return;
+  function presetOf(id){ for(var i=0;i<B.AGENT_PRESETS.length;i++){ if(B.AGENT_PRESETS[i].id===id) return B.AGENT_PRESETS[i]; } return null; }
+  var avas = document.querySelectorAll('img.testi-ava[data-preset]');
+  for(var i=0;i<avas.length;i++){
+    var p = presetOf(avas[i].getAttribute('data-preset'));
+    if(p) avas[i].src = B.avatarPartsDataUrl(p.avatar, 4);
+  }
+})();
 </script>
 
 

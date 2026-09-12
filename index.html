@@ -447,19 +447,19 @@ not another cloud account renting your mind back to you.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:30px">
       <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:26px">
         <p style="font-size:15px;line-height:1.7;color:#d8dde5;margin:0 0 16px">“It learned my writing style and builds decks for me — no more explaining from scratch every time.”</p>
-        <div style="font-size:13px;color:#c49c4d;font-weight:600">K, Strategist</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:2px"><img class="testi-ava" data-preset="founder" alt="" style="width:42px;height:42px;border-radius:10px;image-rendering:pixelated;flex:none;background:#0f141d"><span style="font-size:13px;color:#c49c4d;font-weight:600">K, Strategist</span></div>
       </div>
       <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:26px">
         <p style="font-size:15px;line-height:1.7;color:#d8dde5;margin:0 0 16px">“I never knew it would feel this reassuring to have all my files stay on my own machine.”</p>
-        <div style="font-size:13px;color:#c49c4d;font-weight:600">J, Creator</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:2px"><img class="testi-ava" data-preset="writer" alt="" style="width:42px;height:42px;border-radius:10px;image-rendering:pixelated;flex:none;background:#0f141d"><span style="font-size:13px;color:#c49c4d;font-weight:600">J, Creator</span></div>
       </div>
       <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:26px">
         <p style="font-size:15px;line-height:1.7;color:#d8dde5;margin:0 0 16px">“It opens and edits my Office files directly, so I didn't have to switch the tools I already use.”</p>
-        <div style="font-size:13px;color:#c49c4d;font-weight:600">P, Solo Founder</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:2px"><img class="testi-ava" data-preset="accountant" alt="" style="width:42px;height:42px;border-radius:10px;image-rendering:pixelated;flex:none;background:#0f141d"><span style="font-size:13px;color:#c49c4d;font-weight:600">P, Solo Founder</span></div>
       </div>
       <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:26px">
         <p style="font-size:15px;line-height:1.7;color:#d8dde5;margin:0 0 16px">“It works even without internet, so I keep working anywhere — a café, a plane, anywhere.”</p>
-        <div style="font-size:13px;color:#c49c4d;font-weight:600">L, Freelancer</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:2px"><img class="testi-ava" data-preset="researcher" alt="" style="width:42px;height:42px;border-radius:10px;image-rendering:pixelated;flex:none;background:#0f141d"><span style="font-size:13px;color:#c49c4d;font-weight:600">L, Freelancer</span></div>
       </div>
     </div>
   </div>
@@ -473,7 +473,7 @@ not another cloud account renting your mind back to you.</p>
       <p>A personal Agent that's truly your own — watch how it works.</p>
     </div>
     <div class="video-frame">
-      <iframe src="https://www.youtube.com/embed/14lhSoVAa7A" title="Be.Ark — A Personal Agent That's Truly Your Own" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/14lhSoVAa7A" title="Be.Ark — A Personal Agent That's Truly Your Own" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
     </div>
   </div>
 </section>
@@ -840,6 +840,21 @@ not another cloud account renting your mind back to you.</p>
       }).join('');
     }).catch(function(){ sec.style.display='none'; });
   })();
+</script>
+
+<!-- User comments mini-me avatars (rendered on canvas with the same code as the app) -->
+<script src="/join/beark-card.js"></script>
+<script>
+(function(){
+  var B = window.BeArkCard;
+  if(!B || !B.AGENT_PRESETS) return;
+  function presetOf(id){ for(var i=0;i<B.AGENT_PRESETS.length;i++){ if(B.AGENT_PRESETS[i].id===id) return B.AGENT_PRESETS[i]; } return null; }
+  var avas = document.querySelectorAll('img.testi-ava[data-preset]');
+  for(var i=0;i<avas.length;i++){
+    var p = presetOf(avas[i].getAttribute('data-preset'));
+    if(p) avas[i].src = B.avatarPartsDataUrl(p.avatar, 4);
+  }
+})();
 </script>
 
 
