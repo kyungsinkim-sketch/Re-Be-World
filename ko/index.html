@@ -396,7 +396,6 @@ Be.Ark는 진짜 내 편이 되어주는 AI 에이전트입니다.<br>내 말투
     <div class="cta-row">
       <a class="btn btn-primary" id="dl-top" href="#download">↓ Beta 1.5.11 다운로드</a>
       <a class="btn btn-tg" href="https://t.me/beark2026" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true" style="vertical-align:-2px;margin-right:6px"><path d="M21.9 4.3l-3.3 15.6c-.24 1.1-.9 1.37-1.83.85l-5.05-3.72-2.44 2.35c-.27.27-.5.5-1 .5l.36-5.14L18 5.4c.4-.36-.09-.56-.62-.2L6.9 12.1l-4.9-1.53c-1.07-.33-1.09-1.07.22-1.58l19.15-7.38c.89-.33 1.67.2 1.38 1.72z"></path></svg>텔레그램 참여</a>
-      <a class="btn btn-ghost" id="wl-top" href="#">대기자 등록</a>
     </div>
     <p class="note">무료 · 로컬 모델로 오프라인 구동 · &nbsp;내 말투와 정리 방식을 그대로 익힙니다.</p>
 
@@ -427,6 +426,34 @@ Be.Ark는 진짜 내 편이 되어주는 AI 에이전트입니다.<br>내 말투
 
 <!-- HERO -->
 
+
+<!-- USER COMMENTS -->
+<section class="testi" id="testi" style="padding:56px 0">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>유저 코멘트</h2>
+      <p>Be.Ark를 먼저 써본 분들이 느낀 편리함입니다.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:30px">
+      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:26px">
+        <p style="font-size:15px;line-height:1.7;color:#d8dde5;margin:0 0 16px">“내 말투를 학습해서 PT를 만들어주니, 매번 처음부터 설명할 일이 없어졌어요.”</p>
+        <div style="font-size:13px;color:#c49c4d;font-weight:600">기획자 K</div>
+      </div>
+      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:26px">
+        <p style="font-size:15px;line-height:1.7;color:#d8dde5;margin:0 0 16px">“모든 파일이 내 컴퓨터에만 있다는 게 이렇게 든든할 줄 몰랐네요.”</p>
+        <div style="font-size:13px;color:#c49c4d;font-weight:600">크리에이터 J</div>
+      </div>
+      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:26px">
+        <p style="font-size:15px;line-height:1.7;color:#d8dde5;margin:0 0 16px">“HWP·엑셀을 직접 열어 편집해줘서 쓰던 업무 앱을 안 바꿔도 됐어요.”</p>
+        <div style="font-size:13px;color:#c49c4d;font-weight:600">1인 사업가 P</div>
+      </div>
+      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:26px">
+        <p style="font-size:15px;line-height:1.7;color:#d8dde5;margin:0 0 16px">“인터넷이 없어도 작동하니 카페든 비행기든 어디서나 이어서 작업해요.”</p>
+        <div style="font-size:13px;color:#c49c4d;font-weight:600">프리랜서 L</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- PROMO VIDEO -->
 <section class="video" id="video">
@@ -626,23 +653,6 @@ Be.Ark는 진짜 내 편이 되어주는 AI 에이전트입니다.<br>내 말투
   </div>
 </div>
 
-<!-- WAITLIST MODAL -->
-<div class="modal-bg" id="wlModal">
-  <div class="modal">
-    <span class="x" id="wlClose">✕</span>
-    <h3>대기자 등록</h3>
-    <p class="msub">Be.Ark 출시 소식을 가장 먼저 받아보세요. 스팸 없이 — 출시 소식만.</p>
-    <form id="wlForm" class="wl-form">
-      <input type="text" name="name" placeholder="이름" required="">
-      <input type="email" name="email" placeholder="이메일" required="">
-      <input type="text" name="company" placeholder="회사 (선택)">
-      <input type="text" name="role" placeholder="직무 (선택)">
-      <button type="submit" class="btn btn-primary wl-submit">출시되면 알려주세요 →</button>
-    </form>
-    <p class="mnote" id="wlNote">정식 출시 소식만 이메일로 보내드립니다.</p>
-  </div>
-</div>
-
 <footer>
   <div class="wrap foot">
     <div class="brand" style="font-size:15px"><img class="logo" src="/landing/appicon.png" alt="Be.Ark"> Be.Ark</div>
@@ -692,50 +702,6 @@ Be.Ark는 진짜 내 편이 되어주는 AI 에이전트입니다.<br>내 말투
     });
   })();
 
-  // ── Waitlist modal ──
-  (function(){
-    var modal=document.getElementById("wlModal"),
-        closeBtn=document.getElementById("wlClose"),
-        form=document.getElementById("wlForm"),
-        note=document.getElementById("wlNote"),
-        WL_EMAIL="pablo@re-be.world";
-    function open(e){ if(e) e.preventDefault(); modal.classList.add("open"); }
-    function close(){ modal.classList.remove("open"); }
-    var top=document.getElementById("wl-top");
-    if(top) top.addEventListener("click", open);
-    if(closeBtn) closeBtn.addEventListener("click", close);
-    modal.addEventListener("click", function(e){ if(e.target===modal) close(); });
-    document.addEventListener("keydown", function(e){ if(e.key==="Escape") close(); });
-    // Google Form submission (UI stays on-site; data flows to the Form sheet).
-    // CORS blocks reading the response, so we POST into a hidden iframe and
-    // optimistically confirm to the user on load.
-    var GFORM="https://docs.google.com/forms/d/e/1FAIpQLSePL6ffsHJzIksGrksEhmZQ9ZtV6hhiHClB93L7p0ZMLsZ9qA/formResponse";
-    var GFIELDS={ name:"entry.1347132853", email:"entry.2079054019", company:"entry.183734707", role:"entry.1636324011" };
-    if(form) form.addEventListener("submit", function(e){
-      e.preventDefault();
-      var d=new FormData(form),
-          name=(d.get("name")||"").trim(),
-          email=(d.get("email")||"").trim(),
-          company=(d.get("company")||"").trim(),
-          role=(d.get("role")||"").trim();
-      // hidden iframe target so the cross-origin POST doesn't navigate away
-      var fid="gft_"+Date.now(), ifr=document.createElement("iframe");
-      ifr.name=fid; ifr.style.display="none"; document.body.appendChild(ifr);
-      var gf=document.createElement("form");
-      gf.action=GFORM; gf.method="POST"; gf.target=fid; gf.style.display="none";
-      function add(n,v){ var i=document.createElement("input"); i.type="hidden"; i.name=n; i.value=v; gf.appendChild(i); }
-      add(GFIELDS.name,name); add(GFIELDS.email,email); add(GFIELDS.company,company); add(GFIELDS.role,role);
-      document.body.appendChild(gf); gf.submit();
-      if(note){ note.textContent="등록되었습니다 — 출시되면 알려드릴게요. 🎉"; note.style.color="#c49c4d"; }
-      form.reset();
-      // briefly show the confirmation, then auto-close the modal
-      setTimeout(function(){ close(); }, 1400);
-      setTimeout(function(){
-        try{ gf.remove(); ifr.remove(); }catch(_){}
-        if(note){ note.textContent="정식 출시 소식만 이메일로 보내드립니다."; note.style.color=""; }
-      }, 4000);
-    });
-  })();
 
   // ── Bug report ──
   // Replace BUG_URL with the Google Form share link when ready; until then
