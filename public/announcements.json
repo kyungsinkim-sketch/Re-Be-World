@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-09-12-beta-1-5-11",
+    "date": "2026-09-12",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.5.11 — 채용 공고 9종 · 사원증 팀원 합류 · Figma 읽기 개선 · 채팅 정리",
+    "body": "🧑‍💼 채용 공고가 9종으로 늘었어요 — 카피라이터·전략가·마케터·프로듀서·리서처·개발자에 경리·총무·법무담당이 합류했습니다. 각자 어울리는 도트 미니미와 첫 프롬프트가 함께 들어가요.\n\n🪪 행사장에서 채용한 팀원이 집에서 합류해요 — 사원증을 받은 분은 같은 이메일로 로그인하면 그 팀원이 자동으로 만들어집니다. (낯선대학 10주년 이벤트)\n\n🎨 Figma 디자인 읽기가 더 깊어졌어요 — 큰 프레임이 잘리지 않도록 읽는 양을 늘리고, 잘리면 하위 프레임을 팀원이 스스로 이어서 읽습니다. Figma 호출 제한(429)에 걸려도 기다렸다가 재시도하고, 이미 읽은 프레임은 다시 요청하지 않아요.\n\n💬 채팅이 깔끔해졌어요 — 긴 텍스트를 붙여넣으면 '붙여넣은 텍스트 · N자' 카드로 접히고(팀원은 전문을 봅니다), 팀원이 만든 코드 파일은 Living Files 탭을 자동으로 열지 않으며, 세션에 들어가면 항상 마지막 대화에서 시작합니다.\n\n🔧 팀원이 '확인하겠습니다'라고만 하고 멈추거나, 부르지도 않은 도구가 '응답이 없다'고 하던 문제를 고쳤어요 — 이제 바로 이어서 실행합니다. CLI 구독 답변에 섞이던 시스템 문구도 제거했습니다."
+  },
+  {
+    "id": "2026-09-12-beta-1-5-11-en",
+    "date": "2026-09-12",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.5.11 — 9 job postings · event card teammate · deeper Figma reading · tidier chat",
+    "body": "🧑‍💼 Job postings grew to nine — Bookkeeper, General Affairs, and Legal Counsel join Copywriter, Strategist, Marketer, Producer, Researcher, and Developer, each with a matching pixel avatar and first prompt.\n\n🪪 A teammate hired at an event now joins you at home — log in with the same email you used at the booth and that teammate is created automatically.\n\n🎨 Figma reading goes deeper — large frames no longer get cut short, and when they do, your teammate drills into child frames on its own. Figma rate limits (429) are retried after a wait, and frames already read are never requested again.\n\n💬 Chat is tidier — long pastes fold into a 'Pasted text · N chars' card (your teammate still sees all of it), code files your teammate writes no longer auto-open Living Files tabs, and sessions always open at the latest message.\n\n🔧 Fixed teammates that only said 'I'll check' and stopped, or claimed tools were unresponsive without calling them — they now continue right away. Stray system text in CLI-subscription replies is removed."
+  },
+  {
     "id": "2026-09-08-beta-1-5-10",
     "date": "2026-09-08",
     "lang": "ko",
