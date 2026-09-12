@@ -65,18 +65,22 @@
   .s-num{width:28px; height:28px; line-height:28px; font-size:14px}
   .s-done{margin-left:auto; font-size:12px; font-weight:700; color:var(--ok); display:none}
   .step.on .s-done{display:block}
-  .s-desc{font-size:15px; color:var(--ink-faint); margin-bottom:14px}
+  .s-desc{font-size:15px; line-height:1.7; color:var(--ink-dim); margin-bottom:16px}
   .step.locked{opacity:.45; pointer-events:none}
 
   /* 프리셋 6 */
-  .presets{display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; margin-bottom:16px}
-  @media(max-width:560px){ .presets{grid-template-columns:repeat(3,1fr); gap:8px} }
-  .preset .pn{font-size:15px} .preset .pd{font-size:12px; min-height:32px}
-  .preset img{width:72px; height:72px}
-  .preset{padding:10px 6px 9px; border:1px solid var(--line); border-radius:12px; background:#0f141d; text-align:center; cursor:pointer}
-  .preset img{width:56px; height:56px; image-rendering:pixelated; border-radius:8px; display:block; margin:0 auto 6px}
-  .preset .pn{font-size:13px; font-weight:700}
-  .preset .pd{font-size:10px; color:var(--ink-faint); line-height:1.3; margin-top:2px; min-height:26px}
+  /* 2026-09-12 빠불로 3차: 채용 공고 3×3 고정, 글자·미니미 = 상단 유저 코멘트 크기(15px/1.7)에 맞춤 */
+  .presets{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:18px}
+  .preset{padding:16px 10px 14px; border:1px solid var(--line); border-radius:14px; background:#0f141d; text-align:center; cursor:pointer}
+  .preset img{width:96px; height:96px; image-rendering:pixelated; border-radius:10px; display:block; margin:0 auto 10px}
+  .preset .pn{font-size:17px; font-weight:700}
+  .preset .pd{font-size:13.5px; color:var(--ink-dim); line-height:1.5; margin-top:4px; min-height:40px}
+  @media(max-width:560px){
+    .presets{gap:8px}
+    .preset{padding:10px 6px 9px}
+    .preset img{width:72px; height:72px; margin-bottom:6px}
+    .preset .pn{font-size:14px} .preset .pd{font-size:11.5px; min-height:34px}
+  }
   .preset.on{border-color:var(--accent); background:var(--accent-soft)}
 
   /* 꾸미기 (앱 AvatarPartsEditor 이식: 탭 9 + 파츠 격자 + 그 탭의 색만) */
@@ -96,34 +100,35 @@
   .esw button.on{border:2px solid #fff}
   .ebar{display:flex; gap:8px; margin-top:10px}
   .ebar button{margin:0; padding:9px; font-size:13px}
-  label{display:block; font-size:13px; color:var(--ink-dim); margin:0 0 7px}
-  input{width:100%; padding:14px 15px; font-size:16px; color:var(--ink); background:#0f141d; border:1px solid var(--line);
+  label{display:block; font-size:15px; color:var(--ink-dim); margin:0 0 8px}
+  input{width:100%; padding:16px 16px; font-size:17px; color:var(--ink); background:#0f141d; border:1px solid var(--line);
         border-radius:12px; outline:none; font-family:inherit}
   input:focus{border-color:var(--accent)}
   .field + .field{margin-top:14px}
-  .hint{font-size:12px; color:var(--ink-faint); margin-top:7px}
+  .hint{font-size:14px; color:var(--ink-faint); margin-top:8px; line-height:1.6}
   .face-row{display:flex; align-items:center; gap:14px; margin-top:14px}
-  .face-row img{width:96px; height:96px; image-rendering:pixelated; border-radius:12px; border:1px solid var(--line); background:#0f141d; flex:none}
+  .face-row img{width:136px; height:136px; image-rendering:pixelated; border-radius:14px; border:1px solid var(--line); background:#0f141d; flex:none}
+  @media(max-width:560px){ .face-row img{width:104px; height:104px} }
   .face-row .fr{flex:1}
-  button{width:100%; margin-top:16px; padding:15px; font-size:16px; font-weight:700; font-family:inherit; color:#1a1206;
+  button{width:100%; margin-top:18px; padding:17px; font-size:18px; font-weight:700; font-family:inherit; color:#1a1206;
          background:var(--accent); border:0; border-radius:12px; cursor:pointer; letter-spacing:-.01em}
   button:disabled{opacity:.55; cursor:default}
   button.done{background:#3d4654; color:#9aa6b8; opacity:1; cursor:default}
-  button.ghost{background:transparent; color:var(--ink-dim); border:1px solid var(--line); margin-top:0; padding:11px}
+  button.ghost{background:transparent; color:var(--ink-dim); border:1px solid var(--line); margin-top:0; padding:13px; font-size:15px}
   .msg{margin-top:14px; font-size:14px; padding:12px 14px; border-radius:11px; display:none}
   .msg.show{display:block}
   .msg.err{color:var(--danger); background:#ff6b6b14; border:1px solid #ff6b6b33}
   .msg.info{color:var(--ink-dim); background:#ffffff08; border:1px solid var(--line)}
   .coupon{display:none; margin-top:14px; padding:14px 16px; border-radius:12px; border:1px solid #c49c4d55; background:var(--accent-soft)}
   .coupon.show{display:block}
-  .coupon b{color:var(--accent); font-size:15px}
-  .coupon p{font-size:13px; color:var(--ink-dim); margin-top:4px}
-  .dl{display:block; margin-top:12px; padding:15px; text-align:center; font-size:15px; font-weight:600; border-radius:12px;
+  .coupon b{color:var(--accent); font-size:17px}
+  .coupon p{font-size:15px; color:var(--ink-dim); margin-top:4px}
+  .dl{display:block; margin-top:12px; padding:17px; text-align:center; font-size:17px; font-weight:600; border-radius:12px;
       text-decoration:none; color:var(--ink); border:1px solid var(--line); background:var(--bg-soft)}
   .dl.primary{color:#1a1206; background:var(--accent); border-color:var(--accent)}
   .foot{margin-top:26px; font-size:12px; color:var(--ink-faint); text-align:center}
   .foot a{color:var(--ink-faint)}
-  ol.home{margin:12px 0 0 18px; font-size:14px; color:var(--ink-dim)}
+  ol.home{margin:12px 0 0 18px; font-size:15px; line-height:1.7; color:var(--ink-dim)}
   ol.home li{margin:6px 0}
 
   /* ── 사원증 (앱 AgentCard 규격: ID-1 85.6×53.98mm, 어두운 바탕, 듀오톤 아바타 배경, 흰 글자) ── */
