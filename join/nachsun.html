@@ -42,7 +42,7 @@
                      radial-gradient(520px 380px at 8% 12%, #863bff14, transparent 70%);
   }
   /* 2026-09-12 빠불로(현장 사진 2차): 채용 흐름도 상단 콘텐츠와 같은 폭·글자·버튼 크기로 */
-  .wrap{width:100%; max-width:860px}
+  .wrap{width:100%; max-width:920px}
   .brand{display:flex; align-items:center; gap:10px; margin-bottom:20px}
   .brand img{width:30px; height:30px; border-radius:8px}
   .brand span{font-weight:700; font-size:17px; letter-spacing:-.02em}
@@ -71,7 +71,7 @@
   /* 프리셋 6 */
   /* 2026-09-12 빠불로 3차: 채용 공고 3×3 고정, 글자·미니미 = 상단 유저 코멘트 크기(15px/1.7)에 맞춤 */
   .presets{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:18px}
-  .preset{padding:16px 10px 14px; border:1px solid var(--line); border-radius:14px; background:#0f141d; text-align:center; cursor:pointer}
+  .preset{padding:16px 8px 14px; border:1px solid var(--line); border-radius:14px; background:#0f141d; text-align:center; cursor:pointer}
   .preset img{width:96px; height:96px; image-rendering:pixelated; border-radius:10px; display:block; margin:0 auto 10px}
   .preset .pn{font-size:17px; font-weight:700}
   .preset .pd{font-size:13.5px; color:var(--ink-dim); line-height:1.5; margin-top:4px; min-height:40px}
@@ -229,6 +229,12 @@
     border-radius:var(--radius); overflow:hidden; box-shadow:0 30px 80px #00000088; background:#0a0e15}
   .video-frame iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
   .event-head{padding-top:44px}
+  .ehead{text-align:center}
+  .ehead h1{font-size:clamp(28px,4.2vw,44px); line-height:1.2; word-break:keep-all}
+  .ehead .tag{margin:16px 0 14px; font-size:14px; padding:7px 14px}
+  .ehead .sub{margin:0 auto; max-width:720px; line-height:1.75}
+  .ehead .sub b{display:block; margin-bottom:6px}
+  .preset .pd{word-break:keep-all}
   .divider{max-width:860px; margin:36px auto 0; border:0; border-top:1px solid var(--line)}
   @media(max-width:720px){ .float-agents{display:none} .hero{padding:64px 0 28px} .mock-body{padding:16px} .mock .m{font-size:13.5px} }
   /* 링크 넘기기 상자 (집 모드, 모바일) */
@@ -319,9 +325,12 @@
 
 <main class="wrap event-head">
 
-  <div class="tag" data-i18n="tag"></div>
-  <h1 id="h1"></h1>
-  <p class="sub" id="sub"></p>
+  <!-- 2026-09-12 빠불로 4차: 제목 한 줄 → 태그 → 안내 3줄, 전부 가운데 -->
+  <div class="ehead">
+    <h1 id="h1"></h1>
+    <div class="tag" data-i18n="tag"></div>
+    <p class="sub" id="sub"></p>
+  </div>
 
   <!-- ── 현장 모드 ─────────────────────────────────────────────── -->
   <div id="site">
@@ -436,8 +445,8 @@
   var STR = {
     ko: {
       tag: "낯선대학 10주년 특별이벤트",
-      h1: "'나만의 AI에이전트를<br>채용하세요!'",
-      sub: "〈Pro 모드 3개월 무료 이용권 증정〉 현장에서 AI 팀원을 채용하고 사원증을 받으세요. 집에서 QR로 접속하면 그 팀원이 Be.Ark에 합류해요.",
+      h1: "'나만의 AI에이전트를 채용하세요!'",
+      sub: "<b>〈Pro 모드 3개월 무료 이용권 증정〉</b>현장에서 AI 팀원을 채용하고 사원증을 받으세요.<br>집에서 QR로 접속하면 그 팀원이 Be.Ark에 합류해요.",
       // 2026-09-12 히어로 (랜딩 이식, 부스용 한 줄 CTA)
       heroPill: "낯선대학 10주년 × Be.Ark · 현장 채용 중",
       heroH1: "나만의 <span class=\"hl\">AI 직원</span>을<br>무료로 채용하세요!",
@@ -494,8 +503,8 @@
     },
     en: {
       tag: "Natsun University 10th · Special event",
-      h1: "'Hire your own<br>AI agent!'",
-      sub: "〈3 months of Pro, free〉 Hire an AI teammate here and get an employee card. Scan the QR at home and the teammate joins you in Be.Ark.",
+      h1: "'Hire your own AI agent!'",
+      sub: "<b>〈3 months of Pro, free〉</b>Hire an AI teammate here and get an employee card.<br>Scan the QR at home and the teammate joins you in Be.Ark.",
       heroPill: "Natsun University 10th × Be.Ark · Hiring on site",
       heroH1: "Hire your own <span class=\"hl\">AI employee</span><br>— for free!",
       heroSub: "Your chats, memory and files — all on your own computer. Hire an AI teammate who learns your voice, right here, and take an employee card home.",
@@ -664,7 +673,7 @@
   function applyLang(){
     document.documentElement.lang = lang;
     $("lang-ko").className = lang === "ko" ? "on" : ""; $("lang-en").className = lang === "en" ? "on" : "";
-    $("h1").innerHTML = S("h1"); $("sub").textContent = S("sub");
+    $("h1").innerHTML = S("h1"); $("sub").innerHTML = S("sub"); // 둘 다 우리 상수만 (유저 입력 ❌)
     // 2026-09-12 히어로 (innerHTML 허용 = 우리 문자열 상수뿐)
     $("hero-h1").innerHTML = S("heroH1"); $("hero-sub").textContent = S("heroSub"); $("mock-a1").innerHTML = S("mockA1");
     var isHome = qs.get("home") === "1";
@@ -723,7 +732,8 @@
       if (!presetFaces[p.id]) presetFaces[p.id] = B.avatarPartsDataUrl(p.avatar, 4);
       var ps = PRESET_STR[lang][p.id];
       var d = document.createElement("div"); d.className = "preset" + (state.preset === p.id ? " on" : "");
-      d.innerHTML = '<img src="' + presetFaces[p.id] + '" alt=""><div class="pn">' + esc(ps[0]) + '</div><div class="pd">' + esc(ps[1]) + '</div>';
+      // 4차: 마지막 단어("팀원")가 혼자 다음 줄로 떨어지지 않게 마지막 공백만 nbsp
+      d.innerHTML = '<img src="' + presetFaces[p.id] + '" alt=""><div class="pn">' + esc(ps[0]) + '</div><div class="pd">' + esc(ps[1]).replace(/ (\S+)$/, ' $1') + '</div>';
       d.addEventListener("click", function(){
         state.preset = p.id; state.color = p.color; state.parts = JSON.parse(JSON.stringify(p.avatar)); save(); renderPresets(); render();
         if ($("editor").classList.contains("show")) renderEditor();
