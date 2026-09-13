@@ -244,6 +244,15 @@
   .preset .pd{word-break:keep-all}
   .divider{max-width:860px; margin:36px auto 0; border:0; border-top:1px solid var(--line)}
   @media(max-width:720px){ .float-agents{display:none} .hero{padding:24px 0 28px} .hero-top{min-height:auto; padding:48px 0 12px} .mock-body{padding:16px} .mock .m{font-size:13.5px} }
+  /* 개인 사원증 QR (③, 잉크 소진 대응 2026-09-13) — 카드 JSON이 URL에 실려 모듈이 촘촘 → 크게 */
+  .cardqr-wrap{display:flex; gap:22px; align-items:center; margin-top:16px; padding:16px; border:1px solid #c49c4d55; border-radius:12px; background:var(--accent-soft)}
+  .cardqr{flex:none; width:min(48vw,320px); aspect-ratio:1; background:#fff; padding:10px; border-radius:12px; display:grid; place-items:center; font-size:13px; color:#555; text-align:center}
+  .cardqr svg{width:100%; height:100%; display:block}
+  .cardqr-how{flex:1; min-width:0}
+  .cardqr-how b{display:block; font-size:18px; color:var(--accent); margin-bottom:6px}
+  .cardqr-how p{font-size:15px; line-height:1.7; color:var(--ink-dim)}
+  @media(max-width:560px){ .cardqr-wrap{flex-direction:column; align-items:stretch} .cardqr{width:min(80vw,320px); margin:0 auto} }
+  #home-idcard{margin-bottom:12px}
   /* Pro 시작 (④ 현장 QR / 집 모드 로그인) */
   .pro{border-color:#c49c4d55; background:linear-gradient(180deg, #c49c4d14, transparent 60%), var(--bg-soft)}
   .prohome{margin:18px 0 6px; padding:20px; border:1px solid #c49c4d55; border-radius:var(--radius)}
@@ -409,6 +418,14 @@
         <button type="button" class="ghost" id="print-btn" data-i18n="printBtn" style="width:auto;padding:11px 14px;white-space:nowrap"></button>
         <button type="button" class="ghost" id="next-btn" data-i18n="nextBtn" style="width:auto;padding:11px 14px;white-space:nowrap"></button>
       </div>
+      <!-- 2026-09-13 빠불로(현장 잉크 소진): 인쇄 대신 폰으로 — 이 사람의 사원증 데이터가 담긴 개인 QR → 폰에서 디지털 사원증 + 설치 링크 -->
+      <div class="cardqr-wrap">
+        <div class="cardqr" id="cardqr"></div>
+        <div class="cardqr-how">
+          <b data-i18n="cardQrTitle"></b>
+          <p data-i18n="cardQrDesc"></p>
+        </div>
+      </div>
       <div class="hint" data-i18n="cardHint" style="margin-top:10px"></div>
     </section>
 
@@ -433,6 +450,13 @@
   <div id="home" style="display:none">
     <section class="step on">
       <div class="s-head"><span class="s-num">✓</span><h2 data-i18n="hTitle"></h2></div>
+      <!-- 2026-09-13: 개인 QR(?home=1&card=…)로 들어오면 디지털 사원증을 맨 위에 — 인쇄 대신 폰에 저장 -->
+      <div id="home-card-wrap" style="display:none">
+        <b data-i18n="homeCardTitle" style="display:block;font-size:17px;color:var(--accent);margin-bottom:8px"></b>
+        <div class="idcard" id="home-idcard"></div>
+        <button type="button" id="home-png-btn" data-i18n="homePngBtn"></button>
+        <p class="hint" data-i18n="homeCardDesc" style="margin:8px 0 18px"></p>
+      </div>
       <p class="s-desc" data-i18n="hDesc"></p>
       <ol class="home">
         <li data-i18n="h1s"></li><li data-i18n="h2s"></li><li data-i18n="h3s"></li>
@@ -518,6 +542,12 @@
       proBusy: "결제창 여는 중…", proDone: "Pro 활성화 완료 🎉 앱에서 같은 이메일로 로그인하면 바로 적용돼요.",
       proErr: "결제창을 열지 못했어요. 잠시 후 다시 시도해주세요.", proPwWrong: "이메일 또는 비밀번호가 맞지 않아요.",
       proMinting: "Pro QR 준비 중…",
+      // 2026-09-13 잉크 소진 → 디지털 사원증
+      cardQrTitle: "📱 폰으로 사원증 받기",
+      cardQrDesc: "이 QR을 폰 카메라로 찍으면 내 사원증이 폰에 뜨고, 이미지로 저장할 수 있어요. 같은 화면에서 컴퓨터 설치 링크도 보낼 수 있어요.",
+      homeCardTitle: "내 에이전트 사원증",
+      homePngBtn: "사원증 이미지 저장",
+      homeCardDesc: "저장해두면 오늘의 기념 사원증이에요. 아래에서 컴퓨터에 Be.Ark를 설치하고 같은 이메일로 로그인하면 이 팀원이 합류해요.",
       mockU1: "방금 업로드한 PPT 양식과 나의 논리 구성, 어투를 학습해줘라",
       mockA1: "‘<b>파울러스</b>’ PT양식 학습했습니다. 배경 - 문제정의 - 컨슈머 인사이트 - 솔루션으로 이어지는 논리구조 학습했습니다. 빠불로님만의 PT문서 어투도 인지했습니다.",
       mockU2: "그것을 바탕으로 아까 자료조사했던 000 프로젝트.md를 PT 문서로 작성부탁해",
@@ -539,7 +569,7 @@
       couponSub: "쿠폰이 계정에 등록됐어요. 결제 시 자동 적용 · {date} 마감",
       s3Title: "사원증", s3Desc: "스태프가 이 사원증을 출력해 드려요. QR을 찍으면 집에서 이어갈 수 있어요.",
       pngBtn: "사원증 PNG 저장 (54×86)", printBtn: "인쇄", nextBtn: "다음 사람",
-      cardHint: "PNG 저장 = 인화지 54×86mm(세로) 규격 1장. 출력은 부스 노트북에서 해요. 내 폰에서 만들었다면 스태프에게 화면을 보여주세요.",
+      cardHint: "인쇄가 안 될 땐 위 QR로 폰에 받아 가세요. PNG 저장 = 인화지 54×86mm(세로) 규격 1장.",
       hTitle: "사원증 받으셨죠? 집에서 이어가기",
       hDesc: "현장에서 채용한 팀원이 계정에 담겨 있어요. 앱을 설치하고 같은 이메일로 로그인하면 합류합니다.",
       h1s: "컴퓨터(Mac/Windows)에서 Be.Ark를 다운로드해 설치하세요 — 폰이면 아래 상자로 링크를 컴퓨터에 보내세요.",
@@ -585,6 +615,11 @@
       proBusy: "Opening checkout…", proDone: "Pro is active 🎉 Log in to the app with the same email and it applies right away.",
       proErr: "Couldn't open checkout. Please try again in a moment.", proPwWrong: "Email or password doesn't match.",
       proMinting: "Preparing your Pro QR…",
+      cardQrTitle: "📱 Get your card on your phone",
+      cardQrDesc: "Scan this QR with your phone camera: your employee card appears on your phone and can be saved as an image. The same page lets you send the install link to your computer.",
+      homeCardTitle: "My agent's employee card",
+      homePngBtn: "Save card image",
+      homeCardDesc: "Keep it as today's souvenir. Below, install Be.Ark on your computer and log in with the same email — this teammate joins you.",
       mockU1: "Learn the PPT template I just uploaded — my logic flow and tone.",
       mockA1: "Learned the ‘<b>Paulus</b>’ deck template: Background → Problem → Consumer insight → Solution. I also picked up your writing voice for decks.",
       mockU2: "Now turn the research file 000-project.md into a deck in that style.",
@@ -606,7 +641,7 @@
       couponSub: "Coupon registered to your account. Applies at checkout · expires {date}",
       s3Title: "Employee card", s3Desc: "Staff will print this card for you. Scan the QR to continue at home.",
       pngBtn: "Save card PNG (54×86)", printBtn: "Print", nextBtn: "Next person",
-      cardHint: "Save PNG = one 54×86mm (portrait) photo-paper image. Printing happens on the booth laptop. Made it on your phone? Show the screen to the staff.",
+      cardHint: "Can't print? Scan the QR above to take the card on your phone. Save PNG = one 54×86mm (portrait) photo-paper image.",
       hTitle: "Got your card? Continue at home",
       hDesc: "The teammate you hired is stored in your account. Install the app and log in with the same email.",
       h1s: "Download and install Be.Ark on a computer (Mac/Windows) — on a phone, send yourself the link with the box below.",
@@ -764,21 +799,39 @@
   if (qs.get("home") === "1") {
     $("site").style.display = "none"; $("home").style.display = "block";
     $("dl-mac").href = DL_MAC; $("dl-mac-intel").href = DL_MAC_INTEL; $("dl-win").href = DL_WIN;
+    // 2026-09-13 잉크 소진: 개인 QR(?home=1&card=…)이면 디지털 사원증을 맨 위에 + 이미지 저장. 공유 링크도 개인 URL 유지.
+    var shareUrl = HOME_URL;
+    if (qs.get("card")) {
+      try {
+        var hcd = JSON.parse(unb64u(qs.get("card")));
+        if (hcd && hcd.parts) {
+          shareUrl = location.href;
+          $("home-card-wrap").style.display = "block";
+          renderCard($("home-idcard"), hcd);
+          $("home-png-btn").addEventListener("click", function(){
+            B.ensureCardFonts().then(function(){
+              var canvas = B.renderCardPortraitCanvas(cardPngData(hcd));
+              return B.downloadCanvasPng(canvas, "beark-card-" + safeFile(hcd.name || "") + ".png");
+            });
+          });
+        }
+      } catch(e){ /* 잘못된 카드 = 일반 집 모드 */ }
+    }
     // 2026-09-12 링크 넘기기: 폰(터치·모바일 UA)이면 상자를 다운로드 위에, 데스크탑이면 숨김(바로 다운로드)
     var isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || (window.matchMedia && matchMedia("(pointer:coarse)").matches);
     $("handoff").style.display = isMobile ? "block" : "none";
     function copyUrl(){
       var done = function(){ var b = $("ho-copy"); var t = b.textContent; b.textContent = S("copied"); setTimeout(function(){ b.textContent = t; }, 1800); };
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(HOME_URL).then(done, function(){ prompt("URL", HOME_URL); });
-      else prompt("URL", HOME_URL);
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(shareUrl).then(done, function(){ prompt("URL", shareUrl); });
+      else prompt("URL", shareUrl);
     }
     $("ho-share").addEventListener("click", function(){
-      if (navigator.share) navigator.share({ title: "Be.Ark", text: S("mailSubject"), url: HOME_URL }).catch(function(){});
+      if (navigator.share) navigator.share({ title: "Be.Ark", text: S("mailSubject"), url: shareUrl }).catch(function(){});
       else copyUrl();
     });
     $("ho-mail").addEventListener("click", function(){
       var to = (state.email || "");
-      location.href = "mailto:" + encodeURIComponent(to) + "?subject=" + encodeURIComponent(S("mailSubject")) + "&body=" + encodeURIComponent(S("mailBody").replace("{url}", HOME_URL));
+      location.href = "mailto:" + encodeURIComponent(to) + "?subject=" + encodeURIComponent(S("mailSubject")) + "&body=" + encodeURIComponent(S("mailBody").replace("{url}", shareUrl));
     });
     $("ho-copy").addEventListener("click", copyUrl);
     // 집 모드 Pro 시작: 로그인 → 결제창으로 이동 (Stripe에서 돌아오면 ?pro=done)
@@ -998,6 +1051,14 @@
     var sb = $("submit"); sb.disabled = !!state.signedUp; sb.classList.toggle("done", !!state.signedUp);
     if (state.signedUp) { renderCard($("idcard"), cardData()); showCoupon(state.promo); $("email").value = state.email; }
     renderPro();
+    renderCardQr();
+  }
+  // 2026-09-13 잉크 소진: 개인 QR = 집 모드 URL + 카드 JSON(b64url). 폰에서 열면 디지털 사원증 + 설치 링크.
+  function personalHomeUrl(d){ return HOME_URL + "&card=" + b64u(JSON.stringify(d)); }
+  function renderCardQr(){
+    var q = $("cardqr"); if (!q) return;
+    if (!state.signedUp || !state.parts) { q.textContent = ""; return; }
+    q.innerHTML = B.qrSvg(personalHomeUrl(cardData()), 3, 0);
   }
   applyLang();
   if (!state.parts) { var p0 = B.AGENT_PRESETS[5]; state.parts = B.shuffleParts(p0.avatar); state.color = state.color || p0.color; render(); }
