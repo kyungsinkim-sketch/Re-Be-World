@@ -176,20 +176,22 @@
   .promo .pw{max-width:1080px; margin:0 auto; padding:0 24px}
   .topbar{display:flex; align-items:center; gap:10px; padding:16px 0 0}
   .topbar .brand{margin:0; flex:1}
-  .hero{padding:110px 0 40px; text-align:center; position:relative}  /* 09-12 2차: CTA 위 여백 더 */
-  .pill{display:inline-flex; align-items:center; gap:8px; font-size:13px; color:var(--ink-dim);
+  /* 09-13 빠불로(현장 사진): 첫 화면 = 아이맥에 CTA가 꽉 차게 — 히어로 상단 블록을 뷰포트 높이로, 글자·버튼 대폭 확대. 영상은 스크롤 아래 */
+  .hero{padding:24px 0 40px; text-align:center; position:relative}
+  .hero-top{min-height:calc(100vh - 120px); display:flex; flex-direction:column; justify-content:center; align-items:center}
+  .pill{display:inline-flex; align-items:center; gap:8px; font-size:clamp(13px,1.4vw,18px); color:var(--ink-dim);
     border:1px solid var(--line); background:var(--bg-soft); padding:6px 14px; border-radius:999px; margin-bottom:22px}
   .pill .dot{width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 10px var(--accent)}
-  .hero h1{font-size:clamp(40px,7.2vw,76px); line-height:1.04; letter-spacing:-.03em; font-weight:800}
+  .hero h1{font-size:clamp(44px,9vw,128px); line-height:1.04; letter-spacing:-.03em; font-weight:800}
   .hero h1 .hl{background:linear-gradient(120deg,var(--accent),#e6cf95); -webkit-background-clip:text; background-clip:text; color:transparent}
-  .hero .hsub{max-width:640px; margin:20px auto 0; font-size:clamp(16px,2.2vw,21px); color:var(--ink-dim)}
-  .hero .cta-row{display:flex; justify-content:center; margin-top:32px}
-  .hero .cta{display:inline-flex; align-items:center; gap:10px; width:auto; margin:0; padding:20px 38px; font-size:clamp(19px,3vw,26px);
+  .hero .hsub{max-width:900px; margin:26px auto 0; font-size:clamp(17px,2.6vw,30px); color:var(--ink-dim)}
+  .hero .cta-row{display:flex; justify-content:center; margin-top:44px}
+  .hero .cta{display:inline-flex; align-items:center; gap:10px; width:auto; margin:0; padding:clamp(20px,2.6vw,34px) clamp(38px,5vw,72px); font-size:clamp(20px,3.8vw,44px);
     font-weight:800; border-radius:16px; color:#15100a; background:var(--accent); text-decoration:none; letter-spacing:-.01em;
     box-shadow:0 14px 40px var(--accent-glow); transition:.2s; animation:pulse 2.6s ease-in-out infinite}
   .hero .cta:hover{transform:translateY(-2px); box-shadow:0 18px 50px var(--accent-glow)}
   @keyframes pulse{0%,100%{box-shadow:0 14px 40px var(--accent-glow)}50%{box-shadow:0 14px 56px #c49c4d77}}
-  .hero .note{margin-top:14px; font-size:13px; color:var(--ink-faint)}
+  .hero .note{margin-top:18px; font-size:clamp(13px,1.4vw,18px); color:var(--ink-faint)}
   .float-agents{position:absolute; inset:0; z-index:0; pointer-events:none}
   .float-agents .fa{position:absolute; width:84px; height:84px; border-radius:50%; object-fit:cover; border:2px solid #c49c4d55;
     box-shadow:0 8px 30px #00000066,0 0 0 6px #c49c4d10; opacity:.92; animation:floaty 6s ease-in-out infinite}
@@ -241,7 +243,7 @@
   .ehead .sub b{display:block; margin-bottom:6px}
   .preset .pd{word-break:keep-all}
   .divider{max-width:860px; margin:36px auto 0; border:0; border-top:1px solid var(--line)}
-  @media(max-width:720px){ .float-agents{display:none} .hero{padding:64px 0 28px} .mock-body{padding:16px} .mock .m{font-size:13.5px} }
+  @media(max-width:720px){ .float-agents{display:none} .hero{padding:24px 0 28px} .hero-top{min-height:auto; padding:48px 0 12px} .mock-body{padding:16px} .mock .m{font-size:13.5px} }
   /* Pro 시작 (④ 현장 QR / 집 모드 로그인) */
   .pro{border-color:#c49c4d55; background:linear-gradient(180deg, #c49c4d14, transparent 60%), var(--bg-soft)}
   .prohome{margin:18px 0 6px; padding:20px; border:1px solid #c49c4d55; border-radius:var(--radius)}
@@ -301,11 +303,14 @@
       <img class="fa a4" src="/landing/agent-4.png" alt="">
     </div>
     <div class="pw">
-      <div class="pill"><span class="dot"></span> <span data-i18n="heroPill"></span></div>
-      <h1 id="hero-h1"></h1>
-      <p class="hsub" id="hero-sub"></p>
-      <div class="cta-row"><a class="cta" id="hero-cta" href="#st-hire"></a></div>
-      <p class="note" data-i18n="heroNote"></p>
+      <!-- 09-13: 첫 화면 꽉 채우기 — 이 블록이 뷰포트 높이, 영상은 그 아래 -->
+      <div class="hero-top">
+        <div class="pill"><span class="dot"></span> <span data-i18n="heroPill"></span></div>
+        <h1 id="hero-h1"></h1>
+        <p class="hsub" id="hero-sub"></p>
+        <div class="cta-row"><a class="cta" id="hero-cta" href="#st-hire"></a></div>
+        <p class="note" data-i18n="heroNote"></p>
+      </div>
 
       <!-- 2026-09-12 빠불로: 목업 대신 실제 구동 영상 (2클립 이어붙임, 무음·자동반복 — /landing/beark-demo.mp4) -->
       <div class="demo">
