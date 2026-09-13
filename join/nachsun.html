@@ -1055,20 +1055,22 @@
   }
   // 2026-09-13 잉크 소진: 개인 QR = 집 모드 URL + 카드 JSON(b64url). 폰에서 열면 디지털 사원증 + 설치 링크.
   // 압축 코덱: 사원증 위 작은 QR에도 들어가게 (JSON 591자 → 파이프 결합 ≈ 220자). 필드 순서 = 계약(바꾸면 구 QR 깨짐).
-  var PACK_KEYS = ["face","hair","eyes","mouth","cloth","glasses","hat","acc","bg"];
-  var PACK_COLORS = ["skin","hair","cloth","glasses","hat","acc","iris","bg"];
+  // ⚠️ 함수 안에서 정의: 집 모드 블록이 이 줄보다 위에서 먼저 실행되므로 `var`로 두면 그때는 undefined → unpackCard가
+  //   조용히 throw → 일반 페이지 (2026-09-13 빠불로 "새로고침해도 안 뜸" 실측 진범). 함수 선언은 호이스팅되지만 var 값은 아님.
+  function PACK_KEYS(){ return ["face","hair","eyes","mouth","cloth","glasses","hat","acc","bg"]; }
+  function PACK_COLORS(){ return ["skin","hair","cloth","glasses","hat","acc","iris","bg"]; }
   function packCard(d){
     var p = d.parts || {}, c = p.colors || {};
     var f = [d.name || "", d.preset || "", String(d.color || "").replace(/^#/, ""), d.no || "", d.joined || "", d.userName || ""];
-    PACK_KEYS.forEach(function(k){ f.push(String(p[k] || "")); });
-    PACK_COLORS.forEach(function(k){ f.push(String(c[k] || "").replace(/^#/, "")); });
+    PACK_KEYS().forEach(function(k){ f.push(String(p[k] || "")); });
+    PACK_COLORS().forEach(function(k){ f.push(String(c[k] || "").replace(/^#/, "")); });
     return b64u(f.join("|"));
   }
   function unpackCard(s){
-    var f = unb64u(s).split("|"); if (f.length < 6 + PACK_KEYS.length + PACK_COLORS.length) return null;
+    var f = unb64u(s).split("|"); if (f.length < 6 + PACK_KEYS().length + PACK_COLORS().length) return null;
     var parts = { v: 1, colors: {} }, i = 6;
-    PACK_KEYS.forEach(function(k){ parts[k] = f[i++]; });
-    PACK_COLORS.forEach(function(k){ parts.colors[k] = "#" + f[i++]; });
+    PACK_KEYS().forEach(function(k){ parts[k] = f[i++]; });
+    PACK_COLORS().forEach(function(k){ parts.colors[k] = "#" + f[i++]; });
     return { name: f[0], preset: f[1], color: "#" + f[2], no: f[3], joined: f[4], userName: f[5], parts: parts };
   }
   function personalHomeUrl(d){ return HOME_URL + "&c=" + packCard(d); }
