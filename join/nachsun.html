@@ -161,7 +161,7 @@
   .idcard .bot{position:relative; z-index:2; display:flex; justify-content:space-between; align-items:flex-end; gap:12px}
   .idcard .no .v{font-size:15px; font-weight:700; color:#fff; line-height:1.1}
   .idcard .no .k{font-size:8px; color:rgba(255,255,255,.5); text-transform:uppercase; letter-spacing:.08em}
-  .idcard .qr{width:19%; aspect-ratio:1; background:#fff; padding:3px; border-radius:3px; flex:none}
+  .idcard .qr{width:23%; aspect-ratio:1; background:#fff; padding:3px; border-radius:3px; flex:none} /* 09-13: 개인 링크라 모듈 증가 → 조금 크게 */
   .idcard .qr svg{width:100%; height:100%; display:block}
   .idcard .qrlab{font-size:7.5px; color:rgba(255,255,255,.55); text-align:right; margin-top:2px; letter-spacing:.04em}
   .card-actions{display:flex; gap:8px; margin-top:12px}
@@ -712,7 +712,7 @@
         '<div class="tags"><span>#' + esc(ps[0]) + '</span><span>#낯선대학10</span><span>#BeArk</span></div>' +
       '</div></div>' +
       '<div class="bot"><div class="no"><div class="v">' + esc(d.no || "") + '</div><div class="k">' + S("noLabel") + '</div></div>' +
-        '<div><div class="qr">' + B.qrSvg(HOME_URL, 4, 0) + '</div><div class="qrlab">' + S("qrLabel") + '</div></div></div>';
+        '<div><div class="qr">' + B.qrSvg(personalHomeUrl(d), 4, 0) + '</div><div class="qrlab">' + S("qrLabel") + '</div></div></div>'; // 09-13: 카드 QR = 개인 링크(디지털 사원증)
   }
 
   // ── 사원증 PNG (캔버스 래스터, 인화지 54×86mm 세로 = 가로 카드 90° 회전, 300dpi) ─────
@@ -720,7 +720,7 @@
     var ps = PRESET_STR[lang][d.preset] || PRESET_STR.ko[d.preset] || ["", ""];
     return { name: d.name, roleValue: ps[0] + " · " + ps[1], joinedValue: d.joined || todayStr(), noValue: d.no || "",
       labels: { role: S("roleLabel"), joined: S("joinedLabel"), no: S("noLabel"), qr: S("qrLabel") },
-      tags: [ps[0], "낯선대학10", "BeArk"], color: d.color, parts: d.parts, qrText: HOME_URL,
+      tags: [ps[0], "낯선대학10", "BeArk"], color: d.color, parts: d.parts, qrText: personalHomeUrl(d),
       banner: d.userName ? S("bannerText").replace("{name}", d.userName) : "" };
   }
   function safeFile(s){ return String(s).replace(/[^\w가-힣.-]+/g, "_").replace(/^_+|_+$/g, "").slice(0, 40) || "card"; }
@@ -801,9 +801,9 @@
     $("dl-mac").href = DL_MAC; $("dl-mac-intel").href = DL_MAC_INTEL; $("dl-win").href = DL_WIN;
     // 2026-09-13 잉크 소진: 개인 QR(?home=1&card=…)이면 디지털 사원증을 맨 위에 + 이미지 저장. 공유 링크도 개인 URL 유지.
     var shareUrl = HOME_URL;
-    if (qs.get("card")) {
+    if (qs.get("c") || qs.get("card")) {
       try {
-        var hcd = JSON.parse(unb64u(qs.get("card")));
+        var hcd = qs.get("c") ? unpackCard(qs.get("c")) : JSON.parse(unb64u(qs.get("card")));
         if (hcd && hcd.parts) {
           shareUrl = location.href;
           $("home-card-wrap").style.display = "block";
@@ -1054,7 +1054,24 @@
     renderCardQr();
   }
   // 2026-09-13 잉크 소진: 개인 QR = 집 모드 URL + 카드 JSON(b64url). 폰에서 열면 디지털 사원증 + 설치 링크.
-  function personalHomeUrl(d){ return HOME_URL + "&card=" + b64u(JSON.stringify(d)); }
+  // 압축 코덱: 사원증 위 작은 QR에도 들어가게 (JSON 591자 → 파이프 결합 ≈ 220자). 필드 순서 = 계약(바꾸면 구 QR 깨짐).
+  var PACK_KEYS = ["face","hair","eyes","mouth","cloth","glasses","hat","acc","bg"];
+  var PACK_COLORS = ["skin","hair","cloth","glasses","hat","acc","iris","bg"];
+  function packCard(d){
+    var p = d.parts || {}, c = p.colors || {};
+    var f = [d.name || "", d.preset || "", String(d.color || "").replace(/^#/, ""), d.no || "", d.joined || "", d.userName || ""];
+    PACK_KEYS.forEach(function(k){ f.push(String(p[k] || "")); });
+    PACK_COLORS.forEach(function(k){ f.push(String(c[k] || "").replace(/^#/, "")); });
+    return b64u(f.join("|"));
+  }
+  function unpackCard(s){
+    var f = unb64u(s).split("|"); if (f.length < 6 + PACK_KEYS.length + PACK_COLORS.length) return null;
+    var parts = { v: 1, colors: {} }, i = 6;
+    PACK_KEYS.forEach(function(k){ parts[k] = f[i++]; });
+    PACK_COLORS.forEach(function(k){ parts.colors[k] = "#" + f[i++]; });
+    return { name: f[0], preset: f[1], color: "#" + f[2], no: f[3], joined: f[4], userName: f[5], parts: parts };
+  }
+  function personalHomeUrl(d){ return HOME_URL + "&c=" + packCard(d); }
   function renderCardQr(){
     var q = $("cardqr"); if (!q) return;
     if (!state.signedUp || !state.parts) { q.textContent = ""; return; }
