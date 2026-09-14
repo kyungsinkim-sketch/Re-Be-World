@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#070a0f">
 <meta property="og:title" content="Hire your own AI agent — Be.Ark Thailand Early Bird">
-<meta property="og:description" content="Hire your own AI teammate, get an employee card, and 3 months of Be.Ark Pro free (code THAI3). Thailand Early Bird, through Oct 31.">
+<meta property="og:description" content="Hire your own AI teammate, get an employee card, and 3 months of Be.Ark Pro free (code THAI3). Thailand Creators early bird, through Sep 30.">
 <meta property="og:image" content="https://www.re-be.world/landing/og-hero-2026.jpg">
 <link rel="icon" href="/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -279,7 +279,7 @@
   .handoff p{font-size:13.5px; color:var(--ink-dim); margin-top:6px}
   .refer{border-color:#c49c4d55; background:rgba(196,156,77,.06)}
   .picto-row{display:flex; gap:10px; margin-top:14px}
-  .picto{flex:1; display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:14px 16px; border-radius:12px; border:1px solid var(--line); background:var(--bg-soft); color:var(--ink); font-size:15px; font-weight:700; text-decoration:none; cursor:pointer; font-family:inherit}
+  .picto{flex:1 1 0; min-width:0; box-sizing:border-box; height:52px; display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:0 16px; margin:0; border-radius:12px; border:1px solid var(--line); background:var(--bg-soft); color:var(--ink); font-size:15px; font-weight:700; line-height:1; text-decoration:none; cursor:pointer; font-family:inherit; appearance:none; -webkit-appearance:none}
   .picto.primary{background:var(--accent); color:#15100a; border-color:var(--accent)}
   .modal-bg{position:fixed; inset:0; z-index:60; background:#04060ad9; backdrop-filter:blur(6px); display:none; align-items:center; justify-content:center; padding:20px}
   .modal-bg.open{display:flex}
@@ -320,9 +320,9 @@
         </a>
       </div>
       <div class="lang">
-        <button id="lang-ko" type="button">한국어</button>
-        <button id="lang-en" type="button">EN</button>
         <button id="lang-th" type="button">ไทย</button>
+        <button id="lang-en" type="button">EN</button>
+        <button id="lang-ko" type="button">한국어</button>
       </div>
     </div>
   </div>
@@ -462,7 +462,7 @@
         <b data-i18n="homeCardTitle" style="display:block;font-size:17px;color:var(--accent);margin-bottom:8px"></b>
         <div class="idcard" id="home-idcard"></div>
         <button type="button" id="home-png-btn" data-i18n="homePngBtn"></button>
-        <p class="hint" data-i18n="homeCardDesc" style="margin:8px 0 18px"></p>
+        <div style="height:14px"></div>
       </div>
       <!-- 2026-09-14 빠불로: 친구 초대 — 친구는 Pro 3개월(THAI3) + 나는 초대 성사마다 1개월 추가 (무제한) -->
       <div class="handoff refer" id="refer" style="display:none">
@@ -574,11 +574,11 @@
       mailBody: "컴퓨터에서 이 링크를 열어 Be.Ark를 설치하고, 가입한 이메일로 로그인하세요.\n{url}\n\n채용한 에이전트가 자동으로 합류합니다. (Pro 쿠폰은 결제 시 자동 적용)",
       // 2026-09-12 Pro 시작 (빠불로 문구)
       proTitle: "Pro 모드 시작하기 (선택)", proTitleHome: "Pro 모드 시작하기",
-      proLead: "10.31까지 Pro 모드 가입하면 3개월 Pro 모드 무료!",
-      proSub: "쿠폰 코드 THAI3 · 첫 결제 한정 · 선착순 200명",
+      proLead: "9.30까지 Pro 모드 가입하면 3개월 Pro 모드 무료!",
+      proSub: "쿠폰 코드 THAI3 · 첫 결제 한정 · 선착순 300명 (초대된 친구 포함)",
       proNotes: "* Pro 모드는 사용 중 언제든지 해지 가능합니다\n* 무료 계정으로도 에이전트 1명으로 모든 기능을 무제한 사용 가능합니다",
       proHow: "폰 카메라로 QR을 찍으면 결제창이 열려요. 카드 등록만 하면 끝 — 지금 청구 0원, 무료 기간이 끝나면 월 $20.",
-      proFallback: "지금 안 해도 괜찮아요. 나중에 사원증 QR로 접속해 'Pro 모드 시작하기'를 누르면 같은 혜택이에요 (10.31까지).",
+      proFallback: "지금 안 해도 괜찮아요. 나중에 사원증 QR로 접속해 'Pro 모드 시작하기'를 누르면 같은 혜택이에요 (9.30까지).",
       proHomeBtn: "Pro 모드 시작하기", proLogin: "가입한 이메일이 채워져 있어요. 비밀번호만 넣으면 Stripe 결제창으로 바로 이동해요.",
       proBusy: "결제창 여는 중…", proDone: "Pro 활성화 완료 🎉 앱에서 같은 이메일로 로그인하면 바로 적용돼요.",
       proErr: "결제창을 열지 못했어요. 잠시 후 다시 시도해주세요.", proPwWrong: "이메일 또는 비밀번호가 맞지 않아요.",
@@ -617,7 +617,7 @@
       h2s: "가입할 때 만든 이메일·비밀번호로 로그인하세요.",
       h3s: "팀원이 합류하고, Pro 3개월 무료 쿠폰은 결제 화면에서 자동으로 적용돼요.",
       dlMac: "Mac (Apple Silicon) 다운로드", dlMacIntel: "Mac (Intel) 다운로드", dlWin: "Windows 다운로드", dlSite: "Be.Ark 둘러보기",
-      hCoupon: "가입한 계정에 이미 등록돼 있어요. 앱에서 Pro 시작할 때 자동 적용 · 10.31까지",
+      hCoupon: "가입한 계정에 이미 등록돼 있어요. 앱에서 Pro 시작할 때 자동 적용 · 9.30까지",
       privacy: "개인정보처리방침",
       needName: "팀원 이름을 지어주세요.", needPreset: "역할을 하나 골라주세요.",
       invalid_email: "이메일 주소를 다시 확인해 주세요.", weak_password: "비밀번호는 8자 이상이어야 해요.",
@@ -648,11 +648,11 @@
       mailSubject: "ลิงก์ติดตั้ง Be.Ark — พบเอเจนต์ที่คุณจ้าง",
       mailBody: "เปิดลิงก์นี้บนคอมพิวเตอร์ ติดตั้ง Be.Ark แล้วเข้าสู่ระบบด้วยอีเมลที่สมัครไว้\n{url}\n\nเอเจนต์ที่คุณจ้างจะเข้าร่วมอัตโนมัติ (คูปอง Pro ใช้ตอนชำระเงิน)",
       proTitle: "เริ่ม Pro (ไม่บังคับ)", proTitleHome: "เริ่ม Pro",
-      proLead: "สมัคร Pro ภายใน 31 ต.ค.: ฟรี Pro 3 เดือน!",
-      proSub: "รหัสคูปอง THAI3 · เฉพาะการชำระเงินครั้งแรก · 200 คนแรก",
+      proLead: "สมัคร Pro ภายใน 30 ก.ย.: ฟรี Pro 3 เดือน!",
+      proSub: "รหัสคูปอง THAI3 · เฉพาะการชำระเงินครั้งแรก · 300 คนแรก (รวมเพื่อนที่ได้รับเชิญ)",
       proNotes: "* ยกเลิก Pro ได้ทุกเมื่อ\n* บัญชีฟรีก็ใช้ทุกฟีเจอร์ได้ไม่จำกัดกับเอเจนต์ 1 ตัว",
       proHow: "สแกน QR ด้วยกล้องมือถือเพื่อเปิดหน้าชำระเงิน แค่ลงทะเบียนบัตร — วันนี้ $0 หลังหมดช่วงฟรี $20/เดือน",
-      proFallback: "ไม่ต้องรีบ เปิด QR บนบัตรทีหลังแล้วแตะ 'เริ่ม Pro' ได้ข้อเสนอเดียวกัน (ถึง 31 ต.ค.)",
+      proFallback: "ไม่ต้องรีบ เปิด QR บนบัตรทีหลังแล้วแตะ 'เริ่ม Pro' ได้ข้อเสนอเดียวกัน (ถึง 30 ก.ย.)",
       proHomeBtn: "เริ่ม Pro", proLogin: "อีเมลถูกกรอกจากบัตรของคุณแล้ว ใส่รหัสผ่านเพื่อเปิดหน้าชำระเงิน Stripe",
       proBusy: "กำลังเปิดหน้าชำระเงิน…", proDone: "Pro เปิดใช้งานแล้ว 🎉 เข้าสู่ระบบแอปด้วยอีเมลเดียวกันแล้วใช้ได้ทันที",
       proErr: "เปิดหน้าชำระเงินไม่ได้ กรุณาลองอีกครั้งสักครู่", proPwWrong: "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
@@ -690,7 +690,7 @@
       h2s: "เข้าสู่ระบบด้วยอีเมลและรหัสผ่านที่สมัครไว้",
       h3s: "เพื่อนร่วมทีมเข้าร่วม และคูปอง Pro 3 เดือนใช้อัตโนมัติตอนชำระเงิน",
       dlMac: "ดาวน์โหลดสำหรับ Mac (Apple Silicon)", dlMacIntel: "ดาวน์โหลดสำหรับ Mac (Intel)", dlWin: "ดาวน์โหลดสำหรับ Windows", dlSite: "สำรวจ Be.Ark",
-      hCoupon: "ลงทะเบียนในบัญชีของคุณแล้ว ใช้เมื่อเริ่ม Pro ในแอป · ถึง 31 ต.ค.",
+      hCoupon: "ลงทะเบียนในบัญชีของคุณแล้ว ใช้เมื่อเริ่ม Pro ในแอป · ถึง 30 ก.ย.",
       privacy: "นโยบายความเป็นส่วนตัว",
       needName: "กรุณาตั้งชื่อเพื่อนร่วมทีม", needPreset: "กรุณาเลือกบทบาท",
       invalid_email: "กรุณาตรวจสอบอีเมลอีกครั้ง", weak_password: "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร",
@@ -721,11 +721,11 @@
       mailSubject: "Be.Ark install link — meet the agent you hired",
       mailBody: "Open this link on your computer, install Be.Ark and log in with the email you signed up with.\n{url}\n\nYour hired agent joins automatically. (The Pro coupon applies at checkout.)",
       proTitle: "Start Pro (optional)", proTitleHome: "Start Pro",
-      proLead: "Subscribe to Pro by Oct 31: 3 months of Pro free!",
-      proSub: "Coupon code THAI3 · first payment only · first 200 people",
+      proLead: "Subscribe to Pro by Sep 30: 3 months of Pro free!",
+      proSub: "Coupon code THAI3 · first payment only · first 300 people (invited friends included)",
       proNotes: "* Cancel Pro anytime while using it\n* A free account still gets every feature, unlimited, with 1 agent",
       proHow: "Scan the QR with your phone camera to open checkout. Just register a card — $0 today, $20/month after the free period.",
-      proFallback: "No rush. Later, open the card's QR and tap 'Start Pro' for the same offer (through Oct 31).",
+      proFallback: "No rush. Later, open the card's QR and tap 'Start Pro' for the same offer (through Sep 30).",
       proHomeBtn: "Start Pro", proLogin: "Your email is filled in from your card. Enter your password to open Stripe checkout.",
       proBusy: "Opening checkout…", proDone: "Pro is active 🎉 Log in to the app with the same email and it applies right away.",
       proErr: "Couldn't open checkout. Please try again in a moment.", proPwWrong: "Email or password doesn't match.",
@@ -763,7 +763,7 @@
       h2s: "Log in with the email & password you signed up with.",
       h3s: "Your teammate joins, and the 3-month Pro coupon applies automatically at checkout.",
       dlMac: "Download for Mac (Apple Silicon)", dlMacIntel: "Download for Mac (Intel)", dlWin: "Download for Windows", dlSite: "Explore Be.Ark",
-      hCoupon: "Already registered to your account. Applies when you start Pro in the app · through Oct 31",
+      hCoupon: "Already registered to your account. Applies when you start Pro in the app · through Sep 30",
       privacy: "Privacy Policy",
       needName: "Please name your teammate.", needPreset: "Please pick a role.",
       invalid_email: "Please double-check your email address.", weak_password: "Password must be at least 8 characters.",
@@ -797,7 +797,7 @@
     var p = v.play && v.play(); if (p && p.catch) p.catch(function(){ v.controls = true; }); })();
   var lang = (function(){
     try { var s = localStorage.getItem(LS_LANG); if (s === 'ko' || s === 'en' || s === 'th') return s; } catch(e){}
-    return 'en'; // 2026-09-14 빠불로: 태국 얼리버드 = 영어 기본 (브라우저 언어 무시), 버튼으로 ko/th 전환
+    return 'th'; // 2026-09-14 빠불로: 태국 크리에이터 = 태국어 기본 (브라우저 언어 무시), 버튼으로 en/ko 전환
   })();
   function S(k){ return STR[lang][k] || STR.en[k] || STR.ko[k] || k; }
   function $(id){ return document.getElementById(id); }
@@ -822,41 +822,43 @@
     el.style.setProperty("--tint", d.color);
     ["05","08","10","12","15","16","30"].forEach(function(k){ el.style.setProperty("--tint-" + k, rgba(Number(k) / 100)); });
     var img = B.avatarPartsDataUrl(d.parts, 8);
-    var ps = PRESET_STR[lang][d.preset] || PRESET_STR.en[d.preset] || ["", ""];
+    var ps = PRESET_STR.en[d.preset] || ["", ""]; // 2026-09-14 빠불로: 사원증은 언어와 무관하게 영어
+    var CS = function(k){ return STR.en[k] || k; };
     el.innerHTML =
       '<div class="bgimg" style="background-image:url(' + img + ')"></div><div class="duo"></div><div class="fade"></div><div class="scan"></div><div class="glow"></div><div class="shine"></div>' +
       '<div class="row"><div class="brandl"><span class="b1">Be.Ark</span><span class="b2">Agent Card</span></div><span class="brandr">Re-Be World</span></div>' +
       '<div class="mid"><img src="' + img + '" alt=""><div class="info">' +
         '<div class="nm">' + esc(d.name) + '</div>' +
-        '<div class="fl role"><span>' + S("roleLabel") + ' :</span><span>' + esc(ps[0]) + ' · ' + esc(ps[1]) + '</span></div>' +
-        '<div class="fl"><span>' + S("joinedLabel") + ' :</span><span>' + esc(d.joined || todayStr()) + '</span></div>' +
+        '<div class="fl role"><span>' + CS("roleLabel") + ' :</span><span>' + esc(ps[0]) + ' · ' + esc(ps[1]) + '</span></div>' +
+        '<div class="fl"><span>' + CS("joinedLabel") + ' :</span><span>' + esc(d.joined || todayStr()) + '</span></div>' +
         '<div class="tags"><span>#' + esc(ps[0]) + '</span><span>#ThailandEarlyBird</span><span>#BeArk</span></div>' +
       '</div></div>' +
-      '<div class="bot"><div class="no"><div class="v">' + esc(d.no || "") + '</div><div class="k">' + S("noLabel") + '</div></div>' +
-        '<div><div class="qr">' + B.qrSvg(personalHomeUrl(d), 4, 0) + '</div><div class="qrlab">' + S("qrLabel") + '</div></div></div>'; // 09-13: 카드 QR = 개인 링크(디지털 사원증)
+      '<div class="bot"><div class="no"><div class="v">' + esc(d.no || "") + '</div><div class="k">' + CS("noLabel") + '</div></div>' +
+        '<div><div class="qr" style="transform:scale(.9);transform-origin:right center">' + B.qrSvg(personalHomeUrl(d), 4, 0) + '</div><div class="qrlab">' + CS("qrLabel") + '</div></div></div>'; // QR 90% (빠불로 09-14) // 09-13: 카드 QR = 개인 링크(디지털 사원증)
   }
 
   // ── 사원증 PNG (캔버스 래스터, 인화지 54×86mm 세로 = 가로 카드 90° 회전, 300dpi) ─────
   function cardPngData(d){
-    var ps = PRESET_STR[lang][d.preset] || PRESET_STR.en[d.preset] || ["", ""];
+    // 2026-09-14 빠불로: PNG도 영어 고정, 배너("000님의 직원 입사") 삭제, 가로 이미지
+    var ps = PRESET_STR.en[d.preset] || ["", ""]; var E = STR.en;
     return { name: d.name, roleValue: ps[0] + " · " + ps[1], joinedValue: d.joined || todayStr(), noValue: d.no || "",
-      labels: { role: S("roleLabel"), joined: S("joinedLabel"), no: S("noLabel"), qr: S("qrLabel") },
+      labels: { role: E.roleLabel, joined: E.joinedLabel, no: E.noLabel, qr: E.qrLabel },
       tags: [ps[0], "ThailandEarlyBird", "BeArk"], color: d.color, parts: d.parts, qrText: personalHomeUrl(d),
-      banner: d.userName ? S("bannerText").replace("{name}", d.userName) : "" };
+      banner: "", qrScale: 0.9 }; // QR 90% (bundle 2026-09-14 qrScale 옵션)
   }
   function safeFile(s){ return String(s).replace(/[^\w가-힣.-]+/g, "_").replace(/^_+|_+$/g, "").slice(0, 40) || "card"; }
   function bindCardButtons(getData){
     $("png-btn").addEventListener("click", function(){
       var d = getData(); if (!d || !d.parts) return;
       B.ensureCardFonts().then(function(){
-        var canvas = B.renderCardPortraitCanvas(cardPngData(d));
+        var canvas = B.renderCardCanvas(cardPngData(d), { width: 1600 });
         return B.downloadCanvasPng(canvas, "beark-card-" + safeFile(d.name) + "-" + safeFile(d.no || "") + ".png");
       });
     });
     $("print-btn").addEventListener("click", function(){
       var d = getData(); if (!d || !d.parts) return;
       B.ensureCardFonts().then(function(){
-        var canvas = B.renderCardPortraitCanvas(cardPngData(d));
+        var canvas = B.renderCardCanvas(cardPngData(d), { width: 1600 });
         var img = $("print-img");
         img.onload = function(){ img.onload = null; window.print(); };
         img.src = canvas.toDataURL("image/png");
@@ -963,7 +965,7 @@
           renderCard($("home-idcard"), hcd);
           $("home-png-btn").addEventListener("click", function(){
             B.ensureCardFonts().then(function(){
-              var canvas = B.renderCardPortraitCanvas(cardPngData(hcd));
+              var canvas = B.renderCardCanvas(cardPngData(hcd), { width: 1600 });
               return B.downloadCanvasPng(canvas, "beark-card-" + safeFile(hcd.name || "") + ".png");
             });
           });
@@ -1130,7 +1132,7 @@
   function showCoupon(promo){
     var el = $("coupon"); if (!promo || promo.attached === false) { el.className = "coupon"; return; }
     var exp = promo.spec && promo.spec.expires_at ? new Date(Number(promo.spec.expires_at) * 1000).toLocaleDateString(lang === "ko" ? "ko-KR" : lang === "th" ? "th-TH" : "en-US") : "";
-    $("coupon-sub").textContent = S("couponSub").replace("{date}", exp || "10.31");
+    $("coupon-sub").textContent = S("couponSub").replace("{date}", exp || "9.30");
     el.className = "coupon show";
   }
   // ── ④ Pro 시작 (2026-09-12): 결제창 URL을 서버(billing checkout)에서 받아 QR로 — 카드 입력은 본인 폰에서 ──
