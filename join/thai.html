@@ -177,21 +177,21 @@
   .topbar{display:flex; align-items:center; gap:10px; padding:16px 0 0}
   .topbar .brand{margin:0; flex:1}
   /* 09-13 빠불로(현장 사진): 첫 화면 = 아이맥에 CTA가 꽉 차게 — 히어로 상단 블록을 뷰포트 높이로, 글자·버튼 대폭 확대. 영상은 스크롤 아래 */
-  .hero{padding:24px 0 40px; text-align:center; position:relative}
-  .hero-top{min-height:calc(100vh - 120px); display:flex; flex-direction:column; justify-content:center; align-items:center}
-  .pill{display:inline-flex; align-items:center; gap:8px; font-size:clamp(13px,1.4vw,18px); color:var(--ink-dim);
+  .hero{padding:110px 0 40px; text-align:center; position:relative}  /* 2026-09-14 빠불로: 태국 페이지는 부스용 확대 전 크기 */
+  .hero-top{display:flex; flex-direction:column; justify-content:center; align-items:center}
+  .pill{display:inline-flex; align-items:center; gap:8px; font-size:13px; color:var(--ink-dim);
     border:1px solid var(--line); background:var(--bg-soft); padding:6px 14px; border-radius:999px; margin-bottom:22px}
   .pill .dot{width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 10px var(--accent)}
-  .hero h1{font-size:clamp(44px,9vw,128px); line-height:1.04; letter-spacing:-.03em; font-weight:800}
+  .hero h1{font-size:clamp(40px,7.2vw,76px); line-height:1.04; letter-spacing:-.03em; font-weight:800}
   .hero h1 .hl{background:linear-gradient(120deg,var(--accent),#e6cf95); -webkit-background-clip:text; background-clip:text; color:transparent}
-  .hero .hsub{max-width:900px; margin:26px auto 0; font-size:clamp(17px,2.6vw,30px); color:var(--ink-dim)}
-  .hero .cta-row{display:flex; justify-content:center; margin-top:44px}
-  .hero .cta{display:inline-flex; align-items:center; gap:10px; width:auto; margin:0; padding:clamp(20px,2.6vw,34px) clamp(38px,5vw,72px); font-size:clamp(20px,3.8vw,44px);
+  .hero .hsub{max-width:640px; margin:20px auto 0; font-size:clamp(16px,2.2vw,21px); color:var(--ink-dim)}
+  .hero .cta-row{display:flex; justify-content:center; margin-top:32px}
+  .hero .cta{display:inline-flex; align-items:center; gap:10px; width:auto; margin:0; padding:20px 38px; font-size:clamp(19px,3vw,26px);
     font-weight:800; border-radius:16px; color:#15100a; background:var(--accent); text-decoration:none; letter-spacing:-.01em;
     box-shadow:0 14px 40px var(--accent-glow); transition:.2s; animation:pulse 2.6s ease-in-out infinite}
   .hero .cta:hover{transform:translateY(-2px); box-shadow:0 18px 50px var(--accent-glow)}
   @keyframes pulse{0%,100%{box-shadow:0 14px 40px var(--accent-glow)}50%{box-shadow:0 14px 56px #c49c4d77}}
-  .hero .note{margin-top:18px; font-size:clamp(13px,1.4vw,18px); color:var(--ink-faint)}
+  .hero .note{margin-top:14px; font-size:13px; color:var(--ink-faint)}
   .float-agents{position:absolute; inset:0; z-index:0; pointer-events:none}
   .float-agents .fa{position:absolute; width:84px; height:84px; border-radius:50%; object-fit:cover; border:2px solid #c49c4d55;
     box-shadow:0 8px 30px #00000066,0 0 0 6px #c49c4d10; opacity:.92; animation:floaty 6s ease-in-out infinite}
@@ -248,7 +248,7 @@
   .ehead .sub b{display:block; margin-bottom:6px}
   .preset .pd{word-break:keep-all}
   .divider{max-width:860px; margin:36px auto 0; border:0; border-top:1px solid var(--line)}
-  @media(max-width:720px){ .float-agents{display:none} .hero{padding:24px 0 28px} .hero-top{min-height:auto; padding:48px 0 12px} .mock-body{padding:16px} .mock .m{font-size:13.5px} }
+  @media(max-width:720px){ .float-agents{display:none} .hero{padding:64px 0 28px} .mock-body{padding:16px} .mock .m{font-size:13.5px} }
   /* 개인 사원증 QR (③, 잉크 소진 대응 2026-09-13) — 카드 JSON이 URL에 실려 모듈이 촘촘 → 크게 */
   .cardqr-wrap{display:flex; gap:22px; align-items:center; margin-top:16px; padding:16px; border:1px solid #c49c4d55; border-radius:12px; background:var(--accent-soft)}
   .cardqr{flex:none; width:min(48vw,320px); aspect-ratio:1; background:#fff; padding:10px; border-radius:12px; display:grid; place-items:center; font-size:13px; color:#555; text-align:center}
@@ -305,6 +305,7 @@
       <div class="lang">
         <button id="lang-ko" type="button">한국어</button>
         <button id="lang-en" type="button">EN</button>
+        <button id="lang-th" type="button">ไทย</button>
       </div>
     </div>
   </div>
@@ -434,21 +435,7 @@
       <div class="hint" data-i18n="cardHint" style="margin-top:10px"></div>
     </section>
 
-    <!-- ④ Pro 시작 (선택) — 2026-09-12 빠불로: 현장 결제 = 2+1개월, 카드 입력은 본인 폰(QR → Stripe) -->
-    <section class="step locked pro" id="st-pro">
-      <div class="s-head"><span class="s-num">4</span><h2 data-i18n="proTitle"></h2></div>
-      <div class="prolead" data-i18n="proLead"></div>
-      <div class="prosub" data-i18n="proSub"></div>
-      <div class="proqr-wrap">
-        <div class="proqr" id="proqr"></div>
-        <div class="prohow">
-          <p data-i18n="proHow"></p>
-          <p class="pronote" id="pronote"></p>
-          <p class="hint" data-i18n="proFallback"></p>
-        </div>
-      </div>
-      <div class="msg" id="promsg"></div>
-    </section>
+    <!-- ④ Pro 시작 섹션은 태국 페이지에서 제거 (빠불로 2026-09-14) — Pro는 사원증 QR → 집 모드에서 (이메일 자동, 비밀번호만) -->
   </div>
 
   <!-- ── 집 모드 (QR) ──────────────────────────────────────────── -->
@@ -473,6 +460,7 @@
         <div class="hurl" id="handoff-url">re-be.world/join/thai</div>
         <div class="hbtns">
           <button type="button" id="ho-share" data-i18n="shareBtn"></button>
+          <button type="button" class="ghost" id="ho-line" data-i18n="lineBtn"></button>
           <button type="button" class="ghost" id="ho-mail" data-i18n="mailBtn"></button>
           <button type="button" class="ghost" id="ho-copy" data-i18n="copyBtn"></button>
         </div>
@@ -533,7 +521,7 @@
       orgLabel: "소속 (선택)", bannerText: "{name}님의 에이전트 직원이 입사했습니다",
       handoffTitle: "📱 지금 폰이죠? 설치는 컴퓨터에서",
       handoffDesc: "컴퓨터 브라우저에서 아래 주소를 열면 이 페이지가 그대로 나와요. 링크를 나에게 보내두면 편해요.",
-      shareBtn: "나에게 링크 보내기 (카톡·메시지)", mailBtn: "이메일로 보내기", copyBtn: "링크 복사", copied: "복사됐어요 ✓",
+      shareBtn: "나에게 링크 보내기 (메시지)", lineBtn: "LINE으로 보내기", mailBtn: "이메일로 보내기", copyBtn: "링크 복사", copied: "복사됐어요 ✓",
       mailSubject: "Be.Ark 설치 링크 — 채용한 에이전트 만나기",
       mailBody: "컴퓨터에서 이 링크를 열어 Be.Ark를 설치하고, 가입한 이메일로 로그인하세요.\n{url}\n\n채용한 에이전트가 자동으로 합류합니다. (Pro 쿠폰은 결제 시 자동 적용)",
       // 2026-09-12 Pro 시작 (빠불로 문구)
@@ -543,7 +531,7 @@
       proNotes: "* Pro 모드는 사용 중 언제든지 해지 가능합니다\n* 무료 계정으로도 에이전트 1명으로 모든 기능을 무제한 사용 가능합니다",
       proHow: "폰 카메라로 QR을 찍으면 결제창이 열려요. 카드 등록만 하면 끝 — 지금 청구 0원, 무료 기간이 끝나면 월 $20.",
       proFallback: "지금 안 해도 괜찮아요. 나중에 사원증 QR로 접속해 'Pro 모드 시작하기'를 누르면 같은 혜택이에요 (10.31까지).",
-      proHomeBtn: "Pro 모드 시작하기", proLogin: "가입할 때 만든 이메일·비밀번호로 로그인하면 결제창으로 이동해요.",
+      proHomeBtn: "Pro 모드 시작하기", proLogin: "가입한 이메일이 채워져 있어요. 비밀번호만 넣으면 Stripe 결제창으로 바로 이동해요.",
       proBusy: "결제창 여는 중…", proDone: "Pro 활성화 완료 🎉 앱에서 같은 이메일로 로그인하면 바로 적용돼요.",
       proErr: "결제창을 열지 못했어요. 잠시 후 다시 시도해주세요.", proPwWrong: "이메일 또는 비밀번호가 맞지 않아요.",
       proMinting: "Pro QR 준비 중…",
@@ -594,6 +582,78 @@
       network: "네트워크가 불안정해요. 다시 눌러주세요.",
       roleLabel: "역할", joinedLabel: "입사", noLabel: "사번", qrLabel: "QR로 집에서 합류"
     },
+    th: {
+      tag: "Thailand Early Bird · ข้อเสนอพิเศษ",
+      h1: "'จ้างเอเจนต์ AI ของคุณเอง!'",
+      sub: "<b>〈ฟรี Pro 3 เดือน〉</b>จ้างเพื่อนร่วมทีม AI ตอนนี้และรับบัตรพนักงาน<br>เข้าสู่ระบบบนคอมพิวเตอร์ด้วยอีเมลเดียวกัน แล้วเพื่อนร่วมทีมจะเข้าร่วมใน Be.Ark",
+      heroPill: "Thailand Early Bird × Be.Ark · เปิดรับสมัคร Early Bird",
+      heroH1: "จ้าง <span class=\"hl\">พนักงาน AI</span> ของคุณเอง<br>— ฟรี!",
+      heroSub: "แชท ความจำ และไฟล์ของคุณ — ทั้งหมดอยู่บนคอมพิวเตอร์ของคุณเอง จ้างเพื่อนร่วมทีม AI ที่เรียนรู้สไตล์ของคุณตอนนี้ และรับบัตรพนักงาน",
+      heroCta: "จ้างฟรีตอนนี้ ↓", heroCtaHome: "ดาวน์โหลดแอปและพบเพื่อนร่วมทีม ↓",
+      heroNote: "ฟรี · รับบัตรพนักงานทันที · รวม Pro 3 เดือน (THAI3)",
+      userNameLabel: "ชื่อของคุณ (ไม่บังคับ)", userNameHint: "ถ้ากรอก บัตรจะพิมพ์ว่า “พนักงาน AI ของ <ชื่อ> เข้าร่วมแล้ว”",
+      orgLabel: "สังกัด (ไม่บังคับ)", bannerText: "พนักงาน AI ของ {name} เข้าร่วมแล้ว",
+      handoffTitle: "📱 ใช้มือถืออยู่ใช่ไหม? ติดตั้งบนคอมพิวเตอร์",
+      handoffDesc: "เปิดที่อยู่ด้านล่างในเบราว์เซอร์บนคอมพิวเตอร์เพื่อเข้าหน้านี้ ส่งลิงก์ให้ตัวเองเพื่อความสะดวก",
+      shareBtn: "ส่งลิงก์ให้ตัวเอง", lineBtn: "ส่งทาง LINE", mailBtn: "ส่งทางอีเมล", copyBtn: "คัดลอกลิงก์", copied: "คัดลอกแล้ว ✓",
+      mailSubject: "ลิงก์ติดตั้ง Be.Ark — พบเอเจนต์ที่คุณจ้าง",
+      mailBody: "เปิดลิงก์นี้บนคอมพิวเตอร์ ติดตั้ง Be.Ark แล้วเข้าสู่ระบบด้วยอีเมลที่สมัครไว้\n{url}\n\nเอเจนต์ที่คุณจ้างจะเข้าร่วมอัตโนมัติ (คูปอง Pro ใช้ตอนชำระเงิน)",
+      proTitle: "เริ่ม Pro (ไม่บังคับ)", proTitleHome: "เริ่ม Pro",
+      proLead: "สมัคร Pro ภายใน 31 ต.ค.: ฟรี Pro 3 เดือน!",
+      proSub: "รหัสคูปอง THAI3 · เฉพาะการชำระเงินครั้งแรก · 200 คนแรก",
+      proNotes: "* ยกเลิก Pro ได้ทุกเมื่อ\n* บัญชีฟรีก็ใช้ทุกฟีเจอร์ได้ไม่จำกัดกับเอเจนต์ 1 ตัว",
+      proHow: "สแกน QR ด้วยกล้องมือถือเพื่อเปิดหน้าชำระเงิน แค่ลงทะเบียนบัตร — วันนี้ $0 หลังหมดช่วงฟรี $20/เดือน",
+      proFallback: "ไม่ต้องรีบ เปิด QR บนบัตรทีหลังแล้วแตะ 'เริ่ม Pro' ได้ข้อเสนอเดียวกัน (ถึง 31 ต.ค.)",
+      proHomeBtn: "เริ่ม Pro", proLogin: "อีเมลถูกกรอกจากบัตรของคุณแล้ว ใส่รหัสผ่านเพื่อเปิดหน้าชำระเงิน Stripe",
+      proBusy: "กำลังเปิดหน้าชำระเงิน…", proDone: "Pro เปิดใช้งานแล้ว 🎉 เข้าสู่ระบบแอปด้วยอีเมลเดียวกันแล้วใช้ได้ทันที",
+      proErr: "เปิดหน้าชำระเงินไม่ได้ กรุณาลองอีกครั้งสักครู่", proPwWrong: "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
+      proMinting: "กำลังเตรียม QR สำหรับ Pro…",
+      cardQrTitle: "📱 รับบัตรบนมือถือ",
+      cardQrDesc: "สแกน QR นี้ด้วยกล้องมือถือ บัตรพนักงานจะแสดงบนมือถือและบันทึกเป็นรูปได้ หน้าเดียวกันยังส่งลิงก์ติดตั้งไปคอมพิวเตอร์ได้",
+      homeCardTitle: "บัตรพนักงานของเอเจนต์ฉัน",
+      homePngBtn: "บันทึกรูปบัตร",
+      homeCardDesc: "เก็บไว้เป็นที่ระลึก ด้านล่างติดตั้ง Be.Ark บนคอมพิวเตอร์แล้วเข้าสู่ระบบด้วยอีเมลเดียวกัน — เพื่อนร่วมทีมคนนี้จะเข้าร่วม",
+      mockU1: "เรียนรู้เทมเพลต PPT ที่ฉันเพิ่งอัปโหลด — โครงสร้างตรรกะและน้ำเสียงของฉัน",
+      mockA1: "เรียนรู้เทมเพลตเด็ค ‘<b>Paulus</b>’ แล้ว: ภูมิหลัง → ปัญหา → อินไซต์ผู้บริโภค → โซลูชัน และจับน้ำเสียงการเขียนเด็คของคุณได้แล้ว",
+      mockU2: "ทีนี้เปลี่ยนไฟล์วิจัย 000-project.md เป็นเด็คในสไตล์นั้น",
+      mockA2: "เสร็จแล้ว โครงสร้างและน้ำเสียงตรงกัน — กำลังบันทึกลงโฟลเดอร์โปรเจกต์",
+      testiTitle: "ความเห็นผู้ใช้", testiSub: "สิ่งที่ผู้ใช้กลุ่มแรกของ Be.Ark พบว่าสะดวก",
+      videoTitle: "รู้จัก Be.Ark ผ่านวิดีโอ", videoSub: "เอเจนต์ AI ที่คุณเป็นเจ้าของจริง ๆ — ดูว่าทำงานอย่างไร",
+      done: "เสร็จ ✓",
+      s1Title: "เลือกตำแหน่งงาน", s1Desc: "ต้องการเพื่อนร่วมทีมแบบไหน? เลือกบทบาทและตั้งชื่อ",
+      nameLabel: "ชื่อเพื่อนร่วมทีม", nameHint: "เช่น Aria, Max, มินจี — ชื่ออะไรก็ได้ที่เรียกง่าย",
+      shuffleBtn: "หน้าอื่น", faceHint: "แตะจนกว่าจะชอบหน้า หรือเลือกชิ้นส่วนเองด้วย 'ปรับแต่ง'",
+      editBtn: "ปรับแต่ง", editClose: "เสร็จ", editRandom: "สุ่ม",
+      tabFace: "หน้า", tabHair: "ผม", tabEyes: "ตา", tabMouth: "ปาก", tabGlasses: "แว่น", tabHat: "หมวก", tabAcc: "เครื่องประดับ", tabCloth: "ชุด", tabBg: "พื้นหลัง",
+      colorSkin: "ผิว", colorHair: "ผม", colorIris: "ตา", colorGlasses: "กรอบแว่น", colorHat: "สีหมวก", colorAcc: "เครื่องประดับ", colorCloth: "ชุด", colorBg: "พื้นหลัง",
+      hireBtn: "จ้างเพื่อนร่วมทีมคนนี้",
+      s2Title: "สร้างบัญชี", s2Desc: "แค่อีเมลและรหัสผ่าน ไม่ต้องยืนยันอีเมล",
+      email: "อีเมล", pw: "รหัสผ่าน", pwHint: "8 ตัวอักษรขึ้นไป ใช้เข้าสู่ระบบแอปบนคอมพิวเตอร์",
+      signupBtn: "สมัครและรับบัตร", signupBusy: "กำลังสมัคร…",
+      couponTitle: "THAI3 · ฟรี Pro 3 เดือน",
+      couponSub: "ลงทะเบียนคูปองในบัญชีแล้ว ใช้อัตโนมัติตอนชำระเงิน · หมดอายุ {date}",
+      s3Title: "บัตรพนักงาน", s3Desc: "บันทึกรูปบัตรหรือสแกน QR ด้วยมือถือ แล้วไปต่อบนคอมพิวเตอร์ได้ทุกเมื่อ",
+      pngBtn: "บันทึกบัตร PNG (54×86)", printBtn: "พิมพ์", nextBtn: "คนถัดไป",
+      cardHint: "สแกน QR ด้านบนเพื่อเก็บบัตรไว้บนมือถือ บันทึก PNG = รูปขนาด 54×86 มม. (แนวตั้ง) 1 รูป",
+      hTitle: "ได้บัตรแล้ว? ไปต่อที่บ้าน",
+      hDesc: "เพื่อนร่วมทีมที่คุณจ้างถูกเก็บไว้ในบัญชีแล้ว ติดตั้งแอปและเข้าสู่ระบบด้วยอีเมลเดียวกัน",
+      h1s: "ดาวน์โหลดและติดตั้ง Be.Ark บนคอมพิวเตอร์ (Mac/Windows) — ถ้าอยู่บนมือถือ ส่งลิงก์ให้ตัวเองด้วยกล่องด้านล่าง",
+      h2s: "เข้าสู่ระบบด้วยอีเมลและรหัสผ่านที่สมัครไว้",
+      h3s: "เพื่อนร่วมทีมเข้าร่วม และคูปอง Pro 3 เดือนใช้อัตโนมัติตอนชำระเงิน",
+      dlMac: "ดาวน์โหลดสำหรับ Mac (Apple Silicon)", dlMacIntel: "ดาวน์โหลดสำหรับ Mac (Intel)", dlWin: "ดาวน์โหลดสำหรับ Windows", dlSite: "สำรวจ Be.Ark",
+      hCoupon: "ลงทะเบียนในบัญชีของคุณแล้ว ใช้เมื่อเริ่ม Pro ในแอป · ถึง 31 ต.ค.",
+      privacy: "นโยบายความเป็นส่วนตัว",
+      needName: "กรุณาตั้งชื่อเพื่อนร่วมทีม", needPreset: "กรุณาเลือกบทบาท",
+      invalid_email: "กรุณาตรวจสอบอีเมลอีกครั้ง", weak_password: "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร",
+      campaign_closed: "กิจกรรมนี้สิ้นสุดแล้ว", not_open_yet: "กิจกรรมยังไม่เริ่ม", unknown_campaign: "ลิงก์กิจกรรมไม่ถูกต้อง",
+      signup_failed: "สมัครไม่สำเร็จ กรุณาลองอีกครั้งสักครู่", unknownErr: "เกิดข้อผิดพลาด ({code})",
+      existingClaiming: "บัญชีนี้มีอยู่แล้ว กำลังบันทึกเพื่อนร่วมทีมและคูปอง…",
+      existingPwWrong: "อีเมลนี้ลงทะเบียนแล้ว แต่รหัสผ่านไม่ตรง — กรุณาใช้รหัสผ่านเดิม",
+      agentNotSaved: "บัญชีพร้อมแล้ว แต่บันทึกเพื่อนร่วมทีมไม่สำเร็จ กรุณาลองอีกครั้ง",
+      promoNotAttached: "สร้างบัญชีแล้ว แต่คูปองยังไม่ถูกแนบ กรอกรหัส THAI3 ตอนชำระเงิน",
+      network: "เครือข่ายไม่เสถียร กรุณาแตะอีกครั้ง",
+      roleLabel: "บทบาท", joinedLabel: "เข้าร่วม", noLabel: "เลขที่", qrLabel: "สแกนเพื่อเข้าร่วมที่บ้าน"
+    },
     en: {
       tag: "Thailand Early Bird · Special offer",
       h1: "'Hire your own AI agent!'",
@@ -607,7 +667,7 @@
       orgLabel: "Affiliation (optional)", bannerText: "{name}'s AI employee has joined",
       handoffTitle: "📱 On your phone? Install on a computer",
       handoffDesc: "Open the address below in your computer's browser to get this same page. Send the link to yourself to make it easy.",
-      shareBtn: "Send the link to myself", mailBtn: "Email it to me", copyBtn: "Copy link", copied: "Copied ✓",
+      shareBtn: "Send the link to myself", lineBtn: "Send via LINE", mailBtn: "Email it to me", copyBtn: "Copy link", copied: "Copied ✓",
       mailSubject: "Be.Ark install link — meet the agent you hired",
       mailBody: "Open this link on your computer, install Be.Ark and log in with the email you signed up with.\n{url}\n\nYour hired agent joins automatically. (The Pro coupon applies at checkout.)",
       proTitle: "Start Pro (optional)", proTitleHome: "Start Pro",
@@ -616,7 +676,7 @@
       proNotes: "* Cancel Pro anytime while using it\n* A free account still gets every feature, unlimited, with 1 agent",
       proHow: "Scan the QR with your phone camera to open checkout. Just register a card — $0 today, $20/month after the free period.",
       proFallback: "No rush. Later, open the card's QR and tap 'Start Pro' for the same offer (through Oct 31).",
-      proHomeBtn: "Start Pro", proLogin: "Log in with the email & password you signed up with to open checkout.",
+      proHomeBtn: "Start Pro", proLogin: "Your email is filled in from your card. Enter your password to open Stripe checkout.",
       proBusy: "Opening checkout…", proDone: "Pro is active 🎉 Log in to the app with the same email and it applies right away.",
       proErr: "Couldn't open checkout. Please try again in a moment.", proPwWrong: "Email or password doesn't match.",
       proMinting: "Preparing your Pro QR…",
@@ -671,6 +731,9 @@
     ko: { writer:["카피라이터","한 줄로 마음을 움직이는 문장을 쓰는 팀원"], founder:["전략가","사업 아이디어를 실행 계획으로 바꾸는 팀원"], marketer:["마케터","브랜드 이야기를 사람들에게 전하는 팀원"],
           producer:["프로듀서","복잡한 일을 순서와 일정으로 정리하는 팀원"], researcher:["리서처","많은 자료에서 필요한 근거를 찾아내는 팀원"], everyday:["개발자","아이디어를 동작하는 코드로 바꾸는 팀원"],
           accountant:["경리","영수증과 숫자를 깔끔한 장부로 정리하는 팀원"], chief:["총무","회사 자산과 살림을 빠짐없이 챙기는 팀원"], legal:["법무담당","계약서에서 위험한 조항을 먼저 찾아내는 팀원"] },
+    th: { writer:["ก๊อปปี้ไรเตอร์","เขียนประโยคเดียวที่ขยับใจคน"], founder:["นักกลยุทธ์","เปลี่ยนไอเดียธุรกิจเป็นแผนปฏิบัติ"], marketer:["นักการตลาด","พาเรื่องราวแบรนด์ไปถึงผู้คน"],
+          producer:["โปรดิวเซอร์","จัดระเบียบงานยุ่ง ๆ ให้เป็นลำดับและตาราง"], researcher:["นักวิจัย","หาหลักฐานที่ต้องการจากข้อมูลกองโต"], everyday:["นักพัฒนา","เปลี่ยนไอเดียเป็นโค้ดที่ใช้งานได้"],
+          accountant:["บัญชี","เปลี่ยนใบเสร็จและตัวเลขให้เป็นบัญชีที่เรียบร้อย"], chief:["ธุรการ","ดูแลทรัพย์สินและงานต่ออายุของบริษัทให้ครบ"], legal:["ที่ปรึกษากฎหมาย","หาข้อสัญญาที่เสี่ยงก่อนใคร"] },
     en: { writer:["Copywriter","Writes the one line that moves people"], founder:["Strategist","Turns business ideas into execution plans"], marketer:["Marketer","Carries your brand story to people"],
           producer:["Producer","Turns messy work into order and schedules"], researcher:["Researcher","Finds the evidence you need in piles of material"], everyday:["Developer","Turns ideas into working code"],
           accountant:["Bookkeeper","Turns receipts and numbers into clean books"], chief:["General Affairs","Keeps every company asset and renewal in order"], legal:["Legal Counsel","Finds the risky clauses in a contract first"] }
@@ -682,10 +745,10 @@
   (function(){ var v = document.getElementById("demo-video"); if (!v) return;
     var p = v.play && v.play(); if (p && p.catch) p.catch(function(){ v.controls = true; }); })();
   var lang = (function(){
-    try { var s = localStorage.getItem(LS_LANG); if (s === 'ko' || s === 'en') return s; } catch(e){}
-    return (navigator.language || '').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en';
+    try { var s = localStorage.getItem(LS_LANG); if (s === 'ko' || s === 'en' || s === 'th') return s; } catch(e){}
+    return 'en'; // 2026-09-14 빠불로: 태국 얼리버드 = 영어 기본 (브라우저 언어 무시), 버튼으로 ko/th 전환
   })();
-  function S(k){ return STR[lang][k] || STR.ko[k] || k; }
+  function S(k){ return STR[lang][k] || STR.en[k] || STR.ko[k] || k; }
   function $(id){ return document.getElementById(id); }
 
   // ── 상태 (부스 기기에서 새로고침돼도 유지, ?reset=1로 다음 사람) ─────────
@@ -706,7 +769,7 @@
     el.style.setProperty("--tint", d.color);
     ["05","08","10","12","15","16","30"].forEach(function(k){ el.style.setProperty("--tint-" + k, rgba(Number(k) / 100)); });
     var img = B.avatarPartsDataUrl(d.parts, 8);
-    var ps = PRESET_STR[lang][d.preset] || PRESET_STR.ko[d.preset] || ["", ""];
+    var ps = PRESET_STR[lang][d.preset] || PRESET_STR.en[d.preset] || ["", ""];
     el.innerHTML =
       '<div class="bgimg" style="background-image:url(' + img + ')"></div><div class="duo"></div><div class="fade"></div><div class="scan"></div><div class="glow"></div><div class="shine"></div>' +
       '<div class="row"><div class="brandl"><span class="b1">Be.Ark</span><span class="b2">Agent Card</span></div><span class="brandr">Re-Be World</span></div>' +
@@ -722,7 +785,7 @@
 
   // ── 사원증 PNG (캔버스 래스터, 인화지 54×86mm 세로 = 가로 카드 90° 회전, 300dpi) ─────
   function cardPngData(d){
-    var ps = PRESET_STR[lang][d.preset] || PRESET_STR.ko[d.preset] || ["", ""];
+    var ps = PRESET_STR[lang][d.preset] || PRESET_STR.en[d.preset] || ["", ""];
     return { name: d.name, roleValue: ps[0] + " · " + ps[1], joinedValue: d.joined || todayStr(), noValue: d.no || "",
       labels: { role: S("roleLabel"), joined: S("joinedLabel"), no: S("noLabel"), qr: S("qrLabel") },
       tags: [ps[0], "ThailandEarlyBird", "BeArk"], color: d.color, parts: d.parts, qrText: personalHomeUrl(d),
@@ -784,7 +847,7 @@
   }
   function applyLang(){
     document.documentElement.lang = lang;
-    $("lang-ko").className = lang === "ko" ? "on" : ""; $("lang-en").className = lang === "en" ? "on" : "";
+    $("lang-ko").className = lang === "ko" ? "on" : ""; $("lang-en").className = lang === "en" ? "on" : ""; $("lang-th").className = lang === "th" ? "on" : "";
     $("h1").innerHTML = S("h1"); $("sub").innerHTML = S("sub"); // 둘 다 우리 상수만 (유저 입력 ❌)
     // 2026-09-12 히어로 (innerHTML 허용 = 우리 문자열 상수뿐)
     $("hero-h1").innerHTML = S("heroH1"); $("hero-sub").textContent = S("heroSub"); $("mock-a1").innerHTML = S("mockA1");
@@ -799,6 +862,7 @@
   function setLang(l){ lang = l; try { localStorage.setItem(LS_LANG, l); } catch(e){} applyLang(); }
   $("lang-ko").addEventListener("click", function(){ setLang("ko"); });
   $("lang-en").addEventListener("click", function(){ setLang("en"); });
+  $("lang-th").addEventListener("click", function(){ setLang("th"); });
 
   // ── 집 모드 / 카드 딥링크 ────────────────────────────────────────────────
   if (qs.get("home") === "1") {
@@ -850,6 +914,13 @@
       location.href = "mailto:" + encodeURIComponent(to) + "?subject=" + encodeURIComponent(S("mailSubject")) + "&body=" + encodeURIComponent(S("mailBody").replace("{url}", shareUrl));
     });
     $("ho-copy").addEventListener("click", copyUrl);
+    // 2026-09-14 빠불로: 태국 = LINE — 공유 URL 스킴(앱이면 LINE 열림, 없으면 웹)
+    $("ho-line").addEventListener("click", function(){
+      location.href = "https://line.me/R/share?text=" + encodeURIComponent(S("mailSubject") + "\n" + shareUrl);
+    });
+    // 2026-09-14 빠불로 "해당 ID로 바로 Stripe": 사원증 QR에 담긴 이메일을 결제 폼에 자동 채움 → 비밀번호만 입력하면 결제창
+    if (typeof hcd !== "undefined" && hcd && hcd.email) { $("pemail").value = hcd.email; $("pemail").readOnly = true; }
+    else if (state.email) { $("pemail").value = state.email; }
     // 집 모드 Pro 시작: 로그인 → 결제창으로 이동 (Stripe에서 돌아오면 ?pro=done)
     $("pronote-home").textContent = S("proNotes");
     if (qs.get("pro") === "done" || qs.get("billing") === "success") { $("prodone").style.display = "block"; $("prof").style.display = "none"; }
@@ -969,7 +1040,7 @@
   function agentPayload(){ return { name: state.name, preset: state.preset, color: state.color, lang: lang, parts: state.parts }; }
   function showCoupon(promo){
     var el = $("coupon"); if (!promo || promo.attached === false) { el.className = "coupon"; return; }
-    var exp = promo.spec && promo.spec.expires_at ? new Date(Number(promo.spec.expires_at) * 1000).toLocaleDateString(lang === "ko" ? "ko-KR" : "en-US") : "";
+    var exp = promo.spec && promo.spec.expires_at ? new Date(Number(promo.spec.expires_at) * 1000).toLocaleDateString(lang === "ko" ? "ko-KR" : lang === "th" ? "th-TH" : "en-US") : "";
     $("coupon-sub").textContent = S("couponSub").replace("{date}", exp || "10.31");
     el.className = "coupon show";
   }
@@ -999,6 +1070,7 @@
     else q.textContent = state.signedUp ? S("proMinting") : "";
   }
   function prepareProQr(mint){
+    if (!$("st-pro")) return Promise.resolve(); // ④ 섹션 없음 (태국 페이지)
     proMsg("promsg", "");
     return mint().then(function(url){ state.proUrl = url; state.proAt = Date.now(); save(); renderPro(); })
       .catch(function(e){ state.proUrl = ""; save(); renderPro(); $("proqr").textContent = S("proErr"); proMsg("promsg", S("proErr"), "err"); });
@@ -1054,7 +1126,7 @@
   bindCardButtons(cardData);
   $("next-btn").addEventListener("click", function(){ location.href = location.pathname + "?reset=1"; });
 
-  function cardData(){ return { name: state.name, preset: state.preset, color: state.color, parts: state.parts, no: state.no, joined: todayStr(), userName: state.userName || "" }; }
+  function cardData(){ return { email: state.email, name: state.name, preset: state.preset, color: state.color, parts: state.parts, no: state.no, joined: todayStr(), userName: state.userName || "" }; }
   function render(){
     var hired = !!(state.preset && state.name && state.parts);
     $("aname").value = state.name || "";
@@ -1078,8 +1150,10 @@
   function packCard(d){
     var p = d.parts || {}, c = p.colors || {};
     var f = [d.name || "", d.preset || "", String(d.color || "").replace(/^#/, ""), d.no || "", d.joined || "", d.userName || ""];
+    // 2026-09-14: 마지막 필드 = 이메일 (집 모드 Pro 결제 자동 채움). 뒤에 붙여 기존 순서 계약 유지.
     PACK_KEYS().forEach(function(k){ f.push(String(p[k] || "")); });
     PACK_COLORS().forEach(function(k){ f.push(String(c[k] || "").replace(/^#/, "")); });
+    f.push(String(d.email || ""));
     return b64u(f.join("|"));
   }
   function unpackCard(s){
@@ -1087,7 +1161,8 @@
     var parts = { v: 1, colors: {} }, i = 6;
     PACK_KEYS().forEach(function(k){ parts[k] = f[i++]; });
     PACK_COLORS().forEach(function(k){ parts.colors[k] = "#" + f[i++]; });
-    return { name: f[0], preset: f[1], color: "#" + f[2], no: f[3], joined: f[4], userName: f[5], parts: parts };
+    var email = f.length > i ? f[i] : "";
+    return { name: f[0], preset: f[1], color: "#" + f[2], no: f[3], joined: f[4], userName: f[5], parts: parts, email: email };
   }
   function personalHomeUrl(d){ return HOME_URL + "&c=" + packCard(d); }
   function renderCardQr(){
