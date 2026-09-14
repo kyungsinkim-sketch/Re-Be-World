@@ -277,6 +277,7 @@
   .handoff{margin:14px 0 6px; padding:16px; border:1px solid #c49c4d55; border-radius:12px; background:var(--accent-soft)}
   .handoff b{display:block; font-size:16px; color:var(--accent)}
   .handoff p{font-size:13.5px; color:var(--ink-dim); margin-top:6px}
+  .refer{border-color:#c49c4d55; background:rgba(196,156,77,.06)}
   .handoff .hurl{margin-top:10px; padding:10px 12px; border-radius:8px; background:#0f141d; border:1px solid var(--line);
     font-family:"Geist Mono",monospace; font-size:15px; font-weight:700; color:var(--ink); text-align:center; letter-spacing:.01em}
   .handoff .hbtns{display:flex; flex-direction:column; gap:8px; margin-top:10px}
@@ -323,7 +324,6 @@
         <div class="pill"><span class="dot"></span> <span data-i18n="heroPill"></span></div>
         <h1 id="hero-h1"></h1>
         <p class="hsub" id="hero-sub"></p>
-        <div class="cta-row"><a class="cta" id="hero-cta" href="#st-hire"></a></div>
         <p class="note" data-i18n="heroNote"></p>
       </div>
 
@@ -449,6 +449,18 @@
         <button type="button" id="home-png-btn" data-i18n="homePngBtn"></button>
         <p class="hint" data-i18n="homeCardDesc" style="margin:8px 0 18px"></p>
       </div>
+      <!-- 2026-09-14 빠불로: 친구 초대 — 친구는 Pro 3개월(THAI3) + 나는 초대 성사마다 1개월 추가 (무제한) -->
+      <div class="handoff refer" id="refer" style="display:none">
+        <b data-i18n="referTitle"></b>
+        <p data-i18n="referDesc"></p>
+        <div class="hurl" id="refer-url"></div>
+        <div class="hbtns">
+          <button type="button" id="rf-share" data-i18n="shareFriendBtn"></button>
+          <button type="button" class="ghost" id="rf-line" data-i18n="lineBtn"></button>
+          <button type="button" class="ghost" id="rf-copy" data-i18n="copyBtn"></button>
+        </div>
+      </div>
+      <b data-i18n="installTitle" style="display:block;font-size:17px;color:var(--accent);margin:18px 0 6px"></b>
       <p class="s-desc" data-i18n="hDesc"></p>
       <ol class="home">
         <li data-i18n="h1s"></li><li data-i18n="h2s"></li><li data-i18n="h3s"></li>
@@ -580,7 +592,8 @@
       agentNotSaved: "계정은 준비됐는데 팀원 정보를 담지 못했어요. 다시 시도해 주세요.",
       promoNotAttached: "계정은 만들어졌는데 쿠폰이 붙지 않았어요. 결제창에서 코드 THAI3를 직접 입력하세요.",
       network: "네트워크가 불안정해요. 다시 눌러주세요.",
-      roleLabel: "역할", joinedLabel: "입사", noLabel: "사번", qrLabel: "QR로 집에서 합류"
+      roleLabel: "역할", joinedLabel: "입사", noLabel: "사번", qrLabel: "QR로 집에서 합류",
+      referTitle: "🎁 친구 초대 — 친구는 Pro 3개월, 나는 +1개월", referDesc: "이 링크로 친구가 에이전트를 채용하고 Pro를 시작하면 친구는 3개월 무료, 나는 Pro 1개월이 추가돼요. 초대한 만큼 무제한 적립!", shareFriendBtn: "친구에게 공유", referShareText: "Be.Ark에서 나만의 AI 팀원을 무료로 채용하고 Pro 3개월 받으세요 👉 {url}", installTitle: "데스크탑에 설치 후 시작하기"
     },
     th: {
       tag: "Thailand Early Bird · ข้อเสนอพิเศษ",
@@ -652,7 +665,8 @@
       agentNotSaved: "บัญชีพร้อมแล้ว แต่บันทึกเพื่อนร่วมทีมไม่สำเร็จ กรุณาลองอีกครั้ง",
       promoNotAttached: "สร้างบัญชีแล้ว แต่คูปองยังไม่ถูกแนบ กรอกรหัส THAI3 ตอนชำระเงิน",
       network: "เครือข่ายไม่เสถียร กรุณาแตะอีกครั้ง",
-      roleLabel: "บทบาท", joinedLabel: "เข้าร่วม", noLabel: "เลขที่", qrLabel: "สแกนเพื่อเข้าร่วมที่บ้าน"
+      roleLabel: "บทบาท", joinedLabel: "เข้าร่วม", noLabel: "เลขที่", qrLabel: "สแกนเพื่อเข้าร่วมที่บ้าน",
+      referTitle: "🎁 ชวนเพื่อน — เพื่อนได้ Pro 3 เดือน คุณได้ +1 เดือน", referDesc: "เมื่อเพื่อนจ้างเอเจนต์ผ่านลิงก์นี้และเริ่ม Pro เพื่อนได้ฟรี 3 เดือน และคุณได้ Pro เพิ่ม 1 เดือน ไม่จำกัด — ชวนกี่คนก็ได้เพิ่มเท่านั้น!", shareFriendBtn: "แชร์ให้เพื่อน", referShareText: "จ้างเพื่อนร่วมทีม AI ของคุณเองบน Be.Ark ฟรี และรับ Pro 3 เดือน 👉 {url}", installTitle: "ติดตั้งบนคอมพิวเตอร์แล้วเริ่มใช้งาน"
     },
     en: {
       tag: "Thailand Early Bird · Special offer",
@@ -724,7 +738,8 @@
       agentNotSaved: "Account is ready but the teammate couldn't be saved. Please try again.",
       promoNotAttached: "Your account was created but the coupon wasn't attached. Enter code THAI3 at checkout.",
       network: "The network is unstable. Please tap again.",
-      roleLabel: "Role", joinedLabel: "Joined", noLabel: "No.", qrLabel: "Scan to join at home"
+      roleLabel: "Role", joinedLabel: "Joined", noLabel: "No.", qrLabel: "Scan to join at home",
+      referTitle: "🎁 Invite a friend — they get 3 months of Pro, you get +1 month", referDesc: "When a friend hires an agent through this link and starts Pro, they get 3 months free and you get 1 extra month of Pro. No limit — every friend adds a month!", shareFriendBtn: "Share with a friend", referShareText: "Hire your own AI teammate on Be.Ark for free and get 3 months of Pro 👉 {url}", installTitle: "Install on your computer & start"
     }
   };
   var PRESET_STR = {
@@ -752,9 +767,11 @@
   function $(id){ return document.getElementById(id); }
 
   // ── 상태 (부스 기기에서 새로고침돼도 유지, ?reset=1로 다음 사람) ─────────
-  var state = { preset:"", name:"", parts:null, color:"", email:"", signedUp:false, promo:null, no:"", userName:"", org:"", proUrl:"", proAt:0 };
+  var state = { preset:"", name:"", parts:null, color:"", email:"", signedUp:false, promo:null, no:"", userName:"", org:"", proUrl:"", proAt:0, ref:"", refCode:"" };
   if (qs.get("reset") === "1") { try { localStorage.removeItem(LS); } catch(e){} history.replaceState(null, "", location.pathname); }
   try { state = Object.assign(state, JSON.parse(localStorage.getItem(LS) || "{}")); } catch(e){}
+  // 2026-09-14 친구 초대 링크(?r=코드)로 들어오면 가입 때 초대한 사람에게 연결 (친구 3개월 + 초대자 1개월)
+  (function(){ var r = (qs.get("r") || "").trim().toUpperCase(); if (/^[A-Z0-9]{4,12}$/.test(r)) { state.ref = r; save(); } })();
   function save(){ try { localStorage.setItem(LS, JSON.stringify(state)); } catch(e){} }
 
   function presetOf(id){ for (var i = 0; i < B.AGENT_PRESETS.length; i++) if (B.AGENT_PRESETS[i].id === id) return B.AGENT_PRESETS[i]; return null; }
@@ -826,6 +843,14 @@
       ["Figma나 PPT로 작업해둔 UI 디자인 파일도 뚝딱하고 구동가능한 웹앱으로 만들어줘요. 프론트엔드 개발자 도움 없이도 직관적으로 목업을 확인하고 수정할 수 있어서 효율적이에요.", "everyday", "디자이너 Mei****"],
       ["제 소중한 아이디어나 사고가 AI에 학습되고나면, AI만 똑똑해지고 사람은 도태되는게 아닌가 두려웠는데... 모든 파일이 로컬에 저장되고, 개개인의 에이전트 성장을 만들어준다니 안심하고 사용할 수 있었어요!", "writer", "크리에이터 Saf*****"]
     ],
+    th: [
+      ["มันเลียนแบบน้ำเสียงและโครงสร้างข้อเสนอของฉันได้เป๊ะ ผลลัพธ์จาก AI ทั่วไปเอาไปใช้ทันทีไม่ได้ — ตอนนี้ได้เอกสารที่ส่งงานได้ในวันเดียวกัน", "founder", "นักวางแผน Kyu***"],
+      ["เอเจนต์แก้ไขไฟล์ HWP และ Excel ให้โดยตรง ฉันเลยทำสัญญาและใบเสนอราคาแบบอัตโนมัติ ประหยัดเวลาไปหลายชั่วโมงทุกสัปดาห์", "accountant", "โปรดิวเซอร์ Hyung****"],
+      ["เราวางแผน CRM ด้วยกัน แล้วมันโพสต์คอนเทนต์โซเชียลและอีเมลทุกวัน พร้อมติดตามผล เหมือนมีนักการตลาดอีกคนที่จำแบรนด์เราได้", "marketer", "นักการตลาด Ar****"],
+      ["เครื่องมืออื่นแปลด้วยน้ำเสียงแบบ AI ที่ใช้ไม่ได้ Be.Ark เรียนรู้วิธีที่ฉันถอดความภาษาอังกฤษเป็นภาษาของฉัน แล้วร่างในสไตล์ของฉัน", "researcher", "ฟรีแลนซ์ Dong***"],
+      ["มันเปลี่ยนไฟล์ UI จาก Figma และ PPT ของฉันเป็นเว็บแอปที่ใช้งานได้จริง ตรวจและปรับม็อกอัปได้โดยไม่ต้องมีนักพัฒนา front-end", "everyday", "ดีไซเนอร์ Mei****"],
+      ["เคยกลัวว่าการป้อนไอเดียให้ AI จะทำให้ AI ฉลาดขึ้นฝ่ายเดียว ทุกอย่างอยู่บนเครื่องของฉัน และเอเจนต์ของฉันเองที่เติบโต — ในที่สุดก็วางใจได้", "writer", "ครีเอเตอร์ Saf*****"]
+    ],
     en: [
       ["It mirrors the tone and structure of my proposals exactly. Generic AI output was never usable as-is — now I get documents I can ship the same day.", "founder", "Planner Kyu***"],
       ["The agent edits HWP and Excel files directly, so I automated contracts and quotes. Hours saved every week.", "accountant", "Producer Hyung****"],
@@ -837,7 +862,7 @@
   };
   function renderTesti(){
     var g = $("testi-grid"); if (!g) return;
-    var list = TESTI[lang] || TESTI.ko; var html = "";
+    var list = TESTI[lang] || TESTI.en; var html = "";
     for (var i = 0; i < list.length; i++) {
       var custom = (window.BEARK_TESTI_AVATARS || {})[list[i][1]]; // 09-12: 코멘트 전용 미니미 (채용 프리셋과 구분)
       var p = presetOf(list[i][1]); var src = custom ? B.avatarPartsDataUrl(custom, 4) : (p ? B.avatarPartsDataUrl(p.avatar, 4) : "");
@@ -852,7 +877,7 @@
     // 2026-09-12 히어로 (innerHTML 허용 = 우리 문자열 상수뿐)
     $("hero-h1").innerHTML = S("heroH1"); $("hero-sub").textContent = S("heroSub"); $("mock-a1").innerHTML = S("mockA1");
     var isHome = qs.get("home") === "1";
-    $("hero-cta").textContent = S(isHome ? "heroCtaHome" : "heroCta"); $("hero-cta").href = isHome ? "#home" : "#st-hire";
+    if ($("hero-cta")) { $("hero-cta").textContent = S(isHome ? "heroCtaHome" : "heroCta"); $("hero-cta").href = isHome ? "#home" : "#st-hire"; } // 태국 페이지 = CTA 없음 (빠불로 09-14)
     renderTesti();
     var nodes = document.querySelectorAll("[data-i18n]");
     for (var i = 0; i < nodes.length; i++) nodes[i].textContent = S(nodes[i].getAttribute("data-i18n"));
@@ -918,6 +943,22 @@
     $("ho-line").addEventListener("click", function(){
       location.href = "https://line.me/R/share?text=" + encodeURIComponent(S("mailSubject") + "\n" + shareUrl);
     });
+    // 2026-09-14 빠불로: 친구 초대 블록 — 사원증 QR의 초대 코드로 링크 생성 (?r=코드 → 이 페이지)
+    var refCode = (typeof hcd !== "undefined" && hcd && hcd.refCode) ? hcd.refCode : (state.refCode || "");
+    if (refCode) {
+      var refUrl = "https://re-be.world/join/thai?r=" + encodeURIComponent(refCode);
+      $("refer").style.display = "block"; $("refer-url").textContent = refUrl.replace(/^https:\/\//, "");
+      var refText = function(){ return S("referShareText").replace("{url}", refUrl); };
+      $("rf-share").addEventListener("click", function(){
+        if (navigator.share) navigator.share({ title: "Be.Ark", text: refText(), url: refUrl }).catch(function(){});
+        else if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(refUrl); else prompt("URL", refUrl);
+      });
+      $("rf-line").addEventListener("click", function(){ location.href = "https://line.me/R/share?text=" + encodeURIComponent(refText()); });
+      $("rf-copy").addEventListener("click", function(){
+        var done = function(){ var b = $("rf-copy"); var t = b.textContent; b.textContent = S("copied"); setTimeout(function(){ b.textContent = t; }, 1800); };
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(refUrl).then(done, function(){ prompt("URL", refUrl); }); else prompt("URL", refUrl);
+      });
+    }
     // 2026-09-14 빠불로 "해당 ID로 바로 Stripe": 사원증 QR에 담긴 이메일을 결제 폼에 자동 채움 → 비밀번호만 입력하면 결제창
     if (typeof hcd !== "undefined" && hcd && hcd.email) { $("pemail").value = hcd.email; $("pemail").readOnly = true; }
     else if (state.email) { $("pemail").value = state.email; }
@@ -1096,8 +1137,11 @@
       var saved = r.status === 200 && r.body && r.body.ok;
       return post(FN, { type:"claim_promo", campaign:CAMPAIGN }, jwt).then(function(r2){
         var promo = (r2.body && r2.body.promo) || { attached:false, reason:(r2.body && r2.body.error) || "unknown" };
+        // 기존 계정도 초대 코드를 받아 사원증 QR에 담는다 (실패 = 초대 블록만 생략)
+        return post(FN, { type:"referral_code" }, jwt).then(function(r3){ state.refCode = String((r3.body && r3.body.code) || ""); }, function(){}).then(function(){
         finishSignup(email, promo, saved);
         prepareProQr(function(){ return mintProWithJwt(jwt); });
+        });
       });
     });
   }
@@ -1108,11 +1152,11 @@
     if (pw.length < 8) { msg(S("weak_password"), "err"); return; }
     var btn = $("submit"); btn.disabled = true; btn.textContent = S("signupBusy"); clearMsg();
     state.userName = $("uname").value.trim().slice(0, 80); state.org = $("uorg").value.trim().slice(0, 120); save();
-    post(FN, { type:"event_signup", campaign:CAMPAIGN, email:email, password:pw, name:state.userName, company:state.org, agent:agentPayload() })
+    post(FN, { type:"event_signup", campaign:CAMPAIGN, email:email, password:pw, name:state.userName, company:state.org, agent:agentPayload(), referral_code: state.ref || undefined })
       .then(function(r){
         if (r.status === 200 && r.body.ok && r.body.existing) return claimAsExisting(email, pw);
         if (r.status === 200 && r.body.ok) {
-          finishSignup(email, r.body.promo, r.body.agent_saved !== false);
+          state.refCode = String(r.body.referral_code || ""); finishSignup(email, r.body.promo, r.body.agent_saved !== false);
           prepareProQr(function(){ return mintProFor(email, pw); }); // 새 계정 = 방금 만든 비번으로 로그인해 결제창 URL 발급
           return;
         }
@@ -1126,7 +1170,7 @@
   bindCardButtons(cardData);
   $("next-btn").addEventListener("click", function(){ location.href = location.pathname + "?reset=1"; });
 
-  function cardData(){ return { email: state.email, name: state.name, preset: state.preset, color: state.color, parts: state.parts, no: state.no, joined: todayStr(), userName: state.userName || "" }; }
+  function cardData(){ return { email: state.email, refCode: state.refCode, name: state.name, preset: state.preset, color: state.color, parts: state.parts, no: state.no, joined: todayStr(), userName: state.userName || "" }; }
   function render(){
     var hired = !!(state.preset && state.name && state.parts);
     $("aname").value = state.name || "";
@@ -1154,6 +1198,7 @@
     PACK_KEYS().forEach(function(k){ f.push(String(p[k] || "")); });
     PACK_COLORS().forEach(function(k){ f.push(String(c[k] || "").replace(/^#/, "")); });
     f.push(String(d.email || ""));
+    f.push(String(d.refCode || "")); // 2026-09-14 초대 코드 (집 모드 "친구 초대")
     return b64u(f.join("|"));
   }
   function unpackCard(s){
@@ -1161,8 +1206,8 @@
     var parts = { v: 1, colors: {} }, i = 6;
     PACK_KEYS().forEach(function(k){ parts[k] = f[i++]; });
     PACK_COLORS().forEach(function(k){ parts.colors[k] = "#" + f[i++]; });
-    var email = f.length > i ? f[i] : "";
-    return { name: f[0], preset: f[1], color: "#" + f[2], no: f[3], joined: f[4], userName: f[5], parts: parts, email: email };
+    var email = f.length > i ? f[i] : ""; var refCode = f.length > i + 1 ? f[i + 1] : "";
+    return { name: f[0], preset: f[1], color: "#" + f[2], no: f[3], joined: f[4], userName: f[5], parts: parts, email: email, refCode: refCode };
   }
   function personalHomeUrl(d){ return HOME_URL + "&c=" + packCard(d); }
   function renderCardQr(){
