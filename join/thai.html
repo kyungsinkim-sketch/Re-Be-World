@@ -278,6 +278,22 @@
   .handoff b{display:block; font-size:16px; color:var(--accent)}
   .handoff p{font-size:13.5px; color:var(--ink-dim); margin-top:6px}
   .refer{border-color:#c49c4d55; background:rgba(196,156,77,.06)}
+  .picto-row{display:flex; gap:10px; margin-top:14px}
+  .picto{flex:1; display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:14px 16px; border-radius:12px; border:1px solid var(--line); background:var(--bg-soft); color:var(--ink); font-size:15px; font-weight:700; text-decoration:none; cursor:pointer; font-family:inherit}
+  .picto.primary{background:var(--accent); color:#15100a; border-color:var(--accent)}
+  .modal-bg{position:fixed; inset:0; z-index:60; background:#04060ad9; backdrop-filter:blur(6px); display:none; align-items:center; justify-content:center; padding:20px}
+  .modal-bg.open{display:flex}
+  .modal{position:relative; width:100%; max-width:440px; border:1px solid #c49c4d33; border-radius:20px; background:var(--bg-soft); padding:26px 22px}
+  .modal .x{position:absolute; top:12px; right:16px; cursor:pointer; color:var(--ink-dim); font-size:18px}
+  .modal h3{font-size:22px; letter-spacing:-.02em; text-align:center}
+  .modal p.msub{color:var(--ink-dim); font-size:14px; text-align:center; margin-top:8px}
+  .modal .dls{display:flex; flex-direction:column; gap:12px; margin-top:24px}
+  .dl-opt{display:flex; align-items:center; gap:14px; border:1px solid var(--line); background:#0a0e15; padding:14px 16px; border-radius:14px; text-decoration:none; color:var(--ink); transition:.15s}
+  .dl-opt:hover{border-color:var(--accent); transform:translateY(-2px)}
+  .dl-opt .os{font-size:22px; width:30px; text-align:center}
+  .dl-opt .lbl{flex:1} .dl-opt .lbl b{font-size:15px; display:block} .dl-opt .lbl span{font-size:12px; color:var(--ink-faint)}
+  .dl-opt .arr{color:var(--accent); font-weight:700}
+  .modal .mnote{margin-top:18px; font-size:12px; color:var(--ink-faint); line-height:1.7}
   .handoff .hurl{margin-top:10px; padding:10px 12px; border-radius:8px; background:#0f141d; border:1px solid var(--line);
     font-family:"Geist Mono",monospace; font-size:15px; font-weight:700; color:var(--ink); text-align:center; letter-spacing:.01em}
   .handoff .hbtns{display:flex; flex-direction:column; gap:8px; margin-top:10px}
@@ -441,8 +457,7 @@
   <!-- ── 집 모드 (QR) ──────────────────────────────────────────── -->
   <div id="home" style="display:none">
     <section class="step on">
-      <div class="s-head"><span class="s-num">✓</span><h2 data-i18n="hTitle"></h2></div>
-      <!-- 2026-09-13: 개인 QR(?home=1&card=…)로 들어오면 디지털 사원증을 맨 위에 — 인쇄 대신 폰에 저장 -->
+      <!-- 2026-09-13: 개인 QR(?home=1&c=…)로 들어오면 디지털 사원증을 맨 위에 — 인쇄 대신 폰에 저장 -->
       <div id="home-card-wrap" style="display:none">
         <b data-i18n="homeCardTitle" style="display:block;font-size:17px;color:var(--accent);margin-bottom:8px"></b>
         <div class="idcard" id="home-idcard"></div>
@@ -460,7 +475,22 @@
           <button type="button" class="ghost" id="rf-copy" data-i18n="copyBtn"></button>
         </div>
       </div>
-      <b data-i18n="installTitle" style="display:block;font-size:17px;color:var(--accent);margin:18px 0 6px"></b>
+      <!-- 집 모드 Pro 시작 (2026-09-14 빠불로: 사원증·초대 바로 아래) — 이메일은 사원증 QR에서 자동, 비밀번호만 → Stripe -->
+      <div class="pro prohome" id="prohome">
+        <b data-i18n="proTitleHome"></b>
+        <div class="prolead" data-i18n="proLead"></div>
+        <div class="prosub" data-i18n="proSub"></div>
+        <p class="pronote" id="pronote-home"></p>
+        <div class="msg show info" id="prodone" style="display:none" data-i18n="proDone"></div>
+        <form id="prof" novalidate>
+          <div class="field"><label for="pemail" data-i18n="email"></label><input id="pemail" type="email" inputmode="email" autocomplete="email" autocapitalize="none"></div>
+          <div class="field"><label for="ppw" data-i18n="pw"></label><input id="ppw" type="password" autocomplete="current-password"><div class="hint" data-i18n="proLogin"></div></div>
+          <button type="submit" id="prosubmit" data-i18n="proHomeBtn"></button>
+        </form>
+        <div class="msg" id="promsg-home"></div>
+      </div>
+      <!-- 데스크탑에 설치 후 시작하기 (2026-09-14 빠불로: 제목 "사원증 받으셨죠?" 삭제, 다운로드 = 픽토그램 1개 → 팝업 3종, 웹사이트 = 링크 픽토그램) -->
+      <b data-i18n="installTitle" style="display:block;font-size:17px;color:var(--accent);margin:22px 0 6px"></b>
       <p class="s-desc" data-i18n="hDesc"></p>
       <ol class="home">
         <li data-i18n="h1s"></li><li data-i18n="h2s"></li><li data-i18n="h3s"></li>
@@ -477,26 +507,32 @@
           <button type="button" class="ghost" id="ho-copy" data-i18n="copyBtn"></button>
         </div>
       </div>
-      <!-- 집 모드 Pro 시작 (2026-09-12): 로그인 → 결제창 (행사 중 3개월 / 9/30까지 2개월은 서버가 날짜로 판정) -->
-      <div class="pro prohome" id="prohome">
-        <b data-i18n="proTitleHome"></b>
-        <div class="prolead" data-i18n="proLead"></div>
-        <div class="prosub" data-i18n="proSub"></div>
-        <p class="pronote" id="pronote-home"></p>
-        <div class="msg show info" id="prodone" style="display:none" data-i18n="proDone"></div>
-        <form id="prof" novalidate>
-          <div class="field"><label for="pemail" data-i18n="email"></label><input id="pemail" type="email" inputmode="email" autocomplete="email" autocapitalize="none"></div>
-          <div class="field"><label for="ppw" data-i18n="pw"></label><input id="ppw" type="password" autocomplete="current-password"><div class="hint" data-i18n="proLogin"></div></div>
-          <button type="submit" id="prosubmit" data-i18n="proHomeBtn"></button>
-        </form>
-        <div class="msg" id="promsg-home"></div>
+      <div class="picto-row">
+        <button type="button" class="picto primary" id="dl-open">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M6 9l6 6 6-6M4 20h16"/></svg>
+          <span data-i18n="dlBtn"></span>
+        </button>
+        <a class="picto" id="dl-site" href="https://re-be.world/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+          <span data-i18n="siteBtn"></span>
+        </a>
       </div>
-      <a class="dl primary" id="dl-mac" href="#" data-i18n="dlMac"></a>
-      <a class="dl" id="dl-mac-intel" href="#" data-i18n="dlMacIntel"></a>
-      <a class="dl" id="dl-win" href="#" data-i18n="dlWin"></a>
-      <a class="dl" id="dl-site" href="https://re-be.world/ko" data-i18n="dlSite"></a>
       <div class="coupon show" style="margin-top:16px"><b data-i18n="couponTitle"></b><p data-i18n="hCoupon"></p></div>
     </section>
+  </div>
+  <!-- 다운로드 팝업 (index.html dlModal과 같은 3종) -->
+  <div class="modal-bg" id="dlModal">
+    <div class="modal">
+      <span class="x" id="dlClose">✕</span>
+      <h3 data-i18n="dlModalTitle"></h3>
+      <p class="msub" data-i18n="dlModalSub"></p>
+      <div class="dls">
+        <a class="dl-opt" id="dl-mac" href="#"><span class="os">🍎</span><span class="lbl"><b>macOS</b><span>Apple Silicon</span></span><span class="arr">↓</span></a>
+        <a class="dl-opt" id="dl-mac-intel" href="#"><span class="os">🍎</span><span class="lbl"><b>macOS</b><span>Intel</span></span><span class="arr">↓</span></a>
+        <a class="dl-opt" id="dl-win" href="#"><span class="os">🪟</span><span class="lbl"><b>Windows</b><span>x64 · .exe</span></span><span class="arr">↓</span></a>
+      </div>
+      <p class="mnote" data-i18n="dlModalNote"></p>
+    </div>
   </div>
 
   <div class="foot"><a href="/privacy.html" data-i18n="privacy"></a> · Be.Ark by Paulus</div>
@@ -593,7 +629,7 @@
       promoNotAttached: "계정은 만들어졌는데 쿠폰이 붙지 않았어요. 결제창에서 코드 THAI3를 직접 입력하세요.",
       network: "네트워크가 불안정해요. 다시 눌러주세요.",
       roleLabel: "역할", joinedLabel: "입사", noLabel: "사번", qrLabel: "QR로 집에서 합류",
-      referTitle: "🎁 친구 초대 — 친구는 Pro 3개월, 나는 +1개월", referDesc: "이 링크로 친구가 에이전트를 채용하고 Pro를 시작하면 친구는 3개월 무료, 나는 Pro 1개월이 추가돼요. 초대한 만큼 무제한 적립!", shareFriendBtn: "친구에게 공유", referShareText: "Be.Ark에서 나만의 AI 팀원을 무료로 채용하고 Pro 3개월 받으세요 👉 {url}", installTitle: "데스크탑에 설치 후 시작하기"
+      referTitle: "🎁 친구 초대 — 친구는 Pro 3개월, 나는 +1개월", referDesc: "이 링크로 친구가 에이전트를 채용하고 Pro를 시작하면 친구는 3개월 무료, 나는 Pro 1개월이 추가돼요. 초대한 만큼 무제한 적립!", shareFriendBtn: "친구에게 공유", referShareText: "Be.Ark에서 나만의 AI 팀원을 무료로 채용하고 Pro 3개월 받으세요 👉 {url}", installTitle: "데스크탑에 설치 후 시작하기", dlBtn: "다운로드", siteBtn: "웹사이트", dlModalTitle: "Be.Ark 다운로드", dlModalSub: "플랫폼을 고르세요 · 무료", dlModalNote: "macOS 13+ / Windows 10+ (x64) · 8GB RAM(로컬 모델은 16GB+ 권장). Windows는 SmartScreen이 뜨면 '추가 정보 → 실행'."
     },
     th: {
       tag: "Thailand Early Bird · ข้อเสนอพิเศษ",
@@ -666,7 +702,7 @@
       promoNotAttached: "สร้างบัญชีแล้ว แต่คูปองยังไม่ถูกแนบ กรอกรหัส THAI3 ตอนชำระเงิน",
       network: "เครือข่ายไม่เสถียร กรุณาแตะอีกครั้ง",
       roleLabel: "บทบาท", joinedLabel: "เข้าร่วม", noLabel: "เลขที่", qrLabel: "สแกนเพื่อเข้าร่วมที่บ้าน",
-      referTitle: "🎁 ชวนเพื่อน — เพื่อนได้ Pro 3 เดือน คุณได้ +1 เดือน", referDesc: "เมื่อเพื่อนจ้างเอเจนต์ผ่านลิงก์นี้และเริ่ม Pro เพื่อนได้ฟรี 3 เดือน และคุณได้ Pro เพิ่ม 1 เดือน ไม่จำกัด — ชวนกี่คนก็ได้เพิ่มเท่านั้น!", shareFriendBtn: "แชร์ให้เพื่อน", referShareText: "จ้างเพื่อนร่วมทีม AI ของคุณเองบน Be.Ark ฟรี และรับ Pro 3 เดือน 👉 {url}", installTitle: "ติดตั้งบนคอมพิวเตอร์แล้วเริ่มใช้งาน"
+      referTitle: "🎁 ชวนเพื่อน — เพื่อนได้ Pro 3 เดือน คุณได้ +1 เดือน", referDesc: "เมื่อเพื่อนจ้างเอเจนต์ผ่านลิงก์นี้และเริ่ม Pro เพื่อนได้ฟรี 3 เดือน และคุณได้ Pro เพิ่ม 1 เดือน ไม่จำกัด — ชวนกี่คนก็ได้เพิ่มเท่านั้น!", shareFriendBtn: "แชร์ให้เพื่อน", referShareText: "จ้างเพื่อนร่วมทีม AI ของคุณเองบน Be.Ark ฟรี และรับ Pro 3 เดือน 👉 {url}", installTitle: "ติดตั้งบนคอมพิวเตอร์แล้วเริ่มใช้งาน", dlBtn: "ดาวน์โหลด", siteBtn: "เว็บไซต์", dlModalTitle: "ดาวน์โหลด Be.Ark", dlModalSub: "เลือกแพลตฟอร์มของคุณ · ฟรี", dlModalNote: "macOS 13+ / Windows 10+ (x64) · RAM 8 GB (แนะนำ 16 GB+ สำหรับโมเดลโลคอล) บน Windows ถ้ามี SmartScreen ให้กด More info → Run anyway"
     },
     en: {
       tag: "Thailand Early Bird · Special offer",
@@ -739,7 +775,7 @@
       promoNotAttached: "Your account was created but the coupon wasn't attached. Enter code THAI3 at checkout.",
       network: "The network is unstable. Please tap again.",
       roleLabel: "Role", joinedLabel: "Joined", noLabel: "No.", qrLabel: "Scan to join at home",
-      referTitle: "🎁 Invite a friend — they get 3 months of Pro, you get +1 month", referDesc: "When a friend hires an agent through this link and starts Pro, they get 3 months free and you get 1 extra month of Pro. No limit — every friend adds a month!", shareFriendBtn: "Share with a friend", referShareText: "Hire your own AI teammate on Be.Ark for free and get 3 months of Pro 👉 {url}", installTitle: "Install on your computer & start"
+      referTitle: "🎁 Invite a friend — they get 3 months of Pro, you get +1 month", referDesc: "When a friend hires an agent through this link and starts Pro, they get 3 months free and you get 1 extra month of Pro. No limit — every friend adds a month!", shareFriendBtn: "Share with a friend", referShareText: "Hire your own AI teammate on Be.Ark for free and get 3 months of Pro 👉 {url}", installTitle: "Install on your computer & start", dlBtn: "Download", siteBtn: "Website", dlModalTitle: "Download Be.Ark", dlModalSub: "Pick your platform · Free", dlModalNote: "macOS 13+ / Windows 10+ (x64) · 8 GB RAM (16 GB+ recommended for local models). On Windows, if SmartScreen appears: More info → Run anyway."
     }
   };
   var PRESET_STR = {
@@ -897,14 +933,24 @@
     $("dl-mac").href = DL_MAC; $("dl-mac-intel").href = DL_MAC_INTEL; $("dl-win").href = DL_WIN;
     // 2026-09-13 빠불로: QR로 들어온 집 모드는 "사원증 받으셨죠?"가 최상위 — 홍보(히어로·코멘트·영상)는 그 아래로 이동.
     //   상단바(로고·언어)는 그대로 두고 섹션 3개 + 구분선만 main 뒤로 옮긴다. 채용용 제목/부제는 숨김(태그만 유지).
+    // 2026-09-14 빠불로: 집 모드는 사원증·초대·Pro·설치만 — 채용 홍보(히어로·후기·영상)는 중복 경험이라 통째로 숨김
     (function(){
-      var main = document.querySelector("main.wrap"); if (!main || !main.parentNode) return;
-      var after = main.nextSibling;
+      var main = document.querySelector("main.wrap"); if (main) main.classList.add("home-first");
       ["section.hero", "section.testi", "section.video", "hr.divider"].forEach(function(sel){
-        var el = document.querySelector("#promo " + sel); if (el) main.parentNode.insertBefore(el, after);
+        var el = document.querySelector("#promo " + sel); if (el) el.style.display = "none";
       });
       var h1 = $("h1"), sub = $("sub"); if (h1) h1.style.display = "none"; if (sub) sub.style.display = "none";
-      main.classList.add("home-first");
+    })();
+    // 다운로드 팝업 (index.html과 같은 3종)
+    (function(){
+      var modal = $("dlModal"); if (!modal) return;
+      var open = function(e){ if (e) e.preventDefault(); modal.classList.add("open"); };
+      var close = function(){ modal.classList.remove("open"); };
+      $("dl-open").addEventListener("click", open);
+      $("dlClose").addEventListener("click", close);
+      modal.addEventListener("click", function(e){ if (e.target === modal) close(); });
+      document.addEventListener("keydown", function(e){ if (e.key === "Escape") close(); });
+      ["dl-mac", "dl-mac-intel", "dl-win"].forEach(function(id){ $(id).addEventListener("click", function(){ setTimeout(close, 150); }); });
     })();
     // 2026-09-13 잉크 소진: 개인 QR(?home=1&card=…)이면 디지털 사원증을 맨 위에 + 이미지 저장. 공유 링크도 개인 URL 유지.
     var shareUrl = HOME_URL;
