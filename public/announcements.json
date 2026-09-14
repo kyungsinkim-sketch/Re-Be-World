@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-09-14-beta-1-6-0",
+    "date": "2026-09-14",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.6.0 — 서울 서버 이전 · PPTX 생성/병합 · 로컬 모델 관리 · 안정화",
+    "body": "🇰🇷 서버가 서울로 이사했어요 — 로그인·TeamSpace·결제 서버가 한국 리전으로 옮겨져 응답이 빨라집니다. 업데이트 후 재로그인이 1회 필요하며, 비밀번호·프로필·TeamSpace·결제 기록은 그대로 보존됩니다. 이전 버전(1.5.x)은 서버 기능이 동작하지 않으니 꼭 업데이트해 주세요.\n\n📊 PPTX 새 문서 생성 — 양식 없이 \"덱 만들어줘\"로 새 프레젠테이션을 만듭니다. 팀원은 내용과 레이아웃만 정하고, 좌표·색·폰트는 Be.Ark가 일관되게 배치합니다.\n\n🧩 PPTX 병합 — 여러 덱의 슬라이드를 순서대로 합칩니다. 원본 레이아웃·마스터·테마·미디어가 그대로 따라옵니다.\n\n🧠 로컬 모델 관리 — 설치된 모델 확인·삭제, 구버전(qwen3.6)에서 최신(qwen3.8)으로 업그레이드를 모델 선택 창에서 바로 할 수 있어요. 팀원 설정도 함께 전환됩니다.\n\n👥 TeamSpace 팀원 답변은 개설자의 Be.Ark가 처리해요 — 개설자가 오프라인이면 메시지는 대기열에 쌓였다가 접속하면 이어서 답합니다.\n\n🔍 웹검색이 안정됐어요 — 간헐적 검색 실패를 자동 재시도하고, 결과가 없으면 다른 검색 엔진으로 넘어갑니다.\n\n🕒 팀원이 지금 시각을 정확히 알아요 — 사용자 컴퓨터 시간대 기준 날짜·요일·시간을 보고 답합니다.\n\n🖼️ Living Files에서 이미지·미디어를 OS 기본 앱으로 바로 열 수 있어요.\n\n🔧 CLI 구독 팀원이 지난 대화를 따라 말하던 문제와, 새 문서 만들기를 \"못 한다\"고 하던 문제를 고쳤습니다."
+  },
+  {
+    "id": "2026-09-14-beta-1-6-0-en",
+    "date": "2026-09-14",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.6.0 — Seoul servers · PPTX create/merge · local model manager · stability",
+    "body": "🇰🇷 Our servers moved to Seoul — sign-in, TeamSpace, and billing now run in the Korea region for faster responses. You'll need to sign in once after updating; passwords, profiles, TeamSpaces, and billing history are all preserved. Older builds (1.5.x) can no longer reach the server, so please update.\n\n📊 Create PPTX from scratch — say \"make me a deck\" and your teammate builds a new presentation. It decides content and layout; Be.Ark places coordinates, colors, and fonts consistently.\n\n🧩 Merge PPTX — combine slides from several decks in order. Original layouts, masters, themes, and media come along intact.\n\n🧠 Local model manager — see installed models, delete them, or upgrade from qwen3.6 to qwen3.8 right from the model picker. Teammate settings switch over too.\n\n👥 TeamSpace replies are handled by the owner's Be.Ark — if the owner is offline, messages queue up and are answered when they're back.\n\n🔍 Web search is steadier — intermittent failures retry automatically, and empty results fall back to another engine.\n\n🕒 Your teammate knows the current time — date, weekday, and time in your computer's time zone.\n\n🖼️ Open images and media from Living Files in your OS default app.\n\n🔧 Fixed CLI-subscription teammates echoing past conversation and claiming they \"can't\" create new documents."
+  },
+  {
     "id": "2026-09-12-beta-1-5-11",
     "date": "2026-09-12",
     "lang": "ko",
