@@ -347,7 +347,7 @@
     <div class="pw">
       <div class="sec-h"><h2 data-i18n="videoTitle"></h2><p data-i18n="videoSub"></p></div>
       <div class="video-frame">
-        <iframe src="https://www.youtube.com/embed/jvsTvkZSvjk" title="Be.Ark" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+        <iframe id="yt-video" src="https://www.youtube.com/embed/14lhSoVAa7A" title="Be.Ark" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
       </div>
     </div>
   </section>
@@ -524,7 +524,7 @@
       h1: "'나만의 AI에이전트를 채용하세요!'",
       sub: "<b>〈Pro 모드 3개월 무료 이용권 증정〉</b>지금 AI 팀원을 채용하고 사원증을 받으세요.<br>컴퓨터에서 같은 이메일로 로그인하면 그 팀원이 Be.Ark에 합류해요.",
       // 2026-09-12 히어로 (랜딩 이식, 부스용 한 줄 CTA)
-      heroPill: "태국 얼리버드 × Be.Ark · 얼리버드 채용 중",
+      heroPill: "태국 크리에이터 × Be.Ark · 얼리버드 채용 중",
       heroH1: "나만의 <span class=\"hl\">AI 직원</span>을<br>무료로 채용하세요!",
       heroSub: "나의 대화·기억·파일 — 전부 내 컴퓨터에. 내 말투와 방식을 아는 AI 팀원을 지금 채용하고 사원증을 받으세요.",
       heroCta: "지금 무료로 채용하기 ↓", heroCtaHome: "앱 받고 팀원 만나기 ↓",
@@ -599,7 +599,7 @@
       tag: "Thailand Early Bird · ข้อเสนอพิเศษ",
       h1: "'จ้างเอเจนต์ AI ของคุณเอง!'",
       sub: "<b>〈ฟรี Pro 3 เดือน〉</b>จ้างเพื่อนร่วมทีม AI ตอนนี้และรับบัตรพนักงาน<br>เข้าสู่ระบบบนคอมพิวเตอร์ด้วยอีเมลเดียวกัน แล้วเพื่อนร่วมทีมจะเข้าร่วมใน Be.Ark",
-      heroPill: "Thailand Early Bird × Be.Ark · เปิดรับสมัคร Early Bird",
+      heroPill: "Thailand Creators × Be.Ark · เปิดรับสมัคร Early Bird",
       heroH1: "จ้าง <span class=\"hl\">พนักงาน AI</span> ของคุณเอง<br>— ฟรี!",
       heroSub: "แชท ความจำ และไฟล์ของคุณ — ทั้งหมดอยู่บนคอมพิวเตอร์ของคุณเอง จ้างเพื่อนร่วมทีม AI ที่เรียนรู้สไตล์ของคุณตอนนี้ และรับบัตรพนักงาน",
       heroCta: "จ้างฟรีตอนนี้ ↓", heroCtaHome: "ดาวน์โหลดแอปและพบเพื่อนร่วมทีม ↓",
@@ -672,7 +672,7 @@
       tag: "Thailand Early Bird · Special offer",
       h1: "'Hire your own AI agent!'",
       sub: "<b>〈3 months of Pro, free〉</b>Hire an AI teammate now and get an employee card.<br>Log in on your computer with the same email and the teammate joins you in Be.Ark.",
-      heroPill: "Thailand Early Bird × Be.Ark · Early-bird hiring",
+      heroPill: "Thailand Creators × Be.Ark · Early-bird hiring",
       heroH1: "Hire your own <span class=\"hl\">AI employee</span><br>— for free!",
       heroSub: "Your chats, memory and files — all on your own computer. Hire an AI teammate who learns your voice, right now, and get your employee card.",
       heroCta: "Hire for free now ↓", heroCtaHome: "Get the app & meet your teammate ↓",
@@ -882,6 +882,8 @@
     var nodes = document.querySelectorAll("[data-i18n]");
     for (var i = 0; i < nodes.length; i++) nodes[i].textContent = S(nodes[i].getAttribute("data-i18n"));
     $("dl-site").href = lang === "ko" ? "https://re-be.world/ko" : "https://re-be.world/";
+    // 2026-09-14 빠불로: 영상 = 한국어면 한글판, 영어·태국어면 영문판 (index.html과 같은 영상)
+    var yt = $("yt-video"); if (yt) { var want = "https://www.youtube.com/embed/" + (lang === "ko" ? "jvsTvkZSvjk" : "14lhSoVAa7A"); if (yt.getAttribute("src") !== want) yt.setAttribute("src", want); }
     renderPresets(); render();
   }
   function setLang(l){ lang = l; try { localStorage.setItem(LS_LANG, l); } catch(e){} applyLang(); }
