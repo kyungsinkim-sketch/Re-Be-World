@@ -260,7 +260,17 @@
   .cardqr-how{flex:1; min-width:0}
   .cardqr-how b{display:block; font-size:18px; color:var(--accent); margin-bottom:6px}
   .cardqr-how p{font-size:15px; line-height:1.7; color:var(--ink-dim)}
-  @media(max-width:560px){ .cardqr-wrap{flex-direction:column; align-items:stretch} .cardqr{width:min(80vw,320px); margin:0 auto} }
+  @media(max-width:560px){ .cardqr-wrap{flex-direction:column; align-items:stretch} .cardqr{width:min(70vw,280px); margin:0 auto} }
+  /* 2026-09-15 빠불로(아이폰 하단 깨짐): 가입 전엔 QR 박스(빈 흰 사각형)·이동 버튼을 아예 숨긴다 — 잠긴 단계에 흰 박스만 떠 있었음 */
+  .step.locked .cardqr-wrap{display:none}
+  .cardqr-how button{margin-top:12px}
+  /* 모바일 안전장치: 폭 넘침 방지 */
+  html{-webkit-text-size-adjust:100%}
+  img, svg, video, iframe{max-width:100%}
+  .hurl, .cardqr-how, .refer p, .handoff p{overflow-wrap:anywhere; word-break:break-word}
+  .picto-row{flex-wrap:wrap}
+  .modal{max-height:90dvh; overflow:auto}
+  @media(max-width:420px){ .picto{font-size:14px; padding:0 10px; gap:8px} .hero-qr > div{width:120px; height:120px} }
   #home-idcard{margin-bottom:12px}
   /* Pro 시작 (④ 현장 QR / 집 모드 로그인) */
   .pro{border-color:#c49c4d55; background:linear-gradient(180deg, #c49c4d14, transparent 60%), var(--bg-soft)}
