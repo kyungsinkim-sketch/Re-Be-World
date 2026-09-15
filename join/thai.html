@@ -101,6 +101,10 @@
   .ebar{display:flex; gap:8px; margin-top:10px}
   .ebar button{margin:0; padding:9px; font-size:13px}
   label{display:block; font-size:15px; color:var(--ink-dim); margin:0 0 8px}
+  /* 2026-09-16 빠불로(현장 피드백: 이름 칸을 못 알아본다): 에이전트 이름 입력 칸 강조 */
+  .field.hl-field{padding:14px 14px 12px; border:1.5px solid var(--accent); border-radius:12px; background:var(--accent-soft); box-shadow:0 0 0 4px #c49c4d22}
+  .field.hl-field label{color:var(--ink); font-weight:700; font-size:16px}
+  .field.hl-field .hint{color:var(--ink)}
   input{width:100%; padding:16px 16px; font-size:17px; color:var(--ink); background:#0f141d; border:1px solid var(--line);
         border-radius:12px; outline:none; font-family:inherit}
   input:focus{border-color:var(--accent)}
@@ -367,11 +371,6 @@
 <main class="wrap event-head">
 
   <!-- 2026-09-12 빠불로 4차: 제목 한 줄 → 태그 → 안내 3줄, 전부 가운데 -->
-  <div class="ehead">
-    <h1 id="h1"></h1>
-    <div class="tag" data-i18n="tag"></div>
-    <p class="sub" id="sub"></p>
-  </div>
 
   <!-- ── 현장 모드 ─────────────────────────────────────────────── -->
   <div id="site">
@@ -381,7 +380,7 @@
       <div class="s-head"><span class="s-num">1</span><h2 data-i18n="s1Title"></h2><span class="s-done" data-i18n="done"></span></div>
       <p class="s-desc" data-i18n="s1Desc"></p>
       <div class="presets" id="presets"></div>
-      <div class="field">
+      <div class="field hl-field">
         <label for="aname" data-i18n="nameLabel"></label>
         <input id="aname" type="text" maxlength="40" autocomplete="off" autocapitalize="words">
         <div class="hint" data-i18n="nameHint"></div>
@@ -931,7 +930,7 @@
   function applyLang(){
     document.documentElement.lang = lang;
     $("lang-ko").className = lang === "ko" ? "on" : ""; $("lang-en").className = lang === "en" ? "on" : ""; $("lang-th").className = lang === "th" ? "on" : "";
-    $("h1").innerHTML = S("h1"); $("sub").innerHTML = S("sub"); // 둘 다 우리 상수만 (유저 입력 ❌)
+    if ($("h1")) $("h1").innerHTML = S("h1"); if ($("sub")) $("sub").innerHTML = S("sub"); // 2026-09-16 이벤트 헤더 삭제(빠불로) — 가드
     // 2026-09-12 히어로 (innerHTML 허용 = 우리 문자열 상수뿐)
     $("hero-h1").innerHTML = S("heroH1"); $("hero-sub").textContent = S("heroSub"); $("mock-a1").innerHTML = S("mockA1");
     var isHome = qs.get("home") === "1";
