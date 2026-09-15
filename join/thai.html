@@ -354,34 +354,13 @@
         <div class="pill"><span class="dot"></span> <span data-i18n="heroPill"></span></div>
         <h1 id="hero-h1"></h1>
         <p class="hsub" id="hero-sub"></p>
-        <!-- 2026-09-15 빠불로: 노트 문구 대신 이 페이지 QR — 미팅 자리에서 폰으로 가져가 진행 -->
-        <div class="hero-qr"><div id="hero-qr" aria-label="QR"></div><p class="note" data-i18n="heroQrNote"></p></div>
       </div>
 
-      <!-- 2026-09-12 빠불로: 목업 대신 실제 구동 영상 (2클립 이어붙임, 무음·자동반복 — /landing/beark-demo.mp4) -->
-      <div class="demo">
-        <div class="mock-bar"><i></i><i></i><i></i><span>Be.Ark</span></div>
-        <video id="demo-video" src="/landing/beark-demo.mp4" poster="/landing/beark-demo-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Be.Ark demo"></video>
-      </div>
       <span id="mock-a1" hidden></span>
     </div>
   </section>
 
-  <section class="testi">
-    <div class="pw">
-      <div class="sec-h"><h2 data-i18n="testiTitle"></h2><p data-i18n="testiSub"></p></div>
-      <div class="tg" id="testi-grid"></div>
-    </div>
-  </section>
 
-  <section class="video">
-    <div class="pw">
-      <div class="sec-h"><h2 data-i18n="videoTitle"></h2><p data-i18n="videoSub"></p></div>
-      <div class="video-frame">
-        <iframe id="yt-video" src="https://www.youtube.com/embed/14lhSoVAa7A" title="Be.Ark" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
-      </div>
-    </div>
-  </section>
   <hr class="divider">
 </div>
 
@@ -554,6 +533,28 @@
   <div class="foot"><a href="/privacy.html" data-i18n="privacy"></a> · Be.Ark by Paulus</div>
 </main>
 
+  <!-- 2026-09-16 빠불로(현장 피드백: 위에 내용이 너무 많다) — 앱 구동 화면·유저 코멘트·영상은 맨 아래로 -->
+  <section class="video"><div class="pw">
+      <!-- 2026-09-12 빠불로: 목업 대신 실제 구동 영상 (2클립 이어붙임, 무음·자동반복 — /landing/beark-demo.mp4) -->
+      <div class="demo">
+        <div class="mock-bar"><i></i><i></i><i></i><span>Be.Ark</span></div>
+        <video id="demo-video" src="/landing/beark-demo.mp4" poster="/landing/beark-demo-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Be.Ark demo"></video>
+      </div>
+  </div></section>
+  <section class="testi">
+    <div class="pw">
+      <div class="sec-h"><h2 data-i18n="testiTitle"></h2><p data-i18n="testiSub"></p></div>
+      <div class="tg" id="testi-grid"></div>
+    </div>
+  </section>
+  <section class="video">
+    <div class="pw">
+      <div class="sec-h"><h2 data-i18n="videoTitle"></h2><p data-i18n="videoSub"></p></div>
+      <div class="video-frame">
+        <iframe id="yt-video" src="https://www.youtube.com/embed/14lhSoVAa7A" title="Be.Ark" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+      </div>
+    </div>
+  </section>
 <div id="print-only"><img id="print-img" alt=""></div>
 <script src="/join/beark-card.js"></script>
 <script src="/join/testi-avatars.js"></script>
@@ -724,7 +725,7 @@
     },
     en: {
       tag: "Thailand Early Bird · Special offer",
-      h1: "'Hire your own AI agent!'",
+      h1: "'Create your own AI agent!'",
       sub: "<b>〈3 months of Pro, free〉</b>Hire an AI teammate now and get an employee card.<br>Log in on your computer with the same email and the teammate joins you in Be.Ark.",
       heroPill: "Thailand Creators × Be.Ark · Early-bird hiring",
       heroH1: "Hire your own <span class=\"hl\">AI employee</span><br>— for free!",
@@ -810,7 +811,6 @@
   };
 
   var B = window.BeArkCard;
-  try { $("hero-qr").innerHTML = B.qrSvg("https://www.re-be.world/join/thai", 4, 0); } catch(e){} // 2026-09-15 페이지 QR
   var qs = new URLSearchParams(location.search);
   // 데모 영상: 자동재생이 막히면(일부 폰) 컨트롤을 보여줘 손으로 재생
   (function(){ var v = document.getElementById("demo-video"); if (!v) return;
