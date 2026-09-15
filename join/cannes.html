@@ -186,9 +186,9 @@
   .pill{display:inline-flex; align-items:center; gap:8px; font-size:clamp(13px,1.4vw,18px); color:var(--ink-dim);
     border:1px solid var(--line); background:var(--bg-soft); padding:6px 14px; border-radius:999px; margin-bottom:22px}
   .pill .dot{width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 10px var(--accent)}
-  .hero h1{font-size:clamp(44px,9vw,128px); line-height:1.04; letter-spacing:-.03em; font-weight:800}
+  .hero h1{font-size:clamp(31px,6.3vw,90px); line-height:1.08; letter-spacing:-.03em; font-weight:800} /* 2026-09-16 빠불로: 70%로 축소 */
   .hero h1 .hl{background:linear-gradient(120deg,var(--accent),#e6cf95); -webkit-background-clip:text; background-clip:text; color:transparent}
-  .hero .hsub{max-width:900px; margin:26px auto 0; font-size:clamp(17px,2.6vw,30px); color:var(--ink-dim)}
+  .hero .hsub{max-width:760px; margin:20px auto 0; font-size:clamp(14px,1.8vw,21px); color:var(--ink-dim)}
   .hero .cta-row{display:flex; justify-content:center; margin-top:44px}
   .hero .cta{display:inline-flex; align-items:center; gap:10px; width:auto; margin:0; padding:clamp(20px,2.6vw,34px) clamp(38px,5vw,72px); font-size:clamp(20px,3.8vw,44px);
     font-weight:800; border-radius:16px; color:#15100a; background:var(--accent); text-decoration:none; letter-spacing:-.01em;
@@ -333,11 +333,6 @@
 <main class="wrap event-head">
 
   <!-- 2026-09-12 빠불로 4차: 제목 한 줄 → 태그 → 안내 3줄, 전부 가운데 -->
-  <div class="ehead">
-    <h1 id="h1"></h1>
-    <div class="tag" data-i18n="tag"></div>
-    <p class="sub" id="sub"></p>
-  </div>
 
   <!-- ── 현장 모드 ─────────────────────────────────────────────── -->
   <div id="site">
@@ -759,7 +754,7 @@
   function applyLang(){
     document.documentElement.lang = lang;
     $("lang-ko").className = lang === "ko" ? "on" : ""; $("lang-en").className = lang === "en" ? "on" : "";
-    $("h1").innerHTML = S("h1"); $("sub").innerHTML = S("sub"); // 둘 다 우리 상수만 (유저 입력 ❌)
+    if ($("h1")) $("h1").innerHTML = S("h1"); if ($("sub")) $("sub").innerHTML = S("sub"); // 2026-09-16 이벤트 헤더 삭제(빠불로) — 가드
     // 2026-09-12 히어로 (innerHTML 허용 = 우리 문자열 상수뿐)
     $("hero-h1").innerHTML = S("heroH1"); $("hero-sub").textContent = S("heroSub");
     var isHome = qs.get("home") === "1";
