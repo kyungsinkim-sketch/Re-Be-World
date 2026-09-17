@@ -186,9 +186,9 @@
   .pill{display:inline-flex; align-items:center; gap:8px; font-size:clamp(13px,1.4vw,18px); color:var(--ink-dim);
     border:1px solid var(--line); background:var(--bg-soft); padding:6px 14px; border-radius:999px; margin-bottom:22px}
   .pill .dot{width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 10px var(--accent)}
-  .hero h1{font-size:clamp(22px,4.4vw,63px); line-height:1.12; letter-spacing:-.02em; font-weight:800} /* 2026-09-17 빠불로: 다시 70% (원본 대비 49%) */
+  .hero h1{font-size:clamp(29px,5.7vw,82px); line-height:1.1; letter-spacing:-.02em; font-weight:800} /* 2026-09-17 빠불로: 130% (원본 대비 64%) */
   .hero h1 .hl{background:linear-gradient(120deg,var(--accent),#e6cf95); -webkit-background-clip:text; background-clip:text; color:transparent}
-  .hero .hsub{max-width:640px; margin:16px auto 0; font-size:clamp(13px,1.3vw,16px); color:var(--ink-dim); white-space:pre-line}
+  .hero .hsub{max-width:720px; margin:18px auto 0; font-size:clamp(15px,1.7vw,21px); color:var(--ink-dim); white-space:pre-line}
   .hero .cta-row{display:flex; justify-content:center; margin-top:44px}
   .hero .cta{display:inline-flex; align-items:center; gap:10px; width:auto; margin:0; padding:clamp(20px,2.6vw,34px) clamp(38px,5vw,72px); font-size:clamp(20px,3.8vw,44px);
     font-weight:800; border-radius:16px; color:#15100a; background:var(--accent); text-decoration:none; letter-spacing:-.01em;
@@ -320,7 +320,6 @@
         <div class="pill"><span class="dot"></span> <span data-i18n="heroPill"></span></div>
         <h1 id="hero-h1"></h1>
         <p class="hsub" id="hero-sub"></p>
-        <p class="note" data-i18n="heroNote"></p>
       </div>
 
     </div>
@@ -372,12 +371,11 @@
     <!-- ② 가입 -->
     <section class="step locked" id="st-signup">
       <div class="s-head"><span class="s-num">2</span><h2 data-i18n="s2Title"></h2><span class="s-done" data-i18n="done"></span></div>
-      <p class="s-desc" data-i18n="s2Desc"></p>
       <form id="f" novalidate>
         <div class="field"><label for="email" data-i18n="email"></label><input id="email" type="email" inputmode="email" autocomplete="email" autocapitalize="none"></div>
-        <div class="field"><label for="pw" data-i18n="pw"></label><input id="pw" type="password" autocomplete="new-password"><div class="hint" data-i18n="pwHint"></div></div>
+        <div class="field"><label for="pw" data-i18n="pw"></label><input id="pw" type="password" autocomplete="new-password"></div>
         <!-- 2026-09-12 빠불로: 이름/소속 (선택, madstars와 동일) — 이름은 사원증 PNG 상단 "000님의 에이전트 직원이 입사했습니다" -->
-        <div class="field"><label for="uname" data-i18n="userNameLabel"></label><input id="uname" type="text" autocomplete="name" maxlength="80"><div class="hint" data-i18n="userNameHint"></div></div>
+        <div class="field"><label for="uname" data-i18n="userNameLabel"></label><input id="uname" type="text" autocomplete="name" maxlength="80"></div>
         <div class="field"><label for="uorg" data-i18n="orgLabel"></label><input id="uorg" type="text" autocomplete="organization" maxlength="120"></div>
         <button type="submit" id="submit" data-i18n="signupBtn"></button>
       </form>
@@ -388,7 +386,6 @@
     <!-- ③ 사원증 -->
     <section class="step locked" id="st-card">
       <div class="s-head"><span class="s-num">3</span><h2 data-i18n="s3Title"></h2><span class="s-done" data-i18n="done"></span></div>
-      <p class="s-desc" data-i18n="s3Desc"></p>
       <div id="print-root"><div class="idcard" id="idcard"></div></div>
       <div class="card-actions">
         <button type="button" id="png-btn" data-i18n="pngBtn"></button>
@@ -404,7 +401,6 @@
           <button type="button" id="go-home-btn" data-i18n="goBtn"></button>
         </div>
       </div>
-      <div class="hint" data-i18n="cardHint" style="margin-top:10px"></div>
     </section>
 
   </div>
