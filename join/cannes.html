@@ -186,7 +186,8 @@
   .pill{display:inline-flex; align-items:center; gap:8px; font-size:clamp(13px,1.4vw,18px); color:var(--ink-dim);
     border:1px solid var(--line); background:var(--bg-soft); padding:6px 14px; border-radius:999px; margin-bottom:22px}
   .pill .dot{width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 10px var(--accent)}
-  .hero h1{font-size:clamp(29px,5.7vw,82px); line-height:1.1; letter-spacing:-.02em; font-weight:800} /* 2026-09-17 빠불로: 130% (원본 대비 64%) */
+  .hero h1{font-size:clamp(26px,5.1vw,74px); line-height:1.12; letter-spacing:-.02em; font-weight:800; word-break:keep-all; overflow-wrap:normal} /* 2026-09-17 빠불로: 90% + 어절 단위 줄바꿈 */
+  .hero h1 .w{white-space:nowrap}
   .hero h1 .hl{background:linear-gradient(120deg,var(--accent),#e6cf95); -webkit-background-clip:text; background-clip:text; color:transparent}
   .hero .hsub{max-width:720px; margin:18px auto 0; font-size:clamp(15px,1.7vw,21px); color:var(--ink-dim); white-space:pre-line}
   .hero .cta-row{display:flex; justify-content:center; margin-top:44px}
@@ -326,7 +327,6 @@
   </section>
 
 
-  <hr class="divider">
 </div>
 
 <main class="wrap event-head">
@@ -488,7 +488,7 @@
       sub: "<b>〈Pro 모드 3개월 무료 이용권 증정〉</b>강의 자리에서 AI 팀원을 채용하고 에이전트 프로필을 받으세요.<br>집에서 QR로 접속하면 그 팀원이 Be.Ark에 합류해요.",
       // 2026-09-12 히어로 (랜딩 이식, 부스용 한 줄 CTA)
       heroPill: "Cannes Lions Seoul 2026 × Be.Ark · 강의 참가자 특별 채용",
-      heroH1: "창작자가 소유하는 <span class=\"hl\">AI에이전트</span> 시대,<br>창작 데이터 보호로 함께 만들어가요!",
+      heroH1: "<span class=\"w\">창작자가</span> <span class=\"w\">소유하는</span> <span class=\"w hl\">AI에이전트</span> <span class=\"w\">시대,</span><br><span class=\"w hl\">창작 데이터 보호</span><span class=\"w\">로</span> <span class=\"w\">함께</span> <span class=\"w\">만들어가요!</span>",
       heroSub: "유저의 사고와 경험이 담긴 수많은 데이터들\n— 나의 소유의 에이전트에 학습시키세요!",
       heroCta: "지금 무료로 채용하기 ↓", heroCtaHome: "앱 받고 팀원 만나기 ↓",
       heroNote: "무료 · 에이전트 프로필 즉시 발급 · Pro 3개월 쿠폰 포함",
