@@ -636,14 +636,14 @@
   //   프리셋 id는 앱 1.6.0·서버 화이트리스트가 아는 9개 그대로 두고 **이 페이지의 라벨·설명만** 교체 (새 id는 배포된 앱이 몰라서 폴백됨).
   //   집에서 앱 합류 시 역할 설명은 앱 프리셋을 따른다 — 정식 프리셋 추가는 다음 릴리스.
   var PRESET_STR = {
-    ko: { marketer:["마케터","브랜드 이야기를 사람들에게 닿게 하는 에이전트"], founder:["컨설턴트","사업 아이디어를 실행 계획으로 바꾸는 에이전트"], researcher:["AP","시장·소비자 자료에서 인사이트를 찾아내는 에이전트"],
+    ko: { marketer:["마케터","브랜드 이야기를 사람들에게 닿게 하는 에이전트"], founder:["크리에이티브 디렉터","아이디어의 핵심을 잡고 캠페인 방향을 이끄는 에이전트"], researcher:["AP","시장·소비자 자료에서 인사이트를 찾아내는 에이전트"],
           accountant:["AE","클라이언트 일정·예산·커뮤니케이션을 챙기는 에이전트"], writer:["카피라이터","한 줄로 마음을 움직이는 문장을 쓰는 에이전트"], chief:["아트디렉터","비주얼 톤과 레퍼런스를 정리해 방향을 잡는 에이전트"],
           producer:["프로듀서","복잡한 일을 순서와 일정으로 정리하는 에이전트"], legal:["연출감독","콘티·장면·편집 흐름을 함께 설계하는 에이전트"], everyday:["개발자","아이디어를 동작하는 코드로 바꾸는 에이전트"] },
-    en: { marketer:["Marketer","Carries your brand story to people"], founder:["Consultant","Turns business ideas into execution plans"], researcher:["Account Planner","Finds insight in market and consumer data"],
+    en: { marketer:["Marketer","Carries your brand story to people"], founder:["Creative Director","Finds the core idea and leads the campaign direction"], researcher:["Account Planner","Finds insight in market and consumer data"],
           accountant:["Account Executive","Keeps client schedules, budgets and comms in order"], writer:["Copywriter","Writes the one line that moves people"], chief:["Art Director","Organizes visual tone and references into a direction"],
           producer:["Producer","Turns messy work into order and schedules"], legal:["Film Director","Designs storyboards, scenes and edit flow with you"], everyday:["Developer","Turns ideas into working code"] },
   };
-  var CANNES_ORDER = ["marketer","founder","researcher","accountant","writer","chief","producer","legal","everyday"];
+  var CANNES_ORDER = ["marketer","researcher","accountant","founder","writer","chief","producer","legal","everyday"]; // 09-17: 마케터·AP·AE·CD·카피·AD·프로듀서·연출·개발
 
 
   var B = window.BeArkCard;
