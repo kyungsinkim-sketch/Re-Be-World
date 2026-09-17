@@ -181,7 +181,10 @@
   .topbar{display:flex; align-items:center; gap:10px; padding:16px 0 0}
   .topbar .brand{margin:0; flex:1}
   /* 09-13 빠불로(현장 사진): 첫 화면 = 아이맥에 CTA가 꽉 차게 — 히어로 상단 블록을 뷰포트 높이로, 글자·버튼 대폭 확대. 영상은 스크롤 아래 */
-  .hero{padding:24px 0 40px; text-align:center; position:relative}
+  .hero{padding:24px 0 40px; text-align:center; position:relative; overflow:hidden}
+  /* 2026-09-17 빠불로: 메인 사이트(index.html)의 별똥별 스타필드를 히어로 배경에 */
+  #hero-stars{position:absolute; inset:0; z-index:0; pointer-events:none; display:block}
+  @media(prefers-reduced-motion:reduce){ #hero-stars{display:none} }
   .hero-top{min-height:calc(100vh - 120px); display:flex; flex-direction:column; justify-content:center; align-items:center}
   .pill{display:inline-flex; align-items:center; gap:8px; font-size:clamp(13px,1.4vw,18px); color:var(--ink-dim);
     border:1px solid var(--line); background:var(--bg-soft); padding:6px 14px; border-radius:999px; margin-bottom:22px}
@@ -314,7 +317,8 @@
     </div>
   </div>
 
-  <section class="hero">
+  <section class="hero" id="hero-sec">
+    <canvas id="hero-stars" aria-hidden="true"></canvas>
     <div class="pw">
       <!-- 09-13: 첫 화면 꽉 채우기 — 이 블록이 뷰포트 높이, 영상은 그 아래 -->
       <div class="hero-top">
@@ -389,8 +393,6 @@
       <div id="print-root"><div class="idcard" id="idcard"></div></div>
       <div class="card-actions">
         <button type="button" id="png-btn" data-i18n="pngBtn"></button>
-        <button type="button" class="ghost" id="print-btn" data-i18n="printBtn" style="width:auto;padding:11px 14px;white-space:nowrap"></button>
-        <button type="button" class="ghost" id="next-btn" data-i18n="nextBtn" style="width:auto;padding:11px 14px;white-space:nowrap"></button>
       </div>
       <!-- 2026-09-13 빠불로(현장 잉크 소진): 인쇄 대신 폰으로 — 이 사람의 사원증 데이터가 담긴 개인 QR → 폰에서 디지털 사원증 + 설치 링크 -->
       <div class="cardqr-wrap">
@@ -466,6 +468,38 @@
     </div>
   </section>
 <div id="print-only"><img id="print-img" alt=""></div>
+<script>
+// ── 히어로 스타필드 (index.html 스타필드 이식, 2026-09-17): 떠다니는 별 + 가끔 별똥별. 히어로 영역 크기에만 맞춘다.
+(function(){
+  var sec=document.getElementById('hero-sec'), c=document.getElementById('hero-stars'); if(!sec||!c) return;
+  var x=c.getContext('2d'); if(!x) return;
+  var w,h,stars=[],shoots=[],DPR=Math.min(window.devicePixelRatio||1,2);
+  function resize(){
+    var cw=sec.clientWidth, ch=sec.clientHeight;
+    w=c.width=cw*DPR; h=c.height=ch*DPR; c.style.width=cw+'px'; c.style.height=ch+'px';
+    var n=Math.round((cw*ch)/9000); stars=[];
+    for(var i=0;i<n;i++) stars.push({x:Math.random()*w,y:Math.random()*h,r:(Math.random()*1.2+0.3)*DPR,a:Math.random()*0.6+0.2,tw:Math.random()*0.02+0.004,dir:Math.random()<0.5?1:-1,vy:(Math.random()*0.04+0.01)*DPR});
+  }
+  function shoot(){
+    var fromLeft=Math.random()<0.5;
+    shoots.push({x:fromLeft?-50:w+50,y:Math.random()*h*0.5,vx:(fromLeft?1:-1)*(Math.random()*5+6)*DPR,vy:(Math.random()*2+1.5)*DPR,life:0,max:Math.random()*40+50});
+  }
+  function tick(){
+    x.clearRect(0,0,w,h);
+    for(var i=0;i<stars.length;i++){ var s=stars[i]; s.a+=s.tw*s.dir; if(s.a>0.85){s.a=0.85;s.dir=-1;} if(s.a<0.18){s.a=0.18;s.dir=1;}
+      s.y+=s.vy; if(s.y>h){s.y=0;s.x=Math.random()*w;} x.globalAlpha=s.a; x.fillStyle=i%17===0?'#c49c4d':'#dfe7f2'; x.beginPath(); x.arc(s.x,s.y,s.r,0,6.28); x.fill(); }
+    x.globalAlpha=1;
+    for(var j=shoots.length-1;j>=0;j--){ var sh=shoots[j]; sh.life++; var px=sh.x,py=sh.y; sh.x+=sh.vx; sh.y+=sh.vy;
+      var g=x.createLinearGradient(px,py,px-sh.vx*4,py-sh.vy*4); g.addColorStop(0,'#ffffff'); g.addColorStop(0.4,'#c49c4dcc'); g.addColorStop(1,'#c49c4d00');
+      x.strokeStyle=g; x.lineWidth=2*DPR; x.beginPath(); x.moveTo(px,py); x.lineTo(px-sh.vx*4,py-sh.vy*4); x.stroke();
+      if(sh.life>sh.max||sh.x<-80||sh.x>w+80) shoots.splice(j,1); }
+    requestAnimationFrame(tick);
+  }
+  resize(); addEventListener('resize',resize); if(window.ResizeObserver) new ResizeObserver(resize).observe(sec);
+  setInterval(function(){ if(Math.random()<0.6&&shoots.length<2) shoot(); },2600);
+  tick();
+})();
+</script>
 <script src="/join/beark-card.js"></script>
 <script src="/join/testi-avatars.js"></script>
 <script>
@@ -487,9 +521,9 @@
       h1: "'나만의 AI에이전트를 채용하세요!'",
       sub: "<b>〈Pro 모드 3개월 무료 이용권 증정〉</b>강의 자리에서 AI 팀원을 채용하고 에이전트 프로필을 받으세요.<br>집에서 QR로 접속하면 그 팀원이 Be.Ark에 합류해요.",
       // 2026-09-12 히어로 (랜딩 이식, 부스용 한 줄 CTA)
-      heroPill: "Cannes Lions Seoul 2026 × Be.Ark · 강의 참가자 특별 채용",
+      heroPill: "Cannes Lions Seoul 2026 × Be.Ark · 강의 이벤트",
       heroH1: "<span class=\"w\">창작자가</span> <span class=\"w\">소유하는</span> <span class=\"w hl\">AI에이전트</span> <span class=\"w\">시대,</span><br><span class=\"w hl\">창작 데이터 보호</span><span class=\"w\">로</span> <span class=\"w\">함께</span> <span class=\"w\">만들어가요!</span>",
-      heroSub: "유저의 사고와 경험이 담긴 수많은 데이터들\n— 나의 소유의 에이전트에 학습시키세요!",
+      heroSub: "유저의 사고와 경험이 담긴 수많은 데이터들\n내 소유의 에이전트에만 학습시키세요!",
       heroCta: "지금 무료로 채용하기 ↓", heroCtaHome: "앱 받고 팀원 만나기 ↓",
       heroNote: "무료 · 에이전트 프로필 즉시 발급 · Pro 3개월 쿠폰 포함",
       userNameLabel: "이름 (선택)", userNameHint: "적으면 에이전트 프로필 위에 '000님의 에이전트 직원이 입사했습니다'가 인쇄돼요.",
@@ -562,9 +596,9 @@
       tag: "Cannes Lions Seoul 2026 · Lecture special",
       h1: "'Hire your own AI agent!'",
       sub: "<b>〈3 months of Pro, free〉</b>Hire an AI teammate here and get an agent profile.<br>Scan the QR at home and the teammate joins you in Be.Ark.",
-      heroPill: "Cannes Lions Seoul 2026 × Be.Ark · Special hiring for attendees",
+      heroPill: "Cannes Lions Seoul 2026 × Be.Ark · Lecture event",
       heroH1: "The era of <span class=\"hl\">creator-owned AI agents</span> —<br>let's build it by protecting creative data!",
-      heroSub: "All the data that carries your thinking and experience\n— train it into an agent you own.",
+      heroSub: "All the data that carries your thinking and experience\ntrain it only into an agent you own.",
       heroCta: "Hire for free now ↓", heroCtaHome: "Get the app & meet your teammate ↓",
       heroNote: "Free · Agent profile on the spot · 3 months of Pro included",
       userNameLabel: "Your name (optional)", userNameHint: "If given, the profile is printed with “<name>'s AI employee has joined”.",
@@ -707,7 +741,7 @@
         return B.downloadCanvasPng(canvas, "beark-card-" + safeFile(d.name) + "-" + safeFile(d.no || "") + ".png");
       });
     });
-    $("print-btn").addEventListener("click", function(){
+    if ($("print-btn")) $("print-btn").addEventListener("click", function(){
       var d = getData(); if (!d || !d.parts) return;
       B.ensureCardFonts().then(function(){
         var canvas = B.renderCardPortraitCanvas(cardPngData(d));
@@ -839,7 +873,7 @@
       $("promo").style.display = "none"; // 출력용 딥링크 = 카드만
       $("st-hire").style.display = "none"; $("st-signup").style.display = "none";
       $("st-card").classList.remove("locked"); $("st-card").classList.add("on");
-      $("next-btn").style.display = "none";
+      if ($("next-btn")) $("next-btn").style.display = "none";
       applyLang(); renderCard($("idcard"), cd);
       bindCardButtons(function(){ return cd; });
       return;
@@ -1024,7 +1058,7 @@
 
   // ── ③ 사원증 ────────────────────────────────────────────────────────────
   bindCardButtons(cardData);
-  $("next-btn").addEventListener("click", function(){ location.href = location.pathname + "?reset=1"; });
+  if ($("next-btn")) $("next-btn").addEventListener("click", function(){ location.href = location.pathname + "?reset=1"; });
 
   function cardData(){ return { name: state.name, preset: state.preset, color: state.color, parts: state.parts, no: state.no, joined: todayStr(), userName: state.userName || "" }; }
   function render(){
