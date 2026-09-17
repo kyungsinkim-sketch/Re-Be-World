@@ -186,9 +186,9 @@
   .pill{display:inline-flex; align-items:center; gap:8px; font-size:clamp(13px,1.4vw,18px); color:var(--ink-dim);
     border:1px solid var(--line); background:var(--bg-soft); padding:6px 14px; border-radius:999px; margin-bottom:22px}
   .pill .dot{width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 10px var(--accent)}
-  .hero h1{font-size:clamp(31px,6.3vw,90px); line-height:1.08; letter-spacing:-.03em; font-weight:800} /* 2026-09-16 빠불로: 70%로 축소 */
+  .hero h1{font-size:clamp(22px,4.4vw,63px); line-height:1.12; letter-spacing:-.02em; font-weight:800} /* 2026-09-17 빠불로: 다시 70% (원본 대비 49%) */
   .hero h1 .hl{background:linear-gradient(120deg,var(--accent),#e6cf95); -webkit-background-clip:text; background-clip:text; color:transparent}
-  .hero .hsub{max-width:760px; margin:20px auto 0; font-size:clamp(14px,1.8vw,21px); color:var(--ink-dim)}
+  .hero .hsub{max-width:640px; margin:16px auto 0; font-size:clamp(13px,1.3vw,16px); color:var(--ink-dim); white-space:pre-line}
   .hero .cta-row{display:flex; justify-content:center; margin-top:44px}
   .hero .cta{display:inline-flex; align-items:center; gap:10px; width:auto; margin:0; padding:clamp(20px,2.6vw,34px) clamp(38px,5vw,72px); font-size:clamp(20px,3.8vw,44px);
     font-weight:800; border-radius:16px; color:#15100a; background:var(--accent); text-decoration:none; letter-spacing:-.01em;
@@ -493,7 +493,7 @@
       // 2026-09-12 히어로 (랜딩 이식, 부스용 한 줄 CTA)
       heroPill: "Cannes Lions Seoul 2026 × Be.Ark · 강의 참가자 특별 채용",
       heroH1: "창작자가 소유하는 <span class=\"hl\">AI에이전트</span> 시대,<br>창작 데이터 보호로 함께 만들어가요!",
-      heroSub: "유저의 사고와 경험이 담긴 수많은 기획안, 제안서와 파일들 — 전부 나의 소유의 에이전트에 학습시켜보세요!",
+      heroSub: "유저의 사고와 경험이 담긴 수많은 데이터들\n— 나의 소유의 에이전트에 학습시키세요!",
       heroCta: "지금 무료로 채용하기 ↓", heroCtaHome: "앱 받고 팀원 만나기 ↓",
       heroNote: "무료 · 에이전트 프로필 즉시 발급 · Pro 3개월 쿠폰 포함",
       userNameLabel: "이름 (선택)", userNameHint: "적으면 에이전트 프로필 위에 '000님의 에이전트 직원이 입사했습니다'가 인쇄돼요.",
@@ -540,7 +540,7 @@
       signupBtn: "내 소유의 에이전트 시대 시작하기", signupBusy: "가입하는 중…",
       couponTitle: "CANNES · Pro 3개월 무료",
       couponSub: "쿠폰이 계정에 등록됐어요. 결제 시 자동 적용 · {date} 마감",
-      s3Title: "에이전트 프로필", s3Desc: "QR을 폰으로 찍으면 디지털 에이전트 프로필을 받고 집에서 이어갈 수 있어요.",
+      s3Title: "에이전트 프로필", s3Desc: "",
       pngBtn: "에이전트 프로필 PNG 저장 (54×86)", printBtn: "인쇄", nextBtn: "다음 사람",
       cardHint: "인쇄가 안 될 땐 위 QR로 폰에 받아 가세요. PNG 저장 = 인화지 54×86mm(세로) 규격 1장.",
       hTitle: "에이전트 프로필 받으셨죠? 집에서 이어가기",
@@ -568,7 +568,7 @@
       sub: "<b>〈3 months of Pro, free〉</b>Hire an AI teammate here and get an agent profile.<br>Scan the QR at home and the teammate joins you in Be.Ark.",
       heroPill: "Cannes Lions Seoul 2026 × Be.Ark · Special hiring for attendees",
       heroH1: "The era of <span class=\"hl\">creator-owned AI agents</span> —<br>let's build it by protecting creative data!",
-      heroSub: "All the proposals, decks and files that carry your thinking and experience — train them into an agent you own.",
+      heroSub: "All the data that carries your thinking and experience\n— train it into an agent you own.",
       heroCta: "Hire for free now ↓", heroCtaHome: "Get the app & meet your teammate ↓",
       heroNote: "Free · Agent profile on the spot · 3 months of Pro included",
       userNameLabel: "Your name (optional)", userNameHint: "If given, the profile is printed with “<name>'s AI employee has joined”.",
@@ -613,7 +613,7 @@
       signupBtn: "Start my own-agent era", signupBusy: "Signing up…",
       couponTitle: "CANNES · Pro free for 3 months",
       couponSub: "Coupon registered to your account. Applies at checkout · expires {date}",
-      s3Title: "Agent profile", s3Desc: "Staff will print this card for you. Scan the QR to continue at home.",
+      s3Title: "Agent profile", s3Desc: "",
       pngBtn: "Save profile PNG (54×86)", printBtn: "Print", nextBtn: "Next person",
       cardHint: "Can't print? Scan the QR above to take the profile on your phone. Save PNG = one 54×86mm (portrait) photo-paper image.",
       hTitle: "Got your card? Continue at home",
