@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-09-17-beta-1-6-1",
+    "date": "2026-09-17",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.6.1 — 자동 업데이트 · 노션 읽기 · 광고 대시보드 · HTML 실행 모드",
+    "body": "🔄 인앱 자동 업데이트 — 새 버전이 나오면 팝업이 뜨고 [업데이트] 한 번으로 다운로드·설치·재시작까지 끝나요. 이 버전부터 다시는 수동 설치가 필요 없어요.\n\n👤 계정 화면 — 서버 연결이 잠시 안 돼도 이메일과 로그아웃 버튼이 항상 보여요.\n\n📝 노션 공개 페이지 읽기 — 노션 링크를 주면 에이전트가 표·목록·코드까지 그대로 읽고 학습해요 (웹에 게시된 페이지).\n\n📊 광고 성과 대시보드 — 설정 › 외부 채널 › 광고에서 Meta 광고계정을 연결하면 에이전트가 고객별 리포트(KPI·일별 추세·TOP/BOTTOM)를 HTML로 만들어요.\n\n🖥️ HTML 미리보기 실행 모드 — 스크립트로 데이터를 그리는 페이지가 미리보기에서 그대로 동작해요. 연필로 편집 모드 전환.\n\n🗂️ Living Files 탭이 명령을 내린 세션에만 열려요.\n\n🎙️ 라이브 통역·전사 Phase 1 — 회의 자막을 실시간 Living File로."
+  },
+  {
+    "id": "2026-09-17-beta-1-6-1",
+    "date": "2026-09-17",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.6.1 — Auto-update · Notion reading · Ads dashboard · Live HTML preview",
+    "body": "🔄 In-app auto-update — when a new version ships, a popup appears and one click on Update downloads, installs and restarts. No more manual installs from this version on.\n\n👤 Account panel — email and Sign out always show, even when the server is briefly unreachable.\n\n📝 Public Notion pages — paste a Notion link and your agent reads tables, lists and code as-is (pages published to the web).\n\n📊 Ads performance dashboard — connect your Meta ad account (Settings › External channels › Ads) and your agent builds per-client HTML reports (KPIs, daily trend, top/bottom).\n\n🖥️ Live HTML preview — pages that render data with scripts now run inside the preview; pencil switches to edit mode.\n\n🗂️ Living Files tabs open only in the session that asked.\n\n🎙️ Live interpretation & transcript, phase 1."
+  },
+  {
     "id": "2026-09-14-beta-1-6-0",
     "date": "2026-09-14",
     "lang": "ko",
