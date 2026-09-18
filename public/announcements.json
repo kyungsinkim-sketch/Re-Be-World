@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-09-19-beta-1-6-3",
+    "date": "2026-09-19",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.6.3 — 무료로 멀티 에이전트 무제한",
+    "body": "👥 무료 플랜 = 에이전트 무제한 — 마케터·법무·개발자… 몇 명이든 만들고, 에이전트끼리 일을 위임하는 팀 지휘까지 전부 무료예요.\n\n⭐ Pro = 스킬 카탈로그(광고 성과 모니터·컨슈머 인사이트 같은 크리에이티브 업무 템플릿) · 외부 채널 연결(구글·메타 광고·피그마·SNS) · 라이브 통역 600분. 이미 연결해 둔 채널은 그대로 쓸 수 있어요.\n\n🕐 도구 결과의 시각이 내 컴퓨터 시간대로 자동 표기돼요 — 에이전트가 UTC와 헷갈리던 문제 종결.\n\n🎁 채팅 입력창 위에 하루 한 번 친구 초대 안내 — 초대 링크로 친구가 가입하고 Pro를 시작하면 두 사람 모두 Pro 1개월 무료.\n\n🏢 TeamSpace는 베타 2.0 완성 때까지 잠시 숨겨요.\n\n1.6.0 이상은 앱 안에서 [업데이트] 한 번으로 설치돼요."
+  },
+  {
+    "id": "2026-09-19-beta-1-6-3",
+    "date": "2026-09-19",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.6.3 — Unlimited multi-agent, free",
+    "body": "👥 Free plan = unlimited agents — marketing, legal, dev… create as many as you like and run them as a team that delegates work to each other, all free.\n\n⭐ Pro = skill catalog (creative-industry templates such as ads performance monitor and consumer insights) · external channels (Google, Meta Ads, Figma, social) · 600 min of live interpretation. Channels you already connected keep working.\n\n🕐 Timestamps in tool results now show in your computer's time zone — no more UTC confusion.\n\n🎁 Once a day, a small invite note above the chat box — when a friend signs up with your link and starts Pro, you both get 1 month of Pro free.\n\n🏢 TeamSpace is hidden until Beta 2.0.\n\nOn 1.6.0 or later, one click on Update installs this in-app."
+  },
+  {
     "id": "2026-09-18-beta-1-6-2",
     "date": "2026-09-18",
     "lang": "ko",
