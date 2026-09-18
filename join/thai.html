@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Be.Ark · Hire your own AI agent — Thailand Early Bird</title>
+<title>Be.Ark · 당신의 에이전트를 채용하세요 — Cannes Lions Seoul 2026</title>
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#070a0f">
-<meta property="og:title" content="Hire your own AI agent — Be.Ark Thailand Early Bird">
-<meta property="og:description" content="Hire your own AI teammate, get an employee card, and 3 months of Be.Ark Pro free (code THAI3). Thailand Creators early bird, through Sep 30.">
+<meta property="og:title" content="Create your own AI agent — Be.Ark × Cannes Lions Seoul 2026">
+<meta property="og:description" content="창작자가 소유하는 AI에이전트 시대 — 나의 기획안·제안서·파일을 내 소유의 에이전트에 학습시켜보세요. 집에서 QR로 접속하면 그 에이전트가 합류합니다.">
 <meta property="og:image" content="https://www.re-be.world/landing/og-hero-2026.jpg">
 <link rel="icon" href="/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <!--
-  태국 얼리버드 이벤트 (2026-09-14~10-31) 온라인 "에이전트 채용" 페이지 — 빠불로 2026-09-14 (태국 에이전시 홍보, 낯선대학 페이지 복제·캠페인 thai/THAI3).
+  Cannes Lions Seoul 2026 강의(2026-09-16·09-18) "에이전트 채용" 페이지 — 빠불로 2026-09-15. join/nachsun.html 복제, 캠페인 = cannes (유입 분리 계수).
 
   흐름: ① 채용(프리셋 6 + 이름 + 도트 얼굴) → ② 가입(이메일+비번, 확인메일 0회, billing event_signup(agent))
         → ③ 사원증(앱 AgentCard와 같은 규격) — 캔버스 PNG 1장(인화지 54×86mm 세로, 300dpi) 저장/인쇄 + QR
@@ -100,8 +100,8 @@
   .esw button.on{border:2px solid #fff}
   .ebar{display:flex; gap:8px; margin-top:10px}
   .ebar button{margin:0; padding:9px; font-size:13px}
-  label{display:block; font-size:15px; color:var(--ink-dim); margin:0 0 8px}
-  /* 2026-09-16 빠불로(현장 피드백: 이름 칸을 못 알아본다): 에이전트 이름 입력 칸 강조 */
+  label{display:block; font-size:15px; color:var(--ink); margin:0 0 8px}
+  /* 2026-09-16 빠불로(태국 피드백: 이름 칸을 못 알아본다): 이름 입력 칸 강조 */
   .field.hl-field{padding:14px 14px 12px; border:1.5px solid var(--accent); border-radius:12px; background:var(--accent-soft); box-shadow:0 0 0 4px #c49c4d22}
   .field.hl-field label{color:var(--ink); font-weight:700; font-size:16px}
   .field.hl-field .hint{color:var(--ink)}
@@ -109,7 +109,7 @@
         border-radius:12px; outline:none; font-family:inherit}
   input:focus{border-color:var(--accent)}
   .field + .field{margin-top:14px}
-  .hint{font-size:14px; color:var(--ink-faint); margin-top:8px; line-height:1.6}
+  .hint{font-size:14px; color:var(--ink); margin-top:8px; line-height:1.6}
   .face-row{display:flex; align-items:center; gap:14px; margin-top:14px}
   .face-row img{width:136px; height:136px; image-rendering:pixelated; border-radius:14px; border:1px solid var(--line); background:#0f141d; flex:none}
   @media(max-width:560px){ .face-row img{width:104px; height:104px} }
@@ -181,25 +181,25 @@
   .topbar{display:flex; align-items:center; gap:10px; padding:16px 0 0}
   .topbar .brand{margin:0; flex:1}
   /* 09-13 빠불로(현장 사진): 첫 화면 = 아이맥에 CTA가 꽉 차게 — 히어로 상단 블록을 뷰포트 높이로, 글자·버튼 대폭 확대. 영상은 스크롤 아래 */
-  .hero{padding:110px 0 40px; text-align:center; position:relative}  /* 2026-09-14 빠불로: 태국 페이지는 부스용 확대 전 크기 */
-  .hero-top{display:flex; flex-direction:column; justify-content:center; align-items:center}
-  .pill{display:inline-flex; align-items:center; gap:8px; font-size:13px; color:var(--ink-dim);
+  .hero{padding:24px 0 40px; text-align:center; position:relative; overflow:hidden}
+  /* 2026-09-17 빠불로: 메인 사이트(index.html)의 별똥별 스타필드를 히어로 배경에 */
+  #hero-stars{position:absolute; inset:0; z-index:0; pointer-events:none; display:block}
+  @media(prefers-reduced-motion:reduce){ #hero-stars{display:none} }
+  .hero-top{min-height:calc(100vh - 120px); display:flex; flex-direction:column; justify-content:center; align-items:center}
+  .pill{display:inline-flex; align-items:center; gap:8px; font-size:clamp(13px,1.4vw,18px); color:var(--ink-dim);
     border:1px solid var(--line); background:var(--bg-soft); padding:6px 14px; border-radius:999px; margin-bottom:22px}
   .pill .dot{width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 10px var(--accent)}
-  .hero h1{font-size:clamp(40px,7.2vw,76px); line-height:1.04; letter-spacing:-.03em; font-weight:800}
+  .hero h1{font-size:clamp(26px,5.1vw,74px); line-height:1.12; letter-spacing:-.02em; font-weight:800; word-break:keep-all; overflow-wrap:normal} /* 2026-09-17 빠불로: 90% + 어절 단위 줄바꿈 */
+  .hero h1 .w{white-space:nowrap}
   .hero h1 .hl{background:linear-gradient(120deg,var(--accent),#e6cf95); -webkit-background-clip:text; background-clip:text; color:transparent}
-  .hero .hsub{max-width:640px; margin:20px auto 0; font-size:clamp(16px,2.2vw,21px); color:var(--ink-dim)}
-  .hero .cta-row{display:flex; justify-content:center; margin-top:32px}
-  .hero .cta{display:inline-flex; align-items:center; gap:10px; width:auto; margin:0; padding:20px 38px; font-size:clamp(19px,3vw,26px);
+  .hero .hsub{max-width:720px; margin:18px auto 0; font-size:clamp(15px,1.7vw,21px); color:var(--ink-dim); white-space:pre-line}
+  .hero .cta-row{display:flex; justify-content:center; margin-top:44px}
+  .hero .cta{display:inline-flex; align-items:center; gap:10px; width:auto; margin:0; padding:clamp(20px,2.6vw,34px) clamp(38px,5vw,72px); font-size:clamp(20px,3.8vw,44px);
     font-weight:800; border-radius:16px; color:#15100a; background:var(--accent); text-decoration:none; letter-spacing:-.01em;
     box-shadow:0 14px 40px var(--accent-glow); transition:.2s; animation:pulse 2.6s ease-in-out infinite}
   .hero .cta:hover{transform:translateY(-2px); box-shadow:0 18px 50px var(--accent-glow)}
   @keyframes pulse{0%,100%{box-shadow:0 14px 40px var(--accent-glow)}50%{box-shadow:0 14px 56px #c49c4d77}}
-  .hero .note{margin-top:14px; font-size:13px; color:var(--ink-faint)}
-  .hero-qr{margin-top:20px; display:flex; flex-direction:column; align-items:center; gap:6px}
-  .hero-qr > div{width:136px; height:136px; background:#fff; padding:8px; border-radius:12px; box-sizing:border-box}
-  .hero-qr > div svg{width:100%; height:100%; display:block}
-  .hero-qr .note{margin-top:4px}
+  .hero .note{margin-top:18px; font-size:clamp(13px,1.4vw,18px); color:var(--ink-faint)}
   .float-agents{position:absolute; inset:0; z-index:0; pointer-events:none}
   .float-agents .fa{position:absolute; width:84px; height:84px; border-radius:50%; object-fit:cover; border:2px solid #c49c4d55;
     box-shadow:0 8px 30px #00000066,0 0 0 6px #c49c4d10; opacity:.92; animation:floaty 6s ease-in-out infinite}
@@ -256,7 +256,7 @@
   .ehead .sub b{display:block; margin-bottom:6px}
   .preset .pd{word-break:keep-all}
   .divider{max-width:860px; margin:36px auto 0; border:0; border-top:1px solid var(--line)}
-  @media(max-width:720px){ .float-agents{display:none} .hero{padding:64px 0 28px} .mock-body{padding:16px} .mock .m{font-size:13.5px} }
+  @media(max-width:720px){ .float-agents{display:none} .hero{padding:24px 0 28px} .hero-top{min-height:auto; padding:48px 0 12px} .mock-body{padding:16px} .mock .m{font-size:13.5px} }
   /* 개인 사원증 QR (③, 잉크 소진 대응 2026-09-13) — 카드 JSON이 URL에 실려 모듈이 촘촘 → 크게 */
   .cardqr-wrap{display:flex; gap:22px; align-items:center; margin-top:16px; padding:16px; border:1px solid #c49c4d55; border-radius:12px; background:var(--accent-soft)}
   .cardqr{flex:none; width:min(48vw,320px); aspect-ratio:1; background:#fff; padding:10px; border-radius:12px; display:grid; place-items:center; font-size:13px; color:#555; text-align:center}
@@ -264,17 +264,7 @@
   .cardqr-how{flex:1; min-width:0}
   .cardqr-how b{display:block; font-size:18px; color:var(--accent); margin-bottom:6px}
   .cardqr-how p{font-size:15px; line-height:1.7; color:var(--ink-dim)}
-  @media(max-width:560px){ .cardqr-wrap{flex-direction:column; align-items:stretch} .cardqr{width:min(70vw,280px); margin:0 auto} }
-  /* 2026-09-15 빠불로(아이폰 하단 깨짐): 가입 전엔 QR 박스(빈 흰 사각형)·이동 버튼을 아예 숨긴다 — 잠긴 단계에 흰 박스만 떠 있었음 */
-  .step.locked .cardqr-wrap{display:none}
-  .cardqr-how button{margin-top:12px}
-  /* 모바일 안전장치: 폭 넘침 방지 */
-  html{-webkit-text-size-adjust:100%}
-  img, svg, video, iframe{max-width:100%}
-  .hurl, .cardqr-how, .refer p, .handoff p{overflow-wrap:anywhere; word-break:break-word}
-  .picto-row{flex-wrap:wrap}
-  .modal{max-height:90dvh; overflow:auto}
-  @media(max-width:420px){ .picto{font-size:14px; padding:0 10px; gap:8px} .hero-qr > div{width:120px; height:120px} }
+  @media(max-width:560px){ .cardqr-wrap{flex-direction:column; align-items:stretch} .cardqr{width:min(80vw,320px); margin:0 auto} }
   #home-idcard{margin-bottom:12px}
   /* Pro 시작 (④ 현장 QR / 집 모드 로그인) */
   .pro{border-color:#c49c4d55; background:linear-gradient(180deg, #c49c4d14, transparent 60%), var(--bg-soft)}
@@ -295,23 +285,6 @@
   .handoff{margin:14px 0 6px; padding:16px; border:1px solid #c49c4d55; border-radius:12px; background:var(--accent-soft)}
   .handoff b{display:block; font-size:16px; color:var(--accent)}
   .handoff p{font-size:13.5px; color:var(--ink-dim); margin-top:6px}
-  .refer{border-color:#c49c4d55; background:rgba(196,156,77,.06)}
-  .picto-row{display:flex; gap:10px; margin-top:14px}
-  .picto{flex:1 1 0; min-width:0; box-sizing:border-box; height:52px; display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:0 16px; margin:0; border-radius:12px; border:1px solid var(--line); background:var(--bg-soft); color:var(--ink); font-size:15px; font-weight:700; line-height:1; text-decoration:none; cursor:pointer; font-family:inherit; appearance:none; -webkit-appearance:none}
-  .picto.primary{background:var(--accent); color:#15100a; border-color:var(--accent)}
-  .modal-bg{position:fixed; inset:0; z-index:60; background:#04060ad9; backdrop-filter:blur(6px); display:none; align-items:center; justify-content:center; padding:20px}
-  .modal-bg.open{display:flex}
-  .modal{position:relative; width:100%; max-width:440px; border:1px solid #c49c4d33; border-radius:20px; background:var(--bg-soft); padding:26px 22px}
-  .modal .x{position:absolute; top:12px; right:16px; cursor:pointer; color:var(--ink-dim); font-size:18px}
-  .modal h3{font-size:22px; letter-spacing:-.02em; text-align:center}
-  .modal p.msub{color:var(--ink-dim); font-size:14px; text-align:center; margin-top:8px}
-  .modal .dls{display:flex; flex-direction:column; gap:12px; margin-top:24px}
-  .dl-opt{display:flex; align-items:center; gap:14px; border:1px solid var(--line); background:#0a0e15; padding:14px 16px; border-radius:14px; text-decoration:none; color:var(--ink); transition:.15s}
-  .dl-opt:hover{border-color:var(--accent); transform:translateY(-2px)}
-  .dl-opt .os{width:30px; display:flex; align-items:center; justify-content:center; color:var(--ink)}
-  .dl-opt .lbl{flex:1} .dl-opt .lbl b{font-size:15px; display:block} .dl-opt .lbl span{font-size:12px; color:var(--ink-faint)}
-  .dl-opt .arr{color:var(--accent); font-weight:700}
-  .modal .mnote{margin-top:18px; font-size:12px; color:var(--ink-faint); line-height:1.7}
   .handoff .hurl{margin-top:10px; padding:10px 12px; border-radius:8px; background:#0f141d; border:1px solid var(--line);
     font-family:"Geist Mono",monospace; font-size:15px; font-weight:700; color:var(--ink); text-align:center; letter-spacing:.01em}
   .handoff .hbtns{display:flex; flex-direction:column; gap:8px; margin-top:10px}
@@ -338,14 +311,14 @@
         </a>
       </div>
       <div class="lang">
-        <button id="lang-th" type="button">ไทย</button>
-        <button id="lang-en" type="button">EN</button>
         <button id="lang-ko" type="button">한국어</button>
+        <button id="lang-en" type="button">EN</button>
       </div>
     </div>
   </div>
 
-  <section class="hero">
+  <section class="hero" id="hero-sec">
+    <canvas id="hero-stars" aria-hidden="true"></canvas>
     <div class="pw">
       <!-- 09-13: 첫 화면 꽉 채우기 — 이 블록이 뷰포트 높이, 영상은 그 아래 -->
       <div class="hero-top">
@@ -354,12 +327,10 @@
         <p class="hsub" id="hero-sub"></p>
       </div>
 
-      <span id="mock-a1" hidden></span>
     </div>
   </section>
 
 
-  <hr class="divider">
 </div>
 
 <main class="wrap event-head">
@@ -404,12 +375,11 @@
     <!-- ② 가입 -->
     <section class="step locked" id="st-signup">
       <div class="s-head"><span class="s-num">2</span><h2 data-i18n="s2Title"></h2><span class="s-done" data-i18n="done"></span></div>
-      <p class="s-desc" data-i18n="s2Desc"></p>
       <form id="f" novalidate>
         <div class="field"><label for="email" data-i18n="email"></label><input id="email" type="email" inputmode="email" autocomplete="email" autocapitalize="none"></div>
-        <div class="field"><label for="pw" data-i18n="pw"></label><input id="pw" type="password" autocomplete="new-password"><div class="hint" data-i18n="pwHint"></div></div>
+        <div class="field"><label for="pw" data-i18n="pw"></label><input id="pw" type="password" autocomplete="new-password"></div>
         <!-- 2026-09-12 빠불로: 이름/소속 (선택, madstars와 동일) — 이름은 사원증 PNG 상단 "000님의 에이전트 직원이 입사했습니다" -->
-        <div class="field"><label for="uname" data-i18n="userNameLabel"></label><input id="uname" type="text" autocomplete="name" maxlength="80"><div class="hint" data-i18n="userNameHint"></div></div>
+        <div class="field"><label for="uname" data-i18n="userNameLabel"></label><input id="uname" type="text" autocomplete="name" maxlength="80"></div>
         <div class="field"><label for="uorg" data-i18n="orgLabel"></label><input id="uorg" type="text" autocomplete="organization" maxlength="120"></div>
         <button type="submit" id="submit" data-i18n="signupBtn"></button>
       </form>
@@ -420,13 +390,9 @@
     <!-- ③ 사원증 -->
     <section class="step locked" id="st-card">
       <div class="s-head"><span class="s-num">3</span><h2 data-i18n="s3Title"></h2><span class="s-done" data-i18n="done"></span></div>
-      <p class="s-desc" data-i18n="s3Desc"></p>
-      <!-- 2026-09-15 빠불로: 가입 직후 사원증을 여기서 보여주지 않는다 — 폰(집 모드)에서 확인. 카드/버튼은 숨김(렌더 코드 호환) -->
-      <div id="print-root" style="display:none"><div class="idcard" id="idcard"></div></div>
-      <div class="card-actions" style="display:none">
+      <div id="print-root"><div class="idcard" id="idcard"></div></div>
+      <div class="card-actions">
         <button type="button" id="png-btn" data-i18n="pngBtn"></button>
-        <button type="button" class="ghost" id="print-btn" data-i18n="printBtn" style="width:auto;padding:11px 14px;white-space:nowrap"></button>
-        <button type="button" class="ghost" id="next-btn" data-i18n="nextBtn" style="width:auto;padding:11px 14px;white-space:nowrap"></button>
       </div>
       <!-- 2026-09-13 빠불로(현장 잉크 소진): 인쇄 대신 폰으로 — 이 사람의 사원증 데이터가 담긴 개인 QR → 폰에서 디지털 사원증 + 설치 링크 -->
       <div class="cardqr-wrap">
@@ -439,46 +405,19 @@
       </div>
     </section>
 
-    <!-- ④ Pro 시작 섹션은 태국 페이지에서 제거 (빠불로 2026-09-14) — Pro는 사원증 QR → 집 모드에서 (이메일 자동, 비밀번호만) -->
   </div>
 
   <!-- ── 집 모드 (QR) ──────────────────────────────────────────── -->
   <div id="home" style="display:none">
     <section class="step on">
-      <!-- 2026-09-13: 개인 QR(?home=1&c=…)로 들어오면 디지털 사원증을 맨 위에 — 인쇄 대신 폰에 저장 -->
+      <div class="s-head"><span class="s-num">✓</span><h2 data-i18n="hTitle"></h2></div>
+      <!-- 2026-09-13: 개인 QR(?home=1&card=…)로 들어오면 디지털 사원증을 맨 위에 — 인쇄 대신 폰에 저장 -->
       <div id="home-card-wrap" style="display:none">
         <b data-i18n="homeCardTitle" style="display:block;font-size:17px;color:var(--accent);margin-bottom:8px"></b>
         <div class="idcard" id="home-idcard"></div>
         <button type="button" id="home-png-btn" data-i18n="homePngBtn"></button>
-        <div style="height:14px"></div>
+        <p class="hint" data-i18n="homeCardDesc" style="margin:8px 0 18px"></p>
       </div>
-      <!-- 2026-09-14 빠불로: 친구 초대 — 친구는 Pro 3개월(THAI3) + 나는 초대 성사마다 1개월 추가 (무제한) -->
-      <div class="handoff refer" id="refer" style="display:none">
-        <b data-i18n="referTitle"></b>
-        <p data-i18n="referDesc"></p>
-        <div class="hurl" id="refer-url"></div>
-        <div class="hbtns">
-          <button type="button" id="rf-share" data-i18n="shareFriendBtn"></button>
-          <button type="button" class="ghost" id="rf-line" data-i18n="lineBtn"></button>
-          <button type="button" class="ghost" id="rf-copy" data-i18n="copyBtn"></button>
-        </div>
-      </div>
-      <!-- 집 모드 Pro 시작 (2026-09-14 빠불로: 사원증·초대 바로 아래) — 이메일은 사원증 QR에서 자동, 비밀번호만 → Stripe -->
-      <div class="pro prohome" id="prohome">
-        <b data-i18n="proTitleHome"></b>
-        <div class="prolead" data-i18n="proLead"></div>
-        <div class="prosub" data-i18n="proSub"></div>
-        <p class="pronote" id="pronote-home" data-i18n="proNotes"></p>
-        <div class="msg show info" id="prodone" style="display:none" data-i18n="proDone"></div>
-        <form id="prof" novalidate>
-          <div class="field"><label for="pemail" data-i18n="email"></label><input id="pemail" type="email" inputmode="email" autocomplete="email" autocapitalize="none"></div>
-          <div class="field"><label for="ppw" data-i18n="pw"></label><input id="ppw" type="password" autocomplete="current-password"><div class="hint" data-i18n="proLogin"></div></div>
-          <button type="submit" id="prosubmit" data-i18n="proHomeBtn"></button>
-        </form>
-        <div class="msg" id="promsg-home"></div>
-      </div>
-      <!-- 데스크탑에 설치 후 시작하기 (2026-09-14 빠불로: 제목 "사원증 받으셨죠?" 삭제, 다운로드 = 픽토그램 1개 → 팝업 3종, 웹사이트 = 링크 픽토그램) -->
-      <b data-i18n="installTitle" style="display:block;font-size:17px;color:var(--accent);margin:22px 0 6px"></b>
       <p class="s-desc" data-i18n="hDesc"></p>
       <ol class="home">
         <li data-i18n="h1s"></li><li data-i18n="h2s"></li><li data-i18n="h3s"></li>
@@ -487,68 +426,80 @@
       <div class="handoff" id="handoff">
         <b data-i18n="handoffTitle"></b>
         <p data-i18n="handoffDesc"></p>
-        <div class="hurl" id="handoff-url">re-be.world/join/thai</div>
+        <div class="hurl" id="handoff-url">re-be.world/join/cannes</div>
         <div class="hbtns">
           <button type="button" id="ho-share" data-i18n="shareBtn"></button>
-          <button type="button" class="ghost" id="ho-line" data-i18n="lineBtn"></button>
           <button type="button" class="ghost" id="ho-mail" data-i18n="mailBtn"></button>
           <button type="button" class="ghost" id="ho-copy" data-i18n="copyBtn"></button>
         </div>
       </div>
-      <div class="picto-row">
-        <button type="button" class="picto primary" id="dl-open">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M6 9l6 6 6-6M4 20h16"/></svg>
-          <span data-i18n="dlBtn"></span>
-        </button>
-        <a class="picto" id="dl-site" href="https://re-be.world/" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
-          <span data-i18n="siteBtn"></span>
-        </a>
+      <!-- 집 모드 Pro 시작 (2026-09-12): 로그인 → 결제창 (행사 중 3개월 / 9/30까지 2개월은 서버가 날짜로 판정) -->
+      <div class="pro prohome" id="prohome">
+        <b data-i18n="proTitleHome"></b>
+        <div class="prolead" data-i18n="proLead"></div>
+        <div class="prosub" data-i18n="proSub"></div>
+        <p class="pronote" id="pronote-home"></p>
+        <div class="msg show info" id="prodone" style="display:none" data-i18n="proDone"></div>
+        <form id="prof" novalidate>
+          <div class="field"><label for="pemail" data-i18n="email"></label><input id="pemail" type="email" inputmode="email" autocomplete="email" autocapitalize="none"></div>
+          <div class="field"><label for="ppw" data-i18n="pw"></label><input id="ppw" type="password" autocomplete="current-password"><div class="hint" data-i18n="proLogin"></div></div>
+          <button type="submit" id="prosubmit" data-i18n="proHomeBtn"></button>
+        </form>
+        <div class="msg" id="promsg-home"></div>
       </div>
+      <a class="dl primary" id="dl-mac" href="#" data-i18n="dlMac"></a>
+      <a class="dl" id="dl-mac-intel" href="#" data-i18n="dlMacIntel"></a>
+      <a class="dl" id="dl-win" href="#" data-i18n="dlWin"></a>
+      <a class="dl" id="dl-site" href="https://re-be.world/ko" data-i18n="dlSite"></a>
       <div class="coupon show" style="margin-top:16px"><b data-i18n="couponTitle"></b><p data-i18n="hCoupon"></p></div>
     </section>
-  </div>
-  <!-- 다운로드 팝업 (index.html dlModal과 같은 3종) -->
-  <div class="modal-bg" id="dlModal">
-    <div class="modal">
-      <span class="x" id="dlClose">✕</span>
-      <h3 data-i18n="dlModalTitle"></h3>
-      <p class="msub" data-i18n="dlModalSub"></p>
-      <div class="dls">
-        <a class="dl-opt" id="dl-mac" href="#"><span class="os"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-2.6 2.13-3.85 2.22-3.91-1.21-1.77-3.1-2.02-3.77-2.05-1.6-.16-3.13.94-3.94.94-.81 0-2.07-.92-3.4-.9-1.75.03-3.36 1.02-4.26 2.58-1.82 3.15-.47 7.82 1.3 10.38.86 1.25 1.89 2.66 3.24 2.6 1.3-.05 1.79-.84 3.36-.84 1.57 0 2.01.84 3.39.82 1.4-.03 2.29-1.28 3.15-2.54.99-1.46 1.4-2.87 1.42-2.94-.03-.01-2.73-1.05-2.76-4.15zM14.53 4.6c.72-.87 1.2-2.08 1.07-3.28-1.03.04-2.28.69-3.02 1.55-.66.77-1.24 2-1.09 3.18 1.15.09 2.32-.58 3.04-1.45z"></path></svg></span><span class="lbl"><b>macOS</b><span>Apple Silicon</span></span><span class="arr">↓</span></a>
-        <a class="dl-opt" id="dl-mac-intel" href="#"><span class="os"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-2.6 2.13-3.85 2.22-3.91-1.21-1.77-3.1-2.02-3.77-2.05-1.6-.16-3.13.94-3.94.94-.81 0-2.07-.92-3.4-.9-1.75.03-3.36 1.02-4.26 2.58-1.82 3.15-.47 7.82 1.3 10.38.86 1.25 1.89 2.66 3.24 2.6 1.3-.05 1.79-.84 3.36-.84 1.57 0 2.01.84 3.39.82 1.4-.03 2.29-1.28 3.15-2.54.99-1.46 1.4-2.87 1.42-2.94-.03-.01-2.73-1.05-2.76-4.15zM14.53 4.6c.72-.87 1.2-2.08 1.07-3.28-1.03.04-2.28.69-3.02 1.55-.66.77-1.24 2-1.09 3.18 1.15.09 2.32-.58 3.04-1.45z"></path></svg></span><span class="lbl"><b>macOS</b><span>Intel</span></span><span class="arr">↓</span></a>
-        <a class="dl-opt" id="dl-win" href="#"><span class="os"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M3 5.5l8-1.1v7.1H3V5.5zm0 13l8 1.1v-7H3v5.9zM12 4.2L22 3v8.5H12V4.2zm0 15.6L22 21v-8.5H12v7.3z"></path></svg></span><span class="lbl"><b>Windows</b><span>x64 · .exe</span></span><span class="arr">↓</span></a>
-      </div>
-      <p class="mnote" data-i18n="dlModalNote"></p>
-    </div>
   </div>
 
   <div class="foot"><a href="/privacy.html" data-i18n="privacy"></a> · Be.Ark by Paulus</div>
 </main>
 
-  <!-- 2026-09-16 빠불로(현장 피드백: 위에 내용이 너무 많다) — 앱 구동 화면·유저 코멘트·영상은 맨 아래로 -->
-  <section class="video"><div class="pw">
-      <!-- 2026-09-12 빠불로: 목업 대신 실제 구동 영상 (2클립 이어붙임, 무음·자동반복 — /landing/beark-demo.mp4) -->
-      <div class="demo">
-        <div class="mock-bar"><i></i><i></i><i></i><span>Be.Ark</span></div>
-        <video id="demo-video" src="/landing/beark-demo.mp4" poster="/landing/beark-demo-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Be.Ark demo"></video>
-      </div>
-  </div></section>
-  <section class="testi">
-    <div class="pw">
-      <div class="sec-h"><h2 data-i18n="testiTitle"></h2><p data-i18n="testiSub"></p></div>
-      <div class="tg" id="testi-grid"></div>
-    </div>
-  </section>
+  <!-- 2026-09-16 빠불로(태국 피드백): 영상은 맨 아래로 -->
   <section class="video">
     <div class="pw">
       <div class="sec-h"><h2 data-i18n="videoTitle"></h2><p data-i18n="videoSub"></p></div>
       <div class="video-frame">
-        <iframe id="yt-video" src="https://www.youtube.com/embed/14lhSoVAa7A" title="Be.Ark" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+        <iframe src="https://www.youtube.com/embed/jvsTvkZSvjk" title="Be.Ark" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
       </div>
     </div>
   </section>
 <div id="print-only"><img id="print-img" alt=""></div>
+<script>
+// ── 히어로 스타필드 (index.html 스타필드 이식, 2026-09-17): 떠다니는 별 + 가끔 별똥별. 히어로 영역 크기에만 맞춘다.
+(function(){
+  var sec=document.getElementById('hero-sec'), c=document.getElementById('hero-stars'); if(!sec||!c) return;
+  var x=c.getContext('2d'); if(!x) return;
+  var w,h,stars=[],shoots=[],DPR=Math.min(window.devicePixelRatio||1,2);
+  function resize(){
+    var cw=sec.clientWidth, ch=sec.clientHeight;
+    w=c.width=cw*DPR; h=c.height=ch*DPR; c.style.width=cw+'px'; c.style.height=ch+'px';
+    var n=Math.round((cw*ch)/9000); stars=[];
+    for(var i=0;i<n;i++) stars.push({x:Math.random()*w,y:Math.random()*h,r:(Math.random()*1.2+0.3)*DPR,a:Math.random()*0.6+0.2,tw:Math.random()*0.02+0.004,dir:Math.random()<0.5?1:-1,vy:(Math.random()*0.04+0.01)*DPR});
+  }
+  function shoot(){
+    var fromLeft=Math.random()<0.5;
+    shoots.push({x:fromLeft?-50:w+50,y:Math.random()*h*0.5,vx:(fromLeft?1:-1)*(Math.random()*5+6)*DPR,vy:(Math.random()*2+1.5)*DPR,life:0,max:Math.random()*40+50});
+  }
+  function tick(){
+    x.clearRect(0,0,w,h);
+    for(var i=0;i<stars.length;i++){ var s=stars[i]; s.a+=s.tw*s.dir; if(s.a>0.85){s.a=0.85;s.dir=-1;} if(s.a<0.18){s.a=0.18;s.dir=1;}
+      s.y+=s.vy; if(s.y>h){s.y=0;s.x=Math.random()*w;} x.globalAlpha=s.a; x.fillStyle=i%17===0?'#c49c4d':'#dfe7f2'; x.beginPath(); x.arc(s.x,s.y,s.r,0,6.28); x.fill(); }
+    x.globalAlpha=1;
+    for(var j=shoots.length-1;j>=0;j--){ var sh=shoots[j]; sh.life++; var px=sh.x,py=sh.y; sh.x+=sh.vx; sh.y+=sh.vy;
+      var g=x.createLinearGradient(px,py,px-sh.vx*4,py-sh.vy*4); g.addColorStop(0,'#ffffff'); g.addColorStop(0.4,'#c49c4dcc'); g.addColorStop(1,'#c49c4d00');
+      x.strokeStyle=g; x.lineWidth=2*DPR; x.beginPath(); x.moveTo(px,py); x.lineTo(px-sh.vx*4,py-sh.vy*4); x.stroke();
+      if(sh.life>sh.max||sh.x<-80||sh.x>w+80) shoots.splice(j,1); }
+    requestAnimationFrame(tick);
+  }
+  resize(); addEventListener('resize',resize); if(window.ResizeObserver) new ResizeObserver(resize).observe(sec);
+  setInterval(function(){ if(Math.random()<0.6&&shoots.length<2) shoot(); },2600);
+  tick();
+})();
+</script>
 <script src="/join/beark-card.js"></script>
 <script src="/join/testi-avatars.js"></script>
 <script>
@@ -556,9 +507,9 @@
   var FN   = "https://fkggbfqfgsgsacokjuqa.supabase.co/functions/v1/billing";
   var AUTH = "https://fkggbfqfgsgsacokjuqa.supabase.co/auth/v1/token?grant_type=password";
   var KEY  = "sb_publishable_t3TDevoknYi9XDmspshfBQ_xKZCQI9v"; // 공개용 키 — 데스크탑 arkAuth.ts와 같은 정본 프로젝트
-  var CAMPAIGN = "thai";
-  var LS = "thai_state_v1", LS_LANG = "thai_lang";
-  var HOME_URL = "https://re-be.world/join/thai?home=1";
+  var CAMPAIGN = "cannes";
+  var LS = "cannes_state_v1", LS_LANG = "cannes_lang";
+  var HOME_URL = "https://re-be.world/join/cannes?home=1";
   // 다운로드 = 사이트 정본과 동일 값 (릴리스 때 index.html과 함께 교체 — beark-release 스킬)
   var DL_MAC = "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.6.1/Be.Ark_1.6.1_aarch64.dmg";
   var DL_MAC_INTEL = "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.6.1/Be.Ark_1.6.1_x64.dmg";
@@ -566,39 +517,40 @@
 
   var STR = {
     ko: {
-      tag: "태국 얼리버드 이벤트",
+      tag: "Cannes Lions Seoul 2026 강의 특별이벤트",
       h1: "'나만의 AI에이전트를 채용하세요!'",
-      sub: "<b>〈Pro 모드 3개월 무료 이용권 증정〉</b>지금 AI 팀원을 채용하고 사원증을 받으세요.<br>컴퓨터에서 같은 이메일로 로그인하면 그 팀원이 Be.Ark에 합류해요.",
+      sub: "<b>〈Pro 모드 3개월 무료 이용권 증정〉</b>강의 자리에서 AI 팀원을 채용하고 에이전트 프로필을 받으세요.<br>집에서 QR로 접속하면 그 팀원이 Be.Ark에 합류해요.",
       // 2026-09-12 히어로 (랜딩 이식, 부스용 한 줄 CTA)
-      heroPill: "태국 크리에이터 × Be.Ark · 얼리버드 채용 중",
-      heroH1: "나만의 <span class=\"hl\">AI 직원</span>을<br>무료로 채용하세요!",
-      heroSub: "나의 대화·기억·파일 — 전부 내 컴퓨터에. 내 말투와 방식을 아는 AI 팀원을 지금 채용하고 사원증을 받으세요.",
+      heroPill: "Cannes Lions Seoul 2026 × Be.Ark · 강의 이벤트",
+      heroH1: "<span class=\"w\">창작자가</span> <span class=\"w\">소유하는</span> <span class=\"w hl\">AI에이전트</span> <span class=\"w\">시대,</span><br><span class=\"w hl\">창작 데이터 보호</span><span class=\"w\">로</span> <span class=\"w\">함께</span> <span class=\"w\">만들어가요!</span>",
+      heroSub: "유저의 사고와 경험이 담긴 수많은 데이터들\n내 소유의 에이전트에만 학습시키세요!",
       heroCta: "지금 무료로 채용하기 ↓", heroCtaHome: "앱 받고 팀원 만나기 ↓",
-      heroNote: "무료 · 사원증 즉시 발급 · Pro 3개월 쿠폰(THAI3) 포함",
-      userNameLabel: "이름 (선택)", userNameHint: "적으면 사원증 위에 '000님의 에이전트 직원이 입사했습니다'가 인쇄돼요.",
-      orgLabel: "소속 (선택)", bannerText: "{name}님의 에이전트 직원이 입사했습니다",
+      heroNote: "무료 · 에이전트 프로필 즉시 발급 · Pro 3개월 쿠폰 포함",
+      userNameLabel: "이름 (선택)", userNameHint: "적으면 에이전트 프로필 위에 '000님의 에이전트 직원이 입사했습니다'가 인쇄돼요.",
+      orgLabel: "소속 (선택)", bannerText: "{name}님 소유의 에이전트가 생성되었습니다",
       handoffTitle: "📱 지금 폰이죠? 설치는 컴퓨터에서",
       handoffDesc: "컴퓨터 브라우저에서 아래 주소를 열면 이 페이지가 그대로 나와요. 링크를 나에게 보내두면 편해요.",
-      shareBtn: "나에게 링크 보내기 (메시지)", lineBtn: "LINE으로 보내기", mailBtn: "이메일로 보내기", copyBtn: "링크 복사", copied: "복사됐어요 ✓",
+      shareBtn: "나에게 링크 보내기 (카톡·메시지)", mailBtn: "이메일로 보내기", copyBtn: "링크 복사", copied: "복사됐어요 ✓",
       mailSubject: "Be.Ark 설치 링크 — 채용한 에이전트 만나기",
-      mailBody: "컴퓨터에서 이 링크를 열어 Be.Ark를 설치하고, 가입한 이메일로 로그인하세요.\n{url}\n\n채용한 에이전트가 자동으로 합류합니다. (Pro 쿠폰은 결제 시 자동 적용)",
+      mailBody: "컴퓨터에서 이 링크를 열어 Be.Ark를 설치하고, 현장에서 가입한 이메일로 로그인하세요.\n{url}\n\n채용한 에이전트가 자동으로 합류합니다. (Pro 쿠폰은 결제 시 자동 적용)",
       // 2026-09-12 Pro 시작 (빠불로 문구)
       proTitle: "Pro 모드 시작하기 (선택)", proTitleHome: "Pro 모드 시작하기",
       proLead: "9.30까지 Pro 모드 가입하면 3개월 Pro 모드 무료!",
-      proSub: "쿠폰 코드 THAI3 · 첫 결제 한정 · 선착순 300명 (초대된 친구 포함)",
+      proSub: "Cannes Lions Seoul 강의 참가자 한정 · 첫 결제 한정",
       proNotes: "* Pro 모드는 사용 중 언제든지 해지 가능합니다\n* 무료 계정으로도 에이전트 1명으로 모든 기능을 무제한 사용 가능합니다",
       proHow: "폰 카메라로 QR을 찍으면 결제창이 열려요. 카드 등록만 하면 끝 — 지금 청구 0원, 무료 기간이 끝나면 월 $20.",
-      proFallback: "지금 안 해도 괜찮아요. 나중에 사원증 QR로 접속해 'Pro 모드 시작하기'를 누르면 같은 혜택이에요 (9.30까지).",
-      proHomeBtn: "Pro 모드 시작하기", proLogin: "가입한 이메일이 채워져 있어요. 비밀번호만 넣으면 Stripe 결제창으로 바로 이동해요.",
+      proFallback: "지금 안 해도 괜찮아요. 집에서 에이전트 프로필 QR로 접속해 'Pro 모드 시작하기'를 누르면 같은 혜택이에요 (9.30까지).",
+      proHomeBtn: "Pro 모드 시작하기", proLogin: "현장에서 만든 이메일·비밀번호로 로그인하면 결제창으로 이동해요.",
       proBusy: "결제창 여는 중…", proDone: "Pro 활성화 완료 🎉 앱에서 같은 이메일로 로그인하면 바로 적용돼요.",
       proErr: "결제창을 열지 못했어요. 잠시 후 다시 시도해주세요.", proPwWrong: "이메일 또는 비밀번호가 맞지 않아요.",
       proMinting: "Pro QR 준비 중…",
-      // 2026-09-13 잉크 소진 → 디지털 사원증
-      cardQrTitle: "📱 폰으로 사원증 받기",
-      cardQrDesc: "폰에서 사원증을 저장하고, 친구 초대·Pro 시작·설치 링크까지 이어서 진행할 수 있어요.",
-      homeCardTitle: "내 에이전트 사원증",
-      homePngBtn: "사원증 이미지 저장",
-      homeCardDesc: "저장해두면 오늘의 기념 사원증이에요. 아래에서 컴퓨터에 Be.Ark를 설치하고 같은 이메일로 로그인하면 이 팀원이 합류해요.",
+      // 2026-09-13 잉크 소진 → 디지털 에이전트 프로필
+      cardQrTitle: "📱 폰으로 에이전트 프로필 받기",
+      goQr: "QR로 이동", goBtnTitle: "버튼을 눌러서 이동", goBtn: "내 에이전트 프로필 페이지 열기",
+      cardQrDesc: "이 QR을 폰 카메라로 찍으면 내 에이전트 프로필이 폰에 뜨고, 이미지로 저장할 수 있어요. 같은 화면에서 컴퓨터 설치 링크도 보낼 수 있어요.",
+      homeCardTitle: "내 에이전트 에이전트 프로필",
+      homePngBtn: "에이전트 프로필 이미지 저장",
+      homeCardDesc: "저장해두면 오늘의 기념 에이전트 프로필이에요. 아래에서 컴퓨터에 Be.Ark를 설치하고 같은 이메일로 로그인하면 이 팀원이 합류해요.",
       mockU1: "방금 업로드한 PPT 양식과 나의 논리 구성, 어투를 학습해줘라",
       mockA1: "‘<b>파울러스</b>’ PT양식 학습했습니다. 배경 - 문제정의 - 컨슈머 인사이트 - 솔루션으로 이어지는 논리구조 학습했습니다. 빠불로님만의 PT문서 어투도 인지했습니다.",
       mockU2: "그것을 바탕으로 아까 자료조사했던 000 프로젝트.md를 PT 문서로 작성부탁해",
@@ -606,26 +558,25 @@
       testiTitle: "유저 코멘트", testiSub: "Be.Ark를 먼저 써본 분들이 느낀 편리함입니다.",
       videoTitle: "영상으로 만나는 Be.Ark", videoSub: "당신이 소유하는 진정한 AI 에이전트 — 어떻게 작동하는지 확인해 보세요.",
       done: "완료 ✓",
-      s1Title: "채용 공고 고르기", s1Desc: "어떤 팀원이 필요한가요? 역할 9가지 중 고르고 이름을 지어주세요.",
-      nameLabel: "팀원 이름", nameHint: "예: 민지, 준호, Aria — 부르기 편한 이름이면 돼요.",
+      s1Title: "나의 데이터를 담을 에이전트 고르기", s1Desc: "역할 9가지 중 고르고 이름을 지어주세요. 얼굴은 나중에 바꿀 수 있어요.",
+      nameLabel: "에이전트 이름", nameHint: "예: 민지, 준호, Aria — 부르기 편한 이름이면 돼요.",
       shuffleBtn: "다른 얼굴", faceHint: "마음에 드는 얼굴이 나올 때까지 눌러보세요. 직접 고르려면 '꾸미기'.",
       editBtn: "꾸미기", editClose: "완료", editRandom: "랜덤",
       tabFace: "얼굴형", tabHair: "머리", tabEyes: "눈", tabMouth: "입", tabGlasses: "안경", tabHat: "모자", tabAcc: "악세사리", tabCloth: "옷", tabBg: "배경",
       colorSkin: "피부", colorHair: "머리색", colorIris: "눈동자", colorGlasses: "안경테", colorHat: "모자색", colorAcc: "소품색", colorCloth: "옷색", colorBg: "배경",
-      hireBtn: "이 팀원 채용하기",
+      hireBtn: "에이전트 생성하기",
       s2Title: "계정 만들기", s2Desc: "이메일과 비밀번호만 있으면 끝. 확인 메일 없이 바로 가입돼요.",
       email: "이메일", pw: "비밀번호", pwHint: "8자 이상. 집에서 앱에 로그인할 때 쓰는 비밀번호예요.",
-      signupBtn: "가입하고 사원증 받기", signupBusy: "가입하는 중…",
-      couponTitle: "THAI3 · Pro 3개월 무료",
+      signupBtn: "내 소유의 에이전트 시대 시작하기", signupBusy: "가입하는 중…",
+      couponTitle: "CANNES · Pro 3개월 무료",
       couponSub: "쿠폰이 계정에 등록됐어요. 결제 시 자동 적용 · {date} 마감",
-      s3Title: "📱 폰으로 사원증 받기", s3Desc: "가입 완료! 사원증은 폰에서 확인하고 저장하세요. QR을 찍거나 버튼을 누르면 내 사원증 페이지가 열려요.",
-      goQr: "QR로 이동", goBtnTitle: "버튼을 눌러서 이동", goBtn: "내 사원증 페이지 열기", heroQrNote: "QR을 찍으면 폰에서 이 페이지가 열려요",
-      pngBtn: "사원증 PNG 저장 (54×86)", printBtn: "인쇄", nextBtn: "다음 사람",
-      cardHint: "위 QR로 폰에 사원증을 받아 두세요. PNG 저장 = 54×86mm(세로) 규격 1장.",
-      hTitle: "사원증 받으셨죠? 집에서 이어가기",
-      hDesc: "채용한 팀원이 계정에 담겨 있어요. 앱을 설치하고 같은 이메일로 로그인하면 합류합니다.",
+      s3Title: "에이전트 프로필", s3Desc: "",
+      pngBtn: "에이전트 프로필 PNG 저장 (54×86)", printBtn: "인쇄", nextBtn: "다음 사람",
+      cardHint: "인쇄가 안 될 땐 위 QR로 폰에 받아 가세요. PNG 저장 = 인화지 54×86mm(세로) 규격 1장.",
+      hTitle: "에이전트 프로필 받으셨죠? 집에서 이어가기",
+      hDesc: "현장에서 채용한 팀원이 계정에 담겨 있어요. 앱을 설치하고 같은 이메일로 로그인하면 합류합니다.",
       h1s: "컴퓨터(Mac/Windows)에서 Be.Ark를 다운로드해 설치하세요 — 폰이면 아래 상자로 링크를 컴퓨터에 보내세요.",
-      h2s: "가입할 때 만든 이메일·비밀번호로 로그인하세요.",
+      h2s: "현장에서 만든 이메일·비밀번호로 로그인하세요.",
       h3s: "팀원이 합류하고, Pro 3개월 무료 쿠폰은 결제 화면에서 자동으로 적용돼요.",
       dlMac: "Mac (Apple Silicon) 다운로드", dlMacIntel: "Mac (Intel) 다운로드", dlWin: "Windows 다운로드", dlSite: "Be.Ark 둘러보기",
       hCoupon: "가입한 계정에 이미 등록돼 있어요. 앱에서 Pro 시작할 때 자동 적용 · 9.30까지",
@@ -636,116 +587,42 @@
       signup_failed: "가입에 실패했어요. 잠시 후 다시 시도해 주세요.", unknownErr: "문제가 생겼어요 ({code})",
       existingClaiming: "이미 가입된 계정이에요. 팀원과 쿠폰을 계정에 담는 중…",
       existingPwWrong: "이미 가입된 이메일이에요. 비밀번호가 기존 계정과 달라요 — 원래 쓰던 비밀번호를 넣어주세요.",
-      agentNotSaved: "계정은 준비됐는데 팀원 정보를 담지 못했어요. 다시 시도해 주세요.",
-      promoNotAttached: "계정은 만들어졌는데 쿠폰이 붙지 않았어요. 결제창에서 코드 THAI3를 직접 입력하세요.",
+      agentNotSaved: "계정은 준비됐는데 팀원 정보를 담지 못했어요. 스태프에게 알려주세요.",
+      promoNotAttached: "계정은 만들어졌는데 쿠폰이 붙지 않았어요. 스태프에게 알려주세요.",
       network: "네트워크가 불안정해요. 다시 눌러주세요.",
-      roleLabel: "역할", joinedLabel: "입사", noLabel: "사번", qrLabel: "QR로 집에서 합류",
-      referTitle: "🎁 친구 초대 — 친구는 Pro 3개월, 나는 +1개월", referDesc: "이 링크로 친구가 에이전트를 채용하고 Pro를 시작하면 친구는 3개월 무료, 나는 Pro 1개월이 추가돼요. 초대한 만큼 무제한 적립!", shareFriendBtn: "친구에게 공유", referShareText: "Be.Ark에서 나만의 AI 팀원을 무료로 채용하고 Pro 3개월 받으세요 👉 {url}", installTitle: "데스크탑에 설치 후 시작하기", dlBtn: "다운로드", siteBtn: "웹사이트", dlModalTitle: "Be.Ark 다운로드", dlModalSub: "플랫폼을 고르세요 · 무료", dlModalNote: "macOS 13+ / Windows 10+ (x64) · 8GB RAM(로컬 모델은 16GB+ 권장). Windows는 SmartScreen이 뜨면 '추가 정보 → 실행'."
-    },
-    th: {
-      tag: "Thailand Early Bird · ข้อเสนอพิเศษ",
-      h1: "'จ้างเอเจนต์ AI ของคุณเอง!'",
-      sub: "<b>〈ฟรี Pro 3 เดือน〉</b>จ้างเพื่อนร่วมทีม AI ตอนนี้และรับบัตรพนักงาน<br>เข้าสู่ระบบบนคอมพิวเตอร์ด้วยอีเมลเดียวกัน แล้วเพื่อนร่วมทีมจะเข้าร่วมใน Be.Ark",
-      heroPill: "Thailand Creators × Be.Ark · เปิดรับสมัคร Early Bird",
-      heroH1: "จ้าง <span class=\"hl\">พนักงาน AI</span> ของคุณเอง<br>— ฟรี!",
-      heroSub: "แชท ความจำ และไฟล์ของคุณ — ทั้งหมดอยู่บนคอมพิวเตอร์ของคุณเอง จ้างเพื่อนร่วมทีม AI ที่เรียนรู้สไตล์ของคุณตอนนี้ และรับบัตรพนักงาน",
-      heroCta: "จ้างฟรีตอนนี้ ↓", heroCtaHome: "ดาวน์โหลดแอปและพบเพื่อนร่วมทีม ↓",
-      heroNote: "ฟรี · รับบัตรพนักงานทันที · รวม Pro 3 เดือน (THAI3)",
-      userNameLabel: "ชื่อของคุณ (ไม่บังคับ)", userNameHint: "ถ้ากรอก บัตรจะพิมพ์ว่า “พนักงาน AI ของ <ชื่อ> เข้าร่วมแล้ว”",
-      orgLabel: "สังกัด (ไม่บังคับ)", bannerText: "พนักงาน AI ของ {name} เข้าร่วมแล้ว",
-      handoffTitle: "📱 ใช้มือถืออยู่ใช่ไหม? ติดตั้งบนคอมพิวเตอร์",
-      handoffDesc: "เปิดที่อยู่ด้านล่างในเบราว์เซอร์บนคอมพิวเตอร์เพื่อเข้าหน้านี้ ส่งลิงก์ให้ตัวเองเพื่อความสะดวก",
-      shareBtn: "ส่งลิงก์ให้ตัวเอง", lineBtn: "ส่งทาง LINE", mailBtn: "ส่งทางอีเมล", copyBtn: "คัดลอกลิงก์", copied: "คัดลอกแล้ว ✓",
-      mailSubject: "ลิงก์ติดตั้ง Be.Ark — พบเอเจนต์ที่คุณจ้าง",
-      mailBody: "เปิดลิงก์นี้บนคอมพิวเตอร์ ติดตั้ง Be.Ark แล้วเข้าสู่ระบบด้วยอีเมลที่สมัครไว้\n{url}\n\nเอเจนต์ที่คุณจ้างจะเข้าร่วมอัตโนมัติ (คูปอง Pro ใช้ตอนชำระเงิน)",
-      proTitle: "เริ่ม Pro (ไม่บังคับ)", proTitleHome: "เริ่ม Pro",
-      proLead: "สมัคร Pro ภายใน 30 ก.ย.: ฟรี Pro 3 เดือน!",
-      proSub: "รหัสคูปอง THAI3 · เฉพาะการชำระเงินครั้งแรก · 300 คนแรก (รวมเพื่อนที่ได้รับเชิญ)",
-      proNotes: "* ยกเลิก Pro ได้ทุกเมื่อ\n* บัญชีฟรีก็ใช้ทุกฟีเจอร์ได้ไม่จำกัดกับเอเจนต์ 1 ตัว",
-      proHow: "สแกน QR ด้วยกล้องมือถือเพื่อเปิดหน้าชำระเงิน แค่ลงทะเบียนบัตร — วันนี้ $0 หลังหมดช่วงฟรี $20/เดือน",
-      proFallback: "ไม่ต้องรีบ เปิด QR บนบัตรทีหลังแล้วแตะ 'เริ่ม Pro' ได้ข้อเสนอเดียวกัน (ถึง 30 ก.ย.)",
-      proHomeBtn: "เริ่ม Pro", proLogin: "อีเมลถูกกรอกจากบัตรของคุณแล้ว ใส่รหัสผ่านเพื่อเปิดหน้าชำระเงิน Stripe",
-      proBusy: "กำลังเปิดหน้าชำระเงิน…", proDone: "Pro เปิดใช้งานแล้ว 🎉 เข้าสู่ระบบแอปด้วยอีเมลเดียวกันแล้วใช้ได้ทันที",
-      proErr: "เปิดหน้าชำระเงินไม่ได้ กรุณาลองอีกครั้งสักครู่", proPwWrong: "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
-      proMinting: "กำลังเตรียม QR สำหรับ Pro…",
-      cardQrTitle: "📱 รับบัตรบนมือถือ",
-      cardQrDesc: "สแกน QR นี้ด้วยกล้องมือถือ บัตรพนักงานจะแสดงบนมือถือและบันทึกเป็นรูปได้ หน้าเดียวกันยังส่งลิงก์ติดตั้งไปคอมพิวเตอร์ได้",
-      homeCardTitle: "บัตรพนักงานของเอเจนต์ฉัน",
-      homePngBtn: "บันทึกรูปบัตร",
-      homeCardDesc: "เก็บไว้เป็นที่ระลึก ด้านล่างติดตั้ง Be.Ark บนคอมพิวเตอร์แล้วเข้าสู่ระบบด้วยอีเมลเดียวกัน — เพื่อนร่วมทีมคนนี้จะเข้าร่วม",
-      mockU1: "เรียนรู้เทมเพลต PPT ที่ฉันเพิ่งอัปโหลด — โครงสร้างตรรกะและน้ำเสียงของฉัน",
-      mockA1: "เรียนรู้เทมเพลตเด็ค ‘<b>Paulus</b>’ แล้ว: ภูมิหลัง → ปัญหา → อินไซต์ผู้บริโภค → โซลูชัน และจับน้ำเสียงการเขียนเด็คของคุณได้แล้ว",
-      mockU2: "ทีนี้เปลี่ยนไฟล์วิจัย 000-project.md เป็นเด็คในสไตล์นั้น",
-      mockA2: "เสร็จแล้ว โครงสร้างและน้ำเสียงตรงกัน — กำลังบันทึกลงโฟลเดอร์โปรเจกต์",
-      testiTitle: "ความเห็นผู้ใช้", testiSub: "สิ่งที่ผู้ใช้กลุ่มแรกของ Be.Ark พบว่าสะดวก",
-      videoTitle: "รู้จัก Be.Ark ผ่านวิดีโอ", videoSub: "เอเจนต์ AI ที่คุณเป็นเจ้าของจริง ๆ — ดูว่าทำงานอย่างไร",
-      done: "เสร็จ ✓",
-      s1Title: "เลือกตำแหน่งงาน", s1Desc: "ต้องการเพื่อนร่วมทีมแบบไหน? เลือกบทบาทและตั้งชื่อ",
-      nameLabel: "ชื่อเพื่อนร่วมทีม", nameHint: "เช่น Aria, Max, มินจี — ชื่ออะไรก็ได้ที่เรียกง่าย",
-      shuffleBtn: "หน้าอื่น", faceHint: "แตะจนกว่าจะชอบหน้า หรือเลือกชิ้นส่วนเองด้วย 'ปรับแต่ง'",
-      editBtn: "ปรับแต่ง", editClose: "เสร็จ", editRandom: "สุ่ม",
-      tabFace: "หน้า", tabHair: "ผม", tabEyes: "ตา", tabMouth: "ปาก", tabGlasses: "แว่น", tabHat: "หมวก", tabAcc: "เครื่องประดับ", tabCloth: "ชุด", tabBg: "พื้นหลัง",
-      colorSkin: "ผิว", colorHair: "ผม", colorIris: "ตา", colorGlasses: "กรอบแว่น", colorHat: "สีหมวก", colorAcc: "เครื่องประดับ", colorCloth: "ชุด", colorBg: "พื้นหลัง",
-      hireBtn: "จ้างเพื่อนร่วมทีมคนนี้",
-      s2Title: "สร้างบัญชี", s2Desc: "แค่อีเมลและรหัสผ่าน ไม่ต้องยืนยันอีเมล",
-      email: "อีเมล", pw: "รหัสผ่าน", pwHint: "8 ตัวอักษรขึ้นไป ใช้เข้าสู่ระบบแอปบนคอมพิวเตอร์",
-      signupBtn: "สมัครและรับบัตร", signupBusy: "กำลังสมัคร…",
-      couponTitle: "THAI3 · ฟรี Pro 3 เดือน",
-      couponSub: "ลงทะเบียนคูปองในบัญชีแล้ว ใช้อัตโนมัติตอนชำระเงิน · หมดอายุ {date}",
-      s3Title: "📱 รับบัตรบนมือถือ", s3Desc: "สมัครเสร็จแล้ว! ดูและบันทึกบัตรพนักงานบนมือถือ — สแกน QR หรือแตะปุ่มเพื่อเปิดหน้าบัตรของคุณ",
-      goQr: "สแกนเพื่อเปิด", goBtnTitle: "หรือแตะปุ่มเพื่อเปิด", goBtn: "เปิดหน้าบัตรของฉัน", heroQrNote: "สแกนเพื่อเปิดหน้านี้บนมือถือ",
-      pngBtn: "บันทึกบัตร PNG (54×86)", printBtn: "พิมพ์", nextBtn: "คนถัดไป",
-      cardHint: "สแกน QR ด้านบนเพื่อเก็บบัตรไว้บนมือถือ บันทึก PNG = รูปขนาด 54×86 มม. (แนวตั้ง) 1 รูป",
-      hTitle: "ได้บัตรแล้ว? ไปต่อที่บ้าน",
-      hDesc: "เพื่อนร่วมทีมที่คุณจ้างถูกเก็บไว้ในบัญชีแล้ว ติดตั้งแอปและเข้าสู่ระบบด้วยอีเมลเดียวกัน",
-      h1s: "ดาวน์โหลดและติดตั้ง Be.Ark บนคอมพิวเตอร์ (Mac/Windows) — ถ้าอยู่บนมือถือ ส่งลิงก์ให้ตัวเองด้วยกล่องด้านล่าง",
-      h2s: "เข้าสู่ระบบด้วยอีเมลและรหัสผ่านที่สมัครไว้",
-      h3s: "เพื่อนร่วมทีมเข้าร่วม และคูปอง Pro 3 เดือนใช้อัตโนมัติตอนชำระเงิน",
-      dlMac: "ดาวน์โหลดสำหรับ Mac (Apple Silicon)", dlMacIntel: "ดาวน์โหลดสำหรับ Mac (Intel)", dlWin: "ดาวน์โหลดสำหรับ Windows", dlSite: "สำรวจ Be.Ark",
-      hCoupon: "ลงทะเบียนในบัญชีของคุณแล้ว ใช้เมื่อเริ่ม Pro ในแอป · ถึง 30 ก.ย.",
-      privacy: "นโยบายความเป็นส่วนตัว",
-      needName: "กรุณาตั้งชื่อเพื่อนร่วมทีม", needPreset: "กรุณาเลือกบทบาท",
-      invalid_email: "กรุณาตรวจสอบอีเมลอีกครั้ง", weak_password: "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร",
-      campaign_closed: "กิจกรรมนี้สิ้นสุดแล้ว", not_open_yet: "กิจกรรมยังไม่เริ่ม", unknown_campaign: "ลิงก์กิจกรรมไม่ถูกต้อง",
-      signup_failed: "สมัครไม่สำเร็จ กรุณาลองอีกครั้งสักครู่", unknownErr: "เกิดข้อผิดพลาด ({code})",
-      existingClaiming: "บัญชีนี้มีอยู่แล้ว กำลังบันทึกเพื่อนร่วมทีมและคูปอง…",
-      existingPwWrong: "อีเมลนี้ลงทะเบียนแล้ว แต่รหัสผ่านไม่ตรง — กรุณาใช้รหัสผ่านเดิม",
-      agentNotSaved: "บัญชีพร้อมแล้ว แต่บันทึกเพื่อนร่วมทีมไม่สำเร็จ กรุณาลองอีกครั้ง",
-      promoNotAttached: "สร้างบัญชีแล้ว แต่คูปองยังไม่ถูกแนบ กรอกรหัส THAI3 ตอนชำระเงิน",
-      network: "เครือข่ายไม่เสถียร กรุณาแตะอีกครั้ง",
-      roleLabel: "บทบาท", joinedLabel: "เข้าร่วม", noLabel: "เลขที่", qrLabel: "สแกนเพื่อเข้าร่วมที่บ้าน",
-      referTitle: "🎁 ชวนเพื่อน — เพื่อนได้ Pro 3 เดือน คุณได้ +1 เดือน", referDesc: "เมื่อเพื่อนจ้างเอเจนต์ผ่านลิงก์นี้และเริ่ม Pro เพื่อนได้ฟรี 3 เดือน และคุณได้ Pro เพิ่ม 1 เดือน ไม่จำกัด — ชวนกี่คนก็ได้เพิ่มเท่านั้น!", shareFriendBtn: "แชร์ให้เพื่อน", referShareText: "จ้างเพื่อนร่วมทีม AI ของคุณเองบน Be.Ark ฟรี และรับ Pro 3 เดือน 👉 {url}", installTitle: "ติดตั้งบนคอมพิวเตอร์แล้วเริ่มใช้งาน", dlBtn: "ดาวน์โหลด", siteBtn: "เว็บไซต์", dlModalTitle: "ดาวน์โหลด Be.Ark", dlModalSub: "เลือกแพลตฟอร์มของคุณ · ฟรี", dlModalNote: "macOS 13+ / Windows 10+ (x64) · RAM 8 GB (แนะนำ 16 GB+ สำหรับโมเดลโลคอล) บน Windows ถ้ามี SmartScreen ให้กด More info → Run anyway"
+      roleLabel: "역할", joinedLabel: "입사", noLabel: "사번", qrLabel: "QR로 집에서 합류"
     },
     en: {
-      tag: "Thailand Early Bird · Special offer",
-      h1: "'Create your own AI agent!'",
-      sub: "<b>〈3 months of Pro, free〉</b>Hire an AI teammate now and get an employee card.<br>Log in on your computer with the same email and the teammate joins you in Be.Ark.",
-      heroPill: "Thailand Creators × Be.Ark · Early-bird hiring",
-      heroH1: "Hire your own <span class=\"hl\">AI employee</span><br>— for free!",
-      heroSub: "Your chats, memory and files — all on your own computer. Hire an AI teammate who learns your voice, right now, and get your employee card.",
+      tag: "Cannes Lions Seoul 2026 · Lecture special",
+      h1: "'Hire your own AI agent!'",
+      sub: "<b>〈3 months of Pro, free〉</b>Hire an AI teammate here and get an agent profile.<br>Scan the QR at home and the teammate joins you in Be.Ark.",
+      heroPill: "Cannes Lions Seoul 2026 × Be.Ark · Lecture event",
+      heroH1: "The era of <span class=\"hl\">creator-owned AI agents</span> —<br>let's build it by protecting creative data!",
+      heroSub: "All the data that carries your thinking and experience\ntrain it only into an agent you own.",
       heroCta: "Hire for free now ↓", heroCtaHome: "Get the app & meet your teammate ↓",
-      heroNote: "Free · Employee card instantly · 3 months of Pro included (THAI3)",
-      userNameLabel: "Your name (optional)", userNameHint: "If given, the card is printed with “<name>'s AI employee has joined”.",
-      orgLabel: "Affiliation (optional)", bannerText: "{name}'s AI employee has joined",
+      heroNote: "Free · Agent profile on the spot · 3 months of Pro included",
+      userNameLabel: "Your name (optional)", userNameHint: "If given, the profile is printed with “<name>'s AI employee has joined”.",
+      orgLabel: "Affiliation (optional)", bannerText: "{name}'s own AI agent has been created",
       handoffTitle: "📱 On your phone? Install on a computer",
       handoffDesc: "Open the address below in your computer's browser to get this same page. Send the link to yourself to make it easy.",
-      shareBtn: "Send the link to myself", lineBtn: "Send via LINE", mailBtn: "Email it to me", copyBtn: "Copy link", copied: "Copied ✓",
+      shareBtn: "Send the link to myself", mailBtn: "Email it to me", copyBtn: "Copy link", copied: "Copied ✓",
       mailSubject: "Be.Ark install link — meet the agent you hired",
-      mailBody: "Open this link on your computer, install Be.Ark and log in with the email you signed up with.\n{url}\n\nYour hired agent joins automatically. (The Pro coupon applies at checkout.)",
+      mailBody: "Open this link on your computer, install Be.Ark and log in with the email you signed up with at the booth.\n{url}\n\nYour hired agent joins automatically. (The Pro coupon applies at checkout.)",
       proTitle: "Start Pro (optional)", proTitleHome: "Start Pro",
       proLead: "Subscribe to Pro by Sep 30: 3 months of Pro free!",
-      proSub: "Coupon code THAI3 · first payment only · first 300 people (invited friends included)",
+      proSub: "Cannes Lions Seoul attendees only · first payment only",
       proNotes: "* Cancel Pro anytime while using it\n* A free account still gets every feature, unlimited, with 1 agent",
       proHow: "Scan the QR with your phone camera to open checkout. Just register a card — $0 today, $20/month after the free period.",
-      proFallback: "No rush. Later, open the card's QR and tap 'Start Pro' for the same offer (through Sep 30).",
-      proHomeBtn: "Start Pro", proLogin: "Your email is filled in from your card. Enter your password to open Stripe checkout.",
+      proFallback: "No rush. At home, open the profile's QR and tap 'Start Pro' for the same offer (through Sep 30).",
+      proHomeBtn: "Start Pro", proLogin: "Log in with the email & password you created at the booth to open checkout.",
       proBusy: "Opening checkout…", proDone: "Pro is active 🎉 Log in to the app with the same email and it applies right away.",
       proErr: "Couldn't open checkout. Please try again in a moment.", proPwWrong: "Email or password doesn't match.",
       proMinting: "Preparing your Pro QR…",
       cardQrTitle: "📱 Get your card on your phone",
-      cardQrDesc: "On your phone you can save the card, invite friends, start Pro and send yourself the install link.",
-      homeCardTitle: "My agent's employee card",
-      homePngBtn: "Save card image",
+      goQr: "Scan to open", goBtnTitle: "Or open with a tap", goBtn: "Open my card page",
+      cardQrDesc: "Scan this QR with your phone camera: your agent profile appears on your phone and can be saved as an image. The same page lets you send the install link to your computer.",
+      homeCardTitle: "My agent's agent profile",
+      homePngBtn: "Save profile image",
       homeCardDesc: "Keep it as today's souvenir. Below, install Be.Ark on your computer and log in with the same email — this teammate joins you.",
       mockU1: "Learn the PPT template I just uploaded — my logic flow and tone.",
       mockA1: "Learned the ‘<b>Paulus</b>’ deck template: Background → Problem → Consumer insight → Solution. I also picked up your writing voice for decks.",
@@ -754,26 +631,25 @@
       testiTitle: "User comments", testiSub: "What early users of Be.Ark found convenient.",
       videoTitle: "Meet Be.Ark on video", videoSub: "The AI agent you truly own — see how it works.",
       done: "Done ✓",
-      s1Title: "Pick a job posting", s1Desc: "What kind of teammate do you need? Pick a role and give them a name.",
-      nameLabel: "Teammate name", nameHint: "e.g. Aria, Max, Minji — anything easy to call.",
+      s1Title: "Pick the agent that will hold your data", s1Desc: "Pick one of 9 roles and give them a name. You can change the face later.",
+      nameLabel: "Agent name", nameHint: "e.g. Aria, Max, Minji — anything easy to call.",
       shuffleBtn: "Another face", faceHint: "Tap until you like the face, or pick parts with 'Customize'.",
       editBtn: "Customize", editClose: "Done", editRandom: "Random",
       tabFace: "Face", tabHair: "Hair", tabEyes: "Eyes", tabMouth: "Mouth", tabGlasses: "Glasses", tabHat: "Hat", tabAcc: "Accessory", tabCloth: "Outfit", tabBg: "Background",
       colorSkin: "Skin", colorHair: "Hair", colorIris: "Eyes", colorGlasses: "Frame", colorHat: "Hat color", colorAcc: "Accessory", colorCloth: "Outfit", colorBg: "Background",
-      hireBtn: "Hire this teammate",
+      hireBtn: "Create my agent",
       s2Title: "Create your account", s2Desc: "Just an email and a password. No confirmation email.",
       email: "Email", pw: "Password", pwHint: "8+ characters. You'll use it to log in to the app at home.",
-      signupBtn: "Sign up & get the card", signupBusy: "Signing up…",
-      couponTitle: "THAI3 · Pro free for 3 months",
+      signupBtn: "Start my own-agent era", signupBusy: "Signing up…",
+      couponTitle: "CANNES · Pro free for 3 months",
       couponSub: "Coupon registered to your account. Applies at checkout · expires {date}",
-      s3Title: "📱 Get your card on your phone", s3Desc: "You're signed up! View and save your employee card on your phone — scan the QR or tap the button to open your card page.",
-      goQr: "Scan to open", goBtnTitle: "Or open with a tap", goBtn: "Open my card page", heroQrNote: "Scan to open this page on your phone",
-      pngBtn: "Save card PNG (54×86)", printBtn: "Print", nextBtn: "Next person",
-      cardHint: "Scan the QR above to keep the card on your phone. Save PNG = one 54×86mm (portrait) image.",
+      s3Title: "Agent profile", s3Desc: "",
+      pngBtn: "Save profile PNG (54×86)", printBtn: "Print", nextBtn: "Next person",
+      cardHint: "Can't print? Scan the QR above to take the profile on your phone. Save PNG = one 54×86mm (portrait) photo-paper image.",
       hTitle: "Got your card? Continue at home",
       hDesc: "The teammate you hired is stored in your account. Install the app and log in with the same email.",
       h1s: "Download and install Be.Ark on a computer (Mac/Windows) — on a phone, send yourself the link with the box below.",
-      h2s: "Log in with the email & password you signed up with.",
+      h2s: "Log in with the email & password you created at the booth.",
       h3s: "Your teammate joins, and the 3-month Pro coupon applies automatically at checkout.",
       dlMac: "Download for Mac (Apple Silicon)", dlMacIntel: "Download for Mac (Intel)", dlWin: "Download for Windows", dlSite: "Explore Be.Ark",
       hCoupon: "Already registered to your account. Applies when you start Pro in the app · through Sep 30",
@@ -784,24 +660,25 @@
       signup_failed: "Sign-up failed. Please try again in a moment.", unknownErr: "Something went wrong ({code})",
       existingClaiming: "This account already exists. Saving your teammate and coupon…",
       existingPwWrong: "This email is already registered, but the password doesn't match — please use your original password.",
-      agentNotSaved: "Account is ready but the teammate couldn't be saved. Please try again.",
-      promoNotAttached: "Your account was created but the coupon wasn't attached. Enter code THAI3 at checkout.",
+      agentNotSaved: "Account is ready but the teammate couldn't be saved. Please tell the staff.",
+      promoNotAttached: "Your account was created but the coupon wasn't attached. Please tell the staff.",
       network: "The network is unstable. Please tap again.",
-      roleLabel: "Role", joinedLabel: "Joined", noLabel: "No.", qrLabel: "Scan to join at home",
-      referTitle: "🎁 Invite a friend — they get 3 months of Pro, you get +1 month", referDesc: "When a friend hires an agent through this link and starts Pro, they get 3 months free and you get 1 extra month of Pro. No limit — every friend adds a month!", shareFriendBtn: "Share with a friend", referShareText: "Hire your own AI teammate on Be.Ark for free and get 3 months of Pro 👉 {url}", installTitle: "Install on your computer & start", dlBtn: "Download", siteBtn: "Website", dlModalTitle: "Download Be.Ark", dlModalSub: "Pick your platform · Free", dlModalNote: "macOS 13+ / Windows 10+ (x64) · 8 GB RAM (16 GB+ recommended for local models). On Windows, if SmartScreen appears: More info → Run anyway."
+      roleLabel: "Role", joinedLabel: "Joined", noLabel: "No.", qrLabel: "Scan to join at home"
     }
   };
+  // 2026-09-17 빠불로(칸라이언즈 공개): 역할 = 광고·크리에이티브 직군 9 (마케터·컨설턴트·AP·AE·카피라이터·아트디렉터·프로듀서·연출감독·개발자).
+  //   프리셋 id는 앱 1.6.0·서버 화이트리스트가 아는 9개 그대로 두고 **이 페이지의 라벨·설명만** 교체 (새 id는 배포된 앱이 몰라서 폴백됨).
+  //   집에서 앱 합류 시 역할 설명은 앱 프리셋을 따른다 — 정식 프리셋 추가는 다음 릴리스.
   var PRESET_STR = {
-    ko: { writer:["카피라이터","한 줄로 마음을 움직이는 문장을 쓰는 팀원"], founder:["전략가","사업 아이디어를 실행 계획으로 바꾸는 팀원"], marketer:["마케터","브랜드 이야기를 사람들에게 전하는 팀원"],
-          producer:["프로듀서","복잡한 일을 순서와 일정으로 정리하는 팀원"], researcher:["리서처","많은 자료에서 필요한 근거를 찾아내는 팀원"], everyday:["개발자","아이디어를 동작하는 코드로 바꾸는 팀원"],
-          accountant:["경리","영수증과 숫자를 깔끔한 장부로 정리하는 팀원"], chief:["총무","회사 자산과 살림을 빠짐없이 챙기는 팀원"], legal:["법무담당","계약서에서 위험한 조항을 먼저 찾아내는 팀원"] },
-    th: { writer:["ก๊อปปี้ไรเตอร์","เขียนประโยคเดียวที่ขยับใจคน"], founder:["นักกลยุทธ์","เปลี่ยนไอเดียธุรกิจเป็นแผนปฏิบัติ"], marketer:["นักการตลาด","พาเรื่องราวแบรนด์ไปถึงผู้คน"],
-          producer:["โปรดิวเซอร์","จัดระเบียบงานยุ่ง ๆ ให้เป็นลำดับและตาราง"], researcher:["นักวิจัย","หาหลักฐานที่ต้องการจากข้อมูลกองโต"], everyday:["นักพัฒนา","เปลี่ยนไอเดียเป็นโค้ดที่ใช้งานได้"],
-          accountant:["บัญชี","เปลี่ยนใบเสร็จและตัวเลขให้เป็นบัญชีที่เรียบร้อย"], chief:["ธุรการ","ดูแลทรัพย์สินและงานต่ออายุของบริษัทให้ครบ"], legal:["ที่ปรึกษากฎหมาย","หาข้อสัญญาที่เสี่ยงก่อนใคร"] },
-    en: { writer:["Copywriter","Writes the one line that moves people"], founder:["Strategist","Turns business ideas into execution plans"], marketer:["Marketer","Carries your brand story to people"],
-          producer:["Producer","Turns messy work into order and schedules"], researcher:["Researcher","Finds the evidence you need in piles of material"], everyday:["Developer","Turns ideas into working code"],
-          accountant:["Bookkeeper","Turns receipts and numbers into clean books"], chief:["General Affairs","Keeps every company asset and renewal in order"], legal:["Legal Counsel","Finds the risky clauses in a contract first"] }
+    ko: { marketer:["마케터","브랜드 이야기를 사람들에게 닿게 하는 에이전트"], founder:["크리에이티브 디렉터","아이디어의 핵심을 잡고 캠페인 방향을 이끄는 에이전트"], researcher:["AP","시장·소비자 자료에서 인사이트를 찾아내는 에이전트"],
+          accountant:["AE","클라이언트 일정·예산·커뮤니케이션을 챙기는 에이전트"], writer:["카피라이터","한 줄로 마음을 움직이는 문장을 쓰는 에이전트"], chief:["아트디렉터","비주얼 톤과 레퍼런스를 정리해 방향을 잡는 에이전트"],
+          producer:["프로듀서","복잡한 일을 순서와 일정으로 정리하는 에이전트"], legal:["연출감독","콘티·장면·편집 흐름을 함께 설계하는 에이전트"], everyday:["개발자","아이디어를 동작하는 코드로 바꾸는 에이전트"] },
+    en: { marketer:["Marketer","Carries your brand story to people"], founder:["Creative Director","Finds the core idea and leads the campaign direction"], researcher:["Account Planner","Finds insight in market and consumer data"],
+          accountant:["Account Executive","Keeps client schedules, budgets and comms in order"], writer:["Copywriter","Writes the one line that moves people"], chief:["Art Director","Organizes visual tone and references into a direction"],
+          producer:["Producer","Turns messy work into order and schedules"], legal:["Film Director","Designs storyboards, scenes and edit flow with you"], everyday:["Developer","Turns ideas into working code"] },
   };
+  var CANNES_ORDER = ["marketer","researcher","accountant","founder","writer","chief","producer","legal","everyday"]; // 09-17: 마케터·AP·AE·CD·카피·AD·프로듀서·연출·개발
+
 
   var B = window.BeArkCard;
   var qs = new URLSearchParams(location.search);
@@ -809,18 +686,16 @@
   (function(){ var v = document.getElementById("demo-video"); if (!v) return;
     var p = v.play && v.play(); if (p && p.catch) p.catch(function(){ v.controls = true; }); })();
   var lang = (function(){
-    try { var s = localStorage.getItem(LS_LANG); if (s === 'ko' || s === 'en' || s === 'th') return s; } catch(e){}
-    return 'th'; // 2026-09-14 빠불로: 태국 크리에이터 = 태국어 기본 (브라우저 언어 무시), 버튼으로 en/ko 전환
+    try { var s = localStorage.getItem(LS_LANG); if (s === 'ko' || s === 'en') return s; } catch(e){}
+    return (navigator.language || '').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en';
   })();
-  function S(k){ return STR[lang][k] || STR.en[k] || STR.ko[k] || k; }
+  function S(k){ return STR[lang][k] || STR.ko[k] || k; }
   function $(id){ return document.getElementById(id); }
 
   // ── 상태 (부스 기기에서 새로고침돼도 유지, ?reset=1로 다음 사람) ─────────
-  var state = { preset:"", name:"", parts:null, color:"", email:"", signedUp:false, promo:null, no:"", userName:"", org:"", proUrl:"", proAt:0, ref:"", refCode:"" };
+  var state = { preset:"", name:"", parts:null, color:"", email:"", signedUp:false, promo:null, no:"", userName:"", org:"", proUrl:"", proAt:0 };
   if (qs.get("reset") === "1") { try { localStorage.removeItem(LS); } catch(e){} history.replaceState(null, "", location.pathname); }
   try { state = Object.assign(state, JSON.parse(localStorage.getItem(LS) || "{}")); } catch(e){}
-  // 2026-09-14 친구 초대 링크(?r=코드)로 들어오면 가입 때 초대한 사람에게 연결 (친구 3개월 + 초대자 1개월)
-  (function(){ var r = (qs.get("r") || "").trim().toUpperCase(); if (/^[A-Z0-9]{4,12}$/.test(r)) { state.ref = r; save(); } })();
   function save(){ try { localStorage.setItem(LS, JSON.stringify(state)); } catch(e){} }
 
   function presetOf(id){ for (var i = 0; i < B.AGENT_PRESETS.length; i++) if (B.AGENT_PRESETS[i].id === id) return B.AGENT_PRESETS[i]; return null; }
@@ -835,43 +710,41 @@
     el.style.setProperty("--tint", d.color);
     ["05","08","10","12","15","16","30"].forEach(function(k){ el.style.setProperty("--tint-" + k, rgba(Number(k) / 100)); });
     var img = B.avatarPartsDataUrl(d.parts, 8);
-    var ps = PRESET_STR.en[d.preset] || ["", ""]; // 2026-09-14 빠불로: 사원증은 언어와 무관하게 영어
-    var CS = function(k){ return STR.en[k] || k; };
+    var ps = PRESET_STR[lang][d.preset] || PRESET_STR.ko[d.preset] || ["", ""];
     el.innerHTML =
       '<div class="bgimg" style="background-image:url(' + img + ')"></div><div class="duo"></div><div class="fade"></div><div class="scan"></div><div class="glow"></div><div class="shine"></div>' +
       '<div class="row"><div class="brandl"><span class="b1">Be.Ark</span><span class="b2">Agent Card</span></div><span class="brandr">Re-Be World</span></div>' +
       '<div class="mid"><img src="' + img + '" alt=""><div class="info">' +
         '<div class="nm">' + esc(d.name) + '</div>' +
-        '<div class="fl role"><span>' + CS("roleLabel") + ' :</span><span>' + esc(ps[0]) + ' · ' + esc(ps[1]) + '</span></div>' +
-        '<div class="fl"><span>' + CS("joinedLabel") + ' :</span><span>' + esc(d.joined || todayStr()) + '</span></div>' +
-        '<div class="tags"><span>#' + esc(ps[0]) + '</span><span>#ThailandEarlyBird</span><span>#BeArk</span></div>' +
+        '<div class="fl role"><span>' + S("roleLabel") + ' :</span><span>' + esc(ps[0]) + ' · ' + esc(ps[1]) + '</span></div>' +
+        '<div class="fl"><span>' + S("joinedLabel") + ' :</span><span>' + esc(d.joined || todayStr()) + '</span></div>' +
+        '<div class="tags"><span>#' + esc(ps[0]) + '</span><span>#CannesLionsSeoul</span><span>#BeArk</span></div>' +
       '</div></div>' +
-      '<div class="bot"><div class="no"><div class="v">' + esc(d.no || "") + '</div><div class="k">' + CS("noLabel") + '</div></div>' +
-        '<div><div class="qr" style="transform:scale(.9);transform-origin:right center">' + B.qrSvg(personalHomeUrl(d), 4, 0) + '</div><div class="qrlab">' + CS("qrLabel") + '</div></div></div>'; // QR 90% (빠불로 09-14) // 09-13: 카드 QR = 개인 링크(디지털 사원증)
+      '<div class="bot"><div class="no"><div class="v">' + esc(d.no || "") + '</div><div class="k">' + S("noLabel") + '</div></div>' +
+        '<div><div class="qr">' + B.qrSvg(personalHomeUrl(d), 4, 0) + '</div><div class="qrlab">' + S("qrLabel") + '</div></div></div>'; // 09-13: 카드 QR = 개인 링크(디지털 사원증)
   }
 
   // ── 사원증 PNG (캔버스 래스터, 인화지 54×86mm 세로 = 가로 카드 90° 회전, 300dpi) ─────
   function cardPngData(d){
-    // 2026-09-14 빠불로: PNG도 영어 고정, 배너("000님의 직원 입사") 삭제, 가로 이미지
-    var ps = PRESET_STR.en[d.preset] || ["", ""]; var E = STR.en;
+    var ps = PRESET_STR[lang][d.preset] || PRESET_STR.ko[d.preset] || ["", ""];
     return { name: d.name, roleValue: ps[0] + " · " + ps[1], joinedValue: d.joined || todayStr(), noValue: d.no || "",
-      labels: { role: E.roleLabel, joined: E.joinedLabel, no: E.noLabel, qr: E.qrLabel },
-      tags: [ps[0], "ThailandEarlyBird", "BeArk"], color: d.color, parts: d.parts, qrText: personalHomeUrl(d),
-      banner: "", qrScale: 0.9 }; // QR 90% (bundle 2026-09-14 qrScale 옵션)
+      labels: { role: S("roleLabel"), joined: S("joinedLabel"), no: S("noLabel"), qr: S("qrLabel") },
+      tags: [ps[0], "CannesLionsSeoul", "BeArk"], color: d.color, parts: d.parts, qrText: personalHomeUrl(d),
+      banner: d.userName ? S("bannerText").replace("{name}", d.userName) : "" };
   }
   function safeFile(s){ return String(s).replace(/[^\w가-힣.-]+/g, "_").replace(/^_+|_+$/g, "").slice(0, 40) || "card"; }
   function bindCardButtons(getData){
     $("png-btn").addEventListener("click", function(){
       var d = getData(); if (!d || !d.parts) return;
       B.ensureCardFonts().then(function(){
-        var canvas = B.renderCardCanvas(cardPngData(d), { width: 1600 });
+        var canvas = B.renderCardPortraitCanvas(cardPngData(d));
         return B.downloadCanvasPng(canvas, "beark-card-" + safeFile(d.name) + "-" + safeFile(d.no || "") + ".png");
       });
     });
-    $("print-btn").addEventListener("click", function(){
+    if ($("print-btn")) $("print-btn").addEventListener("click", function(){
       var d = getData(); if (!d || !d.parts) return;
       B.ensureCardFonts().then(function(){
-        var canvas = B.renderCardCanvas(cardPngData(d), { width: 1600 });
+        var canvas = B.renderCardPortraitCanvas(cardPngData(d));
         var img = $("print-img");
         img.onload = function(){ img.onload = null; window.print(); };
         img.src = canvas.toDataURL("image/png");
@@ -894,14 +767,6 @@
       ["Figma나 PPT로 작업해둔 UI 디자인 파일도 뚝딱하고 구동가능한 웹앱으로 만들어줘요. 프론트엔드 개발자 도움 없이도 직관적으로 목업을 확인하고 수정할 수 있어서 효율적이에요.", "everyday", "디자이너 Mei****"],
       ["제 소중한 아이디어나 사고가 AI에 학습되고나면, AI만 똑똑해지고 사람은 도태되는게 아닌가 두려웠는데... 모든 파일이 로컬에 저장되고, 개개인의 에이전트 성장을 만들어준다니 안심하고 사용할 수 있었어요!", "writer", "크리에이터 Saf*****"]
     ],
-    th: [
-      ["มันเลียนแบบน้ำเสียงและโครงสร้างข้อเสนอของฉันได้เป๊ะ ผลลัพธ์จาก AI ทั่วไปเอาไปใช้ทันทีไม่ได้ — ตอนนี้ได้เอกสารที่ส่งงานได้ในวันเดียวกัน", "founder", "นักวางแผน Kyu***"],
-      ["เอเจนต์แก้ไขไฟล์ HWP และ Excel ให้โดยตรง ฉันเลยทำสัญญาและใบเสนอราคาแบบอัตโนมัติ ประหยัดเวลาไปหลายชั่วโมงทุกสัปดาห์", "accountant", "โปรดิวเซอร์ Hyung****"],
-      ["เราวางแผน CRM ด้วยกัน แล้วมันโพสต์คอนเทนต์โซเชียลและอีเมลทุกวัน พร้อมติดตามผล เหมือนมีนักการตลาดอีกคนที่จำแบรนด์เราได้", "marketer", "นักการตลาด Ar****"],
-      ["เครื่องมืออื่นแปลด้วยน้ำเสียงแบบ AI ที่ใช้ไม่ได้ Be.Ark เรียนรู้วิธีที่ฉันถอดความภาษาอังกฤษเป็นภาษาของฉัน แล้วร่างในสไตล์ของฉัน", "researcher", "ฟรีแลนซ์ Dong***"],
-      ["มันเปลี่ยนไฟล์ UI จาก Figma และ PPT ของฉันเป็นเว็บแอปที่ใช้งานได้จริง ตรวจและปรับม็อกอัปได้โดยไม่ต้องมีนักพัฒนา front-end", "everyday", "ดีไซเนอร์ Mei****"],
-      ["เคยกลัวว่าการป้อนไอเดียให้ AI จะทำให้ AI ฉลาดขึ้นฝ่ายเดียว ทุกอย่างอยู่บนเครื่องของฉัน และเอเจนต์ของฉันเองที่เติบโต — ในที่สุดก็วางใจได้", "writer", "ครีเอเตอร์ Saf*****"]
-    ],
     en: [
       ["It mirrors the tone and structure of my proposals exactly. Generic AI output was never usable as-is — now I get documents I can ship the same day.", "founder", "Planner Kyu***"],
       ["The agent edits HWP and Excel files directly, so I automated contracts and quotes. Hours saved every week.", "accountant", "Producer Hyung****"],
@@ -913,7 +778,7 @@
   };
   function renderTesti(){
     var g = $("testi-grid"); if (!g) return;
-    var list = TESTI[lang] || TESTI.en; var html = "";
+    var list = TESTI[lang] || TESTI.ko; var html = "";
     for (var i = 0; i < list.length; i++) {
       var custom = (window.BEARK_TESTI_AVATARS || {})[list[i][1]]; // 09-12: 코멘트 전용 미니미 (채용 프리셋과 구분)
       var p = presetOf(list[i][1]); var src = custom ? B.avatarPartsDataUrl(custom, 4) : (p ? B.avatarPartsDataUrl(p.avatar, 4) : "");
@@ -923,24 +788,21 @@
   }
   function applyLang(){
     document.documentElement.lang = lang;
-    $("lang-ko").className = lang === "ko" ? "on" : ""; $("lang-en").className = lang === "en" ? "on" : ""; $("lang-th").className = lang === "th" ? "on" : "";
+    $("lang-ko").className = lang === "ko" ? "on" : ""; $("lang-en").className = lang === "en" ? "on" : "";
     if ($("h1")) $("h1").innerHTML = S("h1"); if ($("sub")) $("sub").innerHTML = S("sub"); // 2026-09-16 이벤트 헤더 삭제(빠불로) — 가드
     // 2026-09-12 히어로 (innerHTML 허용 = 우리 문자열 상수뿐)
-    $("hero-h1").innerHTML = S("heroH1"); $("hero-sub").textContent = S("heroSub"); $("mock-a1").innerHTML = S("mockA1");
+    $("hero-h1").innerHTML = S("heroH1"); $("hero-sub").textContent = S("heroSub");
     var isHome = qs.get("home") === "1";
-    if ($("hero-cta")) { $("hero-cta").textContent = S(isHome ? "heroCtaHome" : "heroCta"); $("hero-cta").href = isHome ? "#home" : "#st-hire"; } // 태국 페이지 = CTA 없음 (빠불로 09-14)
+    if ($("hero-cta")) { $("hero-cta").textContent = S(isHome ? "heroCtaHome" : "heroCta"); $("hero-cta").href = isHome ? "#home" : "#st-hire"; }
     renderTesti();
     var nodes = document.querySelectorAll("[data-i18n]");
     for (var i = 0; i < nodes.length; i++) nodes[i].textContent = S(nodes[i].getAttribute("data-i18n"));
     $("dl-site").href = lang === "ko" ? "https://re-be.world/ko" : "https://re-be.world/";
-    // 2026-09-14 빠불로: 영상 = 한국어면 한글판, 영어·태국어면 영문판 (index.html과 같은 영상)
-    var yt = $("yt-video"); if (yt) { var want = "https://www.youtube.com/embed/" + (lang === "ko" ? "jvsTvkZSvjk" : "14lhSoVAa7A"); if (yt.getAttribute("src") !== want) yt.setAttribute("src", want); }
     renderPresets(); render();
   }
-  function setLang(l){ lang = l; try { localStorage.setItem(LS_LANG, l); } catch(e){} applyLang(); var pm = $("promsg-home"); if (pm) pm.className = "msg"; }
+  function setLang(l){ lang = l; try { localStorage.setItem(LS_LANG, l); } catch(e){} applyLang(); }
   $("lang-ko").addEventListener("click", function(){ setLang("ko"); });
   $("lang-en").addEventListener("click", function(){ setLang("en"); });
-  $("lang-th").addEventListener("click", function(){ setLang("th"); });
 
   // ── 집 모드 / 카드 딥링크 ────────────────────────────────────────────────
   if (qs.get("home") === "1") {
@@ -948,24 +810,14 @@
     $("dl-mac").href = DL_MAC; $("dl-mac-intel").href = DL_MAC_INTEL; $("dl-win").href = DL_WIN;
     // 2026-09-13 빠불로: QR로 들어온 집 모드는 "사원증 받으셨죠?"가 최상위 — 홍보(히어로·코멘트·영상)는 그 아래로 이동.
     //   상단바(로고·언어)는 그대로 두고 섹션 3개 + 구분선만 main 뒤로 옮긴다. 채용용 제목/부제는 숨김(태그만 유지).
-    // 2026-09-14 빠불로: 집 모드는 사원증·초대·Pro·설치만 — 채용 홍보(히어로·후기·영상)는 중복 경험이라 통째로 숨김
     (function(){
-      var main = document.querySelector("main.wrap"); if (main) main.classList.add("home-first");
+      var main = document.querySelector("main.wrap"); if (!main || !main.parentNode) return;
+      var after = main.nextSibling;
       ["section.hero", "section.testi", "section.video", "hr.divider"].forEach(function(sel){
-        var el = document.querySelector("#promo " + sel); if (el) el.style.display = "none";
+        var el = document.querySelector("#promo " + sel); if (el) main.parentNode.insertBefore(el, after);
       });
       var h1 = $("h1"), sub = $("sub"); if (h1) h1.style.display = "none"; if (sub) sub.style.display = "none";
-    })();
-    // 다운로드 팝업 (index.html과 같은 3종)
-    (function(){
-      var modal = $("dlModal"); if (!modal) return;
-      var open = function(e){ if (e) e.preventDefault(); modal.classList.add("open"); };
-      var close = function(){ modal.classList.remove("open"); };
-      $("dl-open").addEventListener("click", open);
-      $("dlClose").addEventListener("click", close);
-      modal.addEventListener("click", function(e){ if (e.target === modal) close(); });
-      document.addEventListener("keydown", function(e){ if (e.key === "Escape") close(); });
-      ["dl-mac", "dl-mac-intel", "dl-win"].forEach(function(id){ $(id).addEventListener("click", function(){ setTimeout(close, 150); }); });
+      main.classList.add("home-first");
     })();
     // 2026-09-13 잉크 소진: 개인 QR(?home=1&card=…)이면 디지털 사원증을 맨 위에 + 이미지 저장. 공유 링크도 개인 URL 유지.
     var shareUrl = HOME_URL;
@@ -978,7 +830,7 @@
           renderCard($("home-idcard"), hcd);
           $("home-png-btn").addEventListener("click", function(){
             B.ensureCardFonts().then(function(){
-              var canvas = B.renderCardCanvas(cardPngData(hcd), { width: 1600 });
+              var canvas = B.renderCardPortraitCanvas(cardPngData(hcd));
               return B.downloadCanvasPng(canvas, "beark-card-" + safeFile(hcd.name || "") + ".png");
             });
           });
@@ -1002,30 +854,8 @@
       location.href = "mailto:" + encodeURIComponent(to) + "?subject=" + encodeURIComponent(S("mailSubject")) + "&body=" + encodeURIComponent(S("mailBody").replace("{url}", shareUrl));
     });
     $("ho-copy").addEventListener("click", copyUrl);
-    // 2026-09-14 빠불로: 태국 = LINE — 공유 URL 스킴(앱이면 LINE 열림, 없으면 웹)
-    $("ho-line").addEventListener("click", function(){
-      location.href = "https://line.me/R/share?text=" + encodeURIComponent(S("mailSubject") + "\n" + shareUrl);
-    });
-    // 2026-09-14 빠불로: 친구 초대 블록 — 사원증 QR의 초대 코드로 링크 생성 (?r=코드 → 이 페이지)
-    var refCode = (typeof hcd !== "undefined" && hcd && hcd.refCode) ? hcd.refCode : (state.refCode || "");
-    if (refCode) {
-      var refUrl = "https://re-be.world/join/thai?r=" + encodeURIComponent(refCode);
-      $("refer").style.display = "block"; $("refer-url").textContent = refUrl.replace(/^https:\/\//, "");
-      var refText = function(){ return S("referShareText").replace("{url}", refUrl); };
-      $("rf-share").addEventListener("click", function(){
-        if (navigator.share) navigator.share({ title: "Be.Ark", text: refText(), url: refUrl }).catch(function(){});
-        else if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(refUrl); else prompt("URL", refUrl);
-      });
-      $("rf-line").addEventListener("click", function(){ location.href = "https://line.me/R/share?text=" + encodeURIComponent(refText()); });
-      $("rf-copy").addEventListener("click", function(){
-        var done = function(){ var b = $("rf-copy"); var t = b.textContent; b.textContent = S("copied"); setTimeout(function(){ b.textContent = t; }, 1800); };
-        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(refUrl).then(done, function(){ prompt("URL", refUrl); }); else prompt("URL", refUrl);
-      });
-    }
-    // 2026-09-14 빠불로 "해당 ID로 바로 Stripe": 사원증 QR에 담긴 이메일을 결제 폼에 자동 채움 → 비밀번호만 입력하면 결제창
-    if (typeof hcd !== "undefined" && hcd && hcd.email) { $("pemail").value = hcd.email; $("pemail").readOnly = true; }
-    else if (state.email) { $("pemail").value = state.email; }
     // 집 모드 Pro 시작: 로그인 → 결제창으로 이동 (Stripe에서 돌아오면 ?pro=done)
+    $("pronote-home").textContent = S("proNotes");
     if (qs.get("pro") === "done" || qs.get("billing") === "success") { $("prodone").style.display = "block"; $("prof").style.display = "none"; }
     $("prof").addEventListener("submit", function(e){
       e.preventDefault();
@@ -1043,7 +873,7 @@
       $("promo").style.display = "none"; // 출력용 딥링크 = 카드만
       $("st-hire").style.display = "none"; $("st-signup").style.display = "none";
       $("st-card").classList.remove("locked"); $("st-card").classList.add("on");
-      $("next-btn").style.display = "none";
+      if ($("next-btn")) $("next-btn").style.display = "none";
       applyLang(); renderCard($("idcard"), cd);
       bindCardButtons(function(){ return cd; });
       return;
@@ -1054,7 +884,7 @@
   var presetFaces = {};
   function renderPresets(){
     var host = $("presets"); host.innerHTML = "";
-    B.AGENT_PRESETS.forEach(function(p){
+    CANNES_ORDER.map(presetOf).filter(Boolean).forEach(function(p){
       if (!presetFaces[p.id]) presetFaces[p.id] = B.avatarPartsDataUrl(p.avatar, 4);
       var ps = PRESET_STR[lang][p.id];
       var d = document.createElement("div"); d.className = "preset" + (state.preset === p.id ? " on" : "");
@@ -1143,12 +973,12 @@
   function agentPayload(){ return { name: state.name, preset: state.preset, color: state.color, lang: lang, parts: state.parts }; }
   function showCoupon(promo){
     var el = $("coupon"); if (!promo || promo.attached === false) { el.className = "coupon"; return; }
-    var exp = promo.spec && promo.spec.expires_at ? new Date(Number(promo.spec.expires_at) * 1000).toLocaleDateString(lang === "ko" ? "ko-KR" : lang === "th" ? "th-TH" : "en-US") : "";
+    var exp = promo.spec && promo.spec.expires_at ? new Date(Number(promo.spec.expires_at) * 1000).toLocaleDateString(lang === "ko" ? "ko-KR" : "en-US") : "";
     $("coupon-sub").textContent = S("couponSub").replace("{date}", exp || "9.30");
     el.className = "coupon show";
   }
   // ── ④ Pro 시작 (2026-09-12): 결제창 URL을 서버(billing checkout)에서 받아 QR로 — 카드 입력은 본인 폰에서 ──
-  var PRO_RETURN = "https://re-be.world/join/thai?home=1&pro=done";
+  var PRO_RETURN = "https://re-be.world/join/cannes?home=1&pro=done";
   function mintProWithJwt(jwt){
     return post(FN, { type:"checkout", return_to: PRO_RETURN }, jwt).then(function(r){
       var url = r.status === 200 && r.body && r.body.url;
@@ -1173,10 +1003,10 @@
     else q.textContent = state.signedUp ? S("proMinting") : "";
   }
   function prepareProQr(mint){
-    if (!$("st-pro")) return Promise.resolve(); // ④ 섹션 없음 (태국 페이지)
+    if (!$("st-pro")) return Promise.resolve(); // 2026-09-16 4단계 삭제 — 현장에선 결제창 발급 안 함 (집 모드 Pro는 별도 경로)
     proMsg("promsg", "");
     return mint().then(function(url){ state.proUrl = url; state.proAt = Date.now(); save(); renderPro(); })
-      .catch(function(e){ state.proUrl = ""; save(); renderPro(); $("proqr").textContent = S("proErr"); proMsg("promsg", S("proErr"), "err"); });
+      .catch(function(e){ state.proUrl = ""; save(); renderPro(); if ($("proqr")) $("proqr").textContent = S("proErr"); proMsg("promsg", S("proErr"), "err"); });
   }
   function finishSignup(email, promo, agentSaved){
     state.email = email; state.signedUp = true; state.promo = promo || null; state.no = makeNo(email + "|" + state.name); save();
@@ -1199,14 +1029,12 @@
       var saved = r.status === 200 && r.body && r.body.ok;
       return post(FN, { type:"claim_promo", campaign:CAMPAIGN }, jwt).then(function(r2){
         var promo = (r2.body && r2.body.promo) || { attached:false, reason:(r2.body && r2.body.error) || "unknown" };
-        // 기존 계정도 초대 코드를 받아 사원증 QR에 담는다 (실패 = 초대 블록만 생략)
-        return post(FN, { type:"referral_code" }, jwt).then(function(r3){ state.refCode = String((r3.body && r3.body.code) || ""); }, function(){}).then(function(){
         finishSignup(email, promo, saved);
         prepareProQr(function(){ return mintProWithJwt(jwt); });
-        });
       });
     });
   }
+  $("go-home-btn").addEventListener("click", function(){ if (state.signedUp && state.parts) location.href = personalHomeUrl(cardData()); }); // 2026-09-16 태국 페이지와 동일: 버튼으로 사원증 페이지 이동
   $("f").addEventListener("submit", function(e){
     e.preventDefault();
     var email = $("email").value.trim().toLowerCase(), pw = $("pw").value;
@@ -1214,11 +1042,11 @@
     if (pw.length < 8) { msg(S("weak_password"), "err"); return; }
     var btn = $("submit"); btn.disabled = true; btn.textContent = S("signupBusy"); clearMsg();
     state.userName = $("uname").value.trim().slice(0, 80); state.org = $("uorg").value.trim().slice(0, 120); save();
-    post(FN, { type:"event_signup", campaign:CAMPAIGN, email:email, password:pw, name:state.userName, company:state.org, agent:agentPayload(), referral_code: state.ref || undefined })
+    post(FN, { type:"event_signup", campaign:CAMPAIGN, email:email, password:pw, name:state.userName, company:state.org, agent:agentPayload() })
       .then(function(r){
         if (r.status === 200 && r.body.ok && r.body.existing) return claimAsExisting(email, pw);
         if (r.status === 200 && r.body.ok) {
-          state.refCode = String(r.body.referral_code || ""); finishSignup(email, r.body.promo, r.body.agent_saved !== false);
+          finishSignup(email, r.body.promo, r.body.agent_saved !== false);
           prepareProQr(function(){ return mintProFor(email, pw); }); // 새 계정 = 방금 만든 비번으로 로그인해 결제창 URL 발급
           return;
         }
@@ -1230,10 +1058,9 @@
 
   // ── ③ 사원증 ────────────────────────────────────────────────────────────
   bindCardButtons(cardData);
-  $("next-btn").addEventListener("click", function(){ location.href = location.pathname + "?reset=1"; });
-  $("go-home-btn").addEventListener("click", function(){ if (state.signedUp && state.parts) location.href = personalHomeUrl(cardData()); }); // 2026-09-15 버튼으로 사원증 페이지 이동
+  if ($("next-btn")) $("next-btn").addEventListener("click", function(){ location.href = location.pathname + "?reset=1"; });
 
-  function cardData(){ return { email: state.email, refCode: state.refCode, name: state.name, preset: state.preset, color: state.color, parts: state.parts, no: state.no, joined: todayStr(), userName: state.userName || "" }; }
+  function cardData(){ return { name: state.name, preset: state.preset, color: state.color, parts: state.parts, no: state.no, joined: todayStr(), userName: state.userName || "" }; }
   function render(){
     var hired = !!(state.preset && state.name && state.parts);
     $("aname").value = state.name || "";
@@ -1257,11 +1084,8 @@
   function packCard(d){
     var p = d.parts || {}, c = p.colors || {};
     var f = [d.name || "", d.preset || "", String(d.color || "").replace(/^#/, ""), d.no || "", d.joined || "", d.userName || ""];
-    // 2026-09-14: 마지막 필드 = 이메일 (집 모드 Pro 결제 자동 채움). 뒤에 붙여 기존 순서 계약 유지.
     PACK_KEYS().forEach(function(k){ f.push(String(p[k] || "")); });
     PACK_COLORS().forEach(function(k){ f.push(String(c[k] || "").replace(/^#/, "")); });
-    f.push(String(d.email || ""));
-    f.push(String(d.refCode || "")); // 2026-09-14 초대 코드 (집 모드 "친구 초대")
     return b64u(f.join("|"));
   }
   function unpackCard(s){
@@ -1269,8 +1093,7 @@
     var parts = { v: 1, colors: {} }, i = 6;
     PACK_KEYS().forEach(function(k){ parts[k] = f[i++]; });
     PACK_COLORS().forEach(function(k){ parts.colors[k] = "#" + f[i++]; });
-    var email = f.length > i ? f[i] : ""; var refCode = f.length > i + 1 ? f[i + 1] : "";
-    return { name: f[0], preset: f[1], color: "#" + f[2], no: f[3], joined: f[4], userName: f[5], parts: parts, email: email, refCode: refCode };
+    return { name: f[0], preset: f[1], color: "#" + f[2], no: f[3], joined: f[4], userName: f[5], parts: parts };
   }
   function personalHomeUrl(d){ return HOME_URL + "&c=" + packCard(d); }
   function renderCardQr(){
