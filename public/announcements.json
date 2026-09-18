@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-09-18-beta-1-6-2",
+    "date": "2026-09-18",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.6.2 — 무료 에이전트 3명 · 스캔 PDF 읽기",
+    "body": "👥 무료 플랜 에이전트 3명 — 이제 무료로 마케터·법무·개발 같은 나만의 작은 팀을 꾸릴 수 있어요. 에이전트끼리 일을 위임하는 팀 지휘는 Pro에서.\n\n📄 스캔 PDF 읽기 — 텍스트 레이어가 없는 스캔본(계약서·소장·영수증)도 에이전트가 페이지를 직접 보고 읽어요. 앞 8페이지까지 전사하고 그 사실을 알려줘요.\n\n🔎 첨부 파일을 못 읽었을 때 이유(암호·형식·스캔)를 에이전트가 그대로 말해줘요.\n\n1.6.0 이상은 앱 안에서 [업데이트] 한 번으로 설치돼요."
+  },
+  {
+    "id": "2026-09-18-beta-1-6-2",
+    "date": "2026-09-18",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.6.2 — 3 free agents · Scanned PDF reading",
+    "body": "👥 Three agents on the free plan — build your own small team (marketing, legal, dev) for free. Teams where agents delegate to each other are Pro.\n\n📄 Scanned PDFs — contracts, filings and receipts with no text layer are now read page by page by your agent (first 8 pages, and it tells you so).\n\n🔎 When an attachment can't be read, your agent now says why (password, format, scan).\n\nOn 1.6.0 or later, one click on Update installs this in-app."
+  },
+  {
     "id": "2026-09-17-beta-1-6-1",
     "date": "2026-09-17",
     "lang": "ko",
