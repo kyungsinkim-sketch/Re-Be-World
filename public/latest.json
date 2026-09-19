@@ -1,19 +1,19 @@
 {
-  "version": "1.6.3",
-  "notes": "Be.Ark 1.6.3 — 무료 멀티 에이전트 무제한·Pro=스킬/채널·현지 시각·친구 초대",
-  "pub_date": "2026-09-18T15:42:46Z",
+  "version": "1.6.4",
+  "notes": "Be.Ark 1.6.4 — 친구 초대 안내 수정",
+  "pub_date": "2026-09-19T03:52:30Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUOEtUYjczazNXYWlUMVlBVTUxVkRZT3VGL3BHR2YrR1hkYTVqQmlkd1o3MklreHVqcjh4eXo0RHJVTHgxQXR5WmhFQVpLd3djR3JSNEVodWFGY0JuQmozeGF3MXBXcFFBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NzQzMzgyCWZpbGU6QmUuQXJrLmFwcC50YXIuZ3oKbDdvMTRzeS9RU3EyWlJIVkY4ZU94QlExaFNwMmJCUmx1bFNDMFoyL24zODFsMlVnMkh3cFcvd0VUY2xmWjRqKzRBSHd2eWlLMkdGTXhEQS9oWkhHQkE9PQo=",
-      "url": "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.6.3/Be.Ark_aarch64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUOEtUYjczazNXYXRGd0FHZ1FwT0RsL1VFRWxaVWg2b2hCWUkrYytRWncrdnF0UGpvTm0yckxvVXBFbStxRUwzS1p3bm5vTTFrL2daNStkVVczSW9NMUd2UVYwRFRaUVFjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5Nzg3MTE0CWZpbGU6QmUuQXJrLmFwcC50YXIuZ3oKVXRNUVdybVJaTVZMUW03SnlFZFdWbU53WEYrcVBuOVdPUGdvOEp2VjA1ZktzeXgwRU9ya0EzaTJia0tIMEZZSjVQOWgyTWZLcUlLQXRaL2NMOURSRHc9PQo=",
+      "url": "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.6.4/Be.Ark_aarch64.app.tar.gz"
     },
     "darwin-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUOEtUYjczazNXYW9jRzZyOU1XWDh5T2ttcFFrdkxaaFZHWEZzdEhrOEp4R2pKQzBKakJIRldJazA4T2xmbXpXREVDVjdxV2g1eU43UkZSN1oyNEUyNGZrU1dxT2V5amcwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NzQzMzI1CWZpbGU6QmUuQXJrLmFwcC50YXIuZ3oKdStiODRKTnIvdUh5R1FIOTN5MlRiYUFnNUdpdWhRbnZ6bTBTd05hR1hTNTFsNmZyeVg0VC80c3ZwZE8yU3RSRTIrMDh5SVJ2UUtMcmpwZlVkOG9TQUE9PQo=",
-      "url": "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.6.3/Be.Ark_x64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUOEtUYjczazNXYW16TU10UmhUK3NWYWYxVXUxcmpWUWpUWFJUT0o3K3pxdVJNcXptblRlQzM5SjBtWWZFQ2dlU0VpSnhOZm0ybkZBbGw1eEtQU0pwUDdsbXZ1bzk5UHdrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5Nzg3MTgyCWZpbGU6QmUuQXJrLmFwcC50YXIuZ3oKYjFVVjRUaHNxZDdZNXJ0dEN1eXU0VlFpK05jTkRyeDAxUzJLTytSTFd0WWdlNmhQUUxlMHdIVkFYbXVOKzBsNTV6dGtZbTJpM045dXhvMUFndUFXQ1E9PQo=",
+      "url": "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.6.4/Be.Ark_x64.app.tar.gz"
     },
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUOEtUYjczazNXYXRuQzc3cmF0anc3c01udk11RUE0UVZEWEpPRGRaOStqczM1T0duZWJ5VFBQbnF2bTNUallCTWgyVUJzNXZpem9tcGpuVGtZZFdlNXQxTDZRY1pCVmdjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NzQ1MTA0CWZpbGU6QmUuQXJrXzEuNi4zX3g2NC1zZXR1cC5leGUKYWNmYlJKWjBzSm5CcHA4U3o3MEtjSDRqV0N1VGdJNytLOHhpYkQwMnB5MU1hTHVlS1VxUG1KUWtWTkNJMlVwOStSZWdzU09NcVdvTjI5c0RYblNDQ3c9PQo=",
-      "url": "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.6.3/Be.Ark_1.6.3_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUOEtUYjczazNXYWdLVkIxc0ZBRU5abGZCbEh6TFVxT0x5MlRwTzA1TC9ya2pMbXhVKzEwSTdqcytCYy9LS2hFekl5WTRHQzJ0bkVpOFEyd1RpUEQzSEMyTDA1aUxaOFFjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5Nzg4NjI4CWZpbGU6QmUuQXJrXzEuNi40X3g2NC1zZXR1cC5leGUKVFk2Yi96UFd3Wm9MSndoNUtDTGIxb2pYblRibjh2UVZvS00wMUNDYklzWmd6MWU5YmNHYVJIbmRqM3N5Y1VoSmdnb2NMRlFwWkM5TDA3NThNRjc4Qnc9PQo=",
+      "url": "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.6.4/Be.Ark_1.6.4_x64-setup.exe"
     }
   }
 }
