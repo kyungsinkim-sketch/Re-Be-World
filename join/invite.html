@@ -158,6 +158,10 @@
     <div class="s-head"><span class="s-num">3</span><h2 data-i18n="dlTitle"></h2></div>
     <p class="s-desc" data-i18n="dlDesc"></p>
     <a class="dl primary" href="https://www.re-be.world/#download" data-i18n="dlBtn"></a>
+    <!-- 2026-09-22 빠불로: 초대 링크는 보통 모바일에서 열린다 → 데스크탑 앱 링크를 나에게(카톡/메일) 보내는 버튼.
+         navigator.share(모바일 공유 시트: 카톡 '나에게 보내기'·메일·메모) → 없으면 메일 작성창 + 링크 복사. 데스크탑(공유 시트 없음)에선 숨김. -->
+    <button type="button" class="dl" id="dl-share" style="margin-top:12px;width:100%;font-size:15px;padding:15px" hidden></button>
+    <p class="hint" id="dl-share-hint" hidden data-i18n="dlShareHint"></p>
     <a class="dl" href="https://www.re-be.world/" data-i18n="dlExplore"></a>
   </section>
 
@@ -199,6 +203,11 @@
       dlTitle: "Be.Ark 내려받기",
       dlDesc: "macOS · Windows에서 쓸 수 있어요. 방금 만든 계정으로 로그인하면 됩니다.",
       dlBtn: "다운로드", dlExplore: "Be.Ark 둘러보기",
+      dlShare: "컴퓨터로 공유하기 · 카톡/메일로 나에게 보내기",
+      dlShareHint: "지금 휴대폰이시죠? 다운로드 링크를 나에게 보내두고 컴퓨터에서 열면 돼요.",
+      dlShareTitle: "Be.Ark 내려받기 (macOS · Windows)",
+      dlShareText: "Be.Ark 다운로드 — 컴퓨터에서 이 링크를 여세요: https://www.re-be.world/#download",
+      dlShareCopied: "링크를 복사했어요 — 카톡이나 메일에 붙여넣어 컴퓨터로 보내세요.",
       privacy: "개인정보처리방침",
       noCode: "초대 코드가 없는 링크예요. 가입은 되지만 초대 혜택은 붙지 않아요 — 친구에게 받은 링크로 다시 열어보세요.",
       invalid_email: "이메일 주소를 다시 확인해 주세요.",
@@ -231,6 +240,11 @@
       dlTitle: "Get Be.Ark",
       dlDesc: "Available for macOS · Windows. Log in with the account you just created.",
       dlBtn: "Download", dlExplore: "Explore Be.Ark",
+      dlShare: "Send to my computer · via chat or email",
+      dlShareHint: "On your phone? Send yourself the download link and open it on your computer.",
+      dlShareTitle: "Get Be.Ark (macOS · Windows)",
+      dlShareText: "Be.Ark download — open this link on your computer: https://www.re-be.world/#download",
+      dlShareCopied: "Link copied — paste it into a chat or email to yourself and open it on your computer.",
       privacy: "Privacy Policy",
       noCode: "This link has no invite code. You can still sign up, but the bonus won't attach — try the link your friend sent.",
       invalid_email: "Please double-check your email address.",
@@ -287,6 +301,33 @@
   function setLang(l){ lang = l; try { localStorage.setItem(LS_LANG, l); } catch(e){} applyLang(); }
   document.getElementById('lang-ko').addEventListener('click', function(){ setLang('ko'); });
   document.getElementById('lang-en').addEventListener('click', function(){ setLang('en'); });
+
+  // 2026-09-22 빠불로: "컴퓨터로 공유하기" — 모바일에서 연 초대 페이지의 다운로드 링크를 나에게 보내기.
+  //   모바일(UA) 또는 공유 시트가 있는 브라우저에서만 표시. share → 카톡 '나에게 보내기'/메일/메모 중 선택.
+  //   share 불가/취소 시: 링크 복사(클립보드) + 메일 작성창(mailto) 폴백.
+  (function(){
+    var shareBtn = document.getElementById('dl-share'), shareHint = document.getElementById('dl-share-hint');
+    if (!shareBtn) return;
+    var isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || '');
+    if (!isMobile && !navigator.share) return;
+    shareBtn.hidden = false; shareHint.hidden = false;
+    var DL_URL = "https://www.re-be.world/#download";
+    function refreshLabel(){ shareBtn.textContent = S('dlShare'); shareHint.textContent = S('dlShareHint'); }
+    refreshLabel();
+    var _applyLang = applyLang; applyLang = function(){ _applyLang(); refreshLabel(); };
+    function fallback(){
+      var text = S('dlShareText');
+      var done = function(){ msg(S('dlShareCopied'), "info"); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(DL_URL).then(done, done); else done();
+      location.href = "mailto:?subject=" + encodeURIComponent(S('dlShareTitle')) + "&body=" + encodeURIComponent(text);
+    }
+    shareBtn.addEventListener('click', function(){
+      if (navigator.share) {
+        navigator.share({ title: S('dlShareTitle'), text: S('dlShareText'), url: DL_URL })
+          .catch(function(e){ if (!e || e.name !== 'AbortError') fallback(); });
+      } else fallback();
+    });
+  })();
 
   var form = document.getElementById("f");
   var btn  = document.getElementById("submit");
