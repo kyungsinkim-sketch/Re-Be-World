@@ -6,8 +6,8 @@
 <title>Be.Ark 초대 · 친구가 Pro 1개월을 선물했어요</title>
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#070a0f">
-<meta property="og:title" content="You're invited to Be.Ark">
-<meta property="og:description" content="A personal agent that's truly your own — your invite includes 1 month of Pro, free.">
+<meta property="og:title" content="추석 선물세트 🎁 Be.Ark 초대 — 둘 다 Pro 1개월 + 100 RBT">
+<meta property="og:description" content="9/22~10/5 · 이 초대로 가입하고 Pro를 시작하면 친구도 나도 Pro 1개월 + 100 RBT (커뮤니티 스킬 5개). A personal agent that's truly your own.">
 <meta property="og:image" content="https://www.re-be.world/landing/og-hero-2026.jpg">
 <link rel="icon" href="/logo.png">
 <!--
@@ -45,6 +45,8 @@
   .lang button{width:auto; margin:0; padding:5px 12px; font-size:12px; font-weight:600;
     background:transparent; color:var(--ink-faint); border:0; border-radius:999px; cursor:pointer}
   .lang button.on{background:var(--accent); color:#1a1206}
+  .event{margin:14px 0 4px; padding:12px 14px; border:1px solid var(--accent); background:var(--accent-soft); border-radius:12px; font-size:14px; line-height:1.55}
+  .event b{display:block; color:var(--accent); margin-bottom:2px}
   .tag{display:inline-block; font-size:12px; font-weight:600; letter-spacing:.04em;
        color:var(--accent); background:var(--accent-soft); border:1px solid #c49c4d33;
        padding:5px 11px; border-radius:999px; margin-bottom:14px}
@@ -107,6 +109,7 @@
   <div class="tag" data-i18n="tag"></div>
   <h1 id="h1"></h1>
   <p class="sub" data-i18n="sub"></p>
+  <div id="event" class="event" hidden><b data-i18n="eventTitle"></b><span data-i18n="eventBody"></span></div>
 
   <!-- 1. 케이스필름 — 게이트 없음, 그냥 보여준다 -->
   <section class="section">
@@ -172,6 +175,8 @@
   var STR = {
     ko: {
       tag: "FRIEND INVITE",
+      eventTitle: "🎁 추석 선물세트 · 9/22 ~ 10/5",
+      eventBody: "이 기간에 초대로 가입하고 Pro를 시작하면 친구도 나도 Pro 1개월 + 100 RBT(커뮤니티 스킬 5개 값)를 받아요.",
       h1: "친구가 Be.Ark를<br>추천했어요",
       h1Named: "{name}님이 Be.Ark를<br>추천했어요",
       subNamed: "{name}님의 초대로 가입하면 Pro 1개월이 무료예요. 결제할 때 자동으로 적용되고, Pro를 시작하면 {name}님도 1개월을 받아요.",
@@ -202,6 +207,8 @@
     },
     en: {
       tag: "FRIEND INVITE",
+      eventTitle: "🎁 Chuseok Gift · Sep 22 – Oct 5",
+      eventBody: "Sign up with this invite and start Pro in this window: you and your friend both get 1 month of Pro + 100 RBT (worth 5 community skills).",
       h1: "A friend invited you<br>to Be.Ark",
       h1Named: "{name} invited you<br>to Be.Ark",
       subNamed: "Sign up with {name}'s invite and get 1 month of Pro free — applied automatically at checkout. When you start Pro, {name} gets a month too.",
@@ -246,6 +253,8 @@
     document.getElementById('lang-en').className = lang === 'en' ? 'on' : '';
     document.getElementById('h1').innerHTML = inviterName
       ? S('h1Named').split("{name}").join(esc(inviterName)) : S('h1');
+    var EV_START = Date.parse('2026-09-21T15:00:00Z'), EV_END = Date.parse('2026-10-05T15:00:00Z'), nowMs = Date.now();
+    var evEl = document.getElementById('event'); if (evEl) evEl.hidden = !(nowMs >= EV_START && nowMs < EV_END);
     var nodes = document.querySelectorAll('[data-i18n]');
     for (var i = 0; i < nodes.length; i++) nodes[i].textContent = S(nodes[i].getAttribute('data-i18n'));
     if (inviterName) {
