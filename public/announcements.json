@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-09-21-beta-1-6-8",
+    "date": "2026-09-21",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.6.8 — 내장 웹검색",
+    "body": "🔎 이제 검색 API 키를 따로 발급받지 않아도 돼요. 로그인만 하면 Be.Ark가 고품질 검색(Tavily)을 대신 제공해요 — Pro 하루 300회, Free 하루 10회(넘으면 기존 무료 검색으로 자동 전환). 이미 개인 키를 넣어둔 분은 그대로 본인 키가 우선이에요.\n\n\"에이전트가 웹검색에 한계가 있다\"고 하던 분들, 업데이트 후 같은 질문을 다시 해보세요.\n\n1.6.0 이상은 앱 안에서 [업데이트] 한 번으로 설치돼요."
+  },
+  {
+    "id": "2026-09-21-beta-1-6-8",
+    "date": "2026-09-21",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.6.8 — Built-in web search",
+    "body": "🔎 No more search API keys. Once signed in, Be.Ark provides high-quality search (Tavily) for you — 300/day on Pro, 10/day on Free (falls back to the basic search after that). If you added your own key, it still takes priority.\n\nIf your agent used to say web search was limited, update and ask again.\n\nOn 1.6.0 or later, one click on Update installs this in-app."
+  },
+  {
     "id": "2026-09-21-beta-1-6-7",
     "date": "2026-09-21",
     "lang": "ko",
