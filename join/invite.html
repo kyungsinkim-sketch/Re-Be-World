@@ -6,8 +6,8 @@
 <title>Be.Ark 초대 · 친구가 Pro 1개월을 선물했어요</title>
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#070a0f">
-<meta property="og:title" content="추석 선물세트 🎁 Be.Ark 초대 — 둘 다 Pro 1개월 + 100 RBT">
-<meta property="og:description" content="9/22~10/5 · 이 초대로 가입하고 Pro를 시작하면 친구도 나도 Pro 1개월 + 100 RBT (커뮤니티 스킬 5개). A personal agent that's truly your own.">
+<meta property="og:title" content="추석 선물세트 🎁 Be.Ark 초대 — 9/27까지 둘 다 Pro 2개월 + 100 RBT">
+<meta property="og:description" content="9/27(일)까지 초대로 가입하면 친구도 나도 Pro 2개월 (이후 1개월) · Pro 시작하면 둘 다 100 RBT (커뮤니티 스킬 5개). A personal agent that's truly your own.">
 <meta property="og:image" content="https://www.re-be.world/landing/og-chuseok-2026.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -260,6 +260,19 @@
       ? S('h1Named').split("{name}").join(esc(inviterName)) : S('h1');
     var EV_START = Date.parse('2026-09-21T15:00:00Z'), EV_END = Date.parse('2026-10-05T15:00:00Z'), nowMs = Date.now();
     var evEl = document.getElementById('event'); if (evEl) evEl.hidden = !(nowMs >= EV_START && nowMs < EV_END);
+    // 추석 2배 (9/27 24:00 KST까지): 문구의 1개월 → 2개월 (백엔드 chuseok2m 쿠폰과 같은 창)
+    var EV2_END = Date.parse('2026-09-27T15:00:00Z');
+    if (nowMs < EV2_END) {
+      var K2 = ['sub','subNamed','fDesc','signupBtn','couponTitle','eventTitle','eventBody'];
+      for (var li in STR) { for (var ki = 0; ki < K2.length; ki++) { var k = K2[ki]; if (STR[li][k]) {
+        STR[li][k] = STR[li][k].replace(/Pro 1개월/g, 'Pro 2개월').replace(/추천인도 1개월/g, '추천인도 2개월').replace(/1개월을 받아요/g, '2개월을 받아요').replace(/\{name\}님도 1개월/g, '{name}님도 2개월')
+          .replace(/1 month of Pro/g, '2 months of Pro').replace(/gets a month too/g, 'gets 2 months too').replace(/1 month for your friend/g, '2 months for your friend');
+      } } }
+      STR.ko.eventTitle = '🎁 추석 선물세트 · 9/27(일)까지 2배';
+      STR.ko.eventBody = '9/27 24:00까지 이 초대로 가입하면 친구도 나도 Pro 2개월 (이후 10/5까지는 1개월). Pro를 시작하면 둘 다 100 RBT(커뮤니티 스킬 5개 값)도 받아요.';
+      STR.en.eventTitle = '🎁 Chuseok Gift · double until Sep 27';
+      STR.en.eventBody = 'Sign up with this invite by Sep 27 24:00 KST and you and your friend both get 2 months of Pro (1 month after that, until Oct 5). Start Pro and you both get 100 RBT too.';
+    }
     var nodes = document.querySelectorAll('[data-i18n]');
     for (var i = 0; i < nodes.length; i++) nodes[i].textContent = S(nodes[i].getAttribute('data-i18n'));
     if (inviterName) {
