@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body {
+    width:1200px; height:630px;
+    font-family: 'Noto Sans CJK KR','Noto Sans KR',sans-serif;
+    overflow:hidden;
+  }
+  .canvas {
+    width:1200px; height:630px;
+    position:relative;
+    background:
+      radial-gradient(circle at 88% 12%, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0) 42%),
+      radial-gradient(circle at 8% 92%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 40%),
+      linear-gradient(135deg, #7A1F1F 0%, #A6321E 42%, #C97B2E 100%);
+  }
+  /* subtle decorative moon */
+  .moon {
+    position:absolute; top:56px; right:70px;
+    width:150px; height:150px; border-radius:50%;
+    background: radial-gradient(circle at 35% 32%, #FFF3D6 0%, #FFE1A0 55%, #F6C86B 100%);
+    box-shadow: 0 0 60px rgba(255,225,160,0.55);
+  }
+  /* decorative ribbon shapes for gift-set feel */
+  .ribbon {
+    position:absolute; border-radius:18px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0.03));
+    border: 2px solid rgba(255,255,255,0.22);
+  }
+  .r1 { width:130px; height:130px; right:130px; bottom:-30px; transform:rotate(-12deg); }
+  .r2 { width:80px; height:80px; right:260px; bottom:70px; transform:rotate(18deg); background:linear-gradient(135deg, rgba(255,214,140,0.30), rgba(255,214,140,0.04)); border-color:rgba(255,214,140,0.35); }
+
+  .content {
+    position:relative; z-index:2;
+    padding: 64px 90px 0 90px;
+    max-width: 760px;
+  }
+  .badge {
+    display:inline-flex; align-items:center; gap:10px;
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius:999px;
+    padding: 9px 22px;
+    width:fit-content;
+    font-size:22px; font-weight:600; color:#FFF6E8;
+    margin-bottom:26px;
+    letter-spacing:0.5px;
+  }
+  .badge .brand { color:#FFE1A0; font-weight:800; }
+
+  .title {
+    font-size:56px;
+    font-weight:800;
+    color:#FFFFFF;
+    line-height:1.24;
+    text-shadow: 0 3px 18px rgba(0,0,0,0.28);
+    margin-bottom:20px;
+  }
+  .title .gift { font-size:50px; }
+  .sub {
+    font-size:23px;
+    font-weight:500;
+    color:#FFE9C7;
+    margin-bottom:30px;
+    line-height:1.4;
+    white-space:nowrap;
+  }
+  .period {
+    display:inline-flex; align-items:center; gap:10px;
+    background: rgba(0,0,0,0.22);
+    border-radius:12px;
+    padding: 12px 22px;
+    width:fit-content;
+    font-size:24px;
+    font-weight:700;
+    color:#FFFFFF;
+  }
+  .period .dot { color:#FFE1A0; }
+
+  .footer-brand {
+    position:absolute; left:90px; bottom:36px;
+    font-size:24px; font-weight:800; color:#FFFFFF;
+    letter-spacing:0.5px;
+    opacity:0.85;
+  }
+  .footer-brand span { color:#FFE1A0; }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="moon"></div>
+    <div class="ribbon r1"></div>
+    <div class="ribbon r2"></div>
+
+    <div class="content">
+      <div class="badge"><span class="brand">Be.Ark</span> 추석 레퍼럴</div>
+      <div class="title">추석 선물세트<br><span class="gift">친구와 함께 Pro 2개월 + 100 RBT</span></div>
+      <div class="sub">Chuseok Gift · 2 months Pro + 100 RBT for you both</div>
+      <div class="period"><span class="dot">●</span> 9.22 – 9.27 · 2개월 (이후 10.5까지 1개월)</div>
+    </div>
+
+    <div class="footer-brand">Be.<span>Ark</span></div>
+  </div>
+</body>
+</html>
