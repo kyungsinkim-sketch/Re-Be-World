@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-09-21-beta-1-6-6",
+    "date": "2026-09-21",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.6.6 — 미리보기 복귀 · 커뮤니티 스킬 정책",
+    "body": "🖥️ 에이전트가 파일을 고치고 나면 Living Files가 코드 화면에 머물지 않고 미리보기로 돌아와요 (HTML은 실행 모드, 문서는 읽기). 새 내용도 바로 반영.\n\n🧩 커뮤니티 스킬 받기 = Pro + 20 RBT. 게시판 읽기·글·댓글·내 스킬 공개는 무료 플랜에서도 전부 가능하고, Pro를 시작하면 20 RBT를 드려요 (첫 스킬 맛보기).\n\n🛠️ CLI 연동 에이전트가 \"저장 완료\"라고 말만 하고 파일을 안 만들던 문제 고침.\n\n🎁 추석 선물세트(9/22~10/5): 내 초대 링크로 친구가 가입하고 Pro를 시작하면 둘 다 Pro 1개월 + 100 RBT.\n\n1.6.0 이상은 앱 안에서 [업데이트] 한 번으로 설치돼요."
+  },
+  {
+    "id": "2026-09-21-beta-1-6-6",
+    "date": "2026-09-21",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.6.6 — Preview returns · community skill policy",
+    "body": "🖥️ After an agent edits a file, Living Files returns to preview instead of staying on the code view (HTML in Run mode, documents in Read) and reloads the new content.\n\n🧩 Getting a community skill = Pro + 20 RBT. Reading, posting, commenting and publishing your own skills stay free; you get 20 RBT when Pro starts (your first skill on us).\n\n🛠️ Fixed CLI-linked agents saying \"saved\" without actually writing the file.\n\n🎁 Chuseok Gift (Sep 22 – Oct 5): when a friend signs up with your invite and starts Pro, you both get 1 month of Pro + 100 RBT.\n\nOn 1.6.0 or later, one click on Update installs this in-app."
+  },
+  {
     "id": "2026-09-22-chuseok-referral",
     "date": "2026-09-22",
     "lang": "ko",
