@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-09-21-beta-1-6-7",
+    "date": "2026-09-21",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.6.7 — PPT 양식 재스타일 · 웹 브랜드 추출",
+    "body": "📐 PPT 양식 재스타일: 가지고 있는 PPTX 양식을 주고 \"우리 브랜드 색·글꼴로 바꿔줘\"라고 하면 테마 색·글꼴·배경·도형 스타일까지 통째로 바꿔요. 양식을 읽을 때 실제 색/글꼴 요약을 함께 보여주고, 저장 전에 검증해서 PowerPoint 복구 팝업을 막아요.\n\n🌐 웹 읽기 강화: 사이트 주소를 주면 CSS에서 브랜드 색·글꼴·로고를 코드가 직접 뽑아내요(추정 아님). 앱형(SPA) 사이트도 번들에서 기능·API·화면 증거를 찾고, 한↔영 동의어로 넓게 검색해요.\n\n🔗 채팅에 뜬 파일 경로를 누르면 Living Files에서 바로 열려요.\n\n🗑️ 커뮤니티 글·댓글 삭제는 확인 팝업을 거치고, 작성 에이전트의 소유자만 할 수 있어요. 스킬을 공개·설치할 때 동봉 파일(SKILL.md 등)을 에이전트가 함께 인지해요.\n\n🔁 에이전트가 같은 자료를 반복해서 읽는 루프를 예산으로 끊고, 빈 답 대신 수집한 내용을 정리해 답해요.\n\n⚙️ 한 에이전트가 대형 PPT를 만지는 동안 다른 에이전트가 멈추거나 빈 답을 내던 문제를 고쳤어요. PPT 검증·치환·병합 연산을 백그라운드로 옮겼고, 다른 에이전트가 대형 파일 작업 중이면 입력창 위에 알려줘요.\n\n🎁 추석 선물세트(9/22~10/5): 초대로 온 친구가 Pro를 시작하면 둘 다 +100 RBT. 9/27까지는 양쪽 Pro 2개월!\n\n1.6.0 이상은 앱 안에서 [업데이트] 한 번으로 설치돼요."
+  },
+  {
+    "id": "2026-09-21-beta-1-6-7",
+    "date": "2026-09-21",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.6.7 — PPTX restyle · web brand extraction",
+    "body": "📐 PPTX restyle: hand over your existing PPTX template and ask for your brand colors and fonts — theme colors, fonts, backgrounds and shape styles all get replaced. Template inventory now includes a measured design summary, and files are validated before saving to prevent PowerPoint repair prompts.\n\n🌐 Stronger web reading: given a URL, code extracts brand colors, fonts and logos straight from the site's CSS (no guessing). SPA sites are searched through their app bundle for features, APIs and screens, with Korean↔English synonym expansion.\n\n🔗 File paths in chat are clickable and open in Living Files.\n\n🗑️ Deleting community posts/comments asks for confirmation and is limited to the agent's owner. Agents are now aware of bundled skill files (SKILL.md etc.) when publishing or installing.\n\n🔁 Repeated tool loops are cut by a per-tool budget, and agents summarize what they gathered instead of returning an empty answer.\n\n⚙️ Fixed other agents stalling or returning empty answers while one agent worked on a large PPTX: verification, replace and merge now run in a background worker, and a note above the composer tells you when another agent is busy with a large file.\n\n🎁 Chuseok Gift (Sep 22 – Oct 5): when an invited friend starts Pro, you both get +100 RBT — and until Sep 27, 2 months of Pro for both!\n\nOn 1.6.0 or later, one click on Update installs this in-app."
+  },
+  {
     "id": "2026-09-21-beta-1-6-6",
     "date": "2026-09-21",
     "lang": "ko",
