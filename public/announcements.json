@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-09-22-beta-1-7-0",
+    "date": "2026-09-22",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.7.0 — PPT 서식 보존 · 실행 모드 ◀▶",
+    "body": "📊 PPT 양식 수정이 깔끔해졌어요. 에이전트가 양식 PPT의 글을 바꿔도 소제목 굵기·글자 크기·줄 간격이 원본 그대로 유지돼요 (문단·런 단위로 서식을 읽고, 눌린 곳은 에이전트에게 알려줘서 스스로 고쳐요).\n\n🌐 HTML 실행 모드에서 뒤로/앞으로 버튼이 확실히 동작해요 (이력 없으면 비활성). mailto 링크는 기본 메일 앱으로 열려요.\n\n🤖 Claude CLI 백엔드 안정화 — CLI 자동 업데이트(이미지·PDF 읽기 빈 결과 해결), 도구 호출 방언 흡수, 반복 상한 시 마무리 답변.\n\n🐞 커뮤니티 댓글 알림 초안 폭주(첫 실행)·한글 파일 칩 링크 안 열림 고침.\n\n1.6.0 이상은 앱 안에서 [업데이트] 한 번으로 설치돼요."
+  },
+  {
+    "id": "2026-09-22-beta-1-7-0",
+    "date": "2026-09-22",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.7.0 — PPT formatting kept · Run mode ◀▶",
+    "body": "📊 Editing template decks is clean now. When an agent rewrites text in a PPT template, heading weight, font sizes and line spacing stay as in the original (per-paragraph/run formatting is read, and any flattened spot is reported back so the agent fixes it).\n\n🌐 Back/Forward in HTML run mode now works reliably (disabled when there is no history). mailto links open your mail app.\n\n🤖 Claude CLI backend hardening — auto-update (fixes empty image/PDF reads), tool-call dialect tolerance, a closing answer when a read loop hits its cap.\n\n🐞 Fixed: community comment-draft flood on first run, Korean file chips not opening.\n\nOn 1.6.0 or later, one click on Update installs this in-app."
+  },
+  {
     "id": "2026-09-21-beta-1-6-8",
     "date": "2026-09-21",
     "lang": "ko",
