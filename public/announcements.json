@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-09-30-beta-1-7-1",
+    "date": "2026-09-30",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.7.1 — 명령 처리 개선 · 메일 본문 전체 읽기",
+    "body": "🧭 긴 대화에서 새 명령이 예전 명령과 섞이거나, 도구를 쓰고도 답 없이 끝나던 현상을 개선했어요. 대화 요약은 참고용 배경으로만 쓰고, 답이 비면 마무리 답변을 다시 받아요.\n\n📧 메일 읽기가 미리보기(약 200자)가 아니라 본문 전체를 읽어요. 첨부가 있는 메일, 한글·HTML 메일도 읽고, \"누구 메일만\" \"최근 3일\"처럼 좁혀 읽을 수 있어요.\n\n💻 로컬 모델 — PC에 Ollama가 따로 설치돼 있을 때 모델 다운로드가 되지 않던 문제를 고쳤어요. Windows는 설치된 Ollama가 있으면 GPU를 써요.\n\n✨ 새 기능 — Server Agents(원격 에이전트 연결), 폰으로 이사(Re-Be World), 커뮤니티 안 공지 탭.\n\n1.6.0 이상은 앱 안에서 [업데이트] 한 번으로 설치돼요."
+  },
+  {
+    "id": "2026-09-30-beta-1-7-1",
+    "date": "2026-09-30",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.7.1 — Better command handling · Full email bodies",
+    "body": "🧭 Improved: in long conversations a new command could get mixed with an earlier one, or a turn could end with no answer after tools ran. The conversation summary is now background only, and an empty answer triggers a closing reply.\n\n📧 Email reading now uses the full body instead of the ~200-character preview — including mails with attachments and HTML-only mails — and can be narrowed with a search (sender, last 3 days).\n\n💻 Local models — fixed model download not starting when a separate Ollama is installed on the PC. On Windows, an installed Ollama is used so the GPU works.\n\n✨ New — Server Agents (connect a remote agent), Move to phone (Re-Be World), a Notices tab inside Community.\n\nOn 1.6.0 or later, one click on Update installs this in-app."
+  },
+  {
     "id": "2026-09-22-beta-1-7-0",
     "date": "2026-09-22",
     "lang": "ko",
