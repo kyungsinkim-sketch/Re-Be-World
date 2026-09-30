@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-09-30-beta-1-7-2",
+    "date": "2026-09-30",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.7.2 — Windows 로컬 모델 GPU 자동 준비",
+    "body": "💻 Windows에서 로컬 모델이 GPU를 쓰도록 앱이 알아서 준비해요. NVIDIA 그래픽카드가 있으면 필요한 라이브러리(약 1.2GB, 디스크 2.5GB)를 한 번 내려받고, 끝나면 내장 Ollama가 GPU로 동작해요. Ollama를 따로 설치할 필요가 없어요.\n\n⏳ 내려받는 동안은 종전처럼 CPU로 동작해요. 진행 상황은 채팅 상단 배너에 보여요.\n\n🛟 새 구성으로 뜨지 못하면 자동으로 종전 구성으로 돌아가요.\n\n맥은 달라진 점이 없어요. 1.6.0 이상은 앱 안에서 [업데이트] 한 번으로 설치돼요."
+  },
+  {
+    "id": "2026-09-30-beta-1-7-2",
+    "date": "2026-09-30",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.7.2 — Automatic GPU setup for local models on Windows",
+    "body": "💻 On Windows, the app now sets up GPU use for local models by itself. With an NVIDIA graphics card it downloads the required libraries once (about 1.2 GB, 2.5 GB on disk) and the built-in Ollama then runs on the GPU. No separate Ollama install needed.\n\n⏳ While downloading, it keeps running on CPU as before. Progress shows in the banner at the top of the chat.\n\n🛟 If the new setup fails to start, it automatically falls back to the previous one.\n\nNothing changes on macOS. On 1.6.0 or later, one click on Update installs this in-app."
+  },
+  {
     "id": "2026-09-30-beta-1-7-1",
     "date": "2026-09-30",
     "lang": "ko",
