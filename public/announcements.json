@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-10-01-beta-1-7-3",
+    "date": "2026-10-01",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.7.3 — Windows 설치 오류 수정",
+    "body": "🛠 Windows에서 설치 중 'Error opening file for writing' 창이 뜨며 멈추던 문제를 고쳤어요.\n\n설치 전에 실행 중인 Be.Ark와 로컬 모델을 확실히 종료하고, 관리자 권한이 필요한 위치(예: C:\\Program Files)에 설치돼 있으면 권한 요청 창을 띄운 뒤 이어서 설치해요.\n\n대화와 기억 데이터는 그대로 유지돼요. 맥은 달라진 점이 없어요."
+  },
+  {
+    "id": "2026-10-01-beta-1-7-3",
+    "date": "2026-10-01",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.7.3 — Windows install fix",
+    "body": "🛠 Fixed the Windows installer stopping with an 'Error opening file for writing' dialog.\n\nThe installer now reliably closes a running Be.Ark and local model before installing, and if Be.Ark lives in a location that needs administrator rights (such as C:\\Program Files) it asks for permission and then continues.\n\nYour conversations and memories are kept. Nothing changes on macOS."
+  },
+  {
     "id": "2026-09-30-beta-1-7-2",
     "date": "2026-09-30",
     "lang": "ko",
