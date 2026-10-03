@@ -1,19 +1,19 @@
 {
-  "version": "1.7.3",
-  "notes": "Be.Ark 1.7.3 — Windows 설치 오류 수정",
-  "pub_date": "2026-10-01T01:50:05Z",
+  "version": "1.7.4",
+  "notes": "Be.Ark 1.7.4 — 영상 만들기·기기 간 전달·미리보기 읽기",
+  "pub_date": "2026-10-03T02:43:36Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUOEtUYjczazNXYXRIS3lacTlvcXllK1BZTnhwSXBhRk02Uk92dUpDRnRqbXFiK0RwVjFpekM0cTA4cmFSaTAyakh3Y1lzZmM4TEhjVStKVDRCNWZ0WVloR1RVMkhWSHdBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwODE3MzI5CWZpbGU6QmUuQXJrLmFwcC50YXIuZ3oKWGlwV3VBa1FWeklwNEYxdEF5SVZXbjZ4S2tPdTBocXVQVFZHTW1Wa0dOK0ZQdkM4eFVFNXY5YStLYkprMVdyWUZYbkdHSjREakRKTTJ6b1p5N28yQ1E9PQo=",
-      "url": "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.7.3/Be.Ark_aarch64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUOEtUYjczazNXYXNTS2h5KzVsU1lnbmVHa1VTWnIzWFNJVmRlbEF2NDRQR1Zua1prYWMxZWdLOWJjZDg1S3JHNWlJTkc2cXZuT3NZVE11TFNTcDk4c0pSbTZPak1SNmdZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwOTk1MDQ5CWZpbGU6QmUuQXJrLmFwcC50YXIuZ3oKMWk4VU9XcGZPSTNlWHpaMTdKRnQ5Q0pEOVBvSEdmTjVFS1E0R0Z3Y1poRkRzeXF2dVc5SHJWczhuTmFzZ3lUL09KYmpnYmx5SE1sbzd4ejVQaWRzRHc9PQo=",
+      "url": "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.7.4/Be.Ark_aarch64.app.tar.gz"
     },
     "darwin-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUOEtUYjczazNXYXRPb3dGMEJKYTlkSE9VNEp1aU1VMmtRZ3lDcXNSY0JUb2x2RkJsZlkxUHc5VVpORVFRS1NNLzBCY0xvdURsVFlOdkxid0k2UkdBaXVQcGloU3MySXdjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwODE3MzIyCWZpbGU6QmUuQXJrLmFwcC50YXIuZ3oKUnRRMUl1bXhrNFR3NEhUSy9qTUVzN1ExZkw2TllGYThZSzFNUzA1MnkrTWlSeStKTFpMdlQ4Wm01QjIzTEVjbVIzTmtIR3oyS2d2Y09wWHg3dFIzQWc9PQo=",
-      "url": "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.7.3/Be.Ark_x64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUOEtUYjczazNXYWxaYU9UNVMrVEU4Y1VwUWExblBGbTNLa0lWbXFDVW9RbW0rSGJzWWdaWHRtTUZ2czZEcnUwaGxobFFLci9UWEZaYllHQUtOMHp2TTZ1RmU0dHpISndnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwOTk0MzY2CWZpbGU6QmUuQXJrLmFwcC50YXIuZ3oKOGRBU2F0YzBYbGtaM3JML2hSQkE5VkU3MGNhREhaMGc2RnhVbGlwbUdnczZoSUkyT1NBN0pwNjI3dVpXOWV1OTk3NFdyS3puQ3QwRVZNN1IybUtDQXc9PQo=",
+      "url": "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.7.4/Be.Ark_x64.app.tar.gz"
     },
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUOEtUYjczazNXYW80Y04ySE9xa1dFblNDRDJoWnI1bnNWamFoVitzN01hVTd1Zmd2TXFNWXY3L1dMTWtGM0tpSnE1Q3FIZ1RlRGNOMUhoQ3gvLzBvcUxFRWJlU0lGT0FzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwODE4OTE1CWZpbGU6QmUuQXJrXzEuNy4zX3g2NC1zZXR1cC5leGUKeGdjQWlZWnk1ZVBsOGxsYzNyZ0w0RDdtMUE1VXVoNEpKZUc4U05qY1FCQUxPWDdnY3lCU1F1REZEVnowM3psTHZhMFYyTkpOcGhBMndDVHZCU29GQmc9PQo=",
-      "url": "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.7.3/Be.Ark_1.7.3_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUOEtUYjczazNXYW81SmhBKytuY2svT2phSWdXQ24zZXFiSXAvRTBVWEVpbWsvLzBzNTJvMjFNTUVTdHlHZ2tIUFFrU0MwdUtXeGRtQUhWV25sSzN6U2pRb1RqNUcya0FJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwOTU0Mzg1CWZpbGU6QmUuQXJrXzEuNy40X3g2NC1zZXR1cC5leGUKZk8xSHhOZVlZRW0wYW1paUd4L1k3STVBWVNaenNyUXA2L1MraFJ4bGlxT1lUWjJnWlQ3Nk80NVU0VDRHckh0ckR5VU10dFFZY00xbGFyUDRvYk9JQWc9PQo=",
+      "url": "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.7.4/Be.Ark_1.7.4_x64-setup.exe"
     }
   }
 }
