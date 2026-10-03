@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-10-03-beta-1-7-5",
+    "date": "2026-10-03",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.7.5 — 맥 권한 팝업 수정",
+    "body": "🛠 맥에서 에이전트가 파일을 다룰 때마다 '다른 앱의 데이터에 접근하려고 합니다' 창이 뜨던 문제를 고쳤습니다.\n🔒 파일 찾기가 시스템 보관함과 다른 앱의 데이터 안으로 들어가지 않습니다."
+  },
+  {
+    "id": "2026-10-03-beta-1-7-5",
+    "date": "2026-10-03",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.7.5 — Mac permission prompt fix",
+    "body": "🛠 Fixed the repeated 'Be.Ark would like to access data from other apps' prompt on Mac while the agent works with files.\n🔒 File search no longer walks into system Library folders or other apps' data."
+  },
+  {
     "id": "2026-10-03-beta-1-7-4",
     "date": "2026-10-03",
     "lang": "ko",
