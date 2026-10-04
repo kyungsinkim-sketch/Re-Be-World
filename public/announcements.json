@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-10-04-beta-1-7-6",
+    "date": "2026-10-04",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.7.6 — 네이버 검색 연결",
+    "body": "🔎 네이버 검색 연결: 설정 ▸ 외부 채널 연동 ▸ 서비스 API에서 네이버 검색(NAVER API HUB)을 연결하면, 에이전트가 블로그·뉴스·카페·지역 검색과 언급량으로 한국 시장·브랜드를 조사해요. 에이전트에게 \"네이버 연동하자\"라고 말해도 연결 창이 열려요.\n🔑 다시 로그인: AI 로그인이 끊기면 홈 PROVIDERS 카드에서 바로 [로그인]할 수 있어요."
+  },
+  {
+    "id": "2026-10-04-beta-1-7-6",
+    "date": "2026-10-04",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.7.6 — Naver Search",
+    "body": "🔎 Naver Search: connect the Naver Search API (NAVER API HUB) in Settings ▸ External channels ▸ Service APIs, and your agent can research Korean markets and brands with blog, news, cafe and local search plus mention volume. You can also just tell your agent \"connect Naver\".\n🔑 Sign in again: if your AI login expires, sign in right from the PROVIDERS card on Home."
+  },
+  {
     "id": "2026-10-03-beta-1-7-5",
     "date": "2026-10-03",
     "lang": "ko",
