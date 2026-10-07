@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-10-07-beta-1-8-0",
+    "date": "2026-10-07",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.8.0 — 에이전트가 결과물을 직접 보고 고쳐요",
+    "body": "👀 영상·PPT를 만든 뒤 에이전트가 결과를 이미지로 보고 스스로 다듬어요 (Claude 구독 두뇌)\n🎨 \"이 사이트 디자인 참고해서\" + URL → 색·글꼴·모서리·간격·움직임을 실측해 덱·영상에 적용\n🧩 PPT 새 레이아웃: 한 문장 가득 · 격자 자유 배치\n🛠 PPT 빈 공간·글자 크기 개선, 미리보기 도형 표시\n🔒 개인정보 보호 정비로 카카오톡 대화 가져오기·TeamSpace를 잠시 중단해요"
+  },
+  {
+    "id": "2026-10-07-beta-1-8-0",
+    "date": "2026-10-07",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.8.0 — Your agent now sees and fixes its own work",
+    "body": "👀 After making a video or deck, the agent looks at the rendered frames/slides and refines them itself (Claude subscription brain)\n🎨 \"Use the design of <URL>\" → colors, fonts, radius, spacing and motion measured on your device and applied to decks and videos\n🧩 New deck layouts: full-screen statement · free 12×8 grid canvas\n🛠 Better spacing and type sizes in decks, shapes shown in preview\n🔒 KakaoTalk chat import and TeamSpace are paused for privacy updates"
+  },
+  {
     "id": "2026-10-04-beta-1-7-6",
     "date": "2026-10-04",
     "lang": "ko",
