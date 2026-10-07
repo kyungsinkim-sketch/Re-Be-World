@@ -1,9 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.re-be.world/</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.re-be.world/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.re-be.world/ko"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.re-be.world/"/>
+  </url>
+  <url>
+    <loc>https://www.re-be.world/ko</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.re-be.world/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.re-be.world/ko"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.re-be.world/"/>
+  </url>
+  <url>
+    <loc>https://www.re-be.world/privacy</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.re-be.world/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.re-be.world/ko/privacy"/>
+  </url>
+  <url>
+    <loc>https://www.re-be.world/ko/privacy</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.re-be.world/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.re-be.world/ko/privacy"/>
   </url>
 </urlset>
