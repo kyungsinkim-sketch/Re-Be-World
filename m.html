@@ -79,7 +79,7 @@
   }
   var KEYJ = 'rebeJoined:' + code;
   function joined() {
-    document.getElementById('act').innerHTML = '<div class="done"><b>참여했어요.</b><br>초대한 분에게 RTB가 쌓였어요. 리비월드 앱을 받은 뒤 <b>나의 에이전트 › RTB › 초대받은 코드 입력</b>에 아래 코드를 넣으면 나도 RTB를 받아요.<div class="code">' + code + '</div></div>' +
+    document.getElementById('act').innerHTML = '<div class="done"><b>참여했어요.</b><br>초대한 분에게 포인트가 쌓였어요. 리비월드 앱을 받은 뒤 <b>나의 에이전트 › 포인트 › 초대받은 코드 입력</b>에 아래 코드를 넣으면 나도 포인트를 받아요.<div class="code">' + code + '</div></div>' +
       '<a class="btn ghost" href="https://www.re-be.world/">리비월드 알아보기</a>';
   }
   if (!code || code.length < 10) { document.getElementById('join').disabled = true; txt('err', '초대 링크가 올바르지 않아요. 받은 링크를 다시 열어주세요.'); return; }
