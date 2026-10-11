@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>리비월드 · 함께한 추억에 초대받았어요</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#070a0f">
+<meta property="og:title" content="함께한 추억에 초대받았어요 — 리비월드">
+<meta property="og:description" content="내 기억으로 자라는 에이전트. 같이 간 그날을 함께 남겨요.">
+<meta property="og:image" content="https://www.re-be.world/landing/og-hero-2026.jpg">
+<link rel="icon" href="/logo.png">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<!--
+  추억 초대 페이지 (2026-10-11, Be.Ark docs/REBE_VOLUNTARY_GROWTH_2026-10-11 §7-E · 빠불로 "앱 없이 웹에서 먼저 참여").
+  - 주소 = /m/<코드>#<카드>. 카드(추억 제목·날짜·장소·좌표·초대한 사람 표시 이름)는 # 뒤에만 → 브라우저 밖으로 안 나가 서버에 안 남는다(K2).
+  - 서버에 가는 건 코드 하나(참여 수 세기용 RPC memory_invite_join). 이름·연락처·내용 ❌.
+  - 지도 = MapLibre + OpenFreeMap(키 없음).
+  - 한 줄 기억 돌려주기 = 다음 단계(빠불로 결정 ③, 지금은 ⓒ 참여만).
+-->
+<style>
+  :root { --bg: #070a0f; --fg: #e9e6df; --fg3: #8b8f98; --line: rgba(255,255,255,.12); --gold: #C49C4D; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--fg); font-family: -apple-system, BlinkMacSystemFont, 'Pretendard', 'Apple SD Gothic Neo', sans-serif; }
+  main { max-width: 480px; margin: 0 auto; padding: calc(24px + env(safe-area-inset-top)) 20px calc(32px + env(safe-area-inset-bottom)); }
+  .brand { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--fg3); }
+  .brand img { width: 22px; height: 22px; border-radius: 6px; }
+  .who { margin-top: 28px; font-size: 13px; color: var(--fg3); }
+  h1 { margin: 6px 0 0; font-size: 24px; font-weight: 700; line-height: 1.35; }
+  .meta { margin-top: 10px; font-size: 15px; color: var(--fg3); display: flex; flex-wrap: wrap; gap: 4px 12px; }
+  #map { margin-top: 20px; height: 240px; border-radius: 16px; overflow: hidden; border: 1px solid var(--line); }
+  #map[hidden] { display: none; }
+  .pin { width: 14px; height: 14px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 4px rgba(196,156,77,.3); }
+  .copy { margin-top: 20px; font-size: 15px; line-height: 1.6; }
+  button, .btn { display: block; width: 100%; margin-top: 14px; height: 50px; border-radius: 25px; font-size: 16px; font-weight: 600; text-align: center; line-height: 50px; text-decoration: none; cursor: pointer; }
+  .primary { background: var(--gold); color: #111; border: 0; }
+  .ghost { background: transparent; color: var(--fg); border: 1px solid var(--line); }
+  .done { margin-top: 20px; padding: 16px; border: 1px solid var(--gold); border-radius: 16px; font-size: 15px; line-height: 1.6; }
+  .done b { color: var(--gold); }
+  .small { margin-top: 18px; font-size: 12px; color: var(--fg3); line-height: 1.6; }
+  .err { color: #e8826a; font-size: 13px; margin-top: 10px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="brand"><img src="/logo.png" alt=""><span>리비월드 · 내 기억으로 자라는 에이전트</span></div>
+  <div class="who" id="who">함께한 추억에 초대받았어요</div>
+  <h1 id="title">함께한 추억</h1>
+  <div class="meta" id="meta"></div>
+  <div id="map" hidden></div>
+  <div class="copy" id="copy">그날을 함께한 사람으로 이 추억에 참여해 주세요. 참여하면 초대한 분의 데이터 행성에 함께한 기억으로 이어져요.</div>
+  <div id="act">
+    <button type="button" class="primary" id="join">나도 기억해요</button>
+  </div>
+  <div class="err" id="err"></div>
+  <div class="small">리비월드는 데이터를 각자의 기기에 저장해요. 이 페이지는 초대 코드만 확인하고, 추억 내용은 이 링크 안에만 담겨 있어요.</div>
+</main>
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script>
+(function () {
+  var SB = 'https://fkggbfqfgsgsacokjuqa.supabase.co', KEY = 'sb_publishable_t3TDevoknYi9XDmspshfBQ_xKZCQI9v';
+  var code = (location.pathname.split('/').filter(Boolean)[1] || new URLSearchParams(location.search).get('c') || '').replace(/[^A-Za-z0-9]/g, '');
+  var card = {};
+  try {
+    var h = location.hash.slice(1); if (h) { h = h.replace(/-/g, '+').replace(/_/g, '/'); while (h.length % 4) h += '=';
+      card = JSON.parse(decodeURIComponent(escape(atob(h)))) || {}; }
+  } catch (e) { card = {}; }
+  function txt(id, v) { document.getElementById(id).textContent = v; }
+  if (card.f) txt('who', card.f + '님이 함께한 추억에 초대했어요');
+  if (card.t) txt('title', card.t);
+  var meta = document.getElementById('meta');
+  [card.d, card.p].forEach(function (v) { if (v) { var s = document.createElement('span'); s.textContent = v; meta.appendChild(s); } });
+  if (isFinite(+card.la) && isFinite(+card.ln) && card.la !== undefined && window.maplibregl) {
+    var mapEl = document.getElementById('map'); mapEl.hidden = false;
+    var map = new maplibregl.Map({ container: mapEl, style: 'https://tiles.openfreemap.org/styles/liberty', center: [+card.ln, +card.la], zoom: 12, attributionControl: { compact: true } });
+    var pin = document.createElement('div'); pin.className = 'pin';
+    new maplibregl.Marker({ element: pin }).setLngLat([+card.ln, +card.la]).addTo(map);
+  }
+  var KEYJ = 'rebeJoined:' + code;
+  function joined() {
+    document.getElementById('act').innerHTML = '<div class="done"><b>참여했어요.</b><br>초대한 분과 나에게 RTB가 쌓여요. 리비월드 앱을 받으면 이 추억이 내 데이터 행성에도 생겨요.</div>' +
+      '<a class="btn ghost" href="https://www.re-be.world/">리비월드 알아보기</a>';
+  }
+  if (!code || code.length < 10) { document.getElementById('join').disabled = true; txt('err', '초대 링크가 올바르지 않아요. 받은 링크를 다시 열어주세요.'); return; }
+  try { if (localStorage.getItem(KEYJ)) joined(); } catch (e) {}
+  var btn = document.getElementById('join');
+  if (btn) btn.addEventListener('click', function () {
+    btn.disabled = true; btn.textContent = '참여하는 중...';
+    fetch(SB + '/rest/v1/rpc/memory_invite_join', { method: 'POST', headers: { apikey: KEY, 'Content-Type': 'application/json' }, body: JSON.stringify({ p_code: code }) })
+      .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+      .then(function () { try { localStorage.setItem(KEYJ, '1'); } catch (e) {} joined(); })
+      .catch(function (e) { btn.disabled = false; btn.textContent = '나도 기억해요'; txt('err', '참여를 기록하지 못했어요. 잠시 뒤 다시 눌러주세요. (' + (e && e.message ? e.message : '네트워크') + ')'); });
+  });
+})();
+</script>
+</body>
+</html>
