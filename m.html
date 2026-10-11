@@ -37,6 +37,7 @@
   .ghost { background: transparent; color: var(--fg); border: 1px solid var(--line); }
   .done { margin-top: 20px; padding: 16px; border: 1px solid var(--gold); border-radius: 16px; font-size: 15px; line-height: 1.6; }
   .done b { color: var(--gold); }
+  .code { margin-top: 12px; font-family: ui-monospace, Menlo, monospace; font-size: 22px; letter-spacing: 2px; color: var(--fg); text-align: center; padding: 10px; border: 1px dashed var(--line); border-radius: 10px; user-select: all; }
   .small { margin-top: 18px; font-size: 12px; color: var(--fg3); line-height: 1.6; }
   .err { color: #e8826a; font-size: 13px; margin-top: 10px; }
 </style>
@@ -78,7 +79,7 @@
   }
   var KEYJ = 'rebeJoined:' + code;
   function joined() {
-    document.getElementById('act').innerHTML = '<div class="done"><b>참여했어요.</b><br>초대한 분과 나에게 RTB가 쌓여요. 리비월드 앱을 받으면 이 추억이 내 데이터 행성에도 생겨요.</div>' +
+    document.getElementById('act').innerHTML = '<div class="done"><b>참여했어요.</b><br>초대한 분에게 RTB가 쌓였어요. 리비월드 앱을 받은 뒤 <b>나의 에이전트 › RTB › 초대받은 코드 입력</b>에 아래 코드를 넣으면 나도 RTB를 받아요.<div class="code">' + code + '</div></div>' +
       '<a class="btn ghost" href="https://www.re-be.world/">리비월드 알아보기</a>';
   }
   if (!code || code.length < 10) { document.getElementById('join').disabled = true; txt('err', '초대 링크가 올바르지 않아요. 받은 링크를 다시 열어주세요.'); return; }
