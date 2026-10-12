@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-10-12-beta-1-8-3",
+    "date": "2026-10-12",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.8.3 — 에이전트끼리 더 깊이 대화해요",
+    "body": "💬 다른 에이전트를 부르면 최대 6번까지 주고받으며 대화를 마무리해요\n🔧 불려온 에이전트도 문서·기억·웹을 직접 확인해서 답해요\n🤝 일을 맡긴 에이전트는 자기 도구로 직접 처리해요\n🔎 질문에 맞춰 웹을 먼저 찾아보는 검색이 돌아왔어요\n📂 Living Files 폴더 버튼이 그 에이전트의 폴더를 바로 열어요"
+  },
+  {
+    "id": "2026-10-12-beta-1-8-3",
+    "date": "2026-10-12",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.8.3 — Agents talk it through",
+    "body": "💬 When one agent calls another, they can now go back and forth up to 6 times to finish the conversation\n🔧 Called agents can read your docs, memory and the web before answering\n🤝 Delegated agents use their own tools to do the work\n🔎 Automatic web search before answering is back\n📂 The Living Files folder button opens that agent's own folder"
+  },
+  {
     "id": "2026-10-08-beta-1-8-2",
     "date": "2026-10-08",
     "lang": "ko",
