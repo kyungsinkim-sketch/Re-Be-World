@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-10-16-beta-1-8-4",
+    "date": "2026-10-16",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.8.4 — 에이전트가 도구를 직접 써요",
+    "body": "🌐 웹 탭 읽기 안정화 — 폼 칸 읽기·입력이 맥에서도 안정적으로 동작해요. 뒤로·앞으로 버튼 추가\n🧰 에이전트가 만든 HTML 도구의 [분석] 버튼을 누르면 에이전트가 바로 작업해요. \"이 툴로 해줘\"라고 하면 직접 칸을 채우고 버튼을 눌러요\n📎 도구에 올린 PDF·PPT는 자동으로 보관돼 에이전트가 바로 읽어요\n🪟 다른 에이전트 화면을 보고 있어도 각 에이전트가 자기 도구를 뒤에서 열어 작업해요\n✍️ 학습한 글 스타일을 리서치·보고서까지 적용하고, AI 말투는 자동 점검해요\n🛠 검색 명령이 글자로만 나오고 멈추던 문제 수정"
+  },
+  {
+    "id": "2026-10-16-beta-1-8-4",
+    "date": "2026-10-16",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.8.4 — Agents now use your tools directly",
+    "body": "🌐 More reliable web tab — reading and filling web forms now works reliably on Mac; back/forward buttons added\n🧰 Pressing a button like [Analyze] in an agent-built HTML tool now calls the agent right away, and \"use this tool\" makes the agent fill fields and press buttons itself\n📎 Files you upload into a tool are saved automatically so the agent can read them\n🪟 Each agent can open and work in its own tool in the background, even while you view another agent\n✍️ Your trained writing style now applies to research and reports too, with automatic AI-tone checks\n🛠 Fixed an issue where the agent printed a search command as text and stopped"
+  },
+  {
     "id": "2026-10-12-beta-1-8-3",
     "date": "2026-10-12",
     "lang": "ko",
