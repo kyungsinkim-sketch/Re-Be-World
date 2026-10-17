@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-10-17-beta-1-8-5",
+    "date": "2026-10-17",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.8.5 — 표·워드·PPT를 Living Files에서 바로 편집",
+    "body": "📝 엑셀·워드·PPT 파일을 Living Files 탭에서 바로 고치고 저장할 수 있어요. 에이전트와 같은 파일을 함께 고쳐도 서로 덮어쓰지 않아요.\n➕ [＋] 메뉴로 새 문서·새 워드·새 슬라이드·새 표·웹 브라우저를 바로 열 수 있어요.\n🧑‍🎨 새 에이전트를 만들 때 직종을 고르면 그 직업의 소양과 대표 업무 스킬이 함께 들어가요.\n↔️ 채팅창을 더 좁게 줄여 작업 공간을 넓게 쓸 수 있어요.\n🛠 다른 에이전트 방에 초대된 에이전트가 웹 검색을 못 하던 문제를 고쳤어요."
+  },
+  {
+    "id": "2026-10-17-beta-1-8-5",
+    "date": "2026-10-17",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.8.5 — Edit spreadsheets, documents and slides in Living Files",
+    "body": "📝 Edit and save Excel, Word and PowerPoint files right in a Living Files tab. You and your agent can work on the same file without overwriting each other.\n➕ The [+] menu opens a new note, document, slide deck, spreadsheet or web browser.\n🧑‍🎨 When you create an agent, pick a job and it starts with that job's know-how and key skills.\n↔️ The chat panel can now shrink further, giving Living Files more room.\n🛠 Fixed: an agent invited into another agent's room couldn't search the web."
+  },
+  {
     "id": "2026-10-16-beta-1-8-4",
     "date": "2026-10-16",
     "lang": "ko",
