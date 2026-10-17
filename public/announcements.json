@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-10-17-beta-1-8-6",
+    "date": "2026-10-17",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.8.6 — 크리에이티브 9직종과 더 깔끔한 화면",
+    "body": "🧑‍🎨 새 에이전트를 만들 때 9개 크리에이티브 직종 중 고르면 그 직업의 소양과 대표 업무 스킬이 함께 들어가요. (전략기획·크리에이티브 디렉터·연출감독·프로듀서·퍼포먼스 마케터·고객 관리자·개발자·법무·계약·프로젝트 리드)\n🧭 웹·HTML 탭은 브라우저처럼 한 줄 주소줄로, 채팅 상단은 폴더 버튼과 모델 이름만 남기고, 왼쪽 네비게이션을 숨길 수 있어요.\n✨ 작업 중 표시와 입력창 버튼이 리비월드와 같은 모양이 됐어요.\n🛠 여러 페이지를 차례로 읽는 조사가 중간에 끊기던 문제와, 데이터 파일이 탭으로 열리던 문제를 고쳤어요."
+  },
+  {
+    "id": "2026-10-17-beta-1-8-6",
+    "date": "2026-10-17",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.8.6 — Nine creative roles and a cleaner screen",
+    "body": "🧑‍🎨 When you create an agent, pick one of nine creative roles and it starts with that job's know-how and key skills. (Strategy Planner, Creative Director, Film Director, Producer, Performance Marketer, Customer Success, Developer, Legal & Contracts, Project Lead)\n🧭 Web and HTML tabs get a single browser-style address bar, the chat header shows just the folder button and model name, and you can hide the left sidebar.\n✨ The working indicator and input buttons now match Re-Be World.\n🛠 Fixed research that stopped partway when reading several pages in a row, and data files (json) opening as tabs."
+  },
+  {
     "id": "2026-10-17-beta-1-8-5",
     "date": "2026-10-17",
     "lang": "ko",
