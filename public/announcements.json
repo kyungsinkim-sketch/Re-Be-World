@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-10-23-beta-1-9-0",
+    "date": "2026-10-23",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.9.0 — PPT 디자인 강화와 스토리보드 작업대",
+    "body": "🎨 PPT: 에이전트가 장표를 직접 그려 PowerPoint 도형으로 만들어요. 디자인 잠금·방향 확인 카드·Pretendard 기본 글꼴\n🎬 스토리보드 작업대: 컷을 고치고 그리고 PPT로 내보내요\n🖼 이미지 생성 도구 추가 (로컬 생성은 Apple Silicon 맥)\n🔌 Claude Code 개인 설정이 대화에 끼어들어 도구를 못 쓰던 문제를 고쳤어요\n💳 Max 구독의 월 API 크레딧을 먼저 쓰는 설정이 생겼어요\n🛠 깨진 PDF 읽기·흰 화면·로컬 모델 받기를 고쳤어요"
+  },
+  {
+    "id": "2026-10-23-beta-1-9-0",
+    "date": "2026-10-23",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.9.0 — Stronger deck design and a storyboard workbench",
+    "body": "🎨 Decks: agents now draw slides as native PowerPoint shapes, with design lock, a direction check card, and Pretendard for Korean\n🎬 Storyboard workbench: edit, draw, and export cuts to PPT\n🖼 New image generation tool (local generation on Apple Silicon Macs)\n🔌 Fixed personal Claude Code hooks/plugins leaking into chats and blocking tools\n💳 Option to spend your Max plan's monthly API credits first\n🛠 Fixes for broken PDFs, blank screen, and local model downloads"
+  },
+  {
     "id": "2026-10-18-beta-1-8-7",
     "date": "2026-10-18",
     "lang": "ko",
