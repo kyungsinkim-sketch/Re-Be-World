@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-10-23-beta-1-9-1",
+    "date": "2026-10-23",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.9.1 — 윈도우 도구 문제 수정",
+    "body": "🛠 윈도우에서 Claude 구독으로 연결한 에이전트가 파일 읽기·PPT 만들기 같은 도구를 못 쓰던 문제를 고쳤어요.\n✨ 1.9.0의 새 기능은 그대로 포함돼요."
+  },
+  {
+    "id": "2026-10-23-beta-1-9-1",
+    "date": "2026-10-23",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.9.1 — Windows tool fix",
+    "body": "🛠 Fixed agents connected through a Claude subscription on Windows being unable to use tools like reading files or creating decks.\n✨ Includes everything new in 1.9.0."
+  },
+  {
     "id": "2026-10-23-beta-1-9-0",
     "date": "2026-10-23",
     "lang": "ko",
