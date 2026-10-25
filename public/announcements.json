@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-10-25-beta-1-9-2",
+    "date": "2026-10-25",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.9.2 — PPT 디자인 프리셋과 승인 카드",
+    "body": "🎨 PPT 디자인 프리셋 4종이 생겼어요. 덱 방향 카드에서 견본을 보고 고르면 그 디자인으로 만들어요.\n🧩 표지·목차·마무리 구도가 늘어서 덱마다 다르게 나와요.\n✅ 확인이 필요한 일은 채팅에 승인 카드로 물어봐요.\n📁 에이전트가 세션마다 자기 폴더에서 작업해서 다른 프로젝트 파일과 섞이지 않아요.\n🛠 스토리보드 다시 그리기, 로컬 모델 받기, 남아 있던 작업 중 표시를 고쳤어요."
+  },
+  {
+    "id": "2026-10-25-beta-1-9-2",
+    "date": "2026-10-25",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.9.2 — PPT Design Presets and Approval Cards",
+    "body": "🎨 Four PPT design presets. Pick one from samples in the deck direction card.\n🧩 More cover, contents and closing layouts, so every deck looks different.\n✅ Actions that need your OK now ask with an approval card in chat.\n📁 Agents work in a folder per session, so projects no longer mix.\n🛠 Fixed storyboard redraws, local model downloads and a stuck working indicator."
+  },
+  {
     "id": "2026-10-23-beta-1-9-1",
     "date": "2026-10-23",
     "lang": "ko",
