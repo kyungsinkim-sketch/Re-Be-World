@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-10-31-beta-1-9-3",
+    "date": "2026-10-31",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.9.3 — 영상 만들기와 캠페인 덱",
+    "body": "🎬 맥에서 그림 한 장으로 짧은 영상을 만들어요.\n🖼 기본 그림 엔진이 상업적으로 써도 되는 Qwen-Image-Edit-2511로 바뀌었어요.\n📊 캠페인 전략 덱 프리셋이 생겼고, 만든 덱에 장을 끼워 넣을 수 있어요.\n🎞 스토리보드를 한 장에 2컷·8컷으로 배치하고 PPT로 내보내요.\n🌐 에이전트가 웹 페이지를 직접 스크롤해서 읽어요.\n🛠 워드 편집기 한글 깨짐, 맥 단축키, 윈도우 폴더 검색 멈춤을 고쳤어요."
+  },
+  {
+    "id": "2026-10-31-beta-1-9-3",
+    "date": "2026-10-31",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.9.3 — Video and Campaign Decks",
+    "body": "🎬 Turn a single image into a short video on Mac.\n🖼 The default image engine is now Qwen-Image-Edit-2511, cleared for commercial use.\n📊 New campaign strategy deck preset, and you can insert slides into an existing deck.\n🎞 Storyboards in 2-cut and 8-cut pages, exported to PPT in one go.\n🌐 Agents scroll web pages themselves to read them.\n🛠 Fixed garbled Korean in the Word editor, Mac shortcuts and a Windows folder search freeze."
+  },
+  {
     "id": "2026-10-25-beta-1-9-2",
     "date": "2026-10-25",
     "lang": "ko",
