@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-11-04-beta-1-9-4",
+    "date": "2026-11-04",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.9.4 — 데이터 행성과 HWP 편집기",
+    "body": "🪐 인지 그래프가 데이터 행성으로 바뀌었어요. 잘 아는 분야는 대륙, 곁가지 분야는 위성으로 보여요.\n🧠 에이전트가 매일 기억을 분야·개념·관계로 정리해요. 대륙 이름은 직접 고쳐 확정할 수 있어요.\n📝 한글(HWP·HWPX) 문서를 앱 안에서 고치고 저장해요.\n🖼 기존 그림의 장면을 이어서 다른 앵글로 그릴 수 있어요.\n📊 전략 덱이 인사이트마다 근거를 점검해요.\n🛠 에이전트 멈춤, PPT 편집기 버벅임을 고쳤어요."
+  },
+  {
+    "id": "2026-11-04-beta-1-9-4",
+    "date": "2026-11-04",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.9.4 — Data Planet and HWP Editor",
+    "body": "🪐 The cognition graph is now a Data Planet. Strong fields show as continents, side interests as moons.\n🧠 Agents organize their memories into fields, concepts and relations every day. You can rename and confirm continents.\n📝 Edit and save Hangul (HWP·HWPX) documents right in the app.\n🖼 Continue the scene of an existing image from a new camera angle.\n📊 Strategy decks check the evidence behind each insight.\n🛠 Fixed agents stalling and a slow PPT editor."
+  },
+  {
     "id": "2026-10-31-beta-1-9-3",
     "date": "2026-10-31",
     "lang": "ko",
