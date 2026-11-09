@@ -710,6 +710,8 @@ not another cloud account renting your mind back to you.</p>
   var DL_MAC = "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.9.4/Be.Ark_1.9.4_aarch64.dmg";
   var DL_MAC_INTEL = "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.9.4/Be.Ark_1.9.4_x64.dmg";
   var DL_WIN = "https://github.com/kyungsinkim-sketch/Re-Be-World/releases/download/v1.9.4/Be.Ark_1.9.4_x64-setup.exe";
+  // 2026-11-09: GitHub 익명 다운로드 주소가 간헐적으로 504(GitHub 장애) → 버튼은 /api/dl(서명 주소로 중계, 실패 시 위 원본으로)로 간다. 위 DL_* 원본 줄은 릴리스마다 그대로 갱신(함수가 읽는다).
+  DL_MAC = "/api/dl?os=mac"; DL_MAC_INTEL = "/api/dl?os=intel"; DL_WIN = "/api/dl?os=win";
   (function(){
     var mac=document.getElementById("dl-mac"), intel=document.getElementById("dl-mac-intel"), win=document.getElementById("dl-win");
     if(mac) mac.setAttribute("href", DL_MAC);
