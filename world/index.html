@@ -206,6 +206,10 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 .planet-cv{display:block;width:100%;max-width:340px;aspect-ratio:1/1}
 .final .planet-cv{max-width:260px;margin:0 auto 8px}
 @media (max-width:860px){.mem .planet-cv{max-width:240px;margin:0 auto}}
+.phone{width:100%;max-width:300px;margin-left:auto;border:1px solid var(--line-2);border-radius:28px;padding:8px;background:var(--card)}
+.phone video{display:block;width:100%;height:auto;border-radius:20px;background:#000}
+.phone-cap{max-width:300px;margin:12px 0 0 auto;text-align:center}
+@media (max-width:860px){.phone,.phone-cap{margin-left:auto;margin-right:auto}}
 </style>
 </head>
 <body>
@@ -236,16 +240,11 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
         <a class="btn" href="#flow">하는 일 보기</a>
       </div>
     </div>
-    <div class="inbox" aria-hidden="true">
-      <div class="inbox-head"><span class="l1">문의</span><span class="l5">오늘 3건</span></div>
-      <div class="inbox-row on"><span class="l3">모닝티 스튜디오</span><span class="ch">메일</span><span class="l4">가을 신제품 협찬을 제안드려요</span></div>
-      <div class="inbox-row"><span class="l3">소담 키친</span><span class="ch">인스타 DM</span><span class="l4">릴스 1건 진행하실 수 있나요?</span></div>
-      <div class="inbox-row"><span class="l3">한결 편집숍</span><span class="ch">카톡</span><span class="l4">지난번 조건으로 한 번 더 부탁드려요</span></div>
-      <div class="draft">
-        <span class="l2">답장 초안 · 모닝티 스튜디오</span>
-        <p>제안 주셔서 감사해요! 일정은 맞출 수 있어요. 사용 기간과 수정 횟수를 먼저 알려 주시겠어요?</p>
-        <div class="btns"><span class="btn sm primary">보내기</span><span class="btn sm">고치기</span></div>
-      </div>
+    <div class="phone" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="metadata" poster="/world/media/rebe-reply-poster.jpg" width="390" height="844">
+        <source src="/world/media/rebe-reply.webm" type="video/webm">
+        <source src="/world/media/rebe-reply.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
 </div>
