@@ -211,6 +211,12 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 .phone-cap{max-width:300px;margin:12px 0 0 auto;text-align:center}
 @media (max-width:860px){.phone,.phone-cap{margin-left:auto;margin-right:auto}}
 @media (max-width:860px){.mem .phone{margin:0 auto !important}}
+.flow-grid{display:grid;grid-template-columns:300px 1fr;gap:64px;align-items:center}
+.flow-list{list-style:none;border-top:1px solid var(--line)}
+.flow-list li{display:grid;grid-template-columns:48px 1fr;padding:22px 0;border-bottom:1px solid var(--line)}
+.flow-list .num{font-family:'Geist Mono',monospace;font-size:12px;color:var(--gold);padding-top:4px}
+.flow-list .l4{margin-top:6px;max-width:460px}
+@media (max-width:860px){.flow-grid{grid-template-columns:1fr;gap:32px}.flow-grid .phone{margin:0 auto !important}}
 </style>
 </head>
 <body>
@@ -257,11 +263,14 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
       <h2 class="d2">문의가 오면 답장까지 한 흐름으로 이어져요</h2>
       <p class="lead">답장만 대신 쓰는 도구가 아니에요. 모으고, 근거를 찾고, 초안을 쓰고, 내가 확인해서 보내요.</p>
     </div>
-    <div class="steps four">
-      <div><span class="num">01</span><div class="l1">한곳에 모아요</div><p class="l4">메일과 메신저, DM으로 온 문의를 한 화면에서 봐요. 놓친 문의가 쌓이지 않아요.</p></div>
-      <div><span class="num">02</span><div class="l1">판단할 근거를 꺼내요</div><p class="l4">같은 곳과 전에 주고받은 이야기와 조건을 찾아서 옆에 보여 줘요.</p></div>
-      <div><span class="num">03</span><div class="l1">내 말투로 초안을 써요</div><p class="l4">내가 보낸 글에서 말투를 배워요. 어미와 줄바꿈까지 나답게 써요.</p></div>
-      <div><span class="num">04</span><div class="l1">내가 확인하고 보내요</div><p class="l4">초안을 읽고 고친 뒤 보내기를 눌러요. 누르기 전에는 나가지 않아요.</p></div>
+    <div class="flow-grid">
+      <div class="phone" aria-hidden="true" style="margin:0">
+        <video autoplay muted loop playsinline preload="metadata" poster="/world/media/rebe-inbox-poster.jpg" width="412" height="892">
+          <source src="/world/media/rebe-inbox.webm" type="video/webm">
+          <source src="/world/media/rebe-inbox.mp4" type="video/mp4">
+        </video>
+      </div>
+      <ol class="flow-list"><li><span class="num">01</span><div><div class="l1">한곳에 모아요</div><p class="l4">메일과 메신저, DM으로 온 문의를 한 화면에서 봐요. 놓친 문의가 쌓이지 않아요.</p></div></li><li><span class="num">02</span><div><div class="l1">판단할 근거를 꺼내요</div><p class="l4">같은 곳과 전에 주고받은 이야기와 조건을 찾아서 옆에 보여 줘요.</p></div></li><li><span class="num">03</span><div><div class="l1">내 말투로 초안을 써요</div><p class="l4">내가 보낸 글에서 말투를 배워요. 어미와 줄바꿈까지 나답게 써요.</p></div></li><li><span class="num">04</span><div><div class="l1">내가 확인하고 보내요</div><p class="l4">초안을 읽고 고친 뒤 보내기를 눌러요. 누르기 전에는 나가지 않아요.</p></div></li></ol>
     </div>
   </div>
 </section>
