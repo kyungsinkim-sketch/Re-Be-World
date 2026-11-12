@@ -167,6 +167,8 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
   .news-row{grid-template-columns:1fr;gap:6px}
   .btns .btn{flex:1 1 100%}
 }
+.shot{margin-top:64px;border:1px solid var(--line-2);border-bottom:0;border-radius:16px 16px 0 0;overflow:hidden;background:var(--card)}
+.shot video{display:block;width:100%;height:auto}
 </style>
 </head>
 <body>
@@ -196,40 +198,11 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
     </div>
     <span class="l5">Beta <span class="mono" data-ver>1.9.5</span> · 무료로 시작해요 · <a href="/api/dl?os=intel" style="text-decoration:underline">인텔 맥용</a></span>
 
-    <div class="mock" aria-hidden="true">
-      <div class="mock-tabs">
-        <div class="mock-tab on"><svg class="ic" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>사업계획서.hwpx</div>
-        <div class="mock-tab">제안서.pptx</div>
-        <div class="mock-tab">예산.xlsx</div>
-      </div>
-      <div class="mock-body">
-        <div class="doc">
-          <h4>3. 소요 예산</h4>
-          <p>올해 사업비는 아래와 같이 편성해요.</p>
-          <table>
-            <tr><th>항목</th><th>작년</th><th>올해</th></tr>
-            <tr><td>인건비</td><td class="n">48,000</td><td class="n chg">52,800</td></tr>
-            <tr><td>제작비</td><td class="n">31,500</td><td class="n chg">36,200</td></tr>
-            <tr><td>홍보비</td><td class="n">12,000</td><td class="n chg">9,600</td></tr>
-            <tr><td>합계</td><td class="n">91,500</td><td class="n chg">98,600</td></tr>
-          </table>
-          <div class="note">단위: 천 원 · 바뀐 칸 4개</div>
-        </div>
-        <div class="chat">
-          <div class="me">예산표를 올해 수치로 바꿔 줘. 숫자는 예산.xlsx에 있어.</div>
-          <div class="step"><i></i>예산.xlsx 읽는 중</div>
-          <div class="ag">
-            <div class="who">@기획 에이전트</div>
-            <p>예산표 4개 칸을 올해 수치로 바꿨어요. 표 모양과 글꼴은 그대로예요.</p>
-          </div>
-          <div class="acard">
-            <div class="l3">바뀐 내용을 저장할까요?</div>
-            <div class="l4">사업계획서.hwpx · 표 1개 · 칸 4개</div>
-            <div class="btns"><span class="btn sm primary">저장하기</span><span class="btn sm">되돌리기</span></div>
-          </div>
-          <div class="inbar">에이전트에게 부탁하기<b><svg class="ic" viewBox="0 0 24 24"><path d="M12 19V5"/><path d="m6 11 6-6 6 6"/></svg></b></div>
-        </div>
-      </div>
+    <div class="shot" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="metadata" poster="/beark/media/beark-xlsx-poster.jpg" width="1440" height="900">
+        <source src="/beark/media/beark-xlsx.webm" type="video/webm">
+        <source src="/beark/media/beark-xlsx.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
 </div>
