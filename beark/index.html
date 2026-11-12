@@ -8,14 +8,14 @@
 <meta property="og:title" content="Be.Ark — 오피스 에이전트 툴">
 <meta property="og:description" content="한글, PPT, 워드, 엑셀을 에이전트와 같이 만들어요.">
 <meta property="og:type" content="website">
-<link rel="preload" href="fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/beark/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/beark/fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 /* 디자인 정책 = 리비월드 앱 실제값(NEST §13-10-A) + 웹 확장 2단(D1·D2).
    흑백 + 1px 옅은 선 + 골드 하나. 그림자·채운 상자·이모지 없음. */
-@font-face{font-family:'Geist';src:url('fonts/Geist-Variable.woff2') format('woff2');font-weight:100 900;font-display:swap;unicode-range:U+0000-024F,U+2000-206F,U+20A0-20CF,U+2190-21FF}
-@font-face{font-family:'Pretendard';src:url('fonts/PretendardVariable.woff2') format('woff2');font-weight:100 900;font-display:swap}
-@font-face{font-family:'Geist Mono';src:url('fonts/GeistMono-Variable.woff2') format('woff2');font-weight:100 900;font-display:swap}
+@font-face{font-family:'Geist';src:url('/beark/fonts/Geist-Variable.woff2') format('woff2');font-weight:100 900;font-display:swap;unicode-range:U+0000-024F,U+2000-206F,U+20A0-20CF,U+2190-21FF}
+@font-face{font-family:'Pretendard';src:url('/beark/fonts/PretendardVariable.woff2') format('woff2');font-weight:100 900;font-display:swap}
+@font-face{font-family:'Geist Mono';src:url('/beark/fonts/GeistMono-Variable.woff2') format('woff2');font-weight:100 900;font-display:swap}
 :root{
   --bg:#FFFFFF;--card:#FAFAFA;--card-2:#F5F5F5;--card-3:#EBEBEB;
   --line:#EAEAEA;--line-2:#D4D4D4;
@@ -191,10 +191,10 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
     <h1 class="d1">한글, PPT, 워드, 엑셀.<br>에이전트와 같이 만들어요.</h1>
     <p class="lead">말로 부탁하면 에이전트가 내 파일을 열어 고쳐요. 서식은 그대로 두고, 바뀐 곳은 화면에서 바로 확인해요.</p>
     <div class="btns">
-      <a class="btn primary" data-dl="mac" href="https://www.re-be.world/api/dl?os=mac">맥용 내려받기</a>
-      <a class="btn" data-dl="win" href="https://www.re-be.world/api/dl?os=win">윈도우용 내려받기</a>
+      <a class="btn primary" data-dl="mac" href="/api/dl?os=mac">맥용 내려받기</a>
+      <a class="btn" data-dl="win" href="/api/dl?os=win">윈도우용 내려받기</a>
     </div>
-    <span class="l5">Beta <span class="mono" data-ver>1.9.5</span> · 무료로 시작해요 · <a href="https://www.re-be.world/api/dl?os=intel" style="text-decoration:underline">인텔 맥용</a></span>
+    <span class="l5">Beta <span class="mono" data-ver>1.9.5</span> · 무료로 시작해요 · <a href="/api/dl?os=intel" style="text-decoration:underline">인텔 맥용</a></span>
 
     <div class="mock" aria-hidden="true">
       <div class="mock-tabs">
@@ -314,7 +314,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
         <span class="tag">가장 많이 써요</span><div class="l1">Pro</div>
         <div class="price">$20 <small>/ 월</small></div><span class="l5">1년 결제는 $144</span>
         <ul><li>Free의 모든 기능</li><li>업무 스킬 카탈로그</li><li>구글·메타 광고·피그마·SNS 계정 연결</li><li>실시간 통역과 받아쓰기 월 600분</li></ul>
-        <a class="btn primary" href="https://www.re-be.world/ko#pricing">Pro 시작하기</a>
+        <a class="btn primary" href="#download">Pro 시작하기</a>
       </div>
       <div class="plan">
         <span class="tag"></span><div class="l1">Enterprise</div>
@@ -341,8 +341,8 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
     <h2 class="d2">지금 쓰는 문서로 시작해요</h2>
     <p class="lead">설치하고 파일을 열면 바로 쓸 수 있어요.</p>
     <div class="btns">
-      <a class="btn primary" href="https://www.re-be.world/api/dl?os=mac">맥용 내려받기</a>
-      <a class="btn" href="https://www.re-be.world/api/dl?os=win">윈도우용 내려받기</a>
+      <a class="btn primary" href="/api/dl?os=mac">맥용 내려받기</a>
+      <a class="btn" href="/api/dl?os=win">윈도우용 내려받기</a>
     </div>
   </div>
 </section>
@@ -353,7 +353,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
     <a href="#">© 2026 Paulus Co.,Ltd.</a>
     <div class="links">
       <a href="https://www.re-be.world">리비월드 앱</a>
-      <a href="https://www.re-be.world/ko/privacy">개인정보처리방침</a>
+      <a href="/ko/privacy">개인정보처리방침</a>
       <a href="mailto:ark@re-be.world">문의</a>
     </div>
   </div>

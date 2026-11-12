@@ -11,9 +11,9 @@
 <style>
 /* 디자인 정책 = 리비월드 앱 실제값(NEST §13-10-A) + 웹 확장 2단(D1·D2).
    흑백 + 1px 옅은 선 + 골드 하나. 그림자·채운 상자·이모지 없음. */
-@font-face{font-family:'Geist';src:url('../beark/fonts/Geist-Variable.woff2') format('woff2');font-weight:100 900;font-display:swap;unicode-range:U+0000-024F,U+2000-206F,U+20A0-20CF,U+2190-21FF}
-@font-face{font-family:'Pretendard';src:url('../beark/fonts/PretendardVariable.woff2') format('woff2');font-weight:100 900;font-display:swap}
-@font-face{font-family:'Geist Mono';src:url('../beark/fonts/GeistMono-Variable.woff2') format('woff2');font-weight:100 900;font-display:swap}
+@font-face{font-family:'Geist';src:url('/beark/fonts/Geist-Variable.woff2') format('woff2');font-weight:100 900;font-display:swap;unicode-range:U+0000-024F,U+2000-206F,U+20A0-20CF,U+2190-21FF}
+@font-face{font-family:'Pretendard';src:url('/beark/fonts/PretendardVariable.woff2') format('woff2');font-weight:100 900;font-display:swap}
+@font-face{font-family:'Geist Mono';src:url('/beark/fonts/GeistMono-Variable.woff2') format('woff2');font-weight:100 900;font-display:swap}
 :root{
   --bg:#000000;--card:#0A0A0A;--card-2:#111111;--card-3:#1A1A1A;
   --line:#1A1A1A;--line-2:#2A2A2A;
@@ -356,7 +356,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
     </div>
   </div>
 </footer>
-<script src="rebe-planet.js"></script>
+<script src="/world/rebe-planet.js"></script>
 <script>
 (function(){
   if(!window.RebePlanet)return;

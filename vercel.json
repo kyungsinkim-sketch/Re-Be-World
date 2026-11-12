@@ -5,6 +5,34 @@
     {
       "source": "/m/:code",
       "destination": "/m"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "be.ark.works"
+        }
+      ],
+      "destination": "/beark"
+    },
+    {
+      "source": "/ko",
+      "has": [
+        {
+          "type": "host",
+          "value": "be.ark.works"
+        }
+      ],
+      "destination": "/beark"
+    },
+    {
+      "source": "/",
+      "destination": "/world"
+    },
+    {
+      "source": "/ko",
+      "destination": "/world"
     }
   ]
 }
