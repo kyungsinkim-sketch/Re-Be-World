@@ -24,7 +24,7 @@
           "value": "be.ark.works"
         }
       ],
-      "destination": "/beark"
+      "destination": "/beark/ko"
     },
     {
       "source": "/",
@@ -32,7 +32,7 @@
     },
     {
       "source": "/ko",
-      "destination": "/world"
+      "destination": "/world/ko"
     }
   ]
 }

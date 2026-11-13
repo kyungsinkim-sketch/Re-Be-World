@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="alternate" hreflang="en" href="https://www.re-be.world/">
+<link rel="alternate" hreflang="ko" href="https://www.re-be.world/ko">
+<link rel="alternate" hreflang="x-default" href="https://www.re-be.world/">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Re-Be World — 창작자를 위한 매니저 에이전트</title>
+<meta name="description" content="협찬 문의와 메일, DM을 한곳에 모으고 내 말투로 답장 초안을 써요. 보내기는 내가 눌러요.">
+<meta property="og:title" content="Re-Be World — 내 기억으로 자라는 에이전트">
+<meta property="og:description" content="내가 이름 지은 에이전트가 내 폰에 살아요.">
+<meta name="theme-color" content="#000000">
+<style>
+/* 디자인 정책 = 리비월드 앱 실제값(NEST §13-10-A) + 웹 확장 2단(D1·D2).
+   흑백 + 1px 옅은 선 + 골드 하나. 그림자·채운 상자·이모지 없음. */
+@font-face{font-family:'Geist';src:url('/beark/fonts/Geist-Variable.woff2') format('woff2');font-weight:100 900;font-display:swap;unicode-range:U+0000-024F,U+2000-206F,U+20A0-20CF,U+2190-21FF}
+@font-face{font-family:'Pretendard';src:url('/beark/fonts/PretendardVariable.woff2') format('woff2');font-weight:100 900;font-display:swap}
+@font-face{font-family:'Geist Mono';src:url('/beark/fonts/GeistMono-Variable.woff2') format('woff2');font-weight:100 900;font-display:swap}
+:root{
+  --bg:#000000;--card:#0A0A0A;--card-2:#111111;--card-3:#1A1A1A;
+  --line:#1A1A1A;--line-2:#2A2A2A;
+  --fg:#EDEDED;--fg-2:#A1A1A1;--fg-3:#7A7A7A;
+  --gold:#C49C4D;--gold-bg:rgba(196,156,77,.2);
+  --wrap:1080px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:'Geist','Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif;font-size:15px;line-height:1.6;letter-spacing:-.01em;-webkit-font-smoothing:antialiased;word-break:keep-all}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.mono{font-family:'Geist Mono','SF Mono',monospace}
+
+/* 글자 — 웹 확장 D1·D2 + 앱 5단계 L1~L5 */
+.d1{font-size:56px;line-height:1.14;font-weight:600;letter-spacing:-.035em}
+.d2{font-size:32px;line-height:1.25;font-weight:600;letter-spacing:-.025em}
+.l1{font-size:16px;font-weight:600;line-height:1.45}
+.l2{font-size:12px;font-weight:500;letter-spacing:.02em;color:var(--fg-3)}
+.l3{font-size:15px;font-weight:500}
+.l4{font-size:13px;line-height:1.5;color:var(--fg-2)}
+.l5{font-size:12px;color:var(--fg-3)}
+.lead{font-size:16px;line-height:1.6;color:var(--fg-2)}
+
+/* 버튼 — 1px 선, 채움 없음. 주 버튼만 반전. 높이 48/36, 둥글기 10, 간격 8 */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 20px;border:1px solid var(--line-2);border-radius:10px;font-size:15px;font-weight:500;color:var(--fg);background:transparent;cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--card-2)}
+.btn.primary{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.btn.primary:hover{opacity:.86;background:var(--fg)}
+.btn.sm{height:36px;padding:0 14px;font-size:13px}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.btn svg{width:18px;height:18px}
+svg.ic{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* 머리줄 52 */
+header{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{height:52px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-size:16px;font-weight:600;letter-spacing:-.02em}
+nav{display:flex;align-items:center;gap:22px}
+nav a.nl{font-size:13px;color:var(--fg-2)}
+nav a.nl:hover{color:var(--fg)}
+
+/* 히어로 */
+.hero{padding:88px 0 0}
+.hero .l2{display:block;margin-bottom:22px}
+.hero h1{max-width:760px}
+.hero .lead{max-width:560px;margin:22px 0 32px}
+.hero .l5{display:block;margin-top:14px}
+
+/* 화면 견본 — 문서 + 대화 */
+.mock{margin-top:64px;border:1px solid var(--line);border-radius:16px 16px 0 0;border-bottom:0;overflow:hidden;background:var(--card)}
+.mock-tabs{display:flex;height:40px;background:var(--card-2);border-bottom:1px solid var(--line);padding:6px 8px 0;gap:0}
+.mock-tab{display:flex;align-items:center;gap:8px;padding:0 14px;font-size:13px;color:var(--fg-3);border-right:1px solid var(--line)}
+.mock-tab.on{background:var(--bg);color:var(--fg);border-radius:10px 10px 0 0;border-right:0}
+.mock-tab svg{width:16px;height:16px}
+.mock-body{display:grid;grid-template-columns:1.35fr 1fr;min-height:400px}
+.doc{background:var(--bg);border-right:1px solid var(--line);padding:36px 44px}
+.doc h4{font-size:16px;font-weight:600;margin-bottom:6px}
+.doc p{font-size:13px;color:var(--fg-2);margin-bottom:18px}
+.doc table{width:100%;border-collapse:collapse;font-size:13px}
+.doc th,.doc td{border:1px solid var(--line-2);padding:9px 12px;text-align:left}
+.doc th{background:var(--card);font-weight:500;color:var(--fg-2)}
+.doc td.n{text-align:right;font-family:'Geist Mono',monospace}
+.doc td.chg{background:var(--gold-bg);box-shadow:inset 2px 0 0 var(--gold)}
+.doc .note{margin-top:14px;font-size:12px;color:var(--fg-3)}
+.chat{display:flex;flex-direction:column;padding:22px;gap:14px;background:var(--bg)}
+.me{align-self:flex-end;max-width:86%;background:var(--card-3);border-radius:12px;padding:10px 14px;font-size:15px}
+.ag .who{font-size:12px;font-weight:600;margin-bottom:4px}
+.ag p{font-size:15px}
+.step{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--fg-3);font-family:'Geist Mono',monospace}
+.step i{width:6px;height:6px;border-radius:50%;background:var(--gold);display:block}
+.acard{border:1px solid var(--line);border-radius:10px;padding:14px}
+.acard .l4{margin:2px 0 12px}
+.inbar{margin-top:auto;display:flex;align-items:center;height:54px;border-radius:28px;background:var(--card-2);padding:0 8px 0 20px;font-size:15px;color:var(--fg-3);justify-content:space-between}
+.inbar b{width:38px;height:38px;border-radius:50%;background:var(--fg);color:var(--bg);display:flex;align-items:center;justify-content:center}
+.inbar b svg{width:18px;height:18px}
+
+/* 섹션 */
+section{padding:96px 0;border-top:1px solid var(--line)}
+section.first{border-top:1px solid var(--line)}
+.sec-head{margin-bottom:44px;max-width:640px}
+.sec-head .l2{display:block;margin-bottom:14px}
+.sec-head .lead{margin-top:14px}
+
+/* 형식 4행 — 행과 선으로 */
+.fmt{border-top:1px solid var(--line)}
+.fmt-row{display:grid;grid-template-columns:200px 1fr 1fr;gap:32px;padding:32px 0;border-bottom:1px solid var(--line);align-items:start}
+.fmt-name{display:flex;align-items:baseline;gap:10px}
+.fmt-name b{font-size:24px;font-weight:600;letter-spacing:-.02em}
+.fmt-name span{font-size:12px;color:var(--fg-3);font-family:'Geist Mono',monospace}
+.fmt-row ul{list-style:none}
+.fmt-row li{font-size:13px;color:var(--fg-2);padding:5px 0 5px 16px;position:relative;line-height:1.5}
+.fmt-row li::before{content:"";position:absolute;left:0;top:13px;width:6px;height:1px;background:var(--fg-3)}
+
+/* 3단계 */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:10px}
+.steps>div{padding:28px}
+.steps>div+div{border-left:1px solid var(--line)}
+.steps .num{font-family:'Geist Mono',monospace;font-size:12px;color:var(--gold);display:block;margin-bottom:22px}
+.steps .l4{margin-top:6px}
+
+/* 특징 격자 */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.grid>div{padding:28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.grid svg{width:18px;height:18px;margin-bottom:22px;display:block}
+.grid .l4{margin-top:6px;max-width:400px}
+
+/* 요금 */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.plan{border:1px solid var(--line);border-radius:10px;padding:28px;display:flex;flex-direction:column}
+.plan.pick{border-color:var(--fg)}
+.plan .tag{font-size:12px;color:var(--gold);font-weight:500;height:18px;display:block;margin-bottom:4px}
+.plan .price{font-size:32px;font-weight:600;letter-spacing:-.02em;font-family:'Geist Mono',monospace;margin:14px 0 2px}
+.plan .price small{font-size:13px;font-weight:400;color:var(--fg-3);font-family:'Geist','Pretendard',sans-serif;letter-spacing:0}
+.plan ul{list-style:none;margin:22px 0 28px;border-top:1px solid var(--line)}
+.plan li{font-size:13px;color:var(--fg-2);padding:11px 0;border-bottom:1px solid var(--line);line-height:1.5}
+.plan .btn{margin-top:auto;width:100%}
+
+/* 소식 */
+.news{border-top:1px solid var(--line)}
+.news-row{display:grid;grid-template-columns:120px 1fr;gap:32px;padding:22px 0;border-bottom:1px solid var(--line)}
+.news-row .l4{margin-top:6px;white-space:pre-line}
+
+/* 마무리 */
+.final{text-align:center}
+.final .lead{margin:14px auto 32px;max-width:480px}
+.final .btns{justify-content:center}
+footer{border-top:1px solid var(--line);padding:28px 0}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:22px;flex-wrap:wrap}
+footer a{font-size:12px;color:var(--fg-3)}
+footer a:hover{color:var(--fg)}
+footer .links{display:flex;gap:22px;flex-wrap:wrap}
+
+@media (max-width:860px){
+  .d1{font-size:36px}.d2{font-size:24px}
+  .hero{padding-top:56px}
+  nav a.nl{display:none}
+  .mock-body{grid-template-columns:1fr}.doc{border-right:0;border-bottom:1px solid var(--line);padding:22px}
+  .mock-tab:not(.on){display:none}
+  section{padding:64px 0}
+  .fmt-row{grid-template-columns:1fr;gap:12px;padding:28px 0}
+  .steps,.plans,.grid{grid-template-columns:1fr}
+  .steps>div+div{border-left:0;border-top:1px solid var(--line)}
+  .news-row{grid-template-columns:1fr;gap:6px}
+  .btns .btn{flex:1 1 100%}
+}
+
+/* 리비월드 전용 */
+.grad{background:linear-gradient(90deg,#FF5C9E,#FF8A3D,#FFD23F,#35E08A,#38D0FF,#4C6FFF,#A86BFF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero{padding:88px 0 96px}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.planet{width:100%;max-width:400px;margin-left:auto;display:block}
+.sym{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:10px}
+.sym>div{padding:28px}
+.sym>div+div{border-left:1px solid var(--line)}
+.sym svg{width:28px;height:28px;display:block;margin-bottom:22px}
+.sym .l4{margin-top:6px}
+.keep{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.file{border:1px solid var(--line-2);border-radius:10px;padding:22px;max-width:380px}
+.file .row{display:flex;justify-content:space-between;height:52px;align-items:center;border-bottom:1px solid var(--line);font-size:15px}
+.file .row:last-of-type{border-bottom:0}
+.file .row span:last-child{font-size:13px;color:var(--fg-3);font-family:'Geist Mono',monospace}
+.file .btns{margin-top:14px}
+.file .btns .btn{flex:1}
+@media (max-width:860px){
+  .hero-grid,.keep{grid-template-columns:1fr;gap:32px}
+  .planet{max-width:260px;margin:0 auto}
+  .sym{grid-template-columns:1fr}.sym>div+div{border-left:0;border-top:1px solid var(--line)}
+}
+
+/* v2 — 창작자 매니징 축 */
+.steps.four{grid-template-columns:repeat(4,1fr)}
+.inbox{border:1px solid var(--line-2);border-radius:16px;background:var(--card);max-width:420px;margin-left:auto;overflow:hidden}
+.inbox-head{height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid var(--line)}
+.inbox-row{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:12px 18px;border-bottom:1px solid var(--line);min-height:52px}
+.inbox-row .l3{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.inbox-row .ch{font-size:12px;color:var(--fg-3);font-family:'Geist Mono',monospace;text-align:right}
+.inbox-row .l4{grid-column:1/-1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.inbox-row.on{background:var(--card-2);box-shadow:inset 2px 0 0 var(--gold)}
+.draft{padding:18px}
+.draft .l2{display:block;margin-bottom:8px}
+.draft p{font-size:15px;margin-bottom:14px}
+.mem{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:center}
+.mem .planet{margin:0;max-width:320px}
+.mem ul{list-style:none;border-top:1px solid var(--line);margin-top:28px}
+.mem li{display:flex;gap:14px;align-items:center;min-height:52px;border-bottom:1px solid var(--line);font-size:15px}
+.mem li svg{width:18px;height:18px;flex:none}
+.mem li span{font-size:13px;color:var(--fg-2)}
+@media (max-width:860px){.steps.four{grid-template-columns:1fr}.inbox{margin:0 auto}.mem{grid-template-columns:1fr;gap:28px}.mem .planet{max-width:220px;margin:0 auto}}
+.planet-cv{display:block;width:100%;max-width:340px;aspect-ratio:1/1}
+.final .planet-cv{max-width:260px;margin:0 auto 8px}
+@media (max-width:860px){.mem .planet-cv{max-width:240px;margin:0 auto}}
+.phone{width:100%;max-width:300px;margin-left:auto;border:1px solid var(--line-2);border-radius:28px;padding:8px;background:var(--card)}
+.phone video{display:block;width:100%;height:auto;border-radius:20px;background:#000}
+.phone-cap{max-width:300px;margin:12px 0 0 auto;text-align:center}
+@media (max-width:860px){.phone,.phone-cap{margin-left:auto;margin-right:auto}}
+@media (max-width:860px){.mem .phone{margin:0 auto !important}}
+.flow-grid{display:grid;grid-template-columns:300px 1fr;gap:64px;align-items:center}
+.flow-list{list-style:none;border-top:1px solid var(--line)}
+.flow-list li{display:grid;grid-template-columns:48px 1fr;padding:22px 0;border-bottom:1px solid var(--line)}
+.flow-list .num{font-family:'Geist Mono',monospace;font-size:12px;color:var(--gold);padding-top:4px}
+.flow-list .l4{margin-top:6px;max-width:460px}
+@media (max-width:860px){.flow-grid{grid-template-columns:1fr;gap:32px}.flow-grid .phone{margin:0 auto !important}}
+nav a.lang{font-size:13px;opacity:.72;text-decoration:none;color:inherit;margin-right:4px}
+nav a.lang:hover{opacity:1}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#" style="font-weight:700">Re-Be World</a>
+    <nav>
+      <a class="nl" href="#flow">하는 일</a>
+      <a class="nl" href="#trust">보내기</a>
+      <a class="nl" href="#memory">기억</a>
+      <a class="nl" href="#keep">저장과 이동</a>
+      <a class="nl" href="#promise">약속</a>
+      <a class="lang" href="/">English</a>
+      <a class="btn sm primary" href="#notify">출시 알림 받기</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="l2" style="display:block;margin-bottom:22px">창작자를 위한 매니저 에이전트 · 안드로이드 먼저 나와요</span>
+      <h1 class="d1">창작 바깥의 일은<br><span class="grad">에이전트</span>에게 맡겨요</h1>
+      <p class="lead" style="max-width:480px;margin:22px 0 32px">협찬 문의, 메일, DM 답장. 리비월드가 한곳에 모으고 내 말투로 초안을 써요. 보내기는 내가 눌러요.</p>
+      <div class="btns">
+        <a class="btn primary" href="#notify">출시 알림 받기</a>
+        <a class="btn" href="#flow">하는 일 보기</a>
+      </div>
+    </div>
+    <div class="phone" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="metadata" poster="/world/media/rebe-reply-poster.jpg" width="390" height="844">
+        <source src="/world/media/rebe-reply.webm" type="video/webm">
+        <source src="/world/media/rebe-reply.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</div>
+
+<section id="flow">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="l2">하는 일</span>
+      <h2 class="d2">문의가 오면 답장까지 한 흐름으로 이어져요</h2>
+      <p class="lead">답장만 대신 쓰는 도구가 아니에요. 모으고, 근거를 찾고, 초안을 쓰고, 내가 확인해서 보내요.</p>
+    </div>
+    <div class="flow-grid">
+      <div class="phone" aria-hidden="true" style="margin:0">
+        <video autoplay muted loop playsinline preload="metadata" poster="/world/media/rebe-inbox-poster.jpg" width="412" height="892">
+          <source src="/world/media/rebe-inbox.webm" type="video/webm">
+          <source src="/world/media/rebe-inbox.mp4" type="video/mp4">
+        </video>
+      </div>
+      <ol class="flow-list"><li><span class="num">01</span><div><div class="l1">한곳에 모아요</div><p class="l4">메일과 메신저, DM 알림으로 온 문의를 대화 화면에 모아 보여 줘요.</p></div></li><li><span class="num">02</span><div><div class="l1">판단할 근거를 꺼내요</div><p class="l4">같은 사람과 전에 있었던 일을 기억에서 찾아 알려 줘요.</p></div></li><li><span class="num">03</span><div><div class="l1">내 말투로 초안을 써요</div><p class="l4">내가 보낸 글에서 말투를 배워요. 어미와 글 길이까지 나답게 써요.</p></div></li><li><span class="num">04</span><div><div class="l1">내가 확인하고 보내요</div><p class="l4">초안을 읽고 승인을 눌러요. 누르기 전에는 나가지 않아요.</p></div></li></ol>
+    </div>
+  </div>
+</section>
+
+<section id="trust">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="l2">보내기</span>
+      <h2 class="d2">보내기는 언제나 내가 눌러요</h2>
+      <p class="lead">말투가 어긋난 답장 한 통이 관계를 망칠 수 있어요. 그래서 에이전트는 초안까지만 써요.</p>
+    </div>
+    <div class="grid">
+      <div><svg class="ic" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg><div class="l1">승인해야 나가요</div><p class="l4">메일과 메시지, 문자는 승인 카드에서 내가 눌러야 보내요.</p></div>
+      <div><svg class="ic" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13 7 4 4"/></svg><div class="l1">마음에 안 들면 고쳐요</div><p class="l4">고칠 곳을 말하면 초안을 다시 써요.</p></div>
+      <div><svg class="ic" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg><div class="l1">무엇을 기억하는지 보여 줘요</div><p class="l4">에이전트가 기억한 사람과 기억, 장소를 앱에서 직접 보고 지울 수 있어요.</p></div>
+      <div><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><div class="l1">이름도 성격도 내가 정해요</div><p class="l4">내가 이름 지은 에이전트예요. 성격과 말투도 직접 정해요.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="memory">
+  <div class="wrap mem">
+    <div class="phone" aria-hidden="true" style="margin:0">
+      <video autoplay muted loop playsinline preload="metadata" poster="/world/media/rebe-planet-poster.jpg" width="412" height="892">
+        <source src="/world/media/rebe-planet.webm" type="video/webm">
+        <source src="/world/media/rebe-planet.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div>
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="l2">기억</span>
+        <h2 class="d2">쓸수록 내 일을 더 잘 알아요</h2>
+        <p class="lead">누구와 언제 어떤 일을 했는지 기억해요. 다음 문의가 오면 그 기억으로 답해요.</p>
+      </div>
+      <ul>
+        <li><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="14" cy="14" r="10"/></svg>인물 <span>함께 일한 담당자와 연락한 기록</span></li>
+        <li><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="4" width="20" height="20"/></svg>장소 <span>촬영하고 만난 곳</span></li>
+        <li><svg viewBox="0 0 28 28" fill="none" stroke="#C49C4D" stroke-width="1.8" stroke-linejoin="round"><path d="M14 4 25 23H3z"/></svg>이벤트 <span>마감과 일정, 지난 협업</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="keep">
+  <div class="wrap keep">
+    <div class="sec-head" style="margin-bottom:0">
+      <span class="l2">저장과 이동</span>
+      <h2 class="d2">폰을 바꿔도 에이전트를 잃지 않아요</h2>
+      <p class="lead">에이전트의 기억과 기록은 내 폰에 저장해요. .rebe 파일 하나로 내보내서 언제든 다른 폰으로 옮기거나 되살려요.</p>
+    </div>
+    <div class="file" aria-hidden="true">
+      <div class="l1" style="margin-bottom:6px">에이전트 보관 파일</div>
+      <div class="row"><span>저장 위치</span><span>내 폰</span></div>
+      <div class="row"><span>기억과 기록</span><span>암호와 복구 문구로 잠가요</span></div>
+      <div class="row"><span>성격과 말투</span><span>같이 담아요</span></div>
+      <div class="row"><span>파일 형식</span><span>.rebe</span></div>
+      <div class="btns"><span class="btn sm primary">내보내기</span><span class="btn sm">되살리기</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="promise">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="l2">약속</span>
+      <h2 class="d2">데이터는 내 폰에 저장해요</h2>
+      <p class="lead">무엇을 읽을지는 내가 정해요.</p>
+    </div>
+    <div class="steps">
+      <div><span class="num">01</span><div class="l1">내 폰에 저장해요</div><p class="l4">기억과 관계 정보를 내 폰 안에 암호로 잠가 보관해요.</p></div>
+      <div><span class="num">02</span><div class="l1">허락한 것만 읽어요</div><p class="l4">알림, 메일, 일정, 연락처를 하나씩 허락해요.</p></div>
+      <div><span class="num">03</span><div class="l1">내가 고른 AI를 써요</div><p class="l4">내가 고른 AI 서비스에 내 계정으로 연결해요. 에이전트가 답할 때 필요한 내용은 그 AI로 전달돼요.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="notify">
+  <div class="wrap">
+    <canvas class="planet-cv" data-planet aria-hidden="true"></canvas>
+    <span class="l1" style="display:block;margin-bottom:22px;font-weight:700">Re-Be World</span>
+    <h2 class="d2">내 기억으로 자라는 에이전트</h2>
+    <p class="lead">출시하면 메일로 알려 드려요.</p>
+    <div class="btns">
+      <a class="btn primary" href="mailto:ark@re-be.world?subject=Re-Be%20World%20%EC%B6%9C%EC%8B%9C%20%EC%95%8C%EB%A6%BC">출시 알림 받기</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="#">© 2026 REBE WORLD FZCO</a>
+    <div class="links">
+      <a href="https://be.ark.works">Be.Ark</a>
+      <a href="/ko/privacy">개인정보처리방침</a>
+      <a href="mailto:ark@re-be.world">문의</a>
+    </div>
+  </div>
+</footer>
+<script src="/world/rebe-planet.js"></script>
+<script>
+(function(){
+  if(!window.RebePlanet)return;
+  var cvs=document.querySelectorAll('canvas[data-planet]');
+  function start(cv){ if(cv._p)return; cv._p=RebePlanet.run(cv,{seed:'Re-Be World',growth:0.8,loop:true,fps:24,fit:0.84}); }
+  if(!('IntersectionObserver' in window)){ for(var i=0;i<cvs.length;i++)start(cvs[i]); return; }
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ start(e.target); } else if(e.target._p){ e.target._p.stop(); e.target._p=null; } }); },{rootMargin:'120px'});
+  for(var j=0;j<cvs.length;j++)io.observe(cvs[j]);
+})();
+</script>
+</body>
+</html>
