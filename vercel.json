@@ -28,11 +28,11 @@
     },
     {
       "source": "/",
-      "destination": "/world"
+      "destination": "/legacy/beark-en"
     },
     {
       "source": "/ko",
-      "destination": "/world/ko"
+      "destination": "/legacy/beark-ko"
     }
   ]
 }
