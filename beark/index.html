@@ -197,6 +197,9 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 .grid.three{grid-template-columns:repeat(3,1fr)}
 .soon{display:inline-block;margin-left:6px;padding:2px 8px;border:1px solid var(--line-2,var(--line));border-radius:999px;font-size:11px;font-weight:500;color:var(--fg-2);vertical-align:middle}
 @media (max-width:860px){.grid.three{grid-template-columns:1fr}}
+.lead,.l4{text-wrap:balance}
+.sec-head.wide{max-width:none}
+@media (min-width:1100px){.sec-head.wide .lead{white-space:nowrap}}
 </style>
 </head>
 <body>
@@ -361,7 +364,8 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
         <span class="l2">Why Be.Ark</span>
         <h2 class="d2">Your agent data is stored on your computer</h2>
         <p class="lead">Unlike existing agent services, core data isn't stored on a server.</p>
-        <p class="lead" style="margin-top:10px">Your agent's ontology is stored on your computer, and it grows into an agent that knows you better. Download your agent data as a .rebe file to keep or copy it anytime.</p>
+        <p class="lead" style="margin-top:10px">Your agent's ontology is stored on your computer, and it grows into an agent that knows you better.</p>
+        <p class="lead" style="margin-top:10px">Download your agent data as a .rebe file to keep or copy it anytime.</p>
         <p class="l1 why-key">You don't have to worry about your agent data piling up on a company's servers.</p>
       </div>
     </div>
@@ -376,10 +380,10 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 
 <section id="studio">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head wide">
       <span class="l2">Pro skills</span>
       <h2 class="d2">Creative Studio comes with Pro</h2>
-      <p class="lead">Skills for specialist work such as strategy research and storyboards. Included in the Pro plan, with new skills released regularly.</p>
+      <p class="lead">Skills for specialist work like strategy research and storyboards. Included in Pro, with new skills added regularly.</p>
     </div>
     <div class="fmt-shot" style="margin:0 0 32px;grid-column:auto" aria-hidden="true"><img src="/beark/media/beark-storyboard.jpg" width="1800" height="1180" loading="lazy" alt="" style="display:block;width:100%;height:auto"></div>
     <div class="grid three">
@@ -405,7 +409,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
         <a class="btn" href="#download">Start free</a>
       </div>
       <div class="plan pick">
-        <span class="tag">Most popular</span><div class="l1">Pro</div>
+        <span class="tag">Recommended</span><div class="l1">Pro</div>
         <div class="price">$20 <small>/ month</small></div><span class="l5">$144 billed yearly</span>
         <ul><li>Everything in Free</li><li>Creative Studio skills</li><li>Download community skills</li><li>300 built-in web searches a day</li><li>600 minutes a month of live interpretation and transcription</li></ul>
         <a class="btn primary" href="#download">Start Pro</a>

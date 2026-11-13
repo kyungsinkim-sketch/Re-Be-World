@@ -197,6 +197,9 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 .grid.three{grid-template-columns:repeat(3,1fr)}
 .soon{display:inline-block;margin-left:6px;padding:2px 8px;border:1px solid var(--line-2,var(--line));border-radius:999px;font-size:11px;font-weight:500;color:var(--fg-2);vertical-align:middle}
 @media (max-width:860px){.grid.three{grid-template-columns:1fr}}
+.lead,.l4{text-wrap:balance}
+.sec-head.wide{max-width:none}
+@media (min-width:1100px){.sec-head.wide .lead{white-space:nowrap}}
 </style>
 </head>
 <body>
@@ -361,7 +364,8 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
         <span class="l2">Be.Ark가 다른 점</span>
         <h2 class="d2">에이전트 데이터를 내 컴퓨터에 저장해요</h2>
         <p class="lead">기존의 에이전트 서비스와 달리 핵심 데이터를 서버에 저장하지 않아요.</p>
-        <p class="lead" style="margin-top:10px">내 컴퓨터에 에이전트의 온톨로지를 저장하고, 나를 더 잘 아는 에이전트로 자라요. 에이전트 데이터는 .rebe 파일로 내려받아 언제든 보관하고 복사해요.</p>
+        <p class="lead" style="margin-top:10px">내 컴퓨터에 에이전트의 온톨로지를 저장하고, 나를 더 잘 아는 에이전트로 자라요.</p>
+        <p class="lead" style="margin-top:10px">에이전트 데이터는 .rebe 파일로 내려받아 언제든 보관하고 복사해요.</p>
         <p class="l1 why-key">내 에이전트 데이터가 서비스 회사 서버에 쌓일까 걱정하지 않아도 돼요.</p>
       </div>
     </div>
@@ -376,7 +380,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 
 <section id="studio">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head wide">
       <span class="l2">Pro 스킬</span>
       <h2 class="d2">크리에이티브 스튜디오는 Pro에서 써요</h2>
       <p class="lead">전략 리서치와 스토리보드처럼 전문 작업을 맡기는 스킬이에요. Pro 플랜에 들어 있고, 새 스킬을 계속 공개해요.</p>
@@ -405,7 +409,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
         <a class="btn" href="#download">무료로 시작하기</a>
       </div>
       <div class="plan pick">
-        <span class="tag">가장 많이 써요</span><div class="l1">Pro</div>
+        <span class="tag">추천</span><div class="l1">Pro</div>
         <div class="price">$20 <small>/ 월</small></div><span class="l5">1년 결제는 $144</span>
         <ul><li>Free의 모든 기능</li><li>크리에이티브 스튜디오 스킬</li><li>커뮤니티 스킬 내려받기</li><li>내장 웹 검색 하루 300회</li><li>실시간 통역과 받아쓰기 월 600분</li></ul>
         <a class="btn primary" href="#download">Pro 시작하기</a>
