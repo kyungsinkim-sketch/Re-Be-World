@@ -221,6 +221,11 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 .flow-list .l4{margin-top:6px;max-width:460px}
 @media (max-width:860px){.flow-grid{grid-template-columns:1fr;gap:32px}.flow-grid .phone{margin:0 auto !important}}
 .why-key{margin-top:18px;padding-left:14px;border-left:2px solid #C49C4D}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.feat>div{padding:28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.feat svg{width:20px;height:20px;margin-bottom:22px;display:block;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.feat .l4{margin-top:6px}
+@media (max-width:860px){.feat{grid-template-columns:1fr}}
 nav a.lang{font-size:13px;opacity:.72;text-decoration:none;color:inherit;margin-right:4px}
 nav a.lang:hover{opacity:1}
 </style>
@@ -234,6 +239,7 @@ nav a.lang:hover{opacity:1}
       <a class="nl" href="#flow">What it does</a>
       <a class="nl" href="#trust">Sending</a>
       <a class="nl" href="#memory">Memory</a>
+      <a class="nl" href="#features">Features</a>
       <a class="nl" href="#keep">Storage</a>
       <a class="nl" href="#promise">Promises</a>
       <a class="lang" href="/ko">한국어</a>
@@ -323,6 +329,22 @@ nav a.lang:hover{opacity:1}
   </div>
 </section>
 
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="l2">Features</span>
+      <h2 class="d2">What you do with your agent</h2>
+      <p class="lead">Your agent works from the data kept on your phone.</p>
+    </div>
+    <div class="feat">
+      <div><svg viewBox="0 0 24 24"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><div class="l1">Voice mode</div><p class="l4">Ask out loud and hear the answer. Keep working with your agent when your hands are busy.</p></div>
+      <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><div class="l1">Web browser</div><p class="l4">Your agent opens sites in the in-app browser to look things up and get them ready. You press pay and confirm.</p></div>
+      <div><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="l1">My places</div><p class="l4">The places you've been are gathered on a globe. Easy to find shoot locations and favorite spots again.</p></div>
+      <div><svg viewBox="0 0 24 24"><circle cx="12" cy="6" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M11 8.2 6.3 15.8M13 8.2l4.7 7.6M7.5 18h9"/></svg><div class="l1">People</div><p class="l4">The people you work with, organized in one place. See at a glance who you talk to and how often.</p></div>
+      <div><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg><div class="l1">Document tools</div><p class="l4">Create and edit Word, Excel, and PowerPoint on your phone. Open a file you received and change only what you need.</p></div>
+    </div>
+  </div>
+</section>
 <section id="keep">
   <div class="wrap keep">
     <div class="sec-head" style="margin-bottom:0">
