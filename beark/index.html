@@ -169,6 +169,8 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 }
 .shot{margin-top:64px;border:1px solid var(--line-2);border-bottom:0;border-radius:16px 16px 0 0;overflow:hidden;background:var(--card)}
 .shot video{display:block;width:100%;height:auto}
+.fmt-shot{grid-column:1/-1;margin-top:8px;border:1px solid var(--line-2);border-radius:10px;overflow:hidden;background:var(--card)}
+.fmt-shot video{display:block;width:100%;height:auto}
 </style>
 </head>
 <body>
@@ -224,6 +226,12 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
         <div class="fmt-name"><b>PPT</b><span>.pptx</span></div>
         <div><div class="l1">내 양식으로 발표 자료를 만들어요</div><p class="l4" style="margin-top:6px">템플릿 하나를 주면 에이전트가 흐름과 말투를 배워요. 제안서와 요약 자료를 그 양식으로 만들어요.</p></div>
         <ul><li>디자인 견본 4종에서 골라 시작해요</li><li>만든 자료에 장을 끼워 넣어요</li><li>화면에서 장을 보며 같이 고쳐요</li></ul>
+        <div class="fmt-shot" aria-hidden="true">
+          <video autoplay muted loop playsinline preload="none" poster="/beark/media/beark-deck-poster.jpg" width="1440" height="900">
+            <source src="/beark/media/beark-deck.webm" type="video/webm">
+            <source src="/beark/media/beark-deck.mp4" type="video/mp4">
+          </video>
+        </div>
       </div>
       <div class="fmt-row">
         <div class="fmt-name"><b>워드</b><span>.docx</span></div>
