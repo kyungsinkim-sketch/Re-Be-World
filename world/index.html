@@ -231,6 +231,10 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 .lang-tg a{padding:6px 10px;border-radius:999px;color:var(--fg-2);text-decoration:none}
 .lang-tg a.on{background:var(--fg);color:var(--bg)}
 .lead,.l4{text-wrap:balance}
+.tut-steps{list-style:none;margin:28px 0 0;padding:0;border-top:1px solid var(--line)}
+.tut-steps li{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.tut-steps .num{font-family:'Geist Mono',monospace;font-size:12px;color:var(--gold,#C49C4D);padding-top:3px}
+.tut-steps .l4{margin-top:4px}
 </style>
 </head>
 <body>
@@ -347,6 +351,30 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
       <div><div class="feat-shot" aria-hidden="true"><img src="/world/media/feat-places.jpg" width="412" height="892" loading="lazy" alt=""></div><div class="l1">My places</div><p class="l4">The places you've been are gathered on a globe. Easy to find shoot locations and favorite spots again.</p></div>
       <div><div class="feat-shot" aria-hidden="true"><img src="/world/media/feat-people.jpg" width="412" height="892" loading="lazy" alt=""></div><div class="l1">People</div><p class="l4">The people you work with, organized in one place. See at a glance who you talk to and how often.</p></div>
       <div><div class="feat-shot" aria-hidden="true"><img src="/world/media/feat-docs.jpg" width="412" height="892" loading="lazy" alt=""></div><div class="l1">Document tools</div><p class="l4">Create and edit Word, Excel, and PowerPoint on your phone. Open a file you received and change only what you need.</p></div>
+    </div>
+  </div>
+</section>
+<section id="tutorial">
+  <div class="wrap mem">
+    <div class="phone" aria-hidden="true" style="margin:0">
+      <video controls playsinline preload="metadata" poster="/world/media/rebe-tutorial-poster.jpg" width="412" height="984">
+        <source src="/world/media/rebe-tutorial.webm" type="video/webm">
+        <source src="/world/media/rebe-tutorial.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div>
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="l2">Tutorial</span>
+        <h2 class="d2">Here's how you get started</h2>
+        <p class="lead">The app guides you step by step. Watch the video first, then follow along.</p>
+      </div>
+      <ol class="tut-steps">
+        <li><span class="num">01</span><div><div class="l1">Read the notice and agree</div><p class="l4">Confirm the notice that your data is stored on your phone.</p></div></li>
+        <li><span class="num">02</span><div><div class="l1">Sign in with the AI you already use</div><p class="l4">Sign in with your Claude or ChatGPT account. No API key needed.</p></div></li>
+        <li><span class="num">03</span><div><div class="l1">Grant permissions</div><p class="l4">Allow only what you need: contacts, call history, calendar, notifications.</p></div></li>
+        <li><span class="num">04</span><div><div class="l1">Choose a name and personality</div><p class="l4">Name your agent and set its personality with four questions.</p></div></li>
+        <li><span class="num">05</span><div><div class="l1">Say hello</div><p class="l4">Once you're set up, start talking right away.</p></div></li>
+      </ol>
     </div>
   </div>
 </section>

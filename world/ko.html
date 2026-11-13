@@ -231,6 +231,10 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 .lang-tg a{padding:6px 10px;border-radius:999px;color:var(--fg-2);text-decoration:none}
 .lang-tg a.on{background:var(--fg);color:var(--bg)}
 .lead,.l4{text-wrap:balance}
+.tut-steps{list-style:none;margin:28px 0 0;padding:0;border-top:1px solid var(--line)}
+.tut-steps li{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.tut-steps .num{font-family:'Geist Mono',monospace;font-size:12px;color:var(--gold,#C49C4D);padding-top:3px}
+.tut-steps .l4{margin-top:4px}
 </style>
 </head>
 <body>
@@ -347,6 +351,30 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
       <div><div class="feat-shot" aria-hidden="true"><img src="/world/media/feat-places.jpg" width="412" height="892" loading="lazy" alt=""></div><div class="l1">나의 장소</div><p class="l4">다녀온 곳을 지구본에 모아요. 촬영지와 단골 가게를 다시 찾기 쉬워요.</p></div>
       <div><div class="feat-shot" aria-hidden="true"><img src="/world/media/feat-people.jpg" width="412" height="892" loading="lazy" alt=""></div><div class="l1">관계망</div><p class="l4">함께 일한 사람을 한곳에 정리해요. 누구와 얼마나 자주 연락했는지 한눈에 봐요.</p></div>
       <div><div class="feat-shot" aria-hidden="true"><img src="/world/media/feat-docs.jpg" width="412" height="892" loading="lazy" alt=""></div><div class="l1">문서 도구</div><p class="l4">워드, 엑셀, PPT를 폰에서 만들고 고쳐요. 받은 파일을 열어 필요한 곳만 바꿔요.</p></div>
+    </div>
+  </div>
+</section>
+<section id="tutorial">
+  <div class="wrap mem">
+    <div class="phone" aria-hidden="true" style="margin:0">
+      <video controls playsinline preload="metadata" poster="/world/media/rebe-tutorial-poster.jpg" width="412" height="984">
+        <source src="/world/media/rebe-tutorial.webm" type="video/webm">
+        <source src="/world/media/rebe-tutorial.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div>
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="l2">튜토리얼</span>
+        <h2 class="d2">처음 시작은 이렇게 해요</h2>
+        <p class="lead">앱이 한 단계씩 안내해요. 영상으로 먼저 보고 따라 해요.</p>
+      </div>
+      <ol class="tut-steps">
+        <li><span class="num">01</span><div><div class="l1">안내를 읽고 동의해요</div><p class="l4">데이터를 내 폰에 저장한다는 안내를 확인해요.</p></div></li>
+        <li><span class="num">02</span><div><div class="l1">쓰던 AI로 로그인해요</div><p class="l4">Claude나 ChatGPT 계정으로 로그인해요. API 키는 필요 없어요.</p></div></li>
+        <li><span class="num">03</span><div><div class="l1">권한을 허락해요</div><p class="l4">연락처, 통화 기록, 캘린더, 알림 중 필요한 것만 허락해요.</p></div></li>
+        <li><span class="num">04</span><div><div class="l1">이름과 성격을 정해요</div><p class="l4">에이전트 이름을 짓고, 네 가지 질문으로 성격을 정해요.</p></div></li>
+        <li><span class="num">05</span><div><div class="l1">말을 걸어요</div><p class="l4">준비가 끝나면 바로 대화를 시작해요.</p></div></li>
+      </ol>
     </div>
   </div>
 </section>
