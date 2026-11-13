@@ -227,8 +227,9 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 .feat .l4{margin-top:6px}
 @media (max-width:1000px){.feat{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:600px){.feat{grid-template-columns:repeat(2,1fr);gap:24px 14px}}
-nav a.lang{font-size:13px;opacity:.72;text-decoration:none;color:inherit;margin-right:4px}
-nav a.lang:hover{opacity:1}
+.lang-tg{display:inline-flex;border:1px solid var(--line-2,var(--line));border-radius:999px;padding:2px;font-size:12px;line-height:1}
+.lang-tg a{padding:6px 10px;border-radius:999px;color:var(--fg-2);text-decoration:none}
+.lang-tg a.on{background:var(--fg);color:var(--bg)}
 </style>
 </head>
 <body>
@@ -243,7 +244,7 @@ nav a.lang:hover{opacity:1}
       <a class="nl" href="#features">Features</a>
       <a class="nl" href="#keep">Storage</a>
       <a class="nl" href="#promise">Promises</a>
-      <a class="lang" href="/ko">한국어</a>
+      <span class="lang-tg" role="group" aria-label="Language"><a href="/ko">KO</a><a href="/" class="on" aria-current="true">EN</a></span>
       <a class="btn sm primary" href="#notify">Get notified at launch</a>
     </nav>
   </div>

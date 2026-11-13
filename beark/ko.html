@@ -185,8 +185,12 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 .tut-steps .num{font-family:'Geist Mono',monospace;font-size:12px;color:var(--gold);padding-top:3px}
 .tut-steps .l4{margin-top:4px}
 @media (max-width:860px){.tut{grid-template-columns:1fr;gap:24px}}
-nav a.lang{font-size:13px;opacity:.72;text-decoration:none;color:inherit;margin-right:4px}
-nav a.lang:hover{opacity:1}
+.lang-tg{display:inline-flex;border:1px solid var(--line-2,var(--line));border-radius:999px;padding:2px;font-size:12px;line-height:1}
+.lang-tg a{padding:6px 10px;border-radius:999px;color:var(--fg-2);text-decoration:none}
+.lang-tg a.on{background:var(--fg);color:var(--bg)}
+.hero-top{display:grid;grid-template-columns:1fr 290px;gap:16px;align-items:center}
+.hero-planet{display:block;width:100%;aspect-ratio:1/1}
+@media (max-width:980px){.hero-top{grid-template-columns:1fr}.hero-planet{display:none}}
 </style>
 </head>
 <body>
@@ -199,7 +203,7 @@ nav a.lang:hover{opacity:1}
       <a class="nl" href="#tutorial">쓰는 법</a>
       <a class="nl" href="#pricing">요금</a>
       <a class="nl" href="#news">업데이트 소식</a>
-      <a class="lang" href="/">English</a>
+      <span class="lang-tg" role="group" aria-label="Language"><a href="/ko" class="on" aria-current="true">KO</a><a href="/">EN</a></span>
       <a class="btn sm primary" href="#download">내려받기</a>
     </nav>
   </div>
@@ -208,14 +212,19 @@ nav a.lang:hover{opacity:1}
 <main>
 <div class="hero">
   <div class="wrap">
-    <span class="l2">오피스 에이전트 툴</span>
-    <h1 class="d1">웹브라우징부터 문서 편집까지,<br>에이전트 자동화 솔루션 Be.Ark</h1>
-    <p class="lead">에이전트가 웹에서 필요한 내용을 확인하고, 한글·PPT·워드·엑셀 문서를 만들고 고쳐요. 메일은 내가 승인하면 보내요.</p>
-    <div class="btns">
-      <a class="btn primary" data-dl="mac" href="/api/dl?os=mac">맥용 내려받기</a>
-      <a class="btn" data-dl="win" href="/api/dl?os=win">윈도우용 내려받기</a>
+    <div class="hero-top">
+      <div>
+      <span class="l2">오피스 에이전트 툴</span>
+      <h1 class="d1">웹브라우징부터 문서 편집까지,<br>에이전트 자동화 솔루션 Be.Ark</h1>
+      <p class="lead">에이전트가 웹에서 필요한 내용을 확인하고, 한글·PPT·워드·엑셀 문서를 만들고 고쳐요. 메일은 내가 승인하면 보내요.</p>
+      <div class="btns">
+        <a class="btn primary" data-dl="mac" href="/api/dl?os=mac">맥용 내려받기</a>
+        <a class="btn" data-dl="win" href="/api/dl?os=win">윈도우용 내려받기</a>
+      </div>
+      <span class="l5">Beta <span class="mono" data-ver>1.9.5</span> · 무료로 시작해요 · <a href="/api/dl?os=intel" style="text-decoration:underline">인텔 맥용</a></span>
+      </div>
+      <canvas class="hero-planet" data-planet data-still aria-hidden="true"></canvas>
     </div>
-    <span class="l5">Beta <span class="mono" data-ver>1.9.5</span> · 무료로 시작해요 · <a href="/api/dl?os=intel" style="text-decoration:underline">인텔 맥용</a></span>
 
     <div class="shot" aria-hidden="true">
       <video autoplay muted loop playsinline preload="metadata" poster="/beark/media/beark-flow-poster.jpg" width="1440" height="900">
@@ -333,20 +342,6 @@ nav a.lang:hover{opacity:1}
   </div>
 </section>
 
-<section id="how">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="l2">쓰는 법</span>
-      <h2 class="d2">세 단계면 돼요</h2>
-    </div>
-    <div class="steps">
-      <div><span class="num">01</span><div class="l1">파일을 열어요</div><p class="l4">내 컴퓨터에 있는 문서를 그대로 열어요. 올리거나 옮기지 않아요.</p></div>
-      <div><span class="num">02</span><div class="l1">말로 부탁해요</div><p class="l4">"3쪽 표를 올해 수치로 바꿔 줘"처럼 평소 말투로 부탁해요.</p></div>
-      <div><span class="num">03</span><div class="l1">확인하고 저장해요</div><p class="l4">바뀐 곳을 화면에서 보고 저장해요. 마음에 안 들면 되돌려요.</p></div>
-    </div>
-  </div>
-</section>
-
 <section id="why">
   <div class="wrap">
     <div class="why-top">
@@ -458,11 +453,12 @@ nav a.lang:hover{opacity:1}
 (function(){
   if(!window.RebePlanet)return;
   var cvs=document.querySelectorAll('canvas[data-planet]');
-  function start(cv){ if(cv._p)return; cv._p=RebePlanet.run(cv,{seed:'Re-Be World',growth:0.8,loop:true,fps:24,fit:0.84}); }
+  function start(cv){ if(cv._p)return; cv._p=RebePlanet.run(cv,{seed:'Re-Be World',growth:0.8,loop:true,fps:24,fit:0.84,still:cv.hasAttribute('data-still')}); }
   if(!('IntersectionObserver' in window)){ for(var i=0;i<cvs.length;i++)start(cvs[i]); return; }
   var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ start(e.target); } else if(e.target._p){ e.target._p.stop(); e.target._p=null; } }); },{rootMargin:'120px'});
   for(var j=0;j<cvs.length;j++)io.observe(cvs[j]);
 })();
 </script>
+<script>(function(){ if(location.hostname==='be.ark.works')return; var m={'/':'/beark','/ko':'/beark/ko'}; var as=document.querySelectorAll('.lang-tg a'); for(var i=0;i<as.length;i++){ var h=as[i].getAttribute('href'); if(m[h]) as[i].setAttribute('href',m[h]); } })();</script>
 </body>
 </html>
