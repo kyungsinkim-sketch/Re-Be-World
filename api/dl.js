@@ -2,14 +2,11 @@
 //   왜: GitHub 릴리스의 **익명 다운로드 주소**(github.com/.../releases/download/...)가 간헐적으로 504를 낸다
 //   (GitHub 장애 "Increased timeouts due to surge in anonymous users", 11-09 실측: v1.9.4 .exe·.dmg 전부 504, 로그인한 사용자는 정상).
 //   같은 파일을 GitHub **API 자산 주소**(api.github.com/.../releases/assets/<id>, Accept: octet-stream)로 부르면 서명된 실제 파일 주소로 302가 온다 → 그걸 사용자에게 넘긴다.
-//   원본 주소는 index.html의 `var DL_* = "https://github.com/..."` 줄에서 읽는다(릴리스마다 index.html만 바꾸면 여기는 손댈 것 없음). API가 막히면(한도 60/h) 원래 주소로 보낸다.
-const fs = require('fs');
-const path = require('path');
+//   원본 주소는 api/_dl.json에서 읽는다(릴리스마다 그 파일만 바꾼다). API가 막히면(한도 60/h) 원래 주소로 보낸다.
 
+// 11-13: 사이트 분리로 루트 index.html이 없어졌다 → 원본 주소는 api/_dl.json에 둔다(릴리스마다 이 파일만 바꾼다).
 function readSources() {
-  const html = fs.readFileSync(path.join(process.cwd(), 'index.html'), 'utf8');
-  const pick = (name) => { const m = new RegExp('var\\s+' + name + '\\s*=\\s*"([^"]+)"').exec(html); return m ? m[1] : ''; };
-  return { win: pick('DL_WIN'), mac: pick('DL_MAC'), intel: pick('DL_MAC_INTEL') };   // 첫 대입(원본 github 주소)만 잡힌다
+  return require('./_dl.json');
 }
 
 async function signedUrl(direct) {
