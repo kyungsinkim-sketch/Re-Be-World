@@ -109,5 +109,11 @@
  "예약": "Bookings",
  "식당, 숙소, 기차표 후보를 찾아 예약 화면까지 준비해요. 확정은 내가 눌러요.": "It finds restaurants, stays, and train tickets and gets the booking screen ready. You press confirm.",
  "관공서와 민원": "Government services",
- "필요한 서류와 신청 화면을 찾아 입력을 도와요. 로그인과 본인 인증은 내가 해요.": "It finds the right forms and application pages and helps fill them in. You sign in and verify your identity."
+ "필요한 서류와 신청 화면을 찾아 입력을 도와요. 로그인과 본인 인증은 내가 해요.": "It finds the right forms and application pages and helps fill them in. You sign in and verify your identity.",
+ "창작자를 위한 매니저 에이전트": "A manager agent for creators",
+ "안드로이드 먼저 나와요": "Coming to Android first",
+ "협찬 문의, 메일, DM 답장.": "Sponsorship inquiries, email, DM replies.",
+ "리비월드가 체계적으로 분류·관리하고, 유저의 말투로 답장 초안을 써줍니다.": "Re-Be World sorts and manages them systematically, and drafts replies in your voice.",
+ "승인해야 보내요": "Nothing goes out without approval",
+ "메일과 메시지, 문자는 승인 카드에서 내가 눌러야 나가요.": "Email, messages, and texts go out only when you press approve on the card."
 }
