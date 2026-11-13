@@ -232,7 +232,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
     </div>
     <div class="tut">
       <div class="fmt-shot" style="margin:0;grid-column:auto">
-        <video controls playsinline preload="metadata" poster="/beark/media/beark-tutorial-poster.jpg" width="1440" height="996">
+        <video controls playsinline preload="auto" data-autoplay poster="/beark/media/beark-tutorial-poster.jpg" width="1440" height="996">
           <source src="/beark/media/beark-tutorial.webm" type="video/webm">
           <source src="/beark/media/beark-tutorial.mp4" type="video/mp4">
         </video>
@@ -309,5 +309,6 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 })();
 </script>
 <script>(function(){ if(location.hostname==='be.ark.works')return; var m={'/':'/beark','/ko':'/beark/ko','/formats':'/beark/formats','/tutorial':'/beark/tutorial','/ko/formats':'/beark/ko-formats','/ko/tutorial':'/beark/ko-tutorial'}; var as=document.querySelectorAll('a[href^="/"]'); for(var i=0;i<as.length;i++){ var h=as[i].getAttribute('href'), k=h.indexOf('#'), b=k<0?h:h.slice(0,k); if(m[b]) as[i].setAttribute('href',m[b]+(k<0?'':h.slice(k))); } })();</script>
+<script>(function(){var v=document.querySelector("video[data-autoplay]");if(!v)return;v.muted=false;var p=v.play();if(p&&p.catch)p.catch(function(){v.muted=true;var q=v.play();if(q&&q.catch)q.catch(function(){})});})();</script>
 </body>
 </html>

@@ -267,7 +267,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 <section id="tutorial">
   <div class="wrap mem">
     <div class="phone" aria-hidden="true" style="margin:0">
-      <video controls playsinline preload="metadata" poster="/world/media/rebe-tutorial-poster.jpg" width="412" height="984">
+      <video controls playsinline preload="auto" data-autoplay poster="/world/media/rebe-tutorial-poster.jpg" width="412" height="984">
         <source src="/world/media/rebe-tutorial.webm" type="video/webm">
         <source src="/world/media/rebe-tutorial.mp4" type="video/mp4">
       </video>
@@ -297,7 +297,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
     <p class="lead">출시하면 메일로 알려 드려요.</p>
     <div class="btns">
       <a class="btn primary" href="mailto:ark@re-be.world?subject=Re-Be%20World%20%EC%B6%9C%EC%8B%9C%20%EC%95%8C%EB%A6%BC">출시 알림 받기</a>
-    </div>
+          </div>
   </div>
 </section>
 </main>
@@ -324,5 +324,6 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
   for(var j=0;j<cvs.length;j++)io.observe(cvs[j]);
 })();
 </script>
+<script>(function(){var v=document.querySelector("video[data-autoplay]");if(!v)return;v.muted=false;var p=v.play();if(p&&p.catch)p.catch(function(){v.muted=true;var q=v.play();if(q&&q.catch)q.catch(function(){})});})();</script>
 </body>
 </html>

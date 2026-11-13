@@ -408,6 +408,52 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 </section>
 
 
+<section id="voice">
+  <div class="wrap mem">
+    <div class="phone" aria-hidden="true" style="margin:0">
+      <video autoplay muted loop playsinline preload="metadata" poster="/world/media/feat-voice.jpg" width="412" height="892">
+        <source src="/world/media/rebe-voice.webm" type="video/webm">
+        <source src="/world/media/rebe-voice.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div>
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="l2">대화 모드</span>
+        <h2 class="d2">손이 바쁠 때는 말로 해요</h2>
+        <p class="lead">촬영하거나 이동할 때도 에이전트와 이어서 일해요.</p>
+      </div>
+      <ol class="tut-steps">
+        <li><span class="num">01</span><div><div class="l1">말로 물어요</div><p class="l4">버튼 하나로 대화 모드를 켜요.</p></div></li>
+        <li><span class="num">02</span><div><div class="l1">답을 소리로 들어요</div><p class="l4">화면을 보지 않아도 돼요.</p></div></li>
+        <li><span class="num">03</span><div><div class="l1">하던 일을 이어서 해요</div><p class="l4">손이 바쁠 때도 일이 끊기지 않아요.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="docs">
+  <div class="wrap mem rev">
+    <div class="phone" aria-hidden="true" style="margin:0">
+      <video autoplay muted loop playsinline preload="metadata" poster="/world/media/feat-docs.jpg" width="412" height="892">
+        <source src="/world/media/rebe-docs.webm" type="video/webm">
+        <source src="/world/media/rebe-docs.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div>
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="l2">문서</span>
+        <h2 class="d2">문서도 폰에서 만들고 고쳐요</h2>
+        <p class="lead">워드, 엑셀, PPT를 폰에서 다뤄요.</p>
+      </div>
+      <ol class="tut-steps">
+        <li><span class="num">01</span><div><div class="l1">말로 만들어요</div><p class="l4">견적서와 기획안을 말로 부탁해요.</p></div></li>
+        <li><span class="num">02</span><div><div class="l1">필요한 곳만 고쳐요</div><p class="l4">받은 파일을 열어 필요한 곳만 바꿔요.</p></div></li>
+        <li><span class="num">03</span><div><div class="l1">내 폰에 저장해요</div><p class="l4">만든 문서는 내 파일의 리비월드 폴더에도 저장돼요.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section id="memory">
   <div class="wrap mem">
     <div class="phone" aria-hidden="true" style="margin:0">
@@ -435,26 +481,12 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
   </div>
 </section>
 
-<section id="features">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="l2">기능 더 보기</span>
-      <h2 class="d2">에이전트와 이런 일을 해요</h2>
-      <p class="lead">내 폰에 쌓인 데이터를 바탕으로 에이전트가 일해요.</p>
-    </div>
-    <div class="feat duo">
-      <div><div class="feat-shot" aria-hidden="true"><img src="/world/media/feat-voice.jpg" width="412" height="892" loading="lazy" alt=""></div><div class="l1">대화 모드</div><p class="l4">말로 묻고 답을 들어요. 손이 바쁠 때도 에이전트와 이어서 일해요.</p></div>
-      <div><div class="feat-shot" aria-hidden="true"><img src="/world/media/feat-docs.jpg" width="412" height="892" loading="lazy" alt=""></div><div class="l1">문서 도구</div><p class="l4">워드, 엑셀, PPT를 폰에서 만들고 고쳐요. 받은 파일을 열어 필요한 곳만 바꿔요.</p></div>
-    </div>
-    <p class="more"><a class="btn" href="/ko/tutorial">처음 시작하는 법 보기</a></p>
-  </div>
-</section>
 <!--@/-->
 <!--@tutorial-->
 <section id="tutorial">
   <div class="wrap mem">
     <div class="phone" aria-hidden="true" style="margin:0">
-      <video controls playsinline preload="metadata" poster="/world/media/rebe-tutorial-poster.jpg" width="412" height="984">
+      <video controls playsinline preload="auto" data-autoplay poster="/world/media/rebe-tutorial-poster.jpg" width="412" height="984">
         <source src="/world/media/rebe-tutorial.webm" type="video/webm">
         <source src="/world/media/rebe-tutorial.mp4" type="video/mp4">
       </video>
@@ -520,6 +552,9 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
     <p class="lead">출시하면 메일로 알려 드려요.</p>
     <div class="btns">
       <a class="btn primary" href="mailto:ark@re-be.world?subject=Re-Be%20World%20%EC%B6%9C%EC%8B%9C%20%EC%95%8C%EB%A6%BC">출시 알림 받기</a>
+      <!--@home-->
+      <a class="btn" href="/ko/tutorial">처음 시작하는 법 보기</a>
+      <!--@/-->
     </div>
   </div>
 </section>
@@ -547,5 +582,8 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
   for(var j=0;j<cvs.length;j++)io.observe(cvs[j]);
 })();
 </script>
+<!--@tutorial-->
+<script>(function(){var v=document.querySelector("video[data-autoplay]");if(!v)return;v.muted=false;var p=v.play();if(p&&p.catch)p.catch(function(){v.muted=true;var q=v.play();if(q&&q.catch)q.catch(function(){})});})();</script>
+<!--@/-->
 </body>
 </html>
