@@ -191,6 +191,8 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 .hero-top{display:grid;grid-template-columns:1fr 290px;gap:16px;align-items:center}
 .hero-planet{display:block;width:100%;aspect-ratio:1/1}
 @media (max-width:980px){.hero-top{grid-template-columns:1fr}.hero-planet{display:none}}
+.free-note{margin-top:56px;padding:40px 32px;border:1px solid var(--line);border-radius:16px;text-align:center}
+.free-note .lead{margin:12px auto 0;max-width:520px}
 </style>
 </head>
 <body>
@@ -261,7 +263,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
       <div class="fmt-row">
         <div class="fmt-name"><b>PPT</b><span>.pptx</span></div>
         <div><div class="l1">내 양식으로 발표 자료를 만들어요</div><p class="l4" style="margin-top:6px">템플릿 하나를 주면 에이전트가 그 양식의 디자인과 구성을 읽어요. 제안서와 요약 자료를 같은 양식으로 만들어요.</p></div>
-        <ul><li>디자인 견본 5종에서 골라 시작해요</li><li>만든 자료에 장을 끼워 넣어요</li><li>화면에서 장을 보며 같이 고쳐요</li></ul>
+        <ul><li>디자인 견본으로 기존 PPT를 다시 디자인해요</li><li>쓰던 템플릿에 같은 말투와 흐름으로 써요</li><li>쓸수록 내 방식대로 PPT를 구성해요</li></ul>
         <div class="fmt-shot" aria-hidden="true">
           <video autoplay muted loop playsinline preload="none" poster="/beark/media/beark-deck-poster.jpg" width="1440" height="900">
             <source src="/beark/media/beark-deck.webm" type="video/webm">
@@ -276,7 +278,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
       </div>
       <div class="fmt-row">
         <div class="fmt-name"><b>워드</b><span>.docx</span></div>
-        <div><div class="l1">계약서와 보고서를 필요한 곳만 고쳐요</div><p class="l4" style="margin-top:6px">문서 전체를 다시 쓰지 않아요. 부탁한 문장과 표만 바꾸고 나머지는 그대로 둬요.</p></div>
+        <div><div class="l1">계약서와 보고서를 필요한 곳만 고쳐요</div><p class="l4" style="margin-top:6px">요청과 맥락에 따라 새 문서를 구성하고, 기존 문서도 고쳐요.</p></div>
         <ul><li>서식과 번호 매기기를 그대로 둬요</li><li>표와 문단을 골라서 고쳐요</li><li>바뀐 곳을 화면에서 바로 확인해요</li></ul>
         <div class="fmt-shot" aria-hidden="true">
           <video autoplay muted loop playsinline preload="none" poster="/beark/media/beark-docx-poster.jpg" width="1440" height="900">
@@ -312,6 +314,10 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
           </video>
         </div>
       </div>
+    </div>
+    <div class="free-note">
+      <h3 class="d2">이 모든 것이 무료예요</h3>
+      <p class="lead">소프트웨어에 비싼 구독료를 내지 않아도 돼요. 에이전트와 함께 더 편하게 작업해요.</p>
     </div>
   </div>
 </section>
@@ -349,7 +355,8 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
       <div class="sec-head" style="margin-bottom:0">
         <span class="l2">Be.Ark가 다른 점</span>
         <h2 class="d2">에이전트 데이터를 내 컴퓨터에 저장해요</h2>
-        <p class="lead">많은 에이전트 서비스와 달리 에이전트의 핵심 데이터를 서버에 저장하지 않아요. 내 컴퓨터에 쌓인 기록으로 나를 더 잘 아는 에이전트로 자라요. 에이전트 데이터는 .rebe 파일로 내려받아 언제든 보관하고 복사해요.</p>
+        <p class="lead">기존의 에이전트 서비스와 달리 핵심 데이터를 서버에 저장하지 않아요.</p>
+        <p class="lead" style="margin-top:10px">내 컴퓨터에 에이전트의 온톨로지를 저장하고, 나를 더 잘 아는 에이전트로 자라요. 에이전트 데이터는 .rebe 파일로 내려받아 언제든 보관하고 복사해요.</p>
         <p class="l1 why-key">내 에이전트 데이터가 서비스 회사 서버에 쌓일까 걱정하지 않아도 돼요.</p>
       </div>
     </div>

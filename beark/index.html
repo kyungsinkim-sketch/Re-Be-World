@@ -191,6 +191,8 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 .hero-top{display:grid;grid-template-columns:1fr 290px;gap:16px;align-items:center}
 .hero-planet{display:block;width:100%;aspect-ratio:1/1}
 @media (max-width:980px){.hero-top{grid-template-columns:1fr}.hero-planet{display:none}}
+.free-note{margin-top:56px;padding:40px 32px;border:1px solid var(--line);border-radius:16px;text-align:center}
+.free-note .lead{margin:12px auto 0;max-width:520px}
 </style>
 </head>
 <body>
@@ -261,7 +263,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
       <div class="fmt-row">
         <div class="fmt-name"><b>PPT</b><span>.pptx</span></div>
         <div><div class="l1">Build decks in your own template</div><p class="l4" style="margin-top:6px">Give it one template and your agent reads its design and structure. It makes proposals and summaries in the same template.</p></div>
-        <ul><li>Start from 5 design presets</li><li>Insert slides into an existing deck</li><li>Review slides on screen and edit together</li></ul>
+        <ul><li>Redesign an existing deck with design presets</li><li>Write in your template, in the same tone and flow</li><li>The more you use it, the more it builds decks your way</li></ul>
         <div class="fmt-shot" aria-hidden="true">
           <video autoplay muted loop playsinline preload="none" poster="/beark/media/beark-deck-en-poster.jpg" width="1440" height="900">
             <source src="/beark/media/beark-deck-en.webm" type="video/webm">
@@ -276,7 +278,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
       </div>
       <div class="fmt-row">
         <div class="fmt-name"><b>Word</b><span>.docx</span></div>
-        <div><div class="l1">Change only what needs changing</div><p class="l4" style="margin-top:6px">It doesn't rewrite the whole document. It changes the sentences and tables you asked for and leaves the rest.</p></div>
+        <div><div class="l1">Change only what needs changing</div><p class="l4" style="margin-top:6px">Depending on your request and context, it drafts a new document or edits an existing one.</p></div>
         <ul><li>Keeps formatting and numbering</li><li>Edits the tables and paragraphs you choose</li><li>See changes on screen right away</li></ul>
         <div class="fmt-shot" aria-hidden="true">
           <video autoplay muted loop playsinline preload="none" poster="/beark/media/beark-docx-en-poster.jpg" width="1440" height="900">
@@ -312,6 +314,10 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
           </video>
         </div>
       </div>
+    </div>
+    <div class="free-note">
+      <h3 class="d2">All of this is free</h3>
+      <p class="lead">You don't have to pay expensive software subscriptions. Work more comfortably with your agent.</p>
     </div>
   </div>
 </section>
@@ -349,7 +355,8 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
       <div class="sec-head" style="margin-bottom:0">
         <span class="l2">Why Be.Ark</span>
         <h2 class="d2">Your agent data is stored on your computer</h2>
-        <p class="lead">Unlike many agent services, your agent's core data isn't stored on a server. It grows into an agent that knows you better from the records kept on your computer. Download your agent data as a .rebe file to keep or copy it anytime.</p>
+        <p class="lead">Unlike existing agent services, core data isn't stored on a server.</p>
+        <p class="lead" style="margin-top:10px">Your agent's ontology is stored on your computer, and it grows into an agent that knows you better. Download your agent data as a .rebe file to keep or copy it anytime.</p>
         <p class="l1 why-key">You don't have to worry about your agent data piling up on a company's servers.</p>
       </div>
     </div>
