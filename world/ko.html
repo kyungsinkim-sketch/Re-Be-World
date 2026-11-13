@@ -221,11 +221,12 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 .flow-list .l4{margin-top:6px;max-width:460px}
 @media (max-width:860px){.flow-grid{grid-template-columns:1fr;gap:32px}.flow-grid .phone{margin:0 auto !important}}
 .why-key{margin-top:18px;padding-left:14px;border-left:2px solid #C49C4D}
-.feat{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
-.feat>div{padding:28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
-.feat svg{width:20px;height:20px;margin-bottom:22px;display:block;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.feat{display:grid;grid-template-columns:repeat(5,1fr);gap:28px 20px}
+.feat-shot{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#000;margin-bottom:18px}
+.feat-shot img{display:block;width:100%;height:auto}
 .feat .l4{margin-top:6px}
-@media (max-width:860px){.feat{grid-template-columns:1fr}}
+@media (max-width:1000px){.feat{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:600px){.feat{grid-template-columns:repeat(2,1fr);gap:24px 14px}}
 nav a.lang{font-size:13px;opacity:.72;text-decoration:none;color:inherit;margin-right:4px}
 nav a.lang:hover{opacity:1}
 </style>
@@ -337,11 +338,11 @@ nav a.lang:hover{opacity:1}
       <p class="lead">내 폰에 쌓인 데이터를 바탕으로 에이전트가 일해요.</p>
     </div>
     <div class="feat">
-      <div><svg viewBox="0 0 24 24"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><div class="l1">대화 모드</div><p class="l4">말로 묻고 답을 들어요. 손이 바쁠 때도 에이전트와 이어서 일해요.</p></div>
-      <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><div class="l1">웹 브라우저</div><p class="l4">에이전트가 앱 안 브라우저로 사이트를 열어 찾아보고 준비해요. 결제와 예약 확정은 내가 눌러요.</p></div>
-      <div><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="l1">나의 장소</div><p class="l4">다녀온 곳을 지구본에 모아요. 촬영지와 단골 가게를 다시 찾기 쉬워요.</p></div>
-      <div><svg viewBox="0 0 24 24"><circle cx="12" cy="6" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M11 8.2 6.3 15.8M13 8.2l4.7 7.6M7.5 18h9"/></svg><div class="l1">관계망</div><p class="l4">함께 일한 사람을 한곳에 정리해요. 누구와 얼마나 자주 연락했는지 한눈에 봐요.</p></div>
-      <div><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg><div class="l1">문서 도구</div><p class="l4">워드, 엑셀, PPT를 폰에서 만들고 고쳐요. 받은 파일을 열어 필요한 곳만 바꿔요.</p></div>
+      <div><div class="feat-shot" aria-hidden="true"><img src="/world/media/feat-voice.jpg" width="412" height="892" loading="lazy" alt=""></div><div class="l1">대화 모드</div><p class="l4">말로 묻고 답을 들어요. 손이 바쁠 때도 에이전트와 이어서 일해요.</p></div>
+      <div><div class="feat-shot" aria-hidden="true"><img src="/world/media/feat-web.jpg" width="412" height="892" loading="lazy" alt=""></div><div class="l1">웹 브라우저</div><p class="l4">에이전트가 앱 안 브라우저로 사이트를 열어 찾아보고 준비해요. 결제와 예약 확정은 내가 눌러요.</p></div>
+      <div><div class="feat-shot" aria-hidden="true"><img src="/world/media/feat-places.jpg" width="412" height="892" loading="lazy" alt=""></div><div class="l1">나의 장소</div><p class="l4">다녀온 곳을 지구본에 모아요. 촬영지와 단골 가게를 다시 찾기 쉬워요.</p></div>
+      <div><div class="feat-shot" aria-hidden="true"><img src="/world/media/feat-people.jpg" width="412" height="892" loading="lazy" alt=""></div><div class="l1">관계망</div><p class="l4">함께 일한 사람을 한곳에 정리해요. 누구와 얼마나 자주 연락했는지 한눈에 봐요.</p></div>
+      <div><div class="feat-shot" aria-hidden="true"><img src="/world/media/feat-docs.jpg" width="412" height="892" loading="lazy" alt=""></div><div class="l1">문서 도구</div><p class="l4">워드, 엑셀, PPT를 폰에서 만들고 고쳐요. 받은 파일을 열어 필요한 곳만 바꿔요.</p></div>
     </div>
   </div>
 </section>
