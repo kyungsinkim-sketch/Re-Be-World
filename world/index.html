@@ -191,6 +191,8 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 
 /* v2 — 창작자 매니징 축 */
 .steps.four{grid-template-columns:repeat(4,1fr)}
+.steps.five{grid-template-columns:repeat(5,1fr)}.steps.five>div{padding:24px 20px}
+@media (max-width:1000px){.steps.five{grid-template-columns:1fr}.steps.five>div+div{border-left:0;border-top:1px solid var(--line)}}
 .inbox{border:1px solid var(--line-2);border-radius:16px;background:var(--card);max-width:420px;margin-left:auto;overflow:hidden}
 .inbox-head{height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid var(--line)}
 .inbox-row{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:12px 18px;border-bottom:1px solid var(--line);min-height:52px}
@@ -246,7 +248,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
   <div class="wrap">
     <a class="brand" href="#" style="font-weight:700">Re-Be World</a>
     <nav>
-      <a class="nl" href="#flow">What it does</a>
+      <a class="nl" href="#manager">What it does</a>
       <a class="nl" href="#web">Web tasks</a>
       <a class="nl" href="#memory">Memory</a>
       <a class="nl" href="#features">Features</a>
@@ -269,7 +271,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
       <p class="lead" style="max-width:480px;margin:10px 0 32px">Re-Be World sorts and manages them systematically, and drafts replies in your voice.</p>
       <div class="btns">
         <a class="btn primary" href="#notify">Get notified at launch</a>
-        <a class="btn" href="#flow">See what it does</a>
+        <a class="btn" href="#manager">See what it does</a>
       </div>
     </div>
     <div class="phone" aria-hidden="true">
@@ -281,10 +283,27 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
   </div>
 </div>
 
-<section id="flow">
+<section id="manager">
   <div class="wrap">
     <div class="sec-head">
       <span class="l2">What it does</span>
+      <h2 class="d2">A manager for solo creators with a busy inbox</h2>
+      <p class="lead">People, messages, meetings, places, and web errands — everything outside your craft, handled in one flow.</p>
+    </div>
+    <div class="steps five">
+      <div><span class="num">01</span><div class="l1">Organizes your network</div><p class="l4">Keeps the people you work with and your history with them in one place.</p></div>
+      <div><span class="num">02</span><div class="l1">Answers messages and email</div><p class="l4">Sorts the flood of inquiries and drafts replies in your voice.</p></div>
+      <div><span class="num">03</span><div class="l1">Keeps your meetings</div><p class="l4">Adds meetings to your calendar and updates them when plans change.</p></div>
+      <div><span class="num">04</span><div class="l1">Suggests better places</div><p class="l4">Remembers where you met, why you chose it, and your taste — and uses that next time.</p></div>
+      <div><span class="num">05</span><div class="l1">Runs web errands</div><p class="l4">Handles government, tax, shopping, and booking tasks on the web.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="flow">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="l2">Inbox</span>
       <h2 class="d2">From inquiry to reply, in one flow</h2>
       <p class="lead">It's not just a reply writer. It gathers, finds context, drafts, and you review before sending.</p>
     </div>
@@ -309,12 +328,12 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
       <div class="sec-head" style="margin-bottom:0">
         <span class="l2">Web tasks</span>
         <h2 class="d2">Hand off what you do on the web, too</h2>
-        <p class="lead">Shopping, bookings, government paperwork — your agent works through websites for you. Not a fixed list of sites: it opens any site.</p>
+        <p class="lead">Shopping, bookings, government and tax paperwork — your agent works through websites for you. Not a fixed list of sites: it opens any site.</p>
       </div>
       <ol class="tut-steps">
         <li><span class="num">01</span><div><div class="l1">Shopping</div><p class="l4">It finds and compares products and fills your cart. You press pay.</p></div></li>
         <li><span class="num">02</span><div><div class="l1">Bookings</div><p class="l4">It finds restaurants, stays, and train tickets and gets the booking screen ready. You press confirm.</p></div></li>
-        <li><span class="num">03</span><div><div class="l1">Government services</div><p class="l4">It finds the right forms and application pages and helps fill them in. You sign in and verify your identity.</p></div></li>
+        <li><span class="num">03</span><div><div class="l1">Government and tax</div><p class="l4">It finds the right forms and application pages and helps fill them in. You sign in and verify your identity.</p></div></li>
       </ol>
     </div>
   </div>
@@ -355,10 +374,10 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
       <p class="lead">Your agent works from the data kept on your phone.</p>
     </div>
     <div class="feat">
-      <div><div class="feat-shot" aria-hidden="true"><img src="/world/media/feat-voice.jpg" width="412" height="892" loading="lazy" alt=""></div><div class="l1">Voice mode</div><p class="l4">Ask out loud and hear the answer. Keep working with your agent when your hands are busy.</p></div>
-      <div><div class="feat-shot" aria-hidden="true"><img src="/world/media/feat-web.jpg" width="412" height="892" loading="lazy" alt=""></div><div class="l1">Web browser</div><p class="l4">Your agent opens sites in the in-app browser to look things up and get them ready. You press pay and confirm.</p></div>
-      <div><div class="feat-shot" aria-hidden="true"><img src="/world/media/feat-places.jpg" width="412" height="892" loading="lazy" alt=""></div><div class="l1">My places</div><p class="l4">The places you've been are gathered on a globe. Easy to find shoot locations and favorite spots again.</p></div>
       <div><div class="feat-shot" aria-hidden="true"><img src="/world/media/feat-people.jpg" width="412" height="892" loading="lazy" alt=""></div><div class="l1">People</div><p class="l4">The people you work with, organized in one place. See at a glance who you talk to and how often.</p></div>
+      <div><div class="feat-shot" aria-hidden="true"><img src="/world/media/feat-places.jpg" width="412" height="892" loading="lazy" alt=""></div><div class="l1">My places</div><p class="l4">The places you've been are gathered on a globe. Easy to find shoot locations and favorite spots again.</p></div>
+      <div><div class="feat-shot" aria-hidden="true"><img src="/world/media/feat-web.jpg" width="412" height="892" loading="lazy" alt=""></div><div class="l1">Web browser</div><p class="l4">Your agent opens sites in the in-app browser to look things up and get them ready. You press pay and confirm.</p></div>
+      <div><div class="feat-shot" aria-hidden="true"><img src="/world/media/feat-voice.jpg" width="412" height="892" loading="lazy" alt=""></div><div class="l1">Voice mode</div><p class="l4">Ask out loud and hear the answer. Keep working with your agent when your hands are busy.</p></div>
       <div><div class="feat-shot" aria-hidden="true"><img src="/world/media/feat-docs.jpg" width="412" height="892" loading="lazy" alt=""></div><div class="l1">Document tools</div><p class="l4">Create and edit Word, Excel, and PowerPoint on your phone. Open a file you received and change only what you need.</p></div>
     </div>
     <p class="more"><a class="btn" href="/tutorial">See how to get started</a></p>
