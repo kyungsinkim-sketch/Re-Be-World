@@ -216,7 +216,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
       <div>
       <span class="l2">오피스 에이전트 툴</span>
       <h1 class="d1">웹브라우징부터 문서 편집까지,<br>에이전트 자동화 솔루션 Be.Ark</h1>
-      <p class="lead">에이전트가 웹에서 필요한 내용을 확인하고, 한글·PPT·워드·엑셀 문서를 만들고 고쳐요. 메일은 내가 승인하면 보내요.</p>
+      <p class="lead">에이전트가 웹에서 필요한 내용을 확인하고, 한글·PPT·워드·엑셀 문서를 만들고 고쳐요. 메일, 소셜미디어 채널, 웹사이트 로그인을 통한 자동화도 가능해요.</p>
       <div class="btns">
         <a class="btn primary" data-dl="mac" href="/api/dl?os=mac">맥용 내려받기</a>
         <a class="btn" data-dl="win" href="/api/dl?os=win">윈도우용 내려받기</a>
@@ -259,11 +259,6 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
     </div>
     <div class="fmt">
       <div class="fmt-row">
-        <div class="fmt-name"><b>한글</b><span>.hwp .hwpx</span></div>
-        <div><div class="l1">공문서와 신청서를 양식 그대로 채워요</div><p class="l4" style="margin-top:6px">받은 양식에 내용을 채우고 표를 고쳐요. 앱 안에서 바로 열어 보고 저장해요.</p></div>
-        <ul><li>양식의 글꼴과 표 모양을 그대로 둬요</li><li>표 칸과 본문을 골라서 고쳐요</li><li>앱 안에서 직접 고칠 수도 있어요</li></ul>
-      </div>
-      <div class="fmt-row">
         <div class="fmt-name"><b>PPT</b><span>.pptx</span></div>
         <div><div class="l1">내 양식으로 발표 자료를 만들어요</div><p class="l4" style="margin-top:6px">템플릿 하나를 주면 에이전트가 그 양식의 디자인과 구성을 읽어요. 제안서와 요약 자료를 같은 양식으로 만들어요.</p></div>
         <ul><li>디자인 견본 5종에서 골라 시작해요</li><li>만든 자료에 장을 끼워 넣어요</li><li>화면에서 장을 보며 같이 고쳐요</li></ul>
@@ -273,6 +268,11 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
             <source src="/beark/media/beark-deck.mp4" type="video/mp4">
           </video>
         </div>
+      </div>
+      <div class="fmt-row">
+        <div class="fmt-name"><b>한글</b><span>.hwp .hwpx</span></div>
+        <div><div class="l1">공문서와 신청서를 양식 그대로 채워요</div><p class="l4" style="margin-top:6px">받은 양식에 내용을 채우고 표를 고쳐요. 앱 안에서 바로 열어 보고 저장해요.</p></div>
+        <ul><li>양식의 글꼴과 표 모양을 그대로 둬요</li><li>표 칸과 본문을 골라서 고쳐요</li><li>앱 안에서 직접 고칠 수도 있어요</li></ul>
       </div>
       <div class="fmt-row">
         <div class="fmt-name"><b>워드</b><span>.docx</span></div>
@@ -362,6 +362,21 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
   </div>
 </section>
 
+<section id="studio">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="l2">Pro 스킬</span>
+      <h2 class="d2">크리에이티브 스튜디오는 Pro에서 써요</h2>
+      <p class="lead">전략 리서치와 스토리보드처럼 전문 작업을 맡기는 스킬이에요. Pro 플랜에 들어 있어요.</p>
+    </div>
+    <div class="fmt-shot" style="margin:0 0 32px;grid-column:auto" aria-hidden="true"><img src="/beark/media/beark-storyboard.jpg" width="1800" height="1180" loading="lazy" alt="" style="display:block;width:100%;height:auto"></div>
+    <div class="grid">
+      <div><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M9 9v9"/></svg><div class="l1">스토리보드</div><p class="l4">기획안을 컷으로 나누고 콘티 그림을 그려요. 화면에서 컷을 고치고 PPT로 내보내요.</p></div>
+      <div><svg class="ic" viewBox="0 0 24 24"><path d="M4 19V5M4 19h16"/><path d="m8 15 3-4 3 2 4-6"/></svg><div class="l1">전략 리서치 스튜디오</div><p class="l4">자료를 단계별로 모으고 정리해요. 정리한 내용을 전략 제안서 PPT로 만들어요.</p></div>
+    </div>
+  </div>
+</section>
+
 <section id="pricing">
   <div class="wrap">
     <div class="sec-head">
@@ -379,7 +394,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
       <div class="plan pick">
         <span class="tag">가장 많이 써요</span><div class="l1">Pro</div>
         <div class="price">$20 <small>/ 월</small></div><span class="l5">1년 결제는 $144</span>
-        <ul><li>Free의 모든 기능</li><li>업무 스킬 카탈로그</li><li>커뮤니티 스킬 내려받기</li><li>내장 웹 검색 하루 300회</li><li>실시간 통역과 받아쓰기 월 600분</li></ul>
+        <ul><li>Free의 모든 기능</li><li>크리에이티브 스튜디오 스킬</li><li>커뮤니티 스킬 내려받기</li><li>내장 웹 검색 하루 300회</li><li>실시간 통역과 받아쓰기 월 600분</li></ul>
         <a class="btn primary" href="#download">Pro 시작하기</a>
       </div>
       <div class="plan">
