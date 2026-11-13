@@ -191,6 +191,8 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 .hero-top{display:grid;grid-template-columns:1fr 290px;gap:16px;align-items:center}
 .hero-planet{display:block;width:100%;aspect-ratio:1/1}
 @media (max-width:980px){.hero-top{grid-template-columns:1fr}.hero-planet{display:none}}
+.more{margin:32px 0 0;text-align:center}
+.more-line{margin-top:22px}.more-line a{text-decoration:underline;text-underline-offset:3px}
 .free-note{margin-top:56px;padding:40px 32px;border:1px solid var(--line);border-radius:16px;text-align:center}
 .free-note .lead{margin:12px auto 0;max-width:520px}
 .fmt .fmt-row:last-child{border-bottom:0}
@@ -209,7 +211,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
     <a class="brand" href="#">Be.Ark</a>
     <nav>
       <a class="nl" href="#formats">기능</a>
-      <a class="nl" href="#tutorial">쓰는 법</a>
+      <a class="nl" href="/ko/tutorial">쓰는 법</a>
       <a class="nl" href="#pricing">요금</a>
       <a class="nl" href="#news">업데이트 소식</a>
       <span class="lang-tg" role="group" aria-label="Language"><a href="/ko" class="on" aria-current="true">KO</a><a href="/">EN</a></span>
@@ -287,24 +289,12 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
         <div class="fmt-name"><b>워드</b><span>.docx</span></div>
         <div><div class="l1">계약서와 보고서를 필요한 곳만 고쳐요</div><p class="l4" style="margin-top:6px">요청과 맥락에 따라 새 문서를 구성하고, 기존 문서도 고쳐요.</p></div>
         <ul><li>서식과 번호 매기기를 그대로 둬요</li><li>표와 문단을 골라서 고쳐요</li><li>바뀐 곳을 화면에서 바로 확인해요</li></ul>
-        <div class="fmt-shot" aria-hidden="true">
-          <video autoplay muted loop playsinline preload="none" poster="/beark/media/beark-docx-poster.jpg" width="1440" height="900">
-            <source src="/beark/media/beark-docx.webm" type="video/webm">
-            <source src="/beark/media/beark-docx.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
+              </div>
       <div class="fmt-row">
         <div class="fmt-name"><b>엑셀</b><span>.xlsx</span></div>
         <div><div class="l1">시트와 칸을 정확하게 고쳐요</div><p class="l4" style="margin-top:6px">에이전트가 시트를 읽고 값을 채워요. 수식은 지우지 않고, 파일을 열면 다시 계산돼요.</p></div>
         <ul><li>칸 하나부터 표 전체까지 고쳐요</li><li>수식과 병합한 칸을 그대로 둬요</li><li>표 자료로 새 파일을 만들어요</li></ul>
-        <div class="fmt-shot" aria-hidden="true">
-          <video autoplay muted loop playsinline preload="none" poster="/beark/media/beark-estimate-poster.jpg" width="1440" height="1220">
-            <source src="/beark/media/beark-estimate.webm" type="video/webm">
-            <source src="/beark/media/beark-estimate.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
+              </div>
       <div class="fmt-row">
         <div class="fmt-name"><b>PDF</b><span>.pdf</span></div>
         <div><div class="l1">스캔한 PDF도 읽어요</div><p class="l4" style="margin-top:6px">사진처럼 찍힌 계약서와 옛 자료도 글자를 알아봐요. 읽은 내용을 문서 작업에 바로 써요.</p></div>
@@ -314,15 +304,10 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
         <div class="fmt-name"><b>마크다운</b><span>.md</span></div>
         <div><div class="l1">회의록과 메모를 말로 고쳐요</div><p class="l4" style="margin-top:6px">에이전트가 표와 할 일을 고쳐요. 바뀐 내용은 화면에서 바로 확인해요.</p></div>
         <ul><li>표와 할 일 목록을 보기 좋게 보여 줘요</li><li>부탁한 곳만 고치고 나머지는 그대로 둬요</li><li>앱 안에서 직접 고칠 수도 있어요</li></ul>
-        <div class="fmt-shot" aria-hidden="true">
-          <video autoplay muted loop playsinline preload="none" poster="/beark/media/beark-md-poster.jpg" width="1440" height="900">
-            <source src="/beark/media/beark-md.webm" type="video/webm">
-            <source src="/beark/media/beark-md.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
+              </div>
     </div>
-    <div class="free-note">
+        <p class="more"><a class="btn" href="/ko/formats">형식별 영상 모두 보기</a></p>
+        <div class="free-note">
       <h3 class="d2">이 모든 것이 무료예요</h3>
       <p class="lead">이제, 값비싼 소프트웨어 구독료를 내지 않아도 됩니다.</p>
       <p class="lead">그리고, 에이전트와 함께 더 편하게 작업하세요.</p>
@@ -330,31 +315,6 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
   </div>
 </section>
 
-<section id="tutorial">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="l2">튜토리얼</span>
-      <h2 class="d2">첫 에이전트를 3분 만에 만들어요</h2>
-      <p class="lead">앱이 한 단계씩 안내해요. 영상으로 먼저 보고 따라 해요.</p>
-    </div>
-    <div class="tut">
-      <div class="fmt-shot" style="margin:0;grid-column:auto">
-        <video controls playsinline preload="metadata" poster="/beark/media/beark-tutorial-poster.jpg" width="1440" height="996">
-          <source src="/beark/media/beark-tutorial.webm" type="video/webm">
-          <source src="/beark/media/beark-tutorial.mp4" type="video/mp4">
-        </video>
-      </div>
-      <ol class="tut-steps">
-        <li><span class="num">01</span><div><div class="l1">맡길 일을 골라요</div><p class="l4">기획, 디자인, 제작 같은 역할 10가지 중에서 골라요. 빈 팀원으로 시작해도 돼요.</p></div></li>
-        <li><span class="num">02</span><div><div class="l1">이름과 얼굴을 정해요</div><p class="l4">에이전트 이름을 짓고 이름 색을 골라요. 나중에 바꿀 수 있어요.</p></div></li>
-        <li><span class="num">03</span><div><div class="l1">쓰던 AI로 로그인해요</div><p class="l4">Claude나 ChatGPT 계정으로 로그인해요. 내 컴퓨터에서 도는 모델도 고를 수 있어요.</p></div></li>
-        <li><span class="num">04</span><div><div class="l1">나를 소개해요</div><p class="l4">부를 이름과 하는 일을 적어요. 에이전트가 나에게 맞춰 답해요.</p></div></li>
-        <li><span class="num">05</span><div><div class="l1">작업 폴더를 연결해요</div><p class="l4">에이전트가 문서를 만들고 저장할 폴더를 골라요.</p></div></li>
-        <li><span class="num">06</span><div><div class="l1">화면을 둘러봐요</div><p class="l4">에이전트 목록, 세션, 설정, 채팅창, 문서 작업 공간을 앱이 차례로 짚어 줘요.</p></div></li>
-      </ol>
-    </div>
-  </div>
-</section>
 
 <section id="why">
   <div class="wrap">
@@ -442,7 +402,8 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
       <a class="btn primary" href="/api/dl?os=mac">맥용 내려받기</a>
       <a class="btn" href="/api/dl?os=win">윈도우용 내려받기</a>
     </div>
-  </div>
+        <p class="l4 more-line"><a href="/ko/tutorial">처음이라면 3분 튜토리얼을 먼저 봐요</a></p>
+      </div>
 </section>
 </main>
 
@@ -450,6 +411,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
   <div class="wrap">
     <a href="#">© 2026 Paulus Co.,Ltd.</a>
     <div class="links">
+      <a href="/ko/tutorial">튜토리얼</a>
       <a href="https://www.re-be.world">리비월드 앱</a>
       <a href="/ko/privacy">개인정보처리방침</a>
       <a href="mailto:ark@re-be.world">문의</a>
@@ -460,7 +422,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 <script>
 (function(){
   var URL_ANN='https://raw.githubusercontent.com/kyungsinkim-sketch/Re-Be-World/main/public/announcements.json';
-  var box=document.getElementById('newsList');
+  var box=document.getElementById('newsList'); if(!box)return;
   function hasKo(s){return /[가-힣]/.test(s||'')}
   // 공지 본문의 줄 머리 그림 문자는 이 사이트 정책(이모지 없음)에 맞춰 떼고 보여 준다
   function clean(s){return (s||'').split('\n').map(function(l){return l.replace(/^[^\w가-힣\[("']+/,'').trim()}).filter(Boolean).join('\n')}
@@ -491,6 +453,6 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
   for(var j=0;j<cvs.length;j++)io.observe(cvs[j]);
 })();
 </script>
-<script>(function(){ if(location.hostname==='be.ark.works')return; var m={'/':'/beark','/ko':'/beark/ko'}; var as=document.querySelectorAll('.lang-tg a'); for(var i=0;i<as.length;i++){ var h=as[i].getAttribute('href'); if(m[h]) as[i].setAttribute('href',m[h]); } })();</script>
+<script>(function(){ if(location.hostname==='be.ark.works')return; var m={'/':'/beark','/ko':'/beark/ko','/formats':'/beark/formats','/tutorial':'/beark/tutorial','/ko/formats':'/beark/ko-formats','/ko/tutorial':'/beark/ko-tutorial'}; var as=document.querySelectorAll('a[href^="/"]'); for(var i=0;i<as.length;i++){ var h=as[i].getAttribute('href'), k=h.indexOf('#'), b=k<0?h:h.slice(0,k); if(m[b]) as[i].setAttribute('href',m[b]+(k<0?'':h.slice(k))); } })();</script>
 </body>
 </html>

@@ -27,12 +27,60 @@
       "destination": "/beark/ko"
     },
     {
+      "source": "/formats",
+      "has": [
+        {
+          "type": "host",
+          "value": "be.ark.works"
+        }
+      ],
+      "destination": "/beark/formats"
+    },
+    {
+      "source": "/tutorial",
+      "has": [
+        {
+          "type": "host",
+          "value": "be.ark.works"
+        }
+      ],
+      "destination": "/beark/tutorial"
+    },
+    {
+      "source": "/ko/formats",
+      "has": [
+        {
+          "type": "host",
+          "value": "be.ark.works"
+        }
+      ],
+      "destination": "/beark/ko-formats"
+    },
+    {
+      "source": "/ko/tutorial",
+      "has": [
+        {
+          "type": "host",
+          "value": "be.ark.works"
+        }
+      ],
+      "destination": "/beark/ko-tutorial"
+    },
+    {
       "source": "/",
       "destination": "/world"
     },
     {
       "source": "/ko",
       "destination": "/world/ko"
+    },
+    {
+      "source": "/tutorial",
+      "destination": "/world/tutorial"
+    },
+    {
+      "source": "/ko/tutorial",
+      "destination": "/world/ko-tutorial"
     }
   ]
 }

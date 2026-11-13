@@ -191,6 +191,8 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 .hero-top{display:grid;grid-template-columns:1fr 290px;gap:16px;align-items:center}
 .hero-planet{display:block;width:100%;aspect-ratio:1/1}
 @media (max-width:980px){.hero-top{grid-template-columns:1fr}.hero-planet{display:none}}
+.more{margin:32px 0 0;text-align:center}
+.more-line{margin-top:22px}.more-line a{text-decoration:underline;text-underline-offset:3px}
 .free-note{margin-top:56px;padding:40px 32px;border:1px solid var(--line);border-radius:16px;text-align:center}
 .free-note .lead{margin:12px auto 0;max-width:520px}
 .fmt .fmt-row:last-child{border-bottom:0}
@@ -209,7 +211,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
     <a class="brand" href="#">Be.Ark</a>
     <nav>
       <a class="nl" href="#formats">Features</a>
-      <a class="nl" href="#tutorial">How it works</a>
+      <a class="nl" href="/tutorial">How it works</a>
       <a class="nl" href="#pricing">Pricing</a>
       <a class="nl" href="#news">Updates</a>
       <span class="lang-tg" role="group" aria-label="Language"><a href="/ko">KO</a><a href="/" class="on" aria-current="true">EN</a></span>
@@ -287,24 +289,12 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
         <div class="fmt-name"><b>Word</b><span>.docx</span></div>
         <div><div class="l1">Change only what needs changing</div><p class="l4" style="margin-top:6px">Depending on your request and context, it drafts a new document or edits an existing one.</p></div>
         <ul><li>Keeps formatting and numbering</li><li>Edits the tables and paragraphs you choose</li><li>See changes on screen right away</li></ul>
-        <div class="fmt-shot" aria-hidden="true">
-          <video autoplay muted loop playsinline preload="none" poster="/beark/media/beark-docx-en-poster.jpg" width="1440" height="900">
-            <source src="/beark/media/beark-docx-en.webm" type="video/webm">
-            <source src="/beark/media/beark-docx-en.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
+              </div>
       <div class="fmt-row">
         <div class="fmt-name"><b>Excel</b><span>.xlsx</span></div>
         <div><div class="l1">Edit sheets and cells precisely</div><p class="l4" style="margin-top:6px">Your agent reads the sheet and fills in values. Formulas stay, and they recalculate when you open the file.</p></div>
         <ul><li>From a single cell to a whole table</li><li>Keeps formulas and merged cells</li><li>Creates new files from table data</li></ul>
-        <div class="fmt-shot" aria-hidden="true">
-          <video autoplay muted loop playsinline preload="none" poster="/beark/media/beark-estimate-en-poster.jpg" width="1440" height="900">
-            <source src="/beark/media/beark-estimate-en.webm" type="video/webm">
-            <source src="/beark/media/beark-estimate-en.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
+              </div>
       <div class="fmt-row">
         <div class="fmt-name"><b>PDF</b><span>.pdf</span></div>
         <div><div class="l1">Reads scanned PDFs</div><p class="l4" style="margin-top:6px">It recognizes text in photographed contracts and old records, and uses it in your document work.</p></div>
@@ -314,15 +304,10 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
         <div class="fmt-name"><b>Markdown</b><span>.md</span></div>
         <div><div class="l1">Edit notes and minutes by asking</div><p class="l4" style="margin-top:6px">Your agent edits tables and to-dos. See the result on screen right away.</p></div>
         <ul><li>Shows tables and to-do lists cleanly</li><li>Changes only what you asked for</li><li>You can edit directly in the app, too</li></ul>
-        <div class="fmt-shot" aria-hidden="true">
-          <video autoplay muted loop playsinline preload="none" poster="/beark/media/beark-md-en-poster.jpg" width="1440" height="900">
-            <source src="/beark/media/beark-md-en.webm" type="video/webm">
-            <source src="/beark/media/beark-md-en.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
+              </div>
     </div>
-    <div class="free-note">
+        <p class="more"><a class="btn" href="/formats">See every format in action</a></p>
+        <div class="free-note">
       <h3 class="d2">All of this is free</h3>
       <p class="lead">Now you don't have to pay for expensive software subscriptions.</p>
       <p class="lead">And work more comfortably with your agent.</p>
@@ -330,31 +315,6 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
   </div>
 </section>
 
-<section id="tutorial">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="l2">Tutorial</span>
-      <h2 class="d2">Create your first agent in 3 minutes</h2>
-      <p class="lead">The app guides you step by step. Watch the video first, then follow along.</p>
-    </div>
-    <div class="tut">
-      <div class="fmt-shot" style="margin:0;grid-column:auto">
-        <video controls playsinline preload="metadata" poster="/beark/media/beark-tutorial-poster.jpg" width="1440" height="996">
-          <source src="/beark/media/beark-tutorial.webm" type="video/webm">
-          <source src="/beark/media/beark-tutorial.mp4" type="video/mp4">
-        </video>
-      </div>
-      <ol class="tut-steps">
-        <li><span class="num">01</span><div><div class="l1">Pick the job</div><p class="l4">Choose from 10 roles such as planning, design, and production. Or start with a blank teammate.</p></div></li>
-        <li><span class="num">02</span><div><div class="l1">Choose a name and face</div><p class="l4">Name your agent and pick a name color. You can change them later.</p></div></li>
-        <li><span class="num">03</span><div><div class="l1">Sign in with the AI you already use</div><p class="l4">Sign in with your Claude or ChatGPT account. You can also pick a model that runs on your computer.</p></div></li>
-        <li><span class="num">04</span><div><div class="l1">Introduce yourself</div><p class="l4">Write what to call you and what you do. Your agent answers with that in mind.</p></div></li>
-        <li><span class="num">05</span><div><div class="l1">Connect a work folder</div><p class="l4">Pick the folder where your agent creates and saves documents.</p></div></li>
-        <li><span class="num">06</span><div><div class="l1">Take the tour</div><p class="l4">The app walks you through the agent list, sessions, settings, chat, and the document workspace.</p></div></li>
-      </ol>
-    </div>
-  </div>
-</section>
 
 <section id="why">
   <div class="wrap">
@@ -442,7 +402,8 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
       <a class="btn primary" href="/api/dl?os=mac">Download for Mac</a>
       <a class="btn" href="/api/dl?os=win">Download for Windows</a>
     </div>
-  </div>
+        <p class="l4 more-line"><a href="/tutorial">New here? Watch the 3-minute tutorial first</a></p>
+      </div>
 </section>
 </main>
 
@@ -450,6 +411,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
   <div class="wrap">
     <a href="#">© 2026 Paulus Co.,Ltd.</a>
     <div class="links">
+      <a href="/tutorial">Tutorial</a>
       <a href="https://www.re-be.world">Re-Be World app</a>
       <a href="/privacy">Privacy Policy</a>
       <a href="mailto:ark@re-be.world">Contact us</a>
@@ -460,7 +422,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 <script>
 (function(){
   var URL_ANN='https://raw.githubusercontent.com/kyungsinkim-sketch/Re-Be-World/main/public/announcements.json';
-  var box=document.getElementById('newsList');
+  var box=document.getElementById('newsList'); if(!box)return;
   function hasKo(s){return /[가-힣]/.test(s||'')}
   // 공지 본문의 줄 머리 그림 문자는 이 사이트 정책(이모지 없음)에 맞춰 떼고 보여 준다
   function clean(s){return (s||'').split('\n').map(function(l){return l.replace(/^[^\w가-힣\[("']+/,'').trim()}).filter(Boolean).join('\n')}
@@ -491,6 +453,6 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
   for(var j=0;j<cvs.length;j++)io.observe(cvs[j]);
 })();
 </script>
-<script>(function(){ if(location.hostname==='be.ark.works')return; var m={'/':'/beark','/ko':'/beark/ko'}; var as=document.querySelectorAll('.lang-tg a'); for(var i=0;i<as.length;i++){ var h=as[i].getAttribute('href'); if(m[h]) as[i].setAttribute('href',m[h]); } })();</script>
+<script>(function(){ if(location.hostname==='be.ark.works')return; var m={'/':'/beark','/ko':'/beark/ko','/formats':'/beark/formats','/tutorial':'/beark/tutorial','/ko/formats':'/beark/ko-formats','/ko/tutorial':'/beark/ko-tutorial'}; var as=document.querySelectorAll('a[href^="/"]'); for(var i=0;i<as.length;i++){ var h=as[i].getAttribute('href'), k=h.indexOf('#'), b=k<0?h:h.slice(0,k); if(m[b]) as[i].setAttribute('href',m[b]+(k<0?'':h.slice(k))); } })();</script>
 </body>
 </html>
