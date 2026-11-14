@@ -223,6 +223,9 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 .phone-cap{max-width:300px;margin:12px 0 0 auto;text-align:center}
 @media (max-width:860px){.phone,.phone-cap{margin-left:auto;margin-right:auto}}
 @media (max-width:860px){.mem .phone{margin:0 auto !important}}
+/* 11-14 빠불로: 모바일에서는 설명 글 → 영상 순서 (관계망·일정·장소·웹 작업·대화 모드·문서·저장) */
+@media (max-width:860px){.mem>.phone,.mem.rev>.phone,.flow-grid>.phone{order:2}}
+@media (max-width:860px){#tutorial .mem>.phone{order:0}}   /* 튜토리얼 페이지는 영상이 먼저 */
 .flow-grid{display:grid;grid-template-columns:300px 1fr;gap:64px;align-items:center}
 .flow-list{list-style:none;border-top:1px solid var(--line)}
 .flow-list li{display:grid;grid-template-columns:48px 1fr;padding:22px 0;border-bottom:1px solid var(--line)}
