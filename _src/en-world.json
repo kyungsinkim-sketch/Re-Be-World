@@ -190,5 +190,7 @@
  "\"응, 잡아 줘\"라고 하면 캘린더 등록과 답장 메일을 한 번에 준비해요.": "Say \"Yes, book it\" and it prepares the calendar entry and the reply email together.",
  "쓰던 계정을 그대로 써요": "Works with your accounts",
  "지금 쓰는 메일과 캘린더 계정을 연결해요. 새로 옮기지 않아도 돼요.": "Connect the email and calendar accounts you already use. Nothing to migrate.",
- "말로 부탁하면 캘린더에 넣고 답장까지 준비해요. 실행하기 전에 내용을 보여 주고 승인을 받아요.": "Just ask: it adds the meeting to your calendar and drafts the reply. It shows you everything and waits for approval before acting."
+ "말로 부탁하면 캘린더에 넣고 답장까지 준비해요. 실행하기 전에 내용을 보여 주고 승인을 받아요.": "Just ask: it adds the meeting to your calendar and drafts the reply. It shows you everything and waits for approval before acting.",
+ "누구와 언제 어떤 일을 했는지 기억해요": "It remembers who you worked with, when, and on what",
+ "다음 문의가 오면 그 기억으로 답해요.": "When the next inquiry comes, it answers from that memory."
 }
