@@ -218,16 +218,21 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
 /* 11-15 빠불로: 맨 위 = 사람 사진 + 결과 한 줄(리비월드와 같은 틀). 사진 위 글자는 밝은 화면에서도 어두운 화면 색을 쓴다. 앱 영상은 바로 아래 */
 .hero.photo{position:relative;padding:0;min-height:min(86vh,760px);display:flex;align-items:center;overflow:hidden;background:#000;color:#EDEDED;
   --bg:#000000;--fg:#EDEDED;--fg-2:#C4C4C4;--fg-3:#A1A1A1;--line:#2A2A2A;--line-2:#5A5A5A}
-.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 30%}
-.hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.68) 42%,rgba(0,0,0,0) 74%)}
+/* 11-16: 사진을 자르지 않는다 — 높이에 맞춰 통째로 오른쪽에 붙인다 (넓은 화면의 남는 왼쪽 = 검정) */
+.hero-pic{position:absolute;right:0;top:0;height:100%;aspect-ratio:1280/731}
+.hero-bg{display:block;width:100%;height:100%;object-fit:cover}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,#000 0%,rgba(0,0,0,.8) 14%,rgba(0,0,0,.6) 40%,rgba(0,0,0,0) 66%)}
 .hero-copy{position:relative;width:100%;padding-top:96px;padding-bottom:96px}
 .hero.photo .hero-copy>div>*{max-width:600px}
 .hero.hero-shot{padding-top:0}.hero.hero-shot .shot{margin-top:56px}
 @media (max-width:860px){
+  /* 11-16: 폰 = 사진을 4:3으로 넓게(책상·노트북까지 들어오게), 글은 사진 아래로 — 사진 아래쪽을 글이 덮지 않는다 */
   .hero.photo{min-height:0;display:block}
-  .hero-bg{position:relative;height:52vh;object-position:82% 30%}
-  .hero-shade{background:linear-gradient(180deg,rgba(0,0,0,0) 30%,#000 52vh)}
-  .hero-copy{margin-top:-64px;padding-top:0;padding-bottom:48px}
+  .hero-pic{position:relative;height:auto;width:100%;aspect-ratio:4/3}
+  .hero-pic::before{display:none}
+  .hero-bg{object-position:100% 50%}
+  .hero-shade{background:linear-gradient(180deg,rgba(0,0,0,0) 78%,#000 100%);-webkit-mask-image:none;mask-image:none}
+  .hero-copy{margin-top:0;padding-top:20px;padding-bottom:48px}
 }
 .hero-planet{display:block;width:100%;aspect-ratio:1/1}
 @media (max-width:980px){.hero-top{grid-template-columns:1fr}.hero-planet{display:none}}
@@ -263,8 +268,7 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
 <main>
 <!--@home-->
 <div class="hero photo">
-  <img class="hero-bg" src="/beark/media/beark-hero.jpg" width="1280" height="731" alt="">
-  <div class="hero-shade"></div>
+  <div class="hero-pic"><img class="hero-bg" src="/beark/media/beark-hero.jpg" width="1280" height="731" alt=""><div class="hero-shade"></div></div>
   <div class="wrap hero-copy">
       <div>
       <span class="l2">오피스 에이전트 툴</span>
