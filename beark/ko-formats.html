@@ -176,6 +176,16 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
 .shot video{display:block;width:100%;height:auto}
 .fmt-shot{grid-column:1/-1;margin-top:8px;border:1px solid var(--line-2);border-radius:10px;overflow:hidden;background:var(--card)}
 .fmt-shot video{display:block;width:100%;height:auto}
+.shots{position:relative;margin:0 0 32px}
+.shots-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;border:1px solid var(--line-2);border-radius:10px;background:var(--card)}
+.shots-track::-webkit-scrollbar{display:none}
+.shots-track figure{flex:0 0 100%;margin:0;scroll-snap-align:start}
+.shots-track img{display:block;width:100%;height:auto}
+.shots-track figcaption{padding:10px 14px;border-top:1px solid var(--line-2);text-align:center}
+.shots-nav{position:absolute;top:calc(50% - 38px);width:36px;height:36px;border:1px solid var(--line-2);border-radius:10px;background:var(--bg);color:inherit;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.shots-nav svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.shots-nav.prev{left:10px}.shots-nav.next{right:10px}
+.shots-nav[disabled]{opacity:.3;cursor:default}
 .why-top{display:grid;grid-template-columns:320px 1fr;gap:56px;align-items:center;margin-bottom:48px}
 .planet-box{background:#000;border-radius:16px;padding:18px;display:flex;justify-content:center}
 .planet-cv{display:block;width:100%;max-width:284px;aspect-ratio:1/1}
@@ -348,6 +358,7 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
   }).catch(function(){document.getElementById('news').style.display='none'});
 })();
 </script>
+<script>(function(){var w=document.getElementById('proShots');if(!w)return;var t=w.querySelector('.shots-track'),p=w.querySelector('.prev'),n=w.querySelector('.next');function go(d){t.scrollBy({left:d*t.clientWidth,behavior:'smooth'})}function st(){p.disabled=t.scrollLeft<4;n.disabled=t.scrollLeft>t.scrollWidth-t.clientWidth-4}p.addEventListener('click',function(){go(-1)});n.addEventListener('click',function(){go(1)});t.addEventListener('scroll',st,{passive:true});st()})();</script>
 <script src="/world/rebe-planet.js"></script>
 <script>
 (function(){
