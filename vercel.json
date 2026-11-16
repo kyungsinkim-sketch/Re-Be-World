@@ -67,6 +67,66 @@
       "destination": "/beark/ko-tutorial"
     },
     {
+      "source": "/why",
+      "has": [
+        {
+          "type": "host",
+          "value": "be.ark.works"
+        }
+      ],
+      "destination": "/beark/why"
+    },
+    {
+      "source": "/ko/why",
+      "has": [
+        {
+          "type": "host",
+          "value": "be.ark.works"
+        }
+      ],
+      "destination": "/beark/ko-why"
+    },
+    {
+      "source": "/pricing",
+      "has": [
+        {
+          "type": "host",
+          "value": "be.ark.works"
+        }
+      ],
+      "destination": "/beark/pricing"
+    },
+    {
+      "source": "/ko/pricing",
+      "has": [
+        {
+          "type": "host",
+          "value": "be.ark.works"
+        }
+      ],
+      "destination": "/beark/ko-pricing"
+    },
+    {
+      "source": "/news",
+      "has": [
+        {
+          "type": "host",
+          "value": "be.ark.works"
+        }
+      ],
+      "destination": "/beark/news"
+    },
+    {
+      "source": "/ko/news",
+      "has": [
+        {
+          "type": "host",
+          "value": "be.ark.works"
+        }
+      ],
+      "destination": "/beark/ko-news"
+    },
+    {
       "source": "/",
       "destination": "/world"
     },

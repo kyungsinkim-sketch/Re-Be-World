@@ -18,6 +18,24 @@
 <meta property="og:title" content="지원하는 문서 — Be.Ark">
 <meta property="og:description" content="PPT, 한글, 워드, 엑셀, PDF, 마크다운을 에이전트가 직접 읽고 고쳐요.">
 <!--@/-->
+<!--@why-->
+<title>차별점 — Be.Ark</title>
+<meta name="description" content="Be.Ark의 차별점과 로컬 볼트. 에이전트의 기억과 로그인 정보는 내 컴퓨터에 있어요.">
+<meta property="og:title" content="차별점 — Be.Ark">
+<meta property="og:description" content="Be.Ark의 차별점과 로컬 볼트.">
+<!--@/-->
+<!--@pricing-->
+<title>요금 — Be.Ark</title>
+<meta name="description" content="Be.Ark는 무료로 시작해요. Pro 요금제도 확인해요.">
+<meta property="og:title" content="요금 — Be.Ark">
+<meta property="og:description" content="Be.Ark는 무료로 시작해요.">
+<!--@/-->
+<!--@news-->
+<title>업데이트 소식 — Be.Ark</title>
+<meta name="description" content="Be.Ark는 매주 나아져요. 최근 업데이트를 확인해요.">
+<meta property="og:title" content="업데이트 소식 — Be.Ark">
+<meta property="og:description" content="Be.Ark는 매주 나아져요.">
+<!--@/-->
 <!--@tutorial-->
 <title>튜토리얼 — Be.Ark</title>
 <meta name="description" content="첫 에이전트를 3분 만에 만들어요. 영상으로 먼저 보고 따라 해요.">
@@ -216,13 +234,13 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
 .lang-tg a.on{background:var(--fg);color:var(--bg)}
 .hero-top{display:grid;grid-template-columns:1fr 290px;gap:16px;align-items:center}
 /* 11-15 빠불로: 맨 위 = 사람 사진 + 결과 한 줄(리비월드와 같은 틀). 사진 위 글자는 밝은 화면에서도 어두운 화면 색을 쓴다. 앱 영상은 바로 아래 */
-.hero.photo{position:relative;padding:0;min-height:min(86vh,760px);display:flex;align-items:center;overflow:hidden;background:#000;color:#EDEDED;
+.hero.photo{position:relative;padding:0;min-height:min(86vh,760px);display:flex;align-items:flex-end;overflow:hidden;background:#000;color:#EDEDED;
   --bg:#000000;--fg:#EDEDED;--fg-2:#C4C4C4;--fg-3:#A1A1A1;--line:#2A2A2A;--line-2:#5A5A5A}
 /* 11-16: 사진을 자르지 않는다 — 높이에 맞춰 통째로 오른쪽에 붙인다 (넓은 화면의 남는 왼쪽 = 검정) */
 .hero-pic{position:absolute;z-index:0;right:0;top:0;height:100%;aspect-ratio:1280/731}
 .hero-bg{display:block;width:100%;height:100%;object-fit:cover}
 .hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,#000 0%,rgba(0,0,0,.8) 14%,rgba(0,0,0,.6) 40%,rgba(0,0,0,0) 66%)}
-.hero-copy{position:relative;z-index:2;width:100%;padding-top:96px;padding-bottom:96px}
+.hero-copy{position:relative;z-index:2;width:100%;padding-top:64px;padding-bottom:56px}
 .hero.photo .hero-copy>div>*{max-width:600px}
 .hero.hero-shot{padding-top:0}.hero.hero-shot .shot{margin-top:56px}
 @media (max-width:860px){
@@ -264,6 +282,7 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
     <a class="brand" href="#">Be.Ark</a>
     <nav>
       <a class="nl" href="#formats">기능</a>
+      <a class="nl" href="#why">차별점</a>
       <a class="nl" href="#tutorial">쓰는 법</a>
       <a class="nl" href="#pricing">요금</a>
       <a class="nl" href="#news">업데이트 소식</a>
@@ -346,7 +365,7 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
         <div class="fmt-name"><b>워드</b><span>.docx</span></div>
         <div><div class="l1">계약서와 보고서를 필요한 곳만 고쳐요</div><p class="l4" style="margin-top:6px">요청과 맥락에 따라 새 문서를 구성하고, 기존 문서도 고쳐요.</p></div>
         <ul><li>서식과 번호 매기기를 그대로 둬요</li><li>표와 문단을 골라서 고쳐요</li><li>바뀐 곳을 화면에서 바로 확인해요</li></ul>
-        <!--@formats--><div class="fmt-shot" aria-hidden="true">
+        <!--@home,formats--><div class="fmt-shot" aria-hidden="true">
           <video autoplay muted loop playsinline preload="none" poster="/beark/media/beark-docx-poster.jpg" width="1440" height="900">
             <source src="/beark/media/beark-docx.webm" type="video/webm">
             <source src="/beark/media/beark-docx.mp4" type="video/mp4">
@@ -357,7 +376,7 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
         <div class="fmt-name"><b>엑셀</b><span>.xlsx</span></div>
         <div><div class="l1">시트와 칸을 정확하게 고쳐요</div><p class="l4" style="margin-top:6px">에이전트가 시트를 읽고 값을 채워요. 수식은 지우지 않고, 파일을 열면 다시 계산돼요.</p></div>
         <ul><li>칸 하나부터 표 전체까지 고쳐요</li><li>수식과 병합한 칸을 그대로 둬요</li><li>표 자료로 새 파일을 만들어요</li></ul>
-        <!--@formats--><div class="fmt-shot" aria-hidden="true">
+        <!--@home,formats--><div class="fmt-shot" aria-hidden="true">
           <video autoplay muted loop playsinline preload="none" poster="/beark/media/beark-estimate-poster.jpg" width="1440" height="1220">
             <source src="/beark/media/beark-estimate.webm" type="video/webm">
             <source src="/beark/media/beark-estimate.mp4" type="video/mp4">
@@ -373,7 +392,7 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
         <div class="fmt-name"><b>마크다운</b><span>.md</span></div>
         <div><div class="l1">회의록과 메모를 말로 고쳐요</div><p class="l4" style="margin-top:6px">에이전트가 표와 할 일을 고쳐요. 바뀐 내용은 화면에서 바로 확인해요.</p></div>
         <ul><li>표와 할 일 목록을 보기 좋게 보여 줘요</li><li>부탁한 곳만 고치고 나머지는 그대로 둬요</li><li>앱 안에서 직접 고칠 수도 있어요</li></ul>
-        <!--@formats--><div class="fmt-shot" aria-hidden="true">
+        <!--@home,formats--><div class="fmt-shot" aria-hidden="true">
           <video autoplay muted loop playsinline preload="none" poster="/beark/media/beark-md-poster.jpg" width="1440" height="900">
             <source src="/beark/media/beark-md.webm" type="video/webm">
             <source src="/beark/media/beark-md.mp4" type="video/mp4">
@@ -381,9 +400,6 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
         </div><!--@/-->
       </div>
     </div>
-    <!--@home-->
-    <p class="more"><a class="btn" href="/ko/formats">형식별 영상 모두 보기</a></p>
-    <!--@/-->
     <div class="free-note">
       <h3 class="d2">이 모든 것이 무료예요</h3>
       <p class="lead">이제, 값비싼 소프트웨어 구독료를 내지 않아도 됩니다.</p>
@@ -421,13 +437,13 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
 </section>
 <!--@/-->
 
-<!--@home-->
+<!--@why-->
 <section id="why">
   <div class="wrap">
     <div class="why-top">
       <div class="planet-box" aria-hidden="true"><canvas class="planet-cv" data-planet></canvas></div>
       <div class="sec-head" style="margin-bottom:0">
-        <span class="l2">Be.Ark가 다른 점</span>
+        <span class="l2">Be.Ark의 차별점</span>
         <h2 class="d2">에이전트 데이터를 내 컴퓨터에 저장해요</h2>
         <p class="lead">기존의 에이전트 서비스와 달리 핵심 데이터를 서버에 저장하지 않아요.</p>
         <p class="lead" style="margin-top:10px">내 컴퓨터에 에이전트의 온톨로지를 저장하고, 나를 더 잘 아는 에이전트로 자라요.</p>
@@ -459,8 +475,9 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
     <p class="vault-note">답을 만들 때는 대화 내용이 내가 고른 AI(Claude, ChatGPT)에 전달돼요. 폰과 컴퓨터 사이를 오가는 내용은 내 기기끼리만 풀 수 있게 잠가서 보내요.</p>
   </div>
 </section>
+<!--@/-->
 
-
+<!--@home-->
 <section id="studio">
   <div class="wrap">
     <div class="sec-head wide">
@@ -480,7 +497,9 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
     </div>
   </div>
 </section>
+<!--@/-->
 
+<!--@pricing-->
 <section id="pricing">
   <div class="wrap">
     <div class="sec-head">
@@ -510,7 +529,9 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
     </div>
   </div>
 </section>
+<!--@/-->
 
+<!--@news-->
 <section id="news">
   <div class="wrap">
     <div class="sec-head">
@@ -530,7 +551,7 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
       <a class="btn primary" href="/api/dl?os=mac">맥용 내려받기</a>
       <a class="btn" href="/api/dl?os=win">윈도우용 내려받기</a>
     </div>
-    <!--@home,formats-->
+    <!--@home,formats,why,pricing,news-->
     <p class="l4 more-line"><a href="/ko/tutorial">처음이라면 3분 튜토리얼을 먼저 봐요</a></p>
     <!--@/-->
   </div>
@@ -558,14 +579,14 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
 <script>
 (function(){
   var URL_ANN='https://raw.githubusercontent.com/kyungsinkim-sketch/Re-Be-World/main/public/announcements.json';
-  var box=document.getElementById('newsList'); if(!box)return;
+  var box=document.getElementById('newsList'), sec=document.getElementById('news');
   function hasKo(s){return /[가-힣]/.test(s||'')}
   // 공지 본문의 줄 머리 그림 문자는 이 사이트 정책(이모지 없음)에 맞춰 떼고 보여 준다
   function clean(s){return (s||'').split('\n').map(function(l){return l.replace(/^[^\w가-힣\[("']+/,'').trim()}).filter(Boolean).join('\n')}
   fetch(URL_ANN).then(function(r){return r.json()}).then(function(d){
     var list=(Array.isArray(d)?d:(d.items||d.announcements||[])).filter(function(a){return hasKo(a.title)||hasKo(a.body)}).slice(0,3);
-    if(!list.length){document.getElementById('news').style.display='none';return}
-    list.forEach(function(a){
+    if(!list.length){if(sec)sec.style.display='none';return}
+    if(box)list.forEach(function(a){
       var row=document.createElement('div');row.className='news-row';
       var dt=document.createElement('span');dt.className='l5 mono';dt.textContent=a.date||'';
       var r=document.createElement('div');
@@ -575,7 +596,7 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
     });
     var m=/(\d+\.\d+\.\d+)/.exec(list[0].title||'');
     if(m)document.querySelectorAll('[data-ver]').forEach(function(e){e.textContent=m[1]});
-  }).catch(function(){document.getElementById('news').style.display='none'});
+  }).catch(function(){if(sec)sec.style.display='none'});
 })();
 </script>
 <script>(function(){var w=document.getElementById('proShots');if(!w)return;var t=w.querySelector('.shots-track'),p=w.querySelector('.prev'),n=w.querySelector('.next');function go(d){t.scrollBy({left:d*t.clientWidth,behavior:'smooth'})}function st(){p.disabled=t.scrollLeft<4;n.disabled=t.scrollLeft>t.scrollWidth-t.clientWidth-4}p.addEventListener('click',function(){go(-1)});n.addEventListener('click',function(){go(1)});t.addEventListener('scroll',st,{passive:true});st()})();</script>
@@ -590,7 +611,7 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
   for(var j=0;j<cvs.length;j++)io.observe(cvs[j]);
 })();
 </script>
-<script>(function(){ if(location.hostname==='be.ark.works')return; var m={'/':'/beark','/ko':'/beark/ko','/formats':'/beark/formats','/tutorial':'/beark/tutorial','/ko/formats':'/beark/ko-formats','/ko/tutorial':'/beark/ko-tutorial'}; var as=document.querySelectorAll('a[href^="/"]'); for(var i=0;i<as.length;i++){ var h=as[i].getAttribute('href'), k=h.indexOf('#'), b=k<0?h:h.slice(0,k); if(m[b]) as[i].setAttribute('href',m[b]+(k<0?'':h.slice(k))); } })();</script>
+<script>(function(){ if(location.hostname==='be.ark.works')return; var m={'/':'/beark','/ko':'/beark/ko','/formats':'/beark/formats','/tutorial':'/beark/tutorial','/ko/formats':'/beark/ko-formats','/ko/tutorial':'/beark/ko-tutorial','/why':'/beark/why','/pricing':'/beark/pricing','/news':'/beark/news','/ko/why':'/beark/ko-why','/ko/pricing':'/beark/ko-pricing','/ko/news':'/beark/ko-news'}; var as=document.querySelectorAll('a[href^="/"]'); for(var i=0;i<as.length;i++){ var h=as[i].getAttribute('href'), k=h.indexOf('#'), b=k<0?h:h.slice(0,k); if(m[b]) as[i].setAttribute('href',m[b]+(k<0?'':h.slice(k))); } })();</script>
 <!--@tutorial-->
 <script>(function(){var v=document.querySelector("video[data-autoplay]");if(!v)return;v.muted=false;var p=v.play();if(p&&p.catch)p.catch(function(){v.muted=true;var q=v.play();if(q&&q.catch)q.catch(function(){})});})();</script>
 <!--@/-->

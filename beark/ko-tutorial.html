@@ -202,13 +202,13 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
 .lang-tg a.on{background:var(--fg);color:var(--bg)}
 .hero-top{display:grid;grid-template-columns:1fr 290px;gap:16px;align-items:center}
 /* 11-15 빠불로: 맨 위 = 사람 사진 + 결과 한 줄(리비월드와 같은 틀). 사진 위 글자는 밝은 화면에서도 어두운 화면 색을 쓴다. 앱 영상은 바로 아래 */
-.hero.photo{position:relative;padding:0;min-height:min(86vh,760px);display:flex;align-items:center;overflow:hidden;background:#000;color:#EDEDED;
+.hero.photo{position:relative;padding:0;min-height:min(86vh,760px);display:flex;align-items:flex-end;overflow:hidden;background:#000;color:#EDEDED;
   --bg:#000000;--fg:#EDEDED;--fg-2:#C4C4C4;--fg-3:#A1A1A1;--line:#2A2A2A;--line-2:#5A5A5A}
 /* 11-16: 사진을 자르지 않는다 — 높이에 맞춰 통째로 오른쪽에 붙인다 (넓은 화면의 남는 왼쪽 = 검정) */
 .hero-pic{position:absolute;z-index:0;right:0;top:0;height:100%;aspect-ratio:1280/731}
 .hero-bg{display:block;width:100%;height:100%;object-fit:cover}
 .hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,#000 0%,rgba(0,0,0,.8) 14%,rgba(0,0,0,.6) 40%,rgba(0,0,0,0) 66%)}
-.hero-copy{position:relative;z-index:2;width:100%;padding-top:96px;padding-bottom:96px}
+.hero-copy{position:relative;z-index:2;width:100%;padding-top:64px;padding-bottom:56px}
 .hero.photo .hero-copy>div>*{max-width:600px}
 .hero.hero-shot{padding-top:0}.hero.hero-shot .shot{margin-top:56px}
 @media (max-width:860px){
@@ -250,9 +250,10 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
     <a class="brand" href="/ko">Be.Ark</a>
     <nav>
       <a class="nl" href="/ko/formats">기능</a>
+      <a class="nl" href="/ko/why">차별점</a>
       <a class="nl" href="#tutorial">쓰는 법</a>
-      <a class="nl" href="/ko#pricing">요금</a>
-      <a class="nl" href="/ko#news">업데이트 소식</a>
+      <a class="nl" href="/ko/pricing">요금</a>
+      <a class="nl" href="/ko/news">업데이트 소식</a>
       <span class="lang-tg" role="group" aria-label="Language"><a href="/ko/tutorial" class="on" aria-current="true">KO</a><a href="/tutorial">EN</a></span>
       <a class="btn sm primary" href="#download">내려받기</a>
     </nav>
@@ -289,6 +290,9 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
 </section>
 
 
+
+
+
 <section class="final" id="download">
   <div class="wrap">
     <h2 class="d2">지금 쓰는 문서로 시작해요</h2>
@@ -322,14 +326,14 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
 <script>
 (function(){
   var URL_ANN='https://raw.githubusercontent.com/kyungsinkim-sketch/Re-Be-World/main/public/announcements.json';
-  var box=document.getElementById('newsList'); if(!box)return;
+  var box=document.getElementById('newsList'), sec=document.getElementById('news');
   function hasKo(s){return /[가-힣]/.test(s||'')}
   // 공지 본문의 줄 머리 그림 문자는 이 사이트 정책(이모지 없음)에 맞춰 떼고 보여 준다
   function clean(s){return (s||'').split('\n').map(function(l){return l.replace(/^[^\w가-힣\[("']+/,'').trim()}).filter(Boolean).join('\n')}
   fetch(URL_ANN).then(function(r){return r.json()}).then(function(d){
     var list=(Array.isArray(d)?d:(d.items||d.announcements||[])).filter(function(a){return hasKo(a.title)||hasKo(a.body)}).slice(0,3);
-    if(!list.length){document.getElementById('news').style.display='none';return}
-    list.forEach(function(a){
+    if(!list.length){if(sec)sec.style.display='none';return}
+    if(box)list.forEach(function(a){
       var row=document.createElement('div');row.className='news-row';
       var dt=document.createElement('span');dt.className='l5 mono';dt.textContent=a.date||'';
       var r=document.createElement('div');
@@ -339,7 +343,7 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
     });
     var m=/(\d+\.\d+\.\d+)/.exec(list[0].title||'');
     if(m)document.querySelectorAll('[data-ver]').forEach(function(e){e.textContent=m[1]});
-  }).catch(function(){document.getElementById('news').style.display='none'});
+  }).catch(function(){if(sec)sec.style.display='none'});
 })();
 </script>
 <script>(function(){var w=document.getElementById('proShots');if(!w)return;var t=w.querySelector('.shots-track'),p=w.querySelector('.prev'),n=w.querySelector('.next');function go(d){t.scrollBy({left:d*t.clientWidth,behavior:'smooth'})}function st(){p.disabled=t.scrollLeft<4;n.disabled=t.scrollLeft>t.scrollWidth-t.clientWidth-4}p.addEventListener('click',function(){go(-1)});n.addEventListener('click',function(){go(1)});t.addEventListener('scroll',st,{passive:true});st()})();</script>
@@ -354,7 +358,7 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
   for(var j=0;j<cvs.length;j++)io.observe(cvs[j]);
 })();
 </script>
-<script>(function(){ if(location.hostname==='be.ark.works')return; var m={'/':'/beark','/ko':'/beark/ko','/formats':'/beark/formats','/tutorial':'/beark/tutorial','/ko/formats':'/beark/ko-formats','/ko/tutorial':'/beark/ko-tutorial'}; var as=document.querySelectorAll('a[href^="/"]'); for(var i=0;i<as.length;i++){ var h=as[i].getAttribute('href'), k=h.indexOf('#'), b=k<0?h:h.slice(0,k); if(m[b]) as[i].setAttribute('href',m[b]+(k<0?'':h.slice(k))); } })();</script>
+<script>(function(){ if(location.hostname==='be.ark.works')return; var m={'/':'/beark','/ko':'/beark/ko','/formats':'/beark/formats','/tutorial':'/beark/tutorial','/ko/formats':'/beark/ko-formats','/ko/tutorial':'/beark/ko-tutorial','/why':'/beark/why','/pricing':'/beark/pricing','/news':'/beark/news','/ko/why':'/beark/ko-why','/ko/pricing':'/beark/ko-pricing','/ko/news':'/beark/ko-news'}; var as=document.querySelectorAll('a[href^="/"]'); for(var i=0;i<as.length;i++){ var h=as[i].getAttribute('href'), k=h.indexOf('#'), b=k<0?h:h.slice(0,k); if(m[b]) as[i].setAttribute('href',m[b]+(k<0?'':h.slice(k))); } })();</script>
 <script>(function(){var v=document.querySelector("video[data-autoplay]");if(!v)return;v.muted=false;var p=v.play();if(p&&p.catch)p.catch(function(){v.muted=true;var q=v.play();if(q&&q.catch)q.catch(function(){})});})();</script>
 </body>
 </html>
