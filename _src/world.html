@@ -276,6 +276,14 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 .tut-steps li{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
 .tut-steps .num{font-family:'Geist Mono',monospace;font-size:12px;color:var(--gold,#C49C4D);padding-top:3px}
 .tut-steps .l4{margin-top:4px}
+
+/* 11-16 로컬 볼트 구역 — 카드 3장(1px 선·둥글기 10), 폰에서는 한 줄씩 */
+.vault-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+.vault-grid>div{border:1px solid var(--line-2);border-radius:10px;padding:22px}
+.vault-grid .ic{width:26px;height:26px;display:block;margin-bottom:16px;fill:none;stroke:currentColor;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round}
+.vault-grid .l1{margin-bottom:8px}
+.vault-note{margin-top:16px;font-size:12px;line-height:1.6;color:var(--fg-3)}
+@media (max-width:860px){.vault-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -552,12 +560,28 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 </section>
 <!--@/-->
 <!--@home-->
+<section id="vault">
+  <div class="wrap">
+    <div class="sec-head wide">
+      <span class="l2">에이전트 데이터 유저 주권</span>
+      <h2 class="d2">로컬 볼트: 에이전트의 금고는 내 폰 안에 있어요</h2>
+      <p class="lead">로그인 정보도, 에이전트가 쌓은 기억도 서버가 아니라 내 폰에 있어요. 로컬 볼트는 그 구조의 이름이에요.</p>
+    </div>
+    <div class="vault-grid">
+      <div><svg class="ic" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8 10.500V7.500a4 4 0 0 1 8 0v3"/></svg><div class="l1">로그인은 내가 직접 해요</div><p class="l4">웹사이트 로그인은 내 폰 화면에서 내가 직접 해요. 로그인 정보는 우리 서버로 오지 않아요. 에이전트는 비밀번호와 카드번호 칸을 읽지도, 입력하지도 못해요.</p></div>
+      <div><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5.5"/><path d="M7.300 9.500C3.900 11 1.900 13 2.500 14.300c.7 1.800 5.600 1.100 10.900-1.300 5.300-2.500 9-5.800 8.300-7.600-.4-.8-1.500-1.100-3.100-1"/></svg><div class="l1">데이터 행성은 내 폰에 있어요</div><p class="l4">에이전트가 쌓은 기억과 관계, 대화는 데이터 행성이 되어 내 폰에 저장돼요. 우리 서버에 보관하지 않아요.</p></div>
+      <div><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="10" r="4.6"/><path d="M8 7.900C5.200 9.200 3.500 10.900 4 12c.6 1.500 4.700.9 9.100-1.100 4.400-2.100 7.500-4.900 6.900-6.400-.3-.6-1.200-.9-2.600-.8"/><path d="M4 16.500V20h16v-3.500"/></svg><div class="l1">.rebe 파일은 내 열쇠로만 열려요</div><p class="l4">데이터 행성을 파일 하나로 저장해요. 암호와 복구 문구는 나만 알아서, 우리도 열 수 없어요. 새 기기에서 그 파일로 되살려요.</p></div>
+    </div>
+    <p class="vault-note">답을 만들 때는 대화 내용이 내가 고른 AI(Claude, ChatGPT)에 전달돼요. 폰과 컴퓨터 사이를 오가는 내용은 내 기기끼리만 풀 수 있게 잠가서 보내요.</p>
+  </div>
+</section>
+
 <section id="keep">
   <div class="wrap keep">
     <div class="sec-head" style="margin-bottom:0">
       <span class="l2">저장과 이동</span>
       <h2 class="d2">폰을 바꿔도 에이전트를 잃지 않아요</h2>
-      <p class="lead">에이전트의 기억과 기록은 내 폰에 저장해요. .rebe 파일 하나로 내보내서 언제든 다른 폰으로 옮기거나 되살려요.</p>
+      <p class="lead">데이터 행성 화면의 버튼 하나로 에이전트를 .rebe 파일에 저장해요. 그 파일로 언제든 다른 폰에 옮기거나 되살려요.</p>
     </div>
     <div class="file" aria-hidden="true">
       <div class="l1" style="margin-bottom:6px">에이전트 보관 파일</div>
@@ -565,7 +589,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
       <div class="row"><span>기억과 기록</span><span>암호와 복구 문구로 잠가요</span></div>
       <div class="row"><span>성격과 말투</span><span>같이 담아요</span></div>
       <div class="row"><span>파일 형식</span><span>.rebe</span></div>
-      <div class="btns"><span class="btn sm primary">내보내기</span><span class="btn sm">되살리기</span></div>
+      <div class="btns"><span class="btn sm primary">저장하기</span><span class="btn sm">되살리기</span></div>
     </div>
   </div>
 </section>
