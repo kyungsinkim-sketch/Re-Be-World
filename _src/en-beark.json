@@ -165,5 +165,14 @@
  "Be.Ark는 매주 나아져요.": "Be.Ark gets better every week.",
  "1인 창작자 전용 ERP": "ERP for solo creators",
  "견적과 계약, 받을 돈과 줄 돈을 장부 하나로 정리해요. 은행 내역과 맞춰 보고 앞으로의 현금 흐름을 보여줘요. 곧 공개해요.": "Keeps quotes, contracts, money owed to you and money you owe in one ledger. It matches them against your bank records and shows your cash flow ahead. Coming soon.",
- "웹사이트 주소를 주면 그 디자인을 읽어 PPT에 반영해요": "Give it a website address and it reads that design into your deck"
+ "웹사이트 주소를 주면 그 디자인을 읽어 PPT에 반영해요": "Give it a website address and it reads that design into your deck",
+ "닫기": "Close",
+ "쓰는 컴퓨터에 맞는 설치 파일을 골라요.": "Pick the installer for your computer.",
+ "애플 실리콘 맥": "Mac with Apple silicon",
+ "M1 이후 칩": "M1 or later",
+ "인텔 맥": "Mac with Intel",
+ "인텔 칩": "Intel chip",
+ "윈도우": "Windows",
+ "윈도우 10·11": "Windows 10 or 11",
+ "맥의 칩은 애플 메뉴의 ‘이 Mac에 관하여’에서 확인해요.": "To check your Mac's chip, open the Apple menu and choose About This Mac."
 }

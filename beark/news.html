@@ -56,6 +56,17 @@ a{color:inherit;text-decoration:none}
 .btn.sm{height:36px;padding:0 14px;font-size:13px}
 .btns{display:flex;gap:8px;flex-wrap:wrap}
 .btn svg{width:18px;height:18px}
+/* 내려받기 창 (11-16): 머리줄 [내려받기] → 기기 고르기. 글자 L1 제목·L3 항목·L4 설명·L5 캡션, 버튼 1px 선·높이 48·둥글기 10·간격 8 */
+.dl-pop{width:min(400px,calc(100vw - 32px));margin:auto;padding:0;border:1px solid var(--line-2);border-radius:14px;background:var(--bg);color:var(--fg)}
+.dl-pop::backdrop{background:rgba(0,0,0,.5)}
+.dl-pop .dl-head{display:flex;align-items:center;justify-content:space-between;height:52px;padding:0 8px 0 20px;border-bottom:1px solid var(--line)}
+.dl-pop .dl-x{height:36px;padding:0 12px;border:0;border-radius:10px;background:transparent;color:var(--fg-2);font:inherit;font-size:13px;cursor:pointer}
+.dl-pop .dl-x:hover{background:var(--card-2)}
+.dl-pop .dl-body{display:flex;flex-direction:column;gap:8px;padding:20px}
+.dl-pop .dl-body>.l4{margin:0 0 8px}
+.dl-pop .dl-item{justify-content:space-between;width:100%;height:52px;white-space:normal}
+.dl-pop .dl-item .l5{font-weight:400}
+.dl-pop .dl-body>.l5{margin:8px 0 0}
 svg.ic{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
 /* 머리줄 52 */
@@ -255,7 +266,7 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
       <a class="nl" href="/pricing">Pricing</a>
       <a class="nl" href="#news">Updates</a>
       <span class="lang-tg" role="group" aria-label="Language"><a href="/ko/news">KO</a><a href="/news" class="on" aria-current="true">EN</a></span>
-      <a class="btn sm primary" href="#download">Download</a>
+      <a class="btn sm primary" href="#download" data-dl-open>Download</a>
     </nav>
   </div>
 </header>
@@ -289,6 +300,17 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
       </div>
 </section>
 </main>
+
+<dialog class="dl-pop" id="dlPop" aria-labelledby="dlPopT">
+  <div class="dl-head"><span class="l1" id="dlPopT">Download</span><button type="button" class="dl-x" data-dl-close>Close</button></div>
+  <div class="dl-body">
+    <p class="l4">Pick the installer for your computer.</p>
+    <a class="btn dl-item" href="/api/dl?os=mac"><span>Mac with Apple silicon</span><span class="l5">M1 or later</span></a>
+    <a class="btn dl-item" href="/api/dl?os=intel"><span>Mac with Intel</span><span class="l5">Intel chip</span></a>
+    <a class="btn dl-item" href="/api/dl?os=win"><span>Windows</span><span class="l5">Windows 10 or 11</span></a>
+    <p class="l5">To check your Mac's chip, open the Apple menu and choose About This Mac.</p>
+  </div>
+</dialog>
 
 <footer>
   <div class="wrap">
@@ -344,5 +366,10 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
 })();
 </script>
 <script>(function(){ if(location.hostname==='be.ark.works')return; var m={'/':'/beark','/ko':'/beark/ko','/formats':'/beark/formats','/tutorial':'/beark/tutorial','/ko/formats':'/beark/ko-formats','/ko/tutorial':'/beark/ko-tutorial','/why':'/beark/why','/pricing':'/beark/pricing','/news':'/beark/news','/ko/why':'/beark/ko-why','/ko/pricing':'/beark/ko-pricing','/ko/news':'/beark/ko-news'}; var as=document.querySelectorAll('a[href^="/"]'); for(var i=0;i<as.length;i++){ var h=as[i].getAttribute('href'), k=h.indexOf('#'), b=k<0?h:h.slice(0,k); if(m[b]) as[i].setAttribute('href',m[b]+(k<0?'':h.slice(k))); } })();</script>
+<script>(function(){var d=document.getElementById('dlPop');if(!d||!d.showModal)return;
+document.addEventListener('click',function(e){var t=e.target;if(!t||!t.closest)return;
+if(t.closest('[data-dl-open]')){e.preventDefault();d.showModal();return}
+if(t.closest('[data-dl-close]')||t===d){d.close();return}
+if(t.closest('.dl-item'))setTimeout(function(){d.close()},300)});})();</script>
 </body>
 </html>
