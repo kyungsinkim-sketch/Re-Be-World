@@ -99,7 +99,6 @@
  "에이전트를 .rebe 파일 하나로 보관해요. 새 컴퓨터에서 그 파일로 되살려요.": "Keep your agent in a single .rebe file. Restore it from that file on a new computer.",
  "AI를 바꿔도 기억은 남아요": "Change AI, keep the memory",
  "Claude나 ChatGPT 구독, 내 컴퓨터에서 도는 모델 중에서 골라요. API 키로도 연결할 수 있어요. 기억은 내 컴퓨터에 있어서 그대로 이어져요.": "Choose a Claude or ChatGPT subscription, or a model running on your computer. You can also connect with an API key. The memory lives on your computer, so it carries over.",
- "창작 ERP": "Creative ERP",
  "이전 화면": "Previous screen",
  "다음 화면": "Next screen",
  "Pro 스킬": "Pro skills",
