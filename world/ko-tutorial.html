@@ -278,6 +278,18 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 @media (max-width:860px){.vault-grid{grid-template-columns:1fr}}
 .soon{display:inline-block;margin-left:6px;padding:1px 8px;border:1px solid var(--line-2);border-radius:999px;font-size:11px;font-weight:500;color:var(--fg-3);vertical-align:2px;white-space:nowrap}
 .soon.now{color:var(--fg);border-color:var(--fg-3)}
+
+/* 11-16 비전: 행성 그물 — 선 위로 작은 빛이 오가고, 행성은 천천히 숨 쉰다. 움직임 줄이기 설정이면 멈춤 */
+.vnet-box{margin-top:32px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#000}
+.vnet{display:block;width:100%;height:380px}
+.vnet-lines path{stroke:rgba(255,255,255,.16);stroke-width:1;fill:none}
+.vnet .vr{fill:none;stroke:rgba(255,255,255,.45);stroke-width:1}
+.vnet .vme{fill:none;stroke:rgba(255,255,255,.35);stroke-width:1;stroke-dasharray:2 5}
+.vnet-planets>g{animation:vnetb 6s ease-in-out infinite}
+.vnet-planets>g>circle:first-of-type,.vnet-planets>g>ellipse+circle{transform-box:fill-box;transform-origin:center}
+@keyframes vnetb{0%,100%{opacity:.82}50%{opacity:1}}
+@media (max-width:860px){.vnet{height:260px}}
+@media (prefers-reduced-motion:reduce){.vnet-planets>g{animation:none}.vnet-pulses{display:none}}
 </style>
 </head>
 <body>
