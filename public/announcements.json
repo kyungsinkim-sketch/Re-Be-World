@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-11-17-beta-1-10-1",
+    "date": "2026-11-17",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.10.1 — 행성 보관과 로컬 볼트",
+    "body": "🪐 행성 보관: 대시보드의 버튼 하나로 에이전트를 .rebe 파일에 저장하고, 새 컴퓨터에서 그 파일로 되살려요.\n🔐 로컬 볼트: API 키와 연결 토큰을 맥 키체인·윈도우 자격 증명 관리자에 보관해요.\n📊 PPT: 매트릭스·퍼널·피라미드·순환·벤·로드맵·폭포 도식과 방사형 차트를 편집할 수 있는 도형으로 그려요. 기본 글꼴은 Pretendard예요.\n🌐 웹 탭: 웹 컴포넌트로 만든 입력 칸도 읽고 채워요. 여러 에이전트가 동시에 웹 작업을 해도 서로 섞이지 않아요.\n💬 X·Threads: 글 주소를 주면 그 글에 답글을 달아요.\n🪟 윈도우: 파일 경로 때문에 도구 호출이 실패하던 문제를 고쳤어요.\n🛠 안정성: 에이전트가 하겠다고 말한 뒤 멈추던 문제를 줄였어요. PPT를 만들다 작은 입력 실수로 전체가 취소되던 문제도 고쳤어요."
+  },
+  {
+    "id": "2026-11-17-beta-1-10-1",
+    "date": "2026-11-17",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.10.1 — Planet keep and Local Vault",
+    "body": "🪐 Planet keep: save your agent to a .rebe file with one button on the dashboard, and restore it on a new computer.\n🔐 Local Vault: API keys and connection tokens are stored in the macOS Keychain or Windows Credential Manager.\n📊 PPT: matrix, funnel, pyramid, cycle, Venn, roadmap and waterfall diagrams plus radar charts, drawn as editable shapes. The default font is Pretendard.\n🌐 Web tab: reads and fills input fields built as web components. Agents working on the web at the same time no longer get mixed up.\n💬 X and Threads: give a post link and the agent replies to that post.\n🪟 Windows: fixed tool calls failing because of file paths.\n🛠 Stability: agents stop less often after saying they will do something. A small input mistake no longer cancels a whole PPT."
+  },
+  {
     "id": "2026-11-09-beta-1-9-5",
     "date": "2026-11-09",
     "lang": "ko",
