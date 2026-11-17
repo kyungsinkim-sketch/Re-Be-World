@@ -207,12 +207,9 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
 .planet-cv{display:block;width:100%;max-width:284px;aspect-ratio:1/1}
 .why-key{margin-top:18px;padding-left:14px;border-left:2px solid var(--gold)}
 @media (max-width:860px){.why-top{grid-template-columns:1fr;gap:28px}.planet-box{max-width:280px;margin:0 auto}}
-.tut{display:grid;grid-template-columns:1.55fr 1fr;gap:40px;align-items:start}
-.tut-steps{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-.tut-steps li{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
-.tut-steps .num{font-family:'Geist Mono',monospace;font-size:12px;color:var(--gold);padding-top:3px}
-.tut-steps .l4{margin-top:4px}
-@media (max-width:860px){.tut{grid-template-columns:1fr;gap:24px}}
+/* 11-17 빠불로: 튜토리얼 오른쪽 단계 글은 영상에 다 담겨 있어 뺌 → 영상을 구역 폭 전체로 */
+.tut{display:block}
+.tut video{display:block;width:100%;height:auto}
 .lang-tg{display:inline-flex;border:1px solid var(--line-2,var(--line));border-radius:999px;padding:2px;font-size:12px;line-height:1}
 .lang-tg a{padding:6px 10px;border-radius:999px;color:var(--fg-2);text-decoration:none}
 .lang-tg a.on{background:var(--fg);color:var(--bg)}
@@ -293,14 +290,6 @@ footer .legal p{font-size:12px;line-height:1.7;color:var(--fg-3)}
           <source src="/beark/media/beark-tutorial.mp4" type="video/mp4">
         </video>
       </div>
-      <ol class="tut-steps">
-        <li><span class="num">01</span><div><div class="l1">맡길 일을 골라요</div><p class="l4">기획, 디자인, 제작 같은 역할 10가지 중에서 골라요. 빈 팀원으로 시작해도 돼요.</p></div></li>
-        <li><span class="num">02</span><div><div class="l1">이름과 얼굴을 정해요</div><p class="l4">에이전트 이름을 짓고 이름 색을 골라요. 나중에 바꿀 수 있어요.</p></div></li>
-        <li><span class="num">03</span><div><div class="l1">쓰던 AI로 로그인해요</div><p class="l4">Claude나 ChatGPT 계정으로 로그인해요. 내 컴퓨터에서 도는 모델도 고를 수 있어요.</p></div></li>
-        <li><span class="num">04</span><div><div class="l1">나를 소개해요</div><p class="l4">부를 이름과 하는 일을 적어요. 에이전트가 나에게 맞춰 답해요.</p></div></li>
-        <li><span class="num">05</span><div><div class="l1">작업 폴더를 연결해요</div><p class="l4">에이전트가 문서를 만들고 저장할 폴더를 골라요.</p></div></li>
-        <li><span class="num">06</span><div><div class="l1">화면을 둘러봐요</div><p class="l4">에이전트 목록, 세션, 설정, 채팅창, 문서 작업 공간을 앱이 차례로 짚어 줘요.</p></div></li>
-      </ol>
     </div>
   </div>
 </section>
