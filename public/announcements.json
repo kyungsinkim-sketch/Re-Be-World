@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-11-18-beta-1-10-2",
+    "date": "2026-11-18",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.10.2 — PPT 픽토그램과 GPT 최신 모델",
+    "body": "📊 PPT: 흰 바탕에 파랑 하나를 쓰는 리서치 디자인이 생겼어요. 픽토그램 5천여 개를 쓸 수 있고, 사람 소개·진행률·숫자와 차트를 한 장에 담아요.\n🧠 GPT 두뇌: GPT-6.2 Astra 같은 최신 모델을 고를 수 있어요. 새 모델이 나오면 목록이 따라가요. 문서와 그림 도구를 쓰지 못하던 문제도 고쳤어요.\n🌐 웹: 웹 페이지의 그림·영상·PDF를 에이전트가 내려받아요. 새 창으로 열리는 링크가 반응하지 않던 문제도 고쳤어요.\n🔔 알림: 오래 걸린 일이 끝나면 알려드려요.\n💬 대화: 두 대화를 동시에 진행할 때 답이 섞이던 문제를 고쳤어요. 에이전트가 도구를 부르다 멈추던 경우도 줄였어요.\n⚙️ 설정: 앱 업데이트 칸에서 지금 버전을 볼 수 있어요."
+  },
+  {
+    "id": "2026-11-18-beta-1-10-2",
+    "date": "2026-11-18",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.10.2 — PPT pictograms and the newest GPT models",
+    "body": "📊 PPT: a new Research design (white page, one blue accent), about 5,000 pictograms, and slides for people, progress, and numbers with a chart.\n🧠 GPT brain: pick the newest models such as GPT-6.2 Astra; the list follows new releases. Also fixed document and image tools not being used.\n🌐 Web: the agent can download images, videos and PDFs from a web page. Links that open a new window now respond.\n🔔 Notifications: you get notified when a long task finishes.\n💬 Chat: fixed answers getting mixed when two chats run at the same time, and fewer stalls while calling tools.\n⚙️ Settings: the app update section now shows your current version."
+  },
+  {
     "id": "2026-11-17-beta-1-10-1",
     "date": "2026-11-17",
     "lang": "ko",
