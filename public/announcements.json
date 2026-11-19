@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-11-19-beta-1-10-3",
+    "date": "2026-11-19",
+    "lang": "ko",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.10.3 — 레퍼런스 영상을 장면별로 정리해요",
+    "body": "🎬 레퍼런스 영상 정리: 영상 주소나 파일을 주면 장면별로 나눠 이미지로 저장해요. 장면마다 샷 크기·앵글·화각·카메라 움직임을 적어 PPT 스토리보드로 만들어요.\n🖼️ 문서: 문서 안의 그림이 보여요. PDF로 내보낼 때도 그림이 함께 담겨요.\n🔐 PDF: 암호가 걸린 PDF를 읽어요. 에이전트에게 암호를 알려 주세요.\n🌐 웹: 구글 스프레드시트처럼 열리지 않던 페이지가 열려요. 페이지가 뜨지 않으면 에이전트가 이유를 찾아요."
+  },
+  {
+    "id": "2026-11-19-beta-1-10-3",
+    "date": "2026-11-19",
+    "lang": "en",
+    "tag": "Update",
+    "title": "Be.Ark Beta 1.10.3 — Break a reference video into scenes",
+    "body": "🎬 Reference videos: give a video link or file and the agent splits it into scenes, saves a still for each, and builds a PowerPoint storyboard with shot size, angle, field of view and camera move.\n🖼️ Documents: images inside a document now show, and they are included when you export to PDF.\n🔐 PDF: password-protected PDFs can be read — tell the agent the password.\n🌐 Web: pages that failed to open, such as Google Sheets, now load. When a page does not load, the agent can find out why."
+  },
+  {
     "id": "2026-11-18-beta-1-10-2",
     "date": "2026-11-18",
     "lang": "ko",
