@@ -25,15 +25,50 @@ async function signedUrl(direct) {
   return (r.status >= 300 && r.status < 400 && loc) ? loc : null;
 }
 
+// 11-23 내려받기 횟수 (빠불로 결정 A): 날짜·운영체제·버전별 횟수만 센다. 누가 받았는지(IP·기기·계정)는 어디에도 적지 않는다.
+//   자리 = Supabase `download_daily` (함수 incr_download만 올릴 수 있다 — 표는 익명 읽기·쓰기 ❌). 열쇠는 사이트 페이지에 이미 공개된 것과 같다.
+//   세는 일이 실패하거나 느려도 내려받기는 그대로 간다(1.2초 안에 안 끝나면 버린다).
+const SB = 'https://fkggbfqfgsgsacokjuqa.supabase.co';
+const SB_KEY = 'sb_publishable_t3TDevoknYi9XDmspshfBQ_xKZCQI9v';
+const BOT = /bot|crawl|spider|slurp|preview|facebookexternalhit|whatsapp|telegram|curl|wget|python|headless|monitor|uptime/i;
+async function countClick(req, os, direct) {
+  try {
+    const ua = String((req.headers && req.headers['user-agent']) || '');
+    if (!ua || BOT.test(ua) || (req.method && req.method !== 'GET')) return;   // 미리보기·크롤러·HEAD는 세지 않는다
+    const m = /\/releases\/download\/v?(\d+\.\d+\.\d+)\//.exec(direct);
+    if (!m) return;
+    const ctl = new AbortController();
+    const t = setTimeout(() => ctl.abort(), 1200);
+    await fetch(`${SB}/rest/v1/rpc/incr_download`, {
+      method: 'POST', signal: ctl.signal,
+      headers: { apikey: SB_KEY, Authorization: `Bearer ${SB_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ p_os: os, p_version: m[1] }),
+    }).catch(() => {});
+    clearTimeout(t);
+  } catch (_) { /* 세는 일 때문에 내려받기가 막히면 안 된다 */ }
+}
+
+// 서명 주소는 1시간 유효 → 이 함수 인스턴스 안에서 5분 기억한다(GitHub 익명 한도 60/h 보호).
+//   11-23 전에는 응답 자체를 엣지에 5분 캐시했는데, 그러면 캐시가 답한 클릭은 이 함수에 오지 않아 셀 수 없다 → 응답은 캐시하지 않고 주소만 기억한다.
+const signedMemo = new Map();   // direct → { url, at }
+async function signedUrlCached(direct) {
+  const hit = signedMemo.get(direct);
+  if (hit && Date.now() - hit.at < 5 * 60 * 1000) return hit.url;
+  const url = await signedUrl(direct);
+  if (url) signedMemo.set(direct, { url, at: Date.now() });
+  return url;
+}
+
 module.exports = async (req, res) => {
   const os = String((req.query && req.query.os) || 'win').toLowerCase();
   const src = readSources();
   const direct = src[os === 'mac' ? 'mac' : os === 'intel' ? 'intel' : 'win'] || src.win;
   if (!direct) { res.statusCode = 404; res.end('no download configured'); return; }
   let target = null;
-  try { target = await signedUrl(direct); } catch (_) { target = null; }
-  // 서명 주소는 1시간 유효 → 엣지 캐시 5분(API 호출 = 시간당 12회 안팎, 익명 한도 60 안)
-  res.setHeader('Cache-Control', target ? 'public, s-maxage=300, max-age=0' : 'no-store');
+  const key = os === 'mac' ? 'mac' : os === 'intel' ? 'intel' : 'win';
+  const [t0] = await Promise.all([signedUrlCached(direct).catch(() => null), countClick(req, key, direct)]);
+  target = t0;
+  res.setHeader('Cache-Control', 'no-store');   // 클릭마다 이 함수에 와야 셀 수 있다
   res.setHeader('X-DL-Mode', target ? 'api-signed' : 'direct-fallback');
   res.statusCode = 302;
   res.setHeader('Location', target || direct);
