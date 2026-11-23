@@ -63,6 +63,8 @@ header .wrap{height:52px;display:flex;align-items:center;justify-content:space-b
 nav{display:flex;align-items:center;gap:22px}
 nav a.nl{font-size:13px;color:var(--fg-2)}
 nav a.nl:hover{color:var(--fg)}
+nav a.nl.on,.mnav a.on{color:var(--fg);font-weight:600}
+.mnav{display:none}
 
 /* 히어로 */
 .hero{padding:88px 0 0}
@@ -159,6 +161,9 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
   .d1{font-size:36px}.d2{font-size:24px}
   .hero{padding-top:56px}
   nav a.nl{display:none}
+  /* 11-23: 폰에서도 네 페이지를 오갈 수 있게 머리줄 아래 한 줄 */
+  .mnav{display:flex;gap:22px;padding:0 24px;height:40px;align-items:center;border-top:1px solid var(--line);overflow-x:auto}
+  .mnav a{font-size:13px;color:var(--fg-2);white-space:nowrap}
   .mock-body{grid-template-columns:1fr}.doc{border-right:0;border-bottom:1px solid var(--line);padding:22px}
   .mock-tab:not(.on){display:none}
   section{padding:64px 0}
@@ -344,17 +349,15 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
   <div class="wrap">
     <a class="brand" href="/" style="font-weight:700">Re-Be World</a>
     <nav>
-      <a class="nl" href="/#people">Network</a>
-      <a class="nl" href="/#flow">Inbox</a>
-      <a class="nl" href="/#meet">Schedule</a>
-      <a class="nl" href="/#place">Places</a>
-      <a class="nl" href="/#web">Web tasks</a>
-      <a class="nl" href="/#memory">Why us</a>
-      <a class="nl" href="/tutorial">Tutorial</a>
+      <a class="nl" href="/" data-pg="home">About</a>
+      <a class="nl" href="/features" data-pg="features">Features</a>
+      <a class="nl" href="/vision" data-pg="vision">Vision</a>
+      <a class="nl" href="/tutorial" data-pg="tutorial">Tutorial</a>
       <span class="lang-tg" role="group" aria-label="Language"><a href="/ko/tutorial">KO</a><a href="/tutorial" class="on" aria-current="true">EN</a></span>
       <a class="btn sm primary" href="#notify">Get notified at launch</a>
     </nav>
   </div>
+  <div class="mnav"><a class="nl" href="/" data-pg="home">About</a><a class="nl" href="/features" data-pg="features">Features</a><a class="nl" href="/vision" data-pg="vision">Vision</a><a class="nl" href="/tutorial" data-pg="tutorial">Tutorial</a></div>
 </header>
 
 <main>
@@ -407,6 +410,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
     </div>
   </div>
 </footer>
+<script>(function(){var p=location.pathname.replace(/^\/ko/,"").replace(/\/$/,"")||"/";var pg=p==="/"?"home":p.slice(1);var l=document.querySelectorAll("a[data-pg]");for(var i=0;i<l.length;i++){if(l[i].getAttribute("data-pg")===pg){l[i].className+=" on";l[i].setAttribute("aria-current","page");}}})();</script>
 <script src="/world/rebe-planet.js"></script>
 <script>
 (function(){

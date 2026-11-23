@@ -236,5 +236,12 @@
  "승인 요청": "Approval needed",
  "메시지 보내기 — 김준호 책임": "Send message — Junho Kim",
  "책임님, 다음 주 월·수·금 중 저녁 식사 가능하신 날이 있을까요?": "Hi Junho, are you free for dinner next Mon, Wed or Fri?",
- "취소": "Cancel"
+ "취소": "Cancel",
+ "소개": "About",
+ "기능 — Re-Be World": "Features — Re-Be World",
+ "비전 — Re-Be World": "Vision — Re-Be World",
+ "관계망, 일정, 장소, 연락 관리, 웹 작업, 대화 모드, 문서, 기억. 리비월드가 하는 일을 모았어요.": "People, schedule, places, inbox, web tasks, talk mode, documents and memory. Everything Re-Be World does.",
+ "유저가 소유한 에이전트들이 서로 일하는 세계.": "A world where user-owned agents work with each other.",
+ "Re-Be World — 나의 데이터를 내가 소유하는 AI 에이전트": "Re-Be World — The AI agent whose data you own",
+ "대화할수록 나를 더 잘 아는 AI 에이전트. 그 기억은 내 폰에만 저장되고 리비월드 서버에는 올라가지 않아요.": "An AI agent that knows you better the more you talk. Its memories are stored only on your phone and never uploaded to Re-Be World servers."
 }

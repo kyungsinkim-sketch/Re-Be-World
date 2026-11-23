@@ -7,10 +7,22 @@
 <link rel="alternate" hreflang="x-default" href="https://www.re-be.world/">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <!--@home-->
-<title>Re-Be World — 크리에이터를 위한 에이전트</title>
-<meta name="description" content="협찬 문의와 메일, DM을 한곳에 모으고 내 말투로 답장 초안을 써요. 보내기는 내가 눌러요.">
-<meta property="og:title" content="Re-Be World — 내 기억으로 자라는 에이전트">
+<title>Re-Be World — 나의 데이터를 내가 소유하는 AI 에이전트</title>
+<meta name="description" content="대화할수록 나를 더 잘 아는 AI 에이전트. 그 기억은 내 폰에만 저장되고 리비월드 서버에는 올라가지 않아요.">
+<meta property="og:title" content="Re-Be World — 나의 데이터를 내가 소유하는 AI 에이전트">
 <meta property="og:description" content="내가 이름 지은 에이전트가 내 폰에 살아요.">
+<!--@/-->
+<!--@features-->
+<title>기능 — Re-Be World</title>
+<meta name="description" content="관계망, 일정, 장소, 연락 관리, 웹 작업, 대화 모드, 문서, 기억. 리비월드가 하는 일을 모았어요.">
+<meta property="og:title" content="기능 — Re-Be World">
+<meta property="og:description" content="관계망, 일정, 장소, 연락 관리, 웹 작업, 대화 모드, 문서, 기억. 리비월드가 하는 일을 모았어요.">
+<!--@/-->
+<!--@vision-->
+<title>비전 — Re-Be World</title>
+<meta name="description" content="유저가 소유한 에이전트들이 서로 일하는 세계.">
+<meta property="og:title" content="비전 — Re-Be World">
+<meta property="og:description" content="유저가 소유한 에이전트들이 서로 일하는 세계.">
 <!--@/-->
 <!--@tutorial-->
 <title>튜토리얼 — Re-Be World</title>
@@ -71,6 +83,8 @@ header .wrap{height:52px;display:flex;align-items:center;justify-content:space-b
 nav{display:flex;align-items:center;gap:22px}
 nav a.nl{font-size:13px;color:var(--fg-2)}
 nav a.nl:hover{color:var(--fg)}
+nav a.nl.on,.mnav a.on{color:var(--fg);font-weight:600}
+.mnav{display:none}
 
 /* 히어로 */
 .hero{padding:88px 0 0}
@@ -167,6 +181,9 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
   .d1{font-size:36px}.d2{font-size:24px}
   .hero{padding-top:56px}
   nav a.nl{display:none}
+  /* 11-23: 폰에서도 네 페이지를 오갈 수 있게 머리줄 아래 한 줄 */
+  .mnav{display:flex;gap:22px;padding:0 24px;height:40px;align-items:center;border-top:1px solid var(--line);overflow-x:auto}
+  .mnav a{font-size:13px;color:var(--fg-2);white-space:nowrap}
   .mock-body{grid-template-columns:1fr}.doc{border-right:0;border-bottom:1px solid var(--line);padding:22px}
   .mock-tab:not(.on){display:none}
   section{padding:64px 0}
@@ -352,17 +369,15 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
   <div class="wrap">
     <a class="brand" href="#" style="font-weight:700">Re-Be World</a>
     <nav>
-      <a class="nl" href="#people">관계망</a>
-      <a class="nl" href="#flow">연락</a>
-      <a class="nl" href="#meet">일정</a>
-      <a class="nl" href="#place">장소</a>
-      <a class="nl" href="#web">웹 작업</a>
-      <a class="nl" href="#memory">차별점</a>
-      <a class="nl" href="/ko/tutorial">튜토리얼</a>
+      <a class="nl" href="/ko" data-pg="home">소개</a>
+      <a class="nl" href="/ko/features" data-pg="features">기능</a>
+      <a class="nl" href="/ko/vision" data-pg="vision">비전</a>
+      <a class="nl" href="/ko/tutorial" data-pg="tutorial">튜토리얼</a>
       <span class="lang-tg" role="group" aria-label="Language"><a href="/ko" class="on" aria-current="true">KO</a><a href="/">EN</a></span>
       <a class="btn sm primary" href="#notify">출시 알림 받기</a>
     </nav>
   </div>
+  <div class="mnav"><a class="nl" href="/ko" data-pg="home">소개</a><a class="nl" href="/ko/features" data-pg="features">기능</a><a class="nl" href="/ko/vision" data-pg="vision">비전</a><a class="nl" href="/ko/tutorial" data-pg="tutorial">튜토리얼</a></div>
 </header>
 
 <main>
@@ -393,7 +408,8 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
       </div>
   </div>
 </div>
-
+<!--@/-->
+<!--@home-->
 <section id="memory">
   <div class="wrap mem">
     <div class="phone" aria-hidden="true" style="margin:0">
@@ -443,20 +459,23 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
     <p class="vault-note">답을 만들 때는 대화 내용이 내가 고른 AI(Claude, ChatGPT)에 전달돼요. 폰과 컴퓨터 사이를 오가는 내용은 내 기기끼리만 풀 수 있게 잠가서 보내요.</p>
   </div>
 </section>
-<section id="usp">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="l2">기억</span>
-      <h2 class="d2">누구와 언제 어떤 일을 했는지 기억해요</h2>
-      <p class="lead">다음 문의가 오면 그 기억으로 답해요.</p>
+<section id="see">
+  <div class="wrap mem">
+    <div>
+      <span class="l2">이렇게 일해요</span>
+      <h2 class="d2">연락이 오면 초안이 먼저 와 있어요</h2>
+      <p class="lead">누가 보냈는지, 전에 무슨 얘기를 했는지 기억하고 내 말투로 답장을 써 둬요. 확인하고 보내기만 하면 돼요.</p>
     </div>
-    <div class="steps usp">
-      <div><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="14" cy="14" r="10"/></svg><div class="l1">인물</div><p class="l4">함께 일한 담당자와 연락한 기록</p></div>
-      <div><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="4" width="20" height="20"/></svg><div class="l1">장소</div><p class="l4">촬영하고 만난 곳</p></div>
-      <div><svg viewBox="0 0 28 28" fill="none" stroke="#C49C4D" stroke-width="1.8" stroke-linejoin="round"><path d="M14 4 25 23H3z"/></svg><div class="l1">이벤트</div><p class="l4">마감과 일정, 지난 협업</p></div>
+    <div class="phone" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="metadata" poster="/world/media/rebe-reply-poster.jpg" width="390" height="844">
+        <source src="/world/media/rebe-reply.webm" type="video/webm">
+        <source src="/world/media/rebe-reply.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
 </section>
+<!--@/-->
+<!--@features-->
 <section id="people">
   <div class="wrap mem">
     <div class="phone" aria-hidden="true" style="margin:0">
@@ -523,23 +542,6 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
     </div>
   </div>
 </section>
-<section id="see">
-  <div class="wrap mem">
-    <div>
-      <span class="l2">이렇게 일해요</span>
-      <h2 class="d2">연락이 오면 초안이 먼저 와 있어요</h2>
-      <p class="lead">누가 보냈는지, 전에 무슨 얘기를 했는지 기억하고 내 말투로 답장을 써 둬요. 확인하고 보내기만 하면 돼요.</p>
-    </div>
-    <div class="phone" aria-hidden="true">
-      <video autoplay muted loop playsinline preload="metadata" poster="/world/media/rebe-reply-poster.jpg" width="390" height="844">
-        <source src="/world/media/rebe-reply.webm" type="video/webm">
-        <source src="/world/media/rebe-reply.mp4" type="video/mp4">
-      </video>
-    </div>
-  </div>
-</section>
-
-
 <section id="flow">
   <div class="wrap">
     <div class="sec-head">
@@ -558,9 +560,6 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
     </div>
   </div>
 </section>
-
-
-
 <section id="web">
   <div class="wrap mem rev">
     <div class="phone" aria-hidden="true" style="margin:0">
@@ -583,8 +582,6 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
     </div>
   </div>
 </section>
-
-
 <section id="voice">
   <div class="wrap mem">
     <div class="phone" aria-hidden="true" style="margin:0">
@@ -607,7 +604,6 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
     </div>
   </div>
 </section>
-
 <section id="docs">
   <div class="wrap mem rev">
     <div class="phone" aria-hidden="true" style="margin:0">
@@ -630,9 +626,38 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
     </div>
   </div>
 </section>
-
-
-
+<section id="usp">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="l2">기억</span>
+      <h2 class="d2">누구와 언제 어떤 일을 했는지 기억해요</h2>
+      <p class="lead">다음 문의가 오면 그 기억으로 답해요.</p>
+    </div>
+    <div class="steps usp">
+      <div><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="14" cy="14" r="10"/></svg><div class="l1">인물</div><p class="l4">함께 일한 담당자와 연락한 기록</p></div>
+      <div><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="4" width="20" height="20"/></svg><div class="l1">장소</div><p class="l4">촬영하고 만난 곳</p></div>
+      <div><svg viewBox="0 0 28 28" fill="none" stroke="#C49C4D" stroke-width="1.8" stroke-linejoin="round"><path d="M14 4 25 23H3z"/></svg><div class="l1">이벤트</div><p class="l4">마감과 일정, 지난 협업</p></div>
+    </div>
+  </div>
+</section>
+<!--@/-->
+<!--@vision-->
+<section id="vision">
+  <div class="wrap">
+    <div class="sec-head wide">
+      <span class="l2">비전</span>
+      <h2 class="d2">유저가 소유한 에이전트들이 서로 일하는 세계</h2>
+      <p class="lead">리비월드는 에이전트 하나를 잘 만드는 데서 끝나지 않아요. 유저가 소유한 에이전트가 많아지면, 그 에이전트들이 서로 정보를 주고받고 거래하는 세계가 열려요.</p>
+    </div>
+    <div class="vault-grid">
+      <div><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="8.500" r="3.500"/><path d="M5 20c.6-3.600 3.400-5.500 7-5.500s6.400 1.900 7 5.500"/></svg><div class="l1">유저가 소유하는 에이전트 <span class="soon now">지금</span></div><p class="l4">기억과 관계가 내 기기에 쌓이고, 파일 하나로 어디든 가져가요. 모든 것은 여기서 시작해요.</p></div>
+      <div><svg class="ic" viewBox="0 0 24 24"><circle cx="6" cy="7" r="2.500"/><circle cx="18" cy="7" r="2.500"/><circle cx="12" cy="18" r="2.500"/><path d="M8.300 7h7.400M7.300 9.100l3.400 6.700M16.700 9.100l-3.400 6.700"/></svg><div class="l1">에이전트 사이의 정보 거래 네트워크 <span class="soon">앞으로</span></div><p class="l4">내 에이전트가 다른 사람의 에이전트와 필요한 정보를 주고받아요. 무엇을 내놓고 무엇을 받을지는 유저가 정해요.</p></div>
+      <div><svg class="ic" viewBox="0 0 24 24"><path d="M4 9.500 5.500 5h13L20 9.500"/><path d="M4 9.500a2.700 2.700 0 0 0 5.300 0 2.700 2.700 0 0 0 5.400 0 2.700 2.700 0 0 0 5.300 0"/><path d="M5.500 12v7h13v-7"/></svg><div class="l1">유저 주권 에이전트 마켓플레이스 <span class="soon">앞으로</span></div><p class="l4">에이전트의 지식과 능력을 사고파는 장터를 열어요. 데이터는 유저 기기에 남고, 유저가 허락한 것만 오가요.</p></div>
+    </div>
+    <!-- 11-16 빠불로: 비전 구역 아래 = 여러 행성이 그물처럼 이어진 그림(유저마다 행성 하나, 가운데 = 내 행성). 생성 스크립트 = 워크스페이스 tmp-shots/vault/vnet.py -->
+    <div class="vnet-box"><svg class="vnet" viewBox="0 0 1080 380" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true"><defs><radialGradient id="vg0" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#FF5C9E"/><stop offset="1" stop-color="#FF5C9E" stop-opacity=".55"/></radialGradient><radialGradient id="vg1" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#FF8A3D"/><stop offset="1" stop-color="#FF8A3D" stop-opacity=".55"/></radialGradient><radialGradient id="vg2" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#FFD23F"/><stop offset="1" stop-color="#FFD23F" stop-opacity=".55"/></radialGradient><radialGradient id="vg3" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#35E08A"/><stop offset="1" stop-color="#35E08A" stop-opacity=".55"/></radialGradient><radialGradient id="vg4" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#38D0FF"/><stop offset="1" stop-color="#38D0FF" stop-opacity=".55"/></radialGradient><radialGradient id="vg5" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#4C6FFF"/><stop offset="1" stop-color="#4C6FFF" stop-opacity=".55"/></radialGradient><radialGradient id="vg6" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#A86BFF"/><stop offset="1" stop-color="#A86BFF" stop-opacity=".55"/></radialGradient><linearGradient id="vgme" x1="0" y1="0" x2="1" y2="1"><stop offset="0.00" stop-color="#FF5C9E"/><stop offset="0.17" stop-color="#FF8A3D"/><stop offset="0.33" stop-color="#FFD23F"/><stop offset="0.50" stop-color="#35E08A"/><stop offset="0.67" stop-color="#38D0FF"/><stop offset="0.83" stop-color="#4C6FFF"/><stop offset="1.00" stop-color="#A86BFF"/></linearGradient></defs><g class="vnet-lines"><path id="ve0" d="M95.4 72.5L232.6 63.7"/><path id="ve1" d="M95.4 72.5L74.3 211.8"/><path id="ve2" d="M232.6 63.7L378.8 39.2"/><path id="ve3" d="M378.8 39.2L417.1 169.7"/><path id="ve4" d="M587.6 81.7L712.9 73.5"/><path id="ve5" d="M587.6 81.7L540.0 190.0"/><path id="ve6" d="M587.6 81.7L683.4 157.8"/><path id="ve7" d="M712.9 73.5L998.4 66.9"/><path id="ve8" d="M712.9 73.5L540.0 190.0"/><path id="ve9" d="M712.9 73.5L683.4 157.8"/><path id="ve10" d="M998.4 66.9L824.2 320.9"/><path id="ve11" d="M74.3 211.8L79.3 321.5"/><path id="ve12" d="M74.3 211.8L199.8 306.3"/><path id="ve13" d="M417.1 169.7L540.0 190.0"/><path id="ve14" d="M417.1 169.7L353.9 345.4"/><path id="ve15" d="M540.0 190.0L683.4 157.8"/><path id="ve16" d="M540.0 190.0L556.9 343.8"/><path id="ve17" d="M683.4 157.8L824.2 320.9"/><path id="ve18" d="M79.3 321.5L199.8 306.3"/><path id="ve19" d="M199.8 306.3L353.9 345.4"/><path id="ve20" d="M556.9 343.8L703.0 342.7"/><path id="ve21" d="M703.0 342.7L824.2 320.9"/></g><g class="vnet-pulses"><circle r="2.6" fill="#FF5C9E"><animateMotion dur="4.2s" begin="3.4s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ve0"/></animateMotion></circle><circle r="2.6" fill="#FF8A3D"><animateMotion dur="5.4s" begin="0.1s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#ve2"/></animateMotion></circle><circle r="2.6" fill="#35E08A"><animateMotion dur="4.0s" begin="1.6s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ve4"/></animateMotion></circle><circle r="2.6" fill="#35E08A"><animateMotion dur="6.1s" begin="2.6s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#ve6"/></animateMotion></circle><circle r="2.6" fill="#38D0FF"><animateMotion dur="3.7s" begin="0.6s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ve8"/></animateMotion></circle><circle r="2.6" fill="#4C6FFF"><animateMotion dur="5.6s" begin="0.2s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#ve10"/></animateMotion></circle><circle r="2.6" fill="#A86BFF"><animateMotion dur="3.7s" begin="2.6s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ve12"/></animateMotion></circle><circle r="2.6" fill="#FF5C9E"><animateMotion dur="6.2s" begin="1.9s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#ve14"/></animateMotion></circle><circle r="2.6" fill="#A86BFF"><animateMotion dur="6.3s" begin="3.6s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ve16"/></animateMotion></circle><circle r="2.6" fill="#35E08A"><animateMotion dur="4.4s" begin="0.6s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#ve18"/></animateMotion></circle><circle r="2.6" fill="#A86BFF"><animateMotion dur="4.4s" begin="3.1s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ve20"/></animateMotion></circle></g><g class="vnet-planets"><g transform="translate(95.4 72.5)" style="animation-delay:2.4s"><ellipse rx="24.2" ry="6.9" transform="rotate(26)" class="vr"/><circle r="13.8" fill="url(#vg0)"/></g><g transform="translate(232.6 63.7)" style="animation-delay:4.5s"><ellipse rx="19.9" ry="5.7" transform="rotate(18)" class="vr"/><circle r="11.4" fill="url(#vg1)"/></g><g transform="translate(378.8 39.2)" style="animation-delay:2.4s"><circle r="16.5" fill="url(#vg2)"/></g><g transform="translate(587.6 81.7)" style="animation-delay:0.7s"><circle r="13.1" fill="url(#vg3)"/></g><g transform="translate(712.9 73.5)" style="animation-delay:2.9s"><ellipse rx="32.2" ry="9.2" transform="rotate(-24)" class="vr"/><circle r="18.4" fill="url(#vg4)"/></g><g transform="translate(998.4 66.9)" style="animation-delay:0.7s"><circle r="12.4" fill="url(#vg5)"/></g><g transform="translate(74.3 211.8)" style="animation-delay:3.6s"><ellipse rx="17.0" ry="4.8" transform="rotate(-24)" class="vr"/><circle r="9.7" fill="url(#vg6)"/></g><g transform="translate(417.1 169.7)" style="animation-delay:1.9s"><circle r="18.2" fill="url(#vg0)"/></g><g transform="translate(540.0 190.0)" style="animation-delay:0.6s"><ellipse rx="49.0" ry="14.0" transform="rotate(18)" class="vr"/><circle r="28" fill="url(#vgme)"/><circle r="37" class="vme"/></g><g transform="translate(683.4 157.8)" style="animation-delay:3.6s"><circle r="9.9" fill="url(#vg2)"/></g><g transform="translate(79.3 321.5)" style="animation-delay:1.3s"><circle r="12.2" fill="url(#vg3)"/></g><g transform="translate(199.8 306.3)" style="animation-delay:1.6s"><ellipse rx="32.0" ry="9.2" transform="rotate(18)" class="vr"/><circle r="18.3" fill="url(#vg4)"/></g><g transform="translate(353.9 345.4)" style="animation-delay:1.2s"><circle r="10.7" fill="url(#vg5)"/></g><g transform="translate(556.9 343.8)" style="animation-delay:4.8s"><circle r="18.6" fill="url(#vg6)"/></g><g transform="translate(703.0 342.7)" style="animation-delay:2.1s"><circle r="13.9" fill="url(#vg0)"/></g><g transform="translate(824.2 320.9)" style="animation-delay:3.4s"><circle r="13.4" fill="url(#vg1)"/></g></g></svg></div>
+  </div>
+</section>
 <!--@/-->
 <!--@tutorial-->
 <section id="tutorial">
@@ -659,28 +684,6 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
     </div>
   </div>
 </section>
-<!--@/-->
-<!--@home-->
-
-
-<section id="vision">
-  <div class="wrap">
-    <div class="sec-head wide">
-      <span class="l2">비전</span>
-      <h2 class="d2">유저가 소유한 에이전트들이 서로 일하는 세계</h2>
-      <p class="lead">리비월드는 에이전트 하나를 잘 만드는 데서 끝나지 않아요. 유저가 소유한 에이전트가 많아지면, 그 에이전트들이 서로 정보를 주고받고 거래하는 세계가 열려요.</p>
-    </div>
-    <div class="vault-grid">
-      <div><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="8.500" r="3.500"/><path d="M5 20c.6-3.600 3.400-5.500 7-5.500s6.400 1.900 7 5.500"/></svg><div class="l1">유저가 소유하는 에이전트 <span class="soon now">지금</span></div><p class="l4">기억과 관계가 내 기기에 쌓이고, 파일 하나로 어디든 가져가요. 모든 것은 여기서 시작해요.</p></div>
-      <div><svg class="ic" viewBox="0 0 24 24"><circle cx="6" cy="7" r="2.500"/><circle cx="18" cy="7" r="2.500"/><circle cx="12" cy="18" r="2.500"/><path d="M8.300 7h7.400M7.300 9.100l3.400 6.700M16.700 9.100l-3.400 6.700"/></svg><div class="l1">에이전트 사이의 정보 거래 네트워크 <span class="soon">앞으로</span></div><p class="l4">내 에이전트가 다른 사람의 에이전트와 필요한 정보를 주고받아요. 무엇을 내놓고 무엇을 받을지는 유저가 정해요.</p></div>
-      <div><svg class="ic" viewBox="0 0 24 24"><path d="M4 9.500 5.500 5h13L20 9.500"/><path d="M4 9.500a2.700 2.700 0 0 0 5.300 0 2.700 2.700 0 0 0 5.400 0 2.700 2.700 0 0 0 5.300 0"/><path d="M5.500 12v7h13v-7"/></svg><div class="l1">유저 주권 에이전트 마켓플레이스 <span class="soon">앞으로</span></div><p class="l4">에이전트의 지식과 능력을 사고파는 장터를 열어요. 데이터는 유저 기기에 남고, 유저가 허락한 것만 오가요.</p></div>
-    </div>
-    <!-- 11-16 빠불로: 비전 구역 아래 = 여러 행성이 그물처럼 이어진 그림(유저마다 행성 하나, 가운데 = 내 행성). 생성 스크립트 = 워크스페이스 tmp-shots/vault/vnet.py -->
-    <div class="vnet-box"><svg class="vnet" viewBox="0 0 1080 380" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true"><defs><radialGradient id="vg0" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#FF5C9E"/><stop offset="1" stop-color="#FF5C9E" stop-opacity=".55"/></radialGradient><radialGradient id="vg1" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#FF8A3D"/><stop offset="1" stop-color="#FF8A3D" stop-opacity=".55"/></radialGradient><radialGradient id="vg2" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#FFD23F"/><stop offset="1" stop-color="#FFD23F" stop-opacity=".55"/></radialGradient><radialGradient id="vg3" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#35E08A"/><stop offset="1" stop-color="#35E08A" stop-opacity=".55"/></radialGradient><radialGradient id="vg4" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#38D0FF"/><stop offset="1" stop-color="#38D0FF" stop-opacity=".55"/></radialGradient><radialGradient id="vg5" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#4C6FFF"/><stop offset="1" stop-color="#4C6FFF" stop-opacity=".55"/></radialGradient><radialGradient id="vg6" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#A86BFF"/><stop offset="1" stop-color="#A86BFF" stop-opacity=".55"/></radialGradient><linearGradient id="vgme" x1="0" y1="0" x2="1" y2="1"><stop offset="0.00" stop-color="#FF5C9E"/><stop offset="0.17" stop-color="#FF8A3D"/><stop offset="0.33" stop-color="#FFD23F"/><stop offset="0.50" stop-color="#35E08A"/><stop offset="0.67" stop-color="#38D0FF"/><stop offset="0.83" stop-color="#4C6FFF"/><stop offset="1.00" stop-color="#A86BFF"/></linearGradient></defs><g class="vnet-lines"><path id="ve0" d="M95.4 72.5L232.6 63.7"/><path id="ve1" d="M95.4 72.5L74.3 211.8"/><path id="ve2" d="M232.6 63.7L378.8 39.2"/><path id="ve3" d="M378.8 39.2L417.1 169.7"/><path id="ve4" d="M587.6 81.7L712.9 73.5"/><path id="ve5" d="M587.6 81.7L540.0 190.0"/><path id="ve6" d="M587.6 81.7L683.4 157.8"/><path id="ve7" d="M712.9 73.5L998.4 66.9"/><path id="ve8" d="M712.9 73.5L540.0 190.0"/><path id="ve9" d="M712.9 73.5L683.4 157.8"/><path id="ve10" d="M998.4 66.9L824.2 320.9"/><path id="ve11" d="M74.3 211.8L79.3 321.5"/><path id="ve12" d="M74.3 211.8L199.8 306.3"/><path id="ve13" d="M417.1 169.7L540.0 190.0"/><path id="ve14" d="M417.1 169.7L353.9 345.4"/><path id="ve15" d="M540.0 190.0L683.4 157.8"/><path id="ve16" d="M540.0 190.0L556.9 343.8"/><path id="ve17" d="M683.4 157.8L824.2 320.9"/><path id="ve18" d="M79.3 321.5L199.8 306.3"/><path id="ve19" d="M199.8 306.3L353.9 345.4"/><path id="ve20" d="M556.9 343.8L703.0 342.7"/><path id="ve21" d="M703.0 342.7L824.2 320.9"/></g><g class="vnet-pulses"><circle r="2.6" fill="#FF5C9E"><animateMotion dur="4.2s" begin="3.4s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ve0"/></animateMotion></circle><circle r="2.6" fill="#FF8A3D"><animateMotion dur="5.4s" begin="0.1s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#ve2"/></animateMotion></circle><circle r="2.6" fill="#35E08A"><animateMotion dur="4.0s" begin="1.6s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ve4"/></animateMotion></circle><circle r="2.6" fill="#35E08A"><animateMotion dur="6.1s" begin="2.6s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#ve6"/></animateMotion></circle><circle r="2.6" fill="#38D0FF"><animateMotion dur="3.7s" begin="0.6s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ve8"/></animateMotion></circle><circle r="2.6" fill="#4C6FFF"><animateMotion dur="5.6s" begin="0.2s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#ve10"/></animateMotion></circle><circle r="2.6" fill="#A86BFF"><animateMotion dur="3.7s" begin="2.6s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ve12"/></animateMotion></circle><circle r="2.6" fill="#FF5C9E"><animateMotion dur="6.2s" begin="1.9s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#ve14"/></animateMotion></circle><circle r="2.6" fill="#A86BFF"><animateMotion dur="6.3s" begin="3.6s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ve16"/></animateMotion></circle><circle r="2.6" fill="#35E08A"><animateMotion dur="4.4s" begin="0.6s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#ve18"/></animateMotion></circle><circle r="2.6" fill="#A86BFF"><animateMotion dur="4.4s" begin="3.1s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ve20"/></animateMotion></circle></g><g class="vnet-planets"><g transform="translate(95.4 72.5)" style="animation-delay:2.4s"><ellipse rx="24.2" ry="6.9" transform="rotate(26)" class="vr"/><circle r="13.8" fill="url(#vg0)"/></g><g transform="translate(232.6 63.7)" style="animation-delay:4.5s"><ellipse rx="19.9" ry="5.7" transform="rotate(18)" class="vr"/><circle r="11.4" fill="url(#vg1)"/></g><g transform="translate(378.8 39.2)" style="animation-delay:2.4s"><circle r="16.5" fill="url(#vg2)"/></g><g transform="translate(587.6 81.7)" style="animation-delay:0.7s"><circle r="13.1" fill="url(#vg3)"/></g><g transform="translate(712.9 73.5)" style="animation-delay:2.9s"><ellipse rx="32.2" ry="9.2" transform="rotate(-24)" class="vr"/><circle r="18.4" fill="url(#vg4)"/></g><g transform="translate(998.4 66.9)" style="animation-delay:0.7s"><circle r="12.4" fill="url(#vg5)"/></g><g transform="translate(74.3 211.8)" style="animation-delay:3.6s"><ellipse rx="17.0" ry="4.8" transform="rotate(-24)" class="vr"/><circle r="9.7" fill="url(#vg6)"/></g><g transform="translate(417.1 169.7)" style="animation-delay:1.9s"><circle r="18.2" fill="url(#vg0)"/></g><g transform="translate(540.0 190.0)" style="animation-delay:0.6s"><ellipse rx="49.0" ry="14.0" transform="rotate(18)" class="vr"/><circle r="28" fill="url(#vgme)"/><circle r="37" class="vme"/></g><g transform="translate(683.4 157.8)" style="animation-delay:3.6s"><circle r="9.9" fill="url(#vg2)"/></g><g transform="translate(79.3 321.5)" style="animation-delay:1.3s"><circle r="12.2" fill="url(#vg3)"/></g><g transform="translate(199.8 306.3)" style="animation-delay:1.6s"><ellipse rx="32.0" ry="9.2" transform="rotate(18)" class="vr"/><circle r="18.3" fill="url(#vg4)"/></g><g transform="translate(353.9 345.4)" style="animation-delay:1.2s"><circle r="10.7" fill="url(#vg5)"/></g><g transform="translate(556.9 343.8)" style="animation-delay:4.8s"><circle r="18.6" fill="url(#vg6)"/></g><g transform="translate(703.0 342.7)" style="animation-delay:2.1s"><circle r="13.9" fill="url(#vg0)"/></g><g transform="translate(824.2 320.9)" style="animation-delay:3.4s"><circle r="13.4" fill="url(#vg1)"/></g></g></svg></div>
-  </div>
-</section>
-
-
 <!--@/-->
 
 <section class="final" id="notify">
@@ -710,6 +713,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
     </div>
   </div>
 </footer>
+<script>(function(){var p=location.pathname.replace(/^\/ko/,"").replace(/\/$/,"")||"/";var pg=p==="/"?"home":p.slice(1);var l=document.querySelectorAll("a[data-pg]");for(var i=0;i<l.length;i++){if(l[i].getAttribute("data-pg")===pg){l[i].className+=" on";l[i].setAttribute("aria-current","page");}}})();</script>
 <script src="/world/rebe-planet.js"></script>
 <script>
 (function(){

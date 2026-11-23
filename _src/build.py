@@ -10,7 +10,7 @@ import re, json, sys, os
 R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITES = {
     'beark': {'host': 'https://be.ark.works', 'pages': ['home', 'formats', 'why', 'tutorial', 'pricing', 'news']},
-    'world': {'host': 'https://www.re-be.world', 'pages': ['home', 'tutorial']},
+    'world': {'host': 'https://www.re-be.world', 'pages': ['home', 'features', 'vision', 'tutorial']},
 }
 RAW = {'world': [('<h1 class="d1">창작 바깥의 일은<br><span class="grad">에이전트</span>에게 맡겨요</h1>',
                   '<h1 class="d1">Leave everything outside your craft<br>to your <span class="grad">agent</span></h1>')], 'beark': []}
@@ -44,14 +44,16 @@ def path(page, ko):
     return ('/ko/' if ko else '/') + page
 
 
-def localize(h, site, page, pages):
+def localize(h, site, page, pages, where=None):
     """한글 페이지 기준: 이 페이지에 없는 #구역 링크를 그 구역이 있는 페이지로 돌리고, 머리 정보·언어 전환을 이 페이지 주소로."""
     ids = set(re.findall(r'\bid="([A-Za-z0-9_-]+)"', h))
     def anchor(m):
         a = m.group(1)
         if a == '': return m.group(0) if page == 'home' else 'href="/ko"'
         if a in ids: return m.group(0)
-        return 'href="/ko/%s"' % a if a in pages else 'href="/ko#%s"' % a
+        if a in pages: return 'href="/ko/%s"' % a
+        pg = (where or {}).get(a, 'home')   # 11-23: 그 구역이 있는 페이지로 (전에는 무조건 첫 화면)
+        return 'href="/ko#%s"' % a if pg == 'home' else 'href="/ko/%s#%s"' % (pg, a)
     h = re.sub(r'href="#([A-Za-z0-9_-]*)"', anchor, h)
     host = SITES[site]['host']
     head, rest = h.split('</head>', 1)
@@ -92,8 +94,11 @@ for site, cfg in SITES.items():
     d = json.load(open('%s/_src/en-%s.json' % (R, site)))
     miss = [k for k in strings(src) if k not in d]
     if miss: bad += 1; print(site, '번역 없음:', miss)
+    where = {}
+    for pg in cfg['pages']:
+        for i in re.findall(r'\bid="([A-Za-z0-9_-]+)"', select(src, pg)): where.setdefault(i, pg)
     for page in cfg['pages']:
-        ko = localize(select(src, page), site, page, cfg['pages'])
+        ko = localize(select(src, page), site, page, cfg['pages'], where)
         en, left = to_en(ko, site, page, d)
         if left: bad += 1; print(site, page, '남은 한글:', left[:10])
         kf = 'ko.html' if page == 'home' else 'ko-%s.html' % page
