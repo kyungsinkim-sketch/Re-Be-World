@@ -10,7 +10,7 @@ import re, json, sys, os
 R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITES = {
     'beark': {'host': 'https://be.ark.works', 'pages': ['home', 'formats', 'why', 'tutorial', 'pricing', 'news']},
-    'world': {'host': 'https://www.re-be.world', 'pages': ['home', 'features', 'vision', 'tutorial']},
+    'world': {'host': 'https://www.re-be.world', 'pages': ['home', 'tutorial']},
 }
 RAW = {'world': [('<h1 class="d1">창작 바깥의 일은<br><span class="grad">에이전트</span>에게 맡겨요</h1>',
                   '<h1 class="d1">Leave everything outside your craft<br>to your <span class="grad">agent</span></h1>')], 'beark': []}

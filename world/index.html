@@ -6,9 +6,9 @@
 <link rel="alternate" hreflang="ko" href="https://www.re-be.world/ko">
 <link rel="alternate" hreflang="x-default" href="https://www.re-be.world/">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Re-Be World — The AI agent whose data you own</title>
-<meta name="description" content="An AI agent that knows you better the more you talk. Its memories are stored only on your phone and never uploaded to Re-Be World servers.">
-<meta property="og:title" content="Re-Be World — The AI agent whose data you own">
+<title>Re-Be World — AI Agent for Creators</title>
+<meta name="description" content="It gathers sponsorship inquiries, email, and DMs in one place and drafts replies in your voice. You press send.">
+<meta property="og:title" content="Re-Be World — An agent that grows from your memories">
 <meta property="og:description" content="An agent you named, living on your phone.">
 <meta name="theme-color" content="#000000">
 <meta property="og:image" content="https://www.re-be.world/world/media/og-world-en.jpg">
@@ -63,8 +63,6 @@ header .wrap{height:52px;display:flex;align-items:center;justify-content:space-b
 nav{display:flex;align-items:center;gap:22px}
 nav a.nl{font-size:13px;color:var(--fg-2)}
 nav a.nl:hover{color:var(--fg)}
-nav a.nl.on,.mnav a.on{color:var(--fg);font-weight:600}
-.mnav{display:none}
 
 /* 히어로 */
 .hero{padding:88px 0 0}
@@ -161,9 +159,6 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
   .d1{font-size:36px}.d2{font-size:24px}
   .hero{padding-top:56px}
   nav a.nl{display:none}
-  /* 11-23: 폰에서도 네 페이지를 오갈 수 있게 머리줄 아래 한 줄 */
-  .mnav{display:flex;gap:22px;padding:0 24px;height:40px;align-items:center;border-top:1px solid var(--line);overflow-x:auto}
-  .mnav a{font-size:13px;color:var(--fg-2);white-space:nowrap}
   .mock-body{grid-template-columns:1fr}.doc{border-right:0;border-bottom:1px solid var(--line);padding:22px}
   .mock-tab:not(.on){display:none}
   section{padding:64px 0}
@@ -177,7 +172,6 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 /* 리비월드 전용 */
 .grad{background:linear-gradient(90deg,#FF5C9E,#FF8A3D,#FFD23F,#35E08A,#38D0FF,#4C6FFF,#A86BFF);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero{padding:88px 0 96px}
-.plats{display:flex;gap:18px;flex-wrap:wrap}
 .plat{display:inline-flex;align-items:center;gap:7px;margin-bottom:22px;font-size:13px;font-weight:500;color:var(--fg-2)}.plat svg{width:20px;height:20px}
 .kicker{display:block;font-size:24px;line-height:1.3;font-weight:600;letter-spacing:-.02em;color:var(--fg);margin-bottom:8px}
 @media (max-width:860px){.kicker{font-size:19px}}
@@ -192,35 +186,6 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
 .hero.photo{align-items:flex-end;background:#000}
 .hero-pic::before{content:'';position:absolute;top:0;bottom:0;left:0;width:16%;background:linear-gradient(90deg,#000,rgba(0,0,0,0));z-index:1}   /* 넓은 화면에서 사진 왼쪽 끝이 검정과 이어지게 */
 .hero-copy{position:relative;z-index:2;width:100%;padding-top:64px;padding-bottom:56px}
-/* 11-23 빠불로: 맨 위 = 손 안의 작은 행성 — 사진 대신 앱의 데이터 행성 그 자체(rebe-planet.js)가 폰 윤곽 위로 떠오른다 */
-.hero-orb{position:absolute;z-index:0;right:max(4vw,calc((100vw - 1180px)/2));top:50%;transform:translateY(-50%);width:min(40vw,500px);aspect-ratio:1/1.42}
-.orb-glow{position:absolute;left:50%;top:24%;width:92%;aspect-ratio:1/1;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(196,156,77,.20),rgba(196,156,77,.06) 55%,rgba(0,0,0,0) 72%)}
-.orb-planet{position:absolute;left:50%;top:24%;width:66%;aspect-ratio:1/1;transform:translate(-50%,-50%);display:block}
-/* 폰 = 앱 화면 그대로(어두운 대화창). 아래는 어둠으로 사라진다 */
-.orb-phone{position:absolute;left:50%;top:48%;bottom:0;width:60%;transform:translateX(-50%);border:1px solid rgba(255,255,255,.38);border-bottom:0;border-radius:30px 30px 0 0;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 78%,rgba(0,0,0,0) 100%);mask-image:linear-gradient(180deg,#000 0%,#000 78%,rgba(0,0,0,0) 100%);background:#000;overflow:hidden}
-.orb-phone i{position:absolute;left:50%;top:10px;width:22%;height:5px;border-radius:3px;transform:translateX(-50%);background:rgba(255,255,255,.30)}
-.orb-phone::before{content:'';position:absolute;left:50%;bottom:100%;width:150%;height:60%;transform:translateX(-50%);background:radial-gradient(ellipse at 50% 100%,rgba(196,156,77,.22),rgba(196,156,77,0) 68%);pointer-events:none}
-.orb-chat{position:absolute;left:0;right:0;top:26px;padding:0 14px;display:flex;flex-direction:column;align-items:flex-start;font-size:11px;line-height:1.5;letter-spacing:-.01em;color:#fff}
-.oc-tab{align-self:stretch;display:flex;align-items:center;gap:7px;padding:6px 0 9px;margin-bottom:10px;position:relative;font-weight:600;font-size:12px}
-.oc-tab::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:linear-gradient(90deg,#FF5C5C,#FFD23F,#35E08A,#38D0FF,#A86BFF)}
-.oc-tab b{width:20px;height:20px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:radial-gradient(circle at 50% 50%,#38D0FF 0 22%,#0b0b0b 24%)}
-.oc-tab em{margin-left:auto;width:12px;height:8px;border-top:1.5px solid rgba(255,255,255,.6);border-bottom:1.5px solid rgba(255,255,255,.6)}
-.oc-who{font-family:ui-monospace,Menlo,monospace;font-size:9px;font-weight:600;color:rgba(255,255,255,.62);margin:2px 0 5px}
-.oc-who u{text-decoration:none;font-weight:400;color:rgba(255,255,255,.4)}
-.oc-me{max-width:92%;padding:8px 11px;border-radius:11px;background:#2a2a2a;margin-bottom:11px}
-.oc-ag{margin-bottom:9px;color:rgba(255,255,255,.94)}
-.oc-card{align-self:stretch;border:1px solid rgba(255,255,255,.16);border-radius:10px;background:#141414;padding:10px 11px}
-.oc-ct{display:flex;align-items:center;gap:6px;font-size:9px;color:rgba(255,255,255,.6);margin-bottom:6px}
-.oc-ct i{position:static;transform:none;width:6px;height:6px;border-radius:50%;background:#35E08A}
-.oc-ch{font-weight:600;margin-bottom:4px}
-.oc-cb{color:rgba(255,255,255,.72);margin-bottom:9px}
-.oc-btn{display:flex;gap:8px}
-.oc-btn span{flex:1;text-align:center;padding:6px 0;border-radius:8px;border:1px solid rgba(255,255,255,.2);font-weight:600;color:rgba(255,255,255,.55)}
-.oc-btn span.on{background:#9a9a9a;color:#111;border-color:#9a9a9a}
-.hero.photo.orb{align-items:center}
-.hero.photo.orb h1.long{font-size:46px;max-width:640px}.hero.photo.orb h1.long .grad{white-space:nowrap}
-.hero.photo.orb .kicker{font-size:19px}
-@media (max-width:860px){.hero.photo.orb h1.long{font-size:29px}.hero.photo.orb .kicker{font-size:15px}}
 .hero.photo .hero-copy>*{max-width:520px}
 @media (max-width:860px){
   /* 11-16: 폰 = 사진을 4:3으로 넓게(책상·노트북까지 들어오게), 글은 사진 아래로 — 사진 아래쪽을 글이 덮지 않는다 */
@@ -230,12 +195,6 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
   .hero-bg{object-position:100% 50%}
   .hero-shade{background:linear-gradient(180deg,rgba(0,0,0,0) 78%,var(--bg) 100%);-webkit-mask-image:none;mask-image:none}
   .hero-copy{margin-top:0;padding-top:20px;padding-bottom:48px}
-  /* 11-23 빠불로: 폰에서는 글이 먼저, 그림이 그 아래 */
-  .hero.photo.orb{display:flex;flex-direction:column}
-  .hero.photo.orb .hero-copy{order:1;padding-top:36px;padding-bottom:8px}
-  .hero-orb{order:2;position:relative;right:auto;top:auto;transform:none;width:min(88vw,400px);aspect-ratio:1/1.72;margin:20px auto 0}
-  .orb-glow,.orb-planet{top:20%}
-  .orb-phone{top:40%;width:64%}
 }
 .planet{width:100%;max-width:400px;margin-left:auto;display:block}
 .sym{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:10px}
@@ -349,44 +308,224 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
   <div class="wrap">
     <a class="brand" href="#" style="font-weight:700">Re-Be World</a>
     <nav>
-      <a class="nl" href="/" data-pg="home">About</a>
-      <a class="nl" href="/features" data-pg="features">Features</a>
-      <a class="nl" href="/vision" data-pg="vision">Vision</a>
-      <a class="nl" href="/tutorial" data-pg="tutorial">Tutorial</a>
+      <a class="nl" href="#people">Network</a>
+      <a class="nl" href="#flow">Inbox</a>
+      <a class="nl" href="#meet">Schedule</a>
+      <a class="nl" href="#place">Places</a>
+      <a class="nl" href="#web">Web tasks</a>
+      <a class="nl" href="#memory">Why us</a>
+      <a class="nl" href="/tutorial">Tutorial</a>
       <span class="lang-tg" role="group" aria-label="Language"><a href="/ko">KO</a><a href="/" class="on" aria-current="true">EN</a></span>
       <a class="btn sm primary" href="#notify">Get notified at launch</a>
     </nav>
   </div>
-  <div class="mnav"><a class="nl" href="/" data-pg="home">About</a><a class="nl" href="/features" data-pg="features">Features</a><a class="nl" href="/vision" data-pg="vision">Vision</a><a class="nl" href="/tutorial" data-pg="tutorial">Tutorial</a></div>
 </header>
 
 <main>
-<div class="hero photo orb">
-  <div class="hero-orb" aria-hidden="true">
-    <div class="orb-glow"></div>
-    <div class="orb-phone"><i></i>
-      <div class="orb-chat">
-        <div class="oc-tab"><b></b><span>Aslan</span><em></em></div>
-        <div class="oc-who">@you</div>
-        <div class="oc-me">Ask Junho if he is free for dinner next Mon, Wed or Fri</div>
-        <div class="oc-who">@Aslan <u>(00:07)</u></div>
-        <div class="oc-ag">I drafted a message to Junho. Check it and send.</div>
-        <div class="oc-card"><div class="oc-ct"><i></i>Approval needed</div><div class="oc-ch">Send message — Junho Kim</div><div class="oc-cb">Hi Junho, are you free for dinner next Mon, Wed or Fri?</div><div class="oc-btn"><span class="on">Send</span><span>Cancel</span></div></div>
-      </div>
-    </div>
-    <canvas class="orb-planet" data-planet></canvas>
-  </div>
+<div class="hero photo">
+  <div class="hero-pic"><img class="hero-bg" src="/world/media/rebe-hero.jpg" width="1344" height="768" alt=""><div class="hero-shade"></div></div>
   <div class="wrap hero-copy">
-            <span class="plats"><span class="plat" aria-label="Android"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18a9 9 0 0 1 18 0z" fill="#3DDC84"/><path d="M7.2 9.4 5.4 6.3M16.8 9.4l1.8-3.1" stroke="#3DDC84" stroke-width="1.4" stroke-linecap="round"/><circle cx="8.4" cy="14" r="1" fill="#000"/><circle cx="15.6" cy="14" r="1" fill="#000"/></svg>Android</span><span class="plat" aria-label="iPhone"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 5h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>iPhone coming soon</span></span>
-      <h1 class="d1 long">The AI agent whose data<br><span class="grad">you own</span> — Re-Be World</h1>
-      <p class="lead" style="max-width:480px;margin:22px 0 0">People, schedules, places. The more you talk, the better it knows you.</p>
-      <p class="lead" style="max-width:480px;margin:10px 0 32px">Those memories are stored only on your phone. Nothing is uploaded to Re-Be World servers.</p>
+      <span class="kicker">AI Agent for Creators</span>
+      <span class="plat" aria-label="Android"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18a9 9 0 0 1 18 0z" fill="#3DDC84"/><path d="M7.2 9.4 5.4 6.3M16.8 9.4l1.8-3.1" stroke="#3DDC84" stroke-width="1.4" stroke-linecap="round"/><circle cx="8.4" cy="14" r="1" fill="#000"/><circle cx="15.6" cy="14" r="1" fill="#000"/></svg>Android</span>
+      <h1 class="d1">Leave everything outside your craft<br>to your <span class="grad">agent</span></h1>
+      <p class="lead" style="max-width:480px;margin:22px 0 0">Sponsorship inquiries, email, DM replies.</p>
+      <p class="lead" style="max-width:480px;margin:10px 0 32px">Re-Be World sorts and manages them systematically, and drafts replies in your voice.</p>
       <div class="btns">
         <a class="btn primary" href="#notify">Get notified at launch</a>
         <a class="btn" href="/tutorial">See how to get started</a>
       </div>
   </div>
 </div>
+
+<section id="see">
+  <div class="wrap mem">
+    <div>
+      <span class="l2">How it works</span>
+      <h2 class="d2">A draft is waiting when a message arrives</h2>
+      <p class="lead">It remembers who wrote and what you talked about before, and drafts a reply in your voice. You just check it and send.</p>
+    </div>
+    <div class="phone" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="metadata" poster="/world/media/rebe-reply-en-poster.jpg" width="390" height="844">
+        <source src="/world/media/rebe-reply-en.webm" type="video/webm">
+        <source src="/world/media/rebe-reply-en.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<section id="people">
+  <div class="wrap mem">
+    <div class="phone" aria-hidden="true" style="margin:0">
+      <video autoplay muted loop playsinline preload="metadata" poster="/world/media/feat-people-en.jpg" width="412" height="892">
+        <source src="/world/media/rebe-people-en.webm" type="video/webm">
+        <source src="/world/media/rebe-people-en.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div>
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="l2">Network</span>
+        <h2 class="d2">Keeps everyone you work with in order</h2>
+        <p class="lead">It brings contacts, calls, and email together and sorts out who you worked with on what.</p>
+      </div>
+      <ol class="tut-steps">
+        <li><span class="num">01</span><div><div class="l1">Say it, and it groups them</div><p class="l4">Say "She is a client" and your agent files her in that group.</p></div></li>
+        <li><span class="num">02</span><div><div class="l1">Frequent contacts come first</div><p class="l4">See at a glance who you talk to and how often.</p></div></li>
+        <li><span class="num">03</span><div><div class="l1">Notes on each person</div><p class="l4">It remembers tastes and past work together, and uses them next time you talk.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="flow">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="l2">Inbox</span>
+      <h2 class="d2">From inquiry to reply, in one flow</h2>
+      <p class="lead">It's not just a reply writer. It gathers, finds context, drafts, and you review before sending.</p>
+    </div>
+    <div class="flow-grid">
+      <div class="phone" aria-hidden="true" style="margin:0">
+        <video autoplay muted loop playsinline preload="metadata" poster="/world/media/rebe-inbox-en-poster.jpg" width="412" height="892">
+          <source src="/world/media/rebe-inbox-en.webm" type="video/webm">
+          <source src="/world/media/rebe-inbox-en.mp4" type="video/mp4">
+        </video>
+      </div>
+      <ol class="flow-list"><li><span class="num">01</span><div><div class="l1">Gathers in one place</div><p class="l4">Inquiries that arrive as email, messenger, and DM notifications are gathered in your chat screen.</p></div></li><li><span class="num">02</span><div><div class="l1">Brings up context</div><p class="l4">It finds what happened before with the same person in its memory and tells you.</p></div></li><li><span class="num">03</span><div><div class="l1">Drafts in your voice</div><p class="l4">It learns your tone from what you've sent. Down to your sentence endings and message length.</p></div></li><li><span class="num">04</span><div><div class="l1">You review and send</div><p class="l4">Read the draft and tap approve. Nothing goes out before you do.</p></div></li></ol>
+    </div>
+  </div>
+</section>
+
+<section id="meet">
+  <div class="wrap mem rev">
+    <div class="phone" aria-hidden="true" style="margin:0">
+      <video autoplay muted loop playsinline preload="metadata" poster="/world/media/feat-cal-en.jpg" width="412" height="892">
+        <source src="/world/media/rebe-cal-en.webm" type="video/webm">
+        <source src="/world/media/rebe-cal-en.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div>
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="l2">Schedule</span>
+        <h2 class="d2">Your agent keeps your meetings</h2>
+        <p class="lead">Just ask: it adds the meeting to your calendar and drafts the reply. It shows you everything and waits for approval before acting.</p>
+      </div>
+      <ol class="tut-steps">
+        <li><span class="num">01</span><div><div class="l1">One word gets it done</div><p class="l4">Say "Yes, book it" and it prepares the calendar entry and the reply email together.</p></div></li>
+        <li><span class="num">02</span><div><div class="l1">Works with your accounts</div><p class="l4">Connect the email and calendar accounts you already use. Nothing to migrate.</p></div></li>
+        <li><span class="num">03</span><div><div class="l1">Change it the same way</div><p class="l4">Move or cancel a meeting just by asking.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="place">
+  <div class="wrap mem">
+    <div class="phone" aria-hidden="true" style="margin:0">
+      <video autoplay muted loop playsinline preload="metadata" poster="/world/media/feat-places-en.jpg" width="412" height="892">
+        <source src="/world/media/rebe-places-en.webm" type="video/webm">
+        <source src="/world/media/rebe-places-en.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div>
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="l2">Places</span>
+        <h2 class="d2">Suggests a better place next time</h2>
+        <p class="lead">It remembers where you met, why you chose it, and what you like.</p>
+      </div>
+      <ol class="tut-steps">
+        <li><span class="num">01</span><div><div class="l1">Collects where you have been</div><p class="l4">Shoot locations, meeting spots, and regular haunts, gathered on a globe.</p></div></li>
+        <li><span class="num">02</span><div><div class="l1">Remembers why you chose it</div><p class="l4">It keeps who you went with and why.</p></div></li>
+        <li><span class="num">03</span><div><div class="l1">Suggests to your taste</div><p class="l4">When you pick the next meeting place, it uses those memories to choose.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="web">
+  <div class="wrap mem rev">
+    <div class="phone" aria-hidden="true" style="margin:0">
+      <video autoplay muted loop playsinline preload="metadata" poster="/world/media/feat-stay-en.jpg" width="412" height="892">
+        <source src="/world/media/rebe-web-en.webm" type="video/webm">
+        <source src="/world/media/rebe-web-en.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div>
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="l2">Web tasks</span>
+        <h2 class="d2">Hand off what you do on the web, too</h2>
+        <p class="lead">Shopping, bookings, government and tax paperwork — your agent works through websites for you. Not a fixed list of sites: it opens any site.</p>
+      </div>
+      <ol class="tut-steps">
+        <li><span class="num">01</span><div><div class="l1">Shopping</div><p class="l4">It finds and compares products and fills your cart. You press pay.</p></div></li>
+        <li><span class="num">02</span><div><div class="l1">Bookings</div><p class="l4">It finds restaurants, stays, and train tickets and gets the booking screen ready. You press confirm.</p></div></li>
+        <li><span class="num">03</span><div><div class="l1">Government and tax</div><p class="l4">It finds the right forms and application pages and helps fill them in. You sign in and verify your identity.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+
+<section id="voice">
+  <div class="wrap mem">
+    <div class="phone" aria-hidden="true" style="margin:0">
+      <video autoplay muted loop playsinline preload="metadata" poster="/world/media/feat-voice-en.jpg" width="412" height="892">
+        <source src="/world/media/rebe-voice-en.webm" type="video/webm">
+        <source src="/world/media/rebe-voice-en.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div>
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="l2">Voice mode</span>
+        <h2 class="d2">When your hands are busy, just talk</h2>
+        <p class="lead">Keep working with your agent while you shoot or travel.</p>
+      </div>
+      <ol class="tut-steps">
+        <li><span class="num">01</span><div><div class="l1">Ask out loud</div><p class="l4">Turn on voice mode with one button.</p></div></li>
+        <li><span class="num">02</span><div><div class="l1">Hear the answer</div><p class="l4">No need to look at the screen.</p></div></li>
+        <li><span class="num">03</span><div><div class="l1">Pick up where you left off</div><p class="l4">Work keeps moving even when your hands are full.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="docs">
+  <div class="wrap mem rev">
+    <div class="phone" aria-hidden="true" style="margin:0">
+      <video autoplay muted loop playsinline preload="metadata" poster="/world/media/feat-docs-en.jpg" width="412" height="892">
+        <source src="/world/media/rebe-docs-en.webm" type="video/webm">
+        <source src="/world/media/rebe-docs-en.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div>
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="l2">Documents</span>
+        <h2 class="d2">Create and edit documents on your phone</h2>
+        <p class="lead">Work with Word, Excel, and PowerPoint files on your phone.</p>
+      </div>
+      <ol class="tut-steps">
+        <li><span class="num">01</span><div><div class="l1">Find and open</div><p class="l4">Ask for a contract or quote you received and it opens.</p></div></li>
+        <li><span class="num">02</span><div><div class="l1">Change only what you need</div><p class="l4">Open a file you received and change just the parts you need.</p></div></li>
+        <li><span class="num">03</span><div><div class="l1">Create by asking</div><p class="l4">Create quotes and plans as Word, Excel, or PowerPoint files.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="usp">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="l2">Memory</span>
+      <h2 class="d2">It remembers who you worked with, when, and on what</h2>
+      <p class="lead">When the next inquiry comes, it answers from that memory.</p>
+    </div>
+    <div class="steps usp">
+      <div><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="14" cy="14" r="10"/></svg><div class="l1">People</div><p class="l4">Contacts you worked with and your history with them</p></div>
+      <div><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="4" width="20" height="20"/></svg><div class="l1">Places</div><p class="l4">Where you shot and met</p></div>
+      <div><svg viewBox="0 0 28 28" fill="none" stroke="#C49C4D" stroke-width="1.8" stroke-linejoin="round"><path d="M14 4 25 23H3z"/></svg><div class="l1">Events</div><p class="l4">Deadlines, schedules, and past collaborations</p></div>
+    </div>
+  </div>
+</section>
+
 <section id="memory">
   <div class="wrap mem">
     <div class="phone" aria-hidden="true" style="margin:0">
@@ -407,6 +546,7 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
     </div>
   </div>
 </section>
+
 <section id="vault">
   <div class="wrap">
     <div class="sec-head wide">
@@ -436,21 +576,26 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
     <p class="vault-note">To write an answer, the conversation is sent to the AI you chose (Claude or ChatGPT). Anything that travels between your phone and computer is locked so only your own devices can open it.</p>
   </div>
 </section>
-<section id="see">
-  <div class="wrap mem">
-    <div>
-      <span class="l2">How it works</span>
-      <h2 class="d2">A draft is waiting when a message arrives</h2>
-      <p class="lead">It remembers who wrote and what you talked about before, and drafts a reply in your voice. You just check it and send.</p>
+
+
+<section id="vision">
+  <div class="wrap">
+    <div class="sec-head wide">
+      <span class="l2">Vision</span>
+      <h2 class="d2">A world where user-owned agents work with each other</h2>
+      <p class="lead">Re-Be World does not stop at building one good agent. As more people own their agents, those agents can exchange and trade information with each other.</p>
     </div>
-    <div class="phone" aria-hidden="true">
-      <video autoplay muted loop playsinline preload="metadata" poster="/world/media/rebe-reply-en-poster.jpg" width="390" height="844">
-        <source src="/world/media/rebe-reply-en.webm" type="video/webm">
-        <source src="/world/media/rebe-reply-en.mp4" type="video/mp4">
-      </video>
+    <div class="vault-grid">
+      <div><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="8.500" r="3.500"/><path d="M5 20c.6-3.600 3.400-5.500 7-5.500s6.400 1.900 7 5.500"/></svg><div class="l1">Agents owned by their users <span class="soon now">Now</span></div><p class="l4">Memory and relationships build up on your own device, and you can take them anywhere in one file. Everything starts here.</p></div>
+      <div><svg class="ic" viewBox="0 0 24 24"><circle cx="6" cy="7" r="2.500"/><circle cx="18" cy="7" r="2.500"/><circle cx="12" cy="18" r="2.500"/><path d="M8.300 7h7.400M7.300 9.100l3.400 6.700M16.700 9.100l-3.400 6.700"/></svg><div class="l1">An information trading network between agents <span class="soon">Ahead</span></div><p class="l4">Your agent exchanges the information it needs with other people's agents. You decide what to offer and what to receive.</p></div>
+      <div><svg class="ic" viewBox="0 0 24 24"><path d="M4 9.500 5.500 5h13L20 9.500"/><path d="M4 9.500a2.700 2.700 0 0 0 5.300 0 2.700 2.700 0 0 0 5.400 0 2.700 2.700 0 0 0 5.300 0"/><path d="M5.500 12v7h13v-7"/></svg><div class="l1">A marketplace where users keep data sovereignty <span class="soon">Ahead</span></div><p class="l4">We will open a marketplace for agents' knowledge and skills. The data stays on the user's device, and only what the user allows is shared.</p></div>
     </div>
+    <!-- 11-16 빠불로: 비전 구역 아래 = 여러 행성이 그물처럼 이어진 그림(유저마다 행성 하나, 가운데 = 내 행성). 생성 스크립트 = 워크스페이스 tmp-shots/vault/vnet.py -->
+    <div class="vnet-box"><svg class="vnet" viewBox="0 0 1080 380" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true"><defs><radialGradient id="vg0" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#FF5C9E"/><stop offset="1" stop-color="#FF5C9E" stop-opacity=".55"/></radialGradient><radialGradient id="vg1" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#FF8A3D"/><stop offset="1" stop-color="#FF8A3D" stop-opacity=".55"/></radialGradient><radialGradient id="vg2" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#FFD23F"/><stop offset="1" stop-color="#FFD23F" stop-opacity=".55"/></radialGradient><radialGradient id="vg3" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#35E08A"/><stop offset="1" stop-color="#35E08A" stop-opacity=".55"/></radialGradient><radialGradient id="vg4" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#38D0FF"/><stop offset="1" stop-color="#38D0FF" stop-opacity=".55"/></radialGradient><radialGradient id="vg5" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#4C6FFF"/><stop offset="1" stop-color="#4C6FFF" stop-opacity=".55"/></radialGradient><radialGradient id="vg6" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#A86BFF"/><stop offset="1" stop-color="#A86BFF" stop-opacity=".55"/></radialGradient><linearGradient id="vgme" x1="0" y1="0" x2="1" y2="1"><stop offset="0.00" stop-color="#FF5C9E"/><stop offset="0.17" stop-color="#FF8A3D"/><stop offset="0.33" stop-color="#FFD23F"/><stop offset="0.50" stop-color="#35E08A"/><stop offset="0.67" stop-color="#38D0FF"/><stop offset="0.83" stop-color="#4C6FFF"/><stop offset="1.00" stop-color="#A86BFF"/></linearGradient></defs><g class="vnet-lines"><path id="ve0" d="M95.4 72.5L232.6 63.7"/><path id="ve1" d="M95.4 72.5L74.3 211.8"/><path id="ve2" d="M232.6 63.7L378.8 39.2"/><path id="ve3" d="M378.8 39.2L417.1 169.7"/><path id="ve4" d="M587.6 81.7L712.9 73.5"/><path id="ve5" d="M587.6 81.7L540.0 190.0"/><path id="ve6" d="M587.6 81.7L683.4 157.8"/><path id="ve7" d="M712.9 73.5L998.4 66.9"/><path id="ve8" d="M712.9 73.5L540.0 190.0"/><path id="ve9" d="M712.9 73.5L683.4 157.8"/><path id="ve10" d="M998.4 66.9L824.2 320.9"/><path id="ve11" d="M74.3 211.8L79.3 321.5"/><path id="ve12" d="M74.3 211.8L199.8 306.3"/><path id="ve13" d="M417.1 169.7L540.0 190.0"/><path id="ve14" d="M417.1 169.7L353.9 345.4"/><path id="ve15" d="M540.0 190.0L683.4 157.8"/><path id="ve16" d="M540.0 190.0L556.9 343.8"/><path id="ve17" d="M683.4 157.8L824.2 320.9"/><path id="ve18" d="M79.3 321.5L199.8 306.3"/><path id="ve19" d="M199.8 306.3L353.9 345.4"/><path id="ve20" d="M556.9 343.8L703.0 342.7"/><path id="ve21" d="M703.0 342.7L824.2 320.9"/></g><g class="vnet-pulses"><circle r="2.6" fill="#FF5C9E"><animateMotion dur="4.2s" begin="3.4s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ve0"/></animateMotion></circle><circle r="2.6" fill="#FF8A3D"><animateMotion dur="5.4s" begin="0.1s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#ve2"/></animateMotion></circle><circle r="2.6" fill="#35E08A"><animateMotion dur="4.0s" begin="1.6s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ve4"/></animateMotion></circle><circle r="2.6" fill="#35E08A"><animateMotion dur="6.1s" begin="2.6s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#ve6"/></animateMotion></circle><circle r="2.6" fill="#38D0FF"><animateMotion dur="3.7s" begin="0.6s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ve8"/></animateMotion></circle><circle r="2.6" fill="#4C6FFF"><animateMotion dur="5.6s" begin="0.2s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#ve10"/></animateMotion></circle><circle r="2.6" fill="#A86BFF"><animateMotion dur="3.7s" begin="2.6s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ve12"/></animateMotion></circle><circle r="2.6" fill="#FF5C9E"><animateMotion dur="6.2s" begin="1.9s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#ve14"/></animateMotion></circle><circle r="2.6" fill="#A86BFF"><animateMotion dur="6.3s" begin="3.6s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ve16"/></animateMotion></circle><circle r="2.6" fill="#35E08A"><animateMotion dur="4.4s" begin="0.6s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#ve18"/></animateMotion></circle><circle r="2.6" fill="#A86BFF"><animateMotion dur="4.4s" begin="3.1s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ve20"/></animateMotion></circle></g><g class="vnet-planets"><g transform="translate(95.4 72.5)" style="animation-delay:2.4s"><ellipse rx="24.2" ry="6.9" transform="rotate(26)" class="vr"/><circle r="13.8" fill="url(#vg0)"/></g><g transform="translate(232.6 63.7)" style="animation-delay:4.5s"><ellipse rx="19.9" ry="5.7" transform="rotate(18)" class="vr"/><circle r="11.4" fill="url(#vg1)"/></g><g transform="translate(378.8 39.2)" style="animation-delay:2.4s"><circle r="16.5" fill="url(#vg2)"/></g><g transform="translate(587.6 81.7)" style="animation-delay:0.7s"><circle r="13.1" fill="url(#vg3)"/></g><g transform="translate(712.9 73.5)" style="animation-delay:2.9s"><ellipse rx="32.2" ry="9.2" transform="rotate(-24)" class="vr"/><circle r="18.4" fill="url(#vg4)"/></g><g transform="translate(998.4 66.9)" style="animation-delay:0.7s"><circle r="12.4" fill="url(#vg5)"/></g><g transform="translate(74.3 211.8)" style="animation-delay:3.6s"><ellipse rx="17.0" ry="4.8" transform="rotate(-24)" class="vr"/><circle r="9.7" fill="url(#vg6)"/></g><g transform="translate(417.1 169.7)" style="animation-delay:1.9s"><circle r="18.2" fill="url(#vg0)"/></g><g transform="translate(540.0 190.0)" style="animation-delay:0.6s"><ellipse rx="49.0" ry="14.0" transform="rotate(18)" class="vr"/><circle r="28" fill="url(#vgme)"/><circle r="37" class="vme"/></g><g transform="translate(683.4 157.8)" style="animation-delay:3.6s"><circle r="9.9" fill="url(#vg2)"/></g><g transform="translate(79.3 321.5)" style="animation-delay:1.3s"><circle r="12.2" fill="url(#vg3)"/></g><g transform="translate(199.8 306.3)" style="animation-delay:1.6s"><ellipse rx="32.0" ry="9.2" transform="rotate(18)" class="vr"/><circle r="18.3" fill="url(#vg4)"/></g><g transform="translate(353.9 345.4)" style="animation-delay:1.2s"><circle r="10.7" fill="url(#vg5)"/></g><g transform="translate(556.9 343.8)" style="animation-delay:4.8s"><circle r="18.6" fill="url(#vg6)"/></g><g transform="translate(703.0 342.7)" style="animation-delay:2.1s"><circle r="13.9" fill="url(#vg0)"/></g><g transform="translate(824.2 320.9)" style="animation-delay:3.4s"><circle r="13.4" fill="url(#vg1)"/></g></g></svg></div>
   </div>
 </section>
+
+
 
 <section class="final" id="notify">
   <div class="wrap">
@@ -477,7 +622,6 @@ footer .links{display:flex;gap:22px;flex-wrap:wrap}
     </div>
   </div>
 </footer>
-<script>(function(){var p=location.pathname.replace(/^\/ko/,"").replace(/\/$/,"")||"/";var pg=p==="/"?"home":p.slice(1);var l=document.querySelectorAll("a[data-pg]");for(var i=0;i<l.length;i++){if(l[i].getAttribute("data-pg")===pg){l[i].className+=" on";l[i].setAttribute("aria-current","page");}}})();</script>
 <script src="/world/rebe-planet.js"></script>
 <script>
 (function(){

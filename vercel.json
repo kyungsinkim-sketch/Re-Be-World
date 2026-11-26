@@ -136,19 +136,19 @@
     },
     {
       "source": "/vision",
-      "destination": "/world/vision"
+      "destination": "/world"
     },
     {
       "source": "/ko/vision",
-      "destination": "/world/ko-vision"
+      "destination": "/world/ko"
     },
     {
       "source": "/features",
-      "destination": "/world/features"
+      "destination": "/world"
     },
     {
       "source": "/ko/features",
-      "destination": "/world/ko-features"
+      "destination": "/world/ko"
     },
     {
       "source": "/tutorial",
